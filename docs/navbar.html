@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+  <div class="container-fluid px-md-5">
+    
+    <a class="navbar-brand d-flex align-items-center fw-bold text-dark fs-4" href="index.html">
+      <img src="assets/img/logo-huellita.png" alt="Logo" width="40" class="me-2 align-text-top"> 
+      <div class="d-flex flex-column lh-1">
+        <span style="color: #2b2b2b; font-size: 1.1rem; letter-spacing: 0.5px; font-family: sans-serif;">marcando</span>
+        <span style="color: #e04b7b; font-size: 1.2rem; font-family: sans-serif;">huellitas</span>
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMarcandoHuellitas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMarcandoHuellitas">
+      
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="#productos">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="#adopciones">Adopciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="#asociaciones">Asociaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="#refugios">Refugios</a>
+        </li>
+        <li class="nav-item active-link">
+          <a class="nav-link font-medium" href="#donaciones" style="color: #e04b7b;">Donaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark font-medium" href="#contacto">Contacto</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-4">
+        <a href="#registro" class="btn btn-outline-custom rounded-3 px-4 py-2 fw-semibold">
+          Regístrate
+        </a>
+        
+        <a href="#carrito" class="position-relative text-dark">
+          <i class="bi bi-cart3 fs-4"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle badge-custom">
+            2
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<style>
+  .font-medium {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  /* Línea rosa debajo del elemento activo */
+  .active-link {
+    border-bottom: 3px solid #e04b7b;
+  }
+
+  /* Botón Regístrate personalizado */
+  .btn-outline-custom {
+    color: #e04b7b;
+    border-color: #e04b7b;
+    background-color: transparent;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-outline-custom:hover {
+    background-color: #e04b7b;
+    color: #ffffff;
+    border-color: #e04b7b;
+  }
+
+  /* Burbuja roja/rosa del carrito */
+  .badge-custom {
+    background-color: #e04b7b;
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.25em 0.45em;
+  }
+</style>
