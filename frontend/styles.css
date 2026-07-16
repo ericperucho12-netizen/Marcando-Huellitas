@@ -1,1 +1,101 @@
-aqui estuvo Elios :)
+:root {
+  --Lemon-Chiffon: #fbf8cc;
+  --Powder-Petal: #fde4cf;
+  --Cotton-Rose: #ffcfd2;
+  --Pink-Orchid: #f1c0e8;
+  --Periwinkle: #cfbaf0;
+  --Baby-Blue-Ice: #a3c4f3;
+  --Sky-Blue-Light: #90dbf4;
+  --Electric-Aqua: #8eecf5;
+  --Soft-Cyan: #98f5e1;
+  --Celadon: #b9fbc0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #ffffff;
+}
+
+/* Titles and Subtitles with DynaPuff */
+.team-title,
+.team-subtitle,
+.card-title,
+.team-badge,
+.role-title {
+    font-family: 'DynaPuff', cursive;
+}
+
+/* Card descriptions with Poppins (or Nunito, both are for texts, let's use Poppins for card text) */
+.card-text {
+    font-family: 'Poppins', sans-serif;
+}
+
+.team-badge {
+    /* Using a combination of custom colors or fallback for green design if needed, but let's stick to a green badge */
+    background-color: #eaf5ee; /* We can use var(--Celadon) if we want a pastel green */
+    color: #38a169;
+    font-size: 0.85rem;
+    padding: 0.5em 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.team-title {
+    font-size: 2.5rem;
+    color: #212529;
+}
+
+.team-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.team-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+.team-card .card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.role-title {
+    color: #38a169;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #f8f9fa;
+    color: #adb5bd;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    border: 1px solid #f1f3f5;
+}
+
+.social-icon:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
