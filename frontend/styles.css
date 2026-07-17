@@ -1,3 +1,6 @@
+/* =========================================
+   1. ROOT, BODY Y ESTILOS GLOBALES
+   ========================================= */
 
 :root {
   --Lemon-Chiffon: #fbf8cc;
@@ -37,91 +40,47 @@ body {
     background-color: var(--White);
 }
 
-/* Titles and Subtitles with DynaPuff */
-.team-title,
-.team-subtitle,
-.card-title,
-.team-badge,
-.role-title {
-    font-family: var(--font-titles);
-}
 
-/* Card descriptions with Poppins (or Nunito, both are for texts, let's use Poppins for card text) */
-.card-text {
-    font-family: var(--font-text-secondary);
-}
+/* =========================================
+   2. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================= */
 
-.team-badge {
-    /* Using a combination of custom colors or fallback for green design if needed, but let's stick to a green badge */
-    background-color: #eaf5ee; /* We can use var(--Celadon) if we want a pastel green */
-    color: #38a169;
-    font-size: 0.85rem;
-    padding: 0.5em 1.2em;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
+.font-medium {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  /* Línea rosa debajo del elemento activo */
+  .active-link {
+    border-bottom: 3px solid #e04b7b;
+  }
 
-.team-title {
-    font-size: 2.5rem;
-    color: #212529;
-}
-
-.team-subtitle {
-    font-size: 1.1rem;
-    color: #6c757d;
-}
-
-.team-card {
-    border-radius: 12px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
-}
-
-.team-card .card-img-top {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    height: 220px;
-    object-fit: cover;
-}
-
-.role-title {
-    color: #38a169;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background-color: #f8f9fa;
-    color: #adb5bd;
-    border-radius: 50%;
-    text-decoration: none;
-    transition: all 0.2s;
+  /* Botón Regístrate personalizado */
+  .btn-outline-custom {
+    color: #e04b7b;
+    border-color: #e04b7b;
+    background-color: transparent;
     font-size: 0.9rem;
-    border: 1px solid #f1f3f5;
-}
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-outline-custom:hover {
+    background-color: #e04b7b;
+    color: #ffffff;
+    border-color: #e04b7b;
+  }
 
-.social-icon:hover {
-    background-color: #e9ecef;
-    color: #495057;
-}
+  /* Burbuja roja/rosa del carrito */
+  .badge-custom {
+    background-color: #e04b7b;
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.25em 0.45em;
+  }
 
-/* --- HERO & ABOUT STYLES --- */
+
+/* =========================================
+   3. SECCIÓN HERO Y ACERCA DE
+   ========================================= */
 
 .hero-about {
     min-height: 340px;
@@ -369,71 +328,12 @@ body {
         width: 240px;
     }
 }
-.bg-pastel-pink {
-    background-color: var(--Cotton-Rose) !important;
-}
-.bg-pastel-blue {
-    background-color: var(--Baby-Blue-Ice) !important;
-}
-.bg-pastel-purple {
-    background-color: var(--Periwinkle) !important;
-}
-
-.bg-pastel-orange {
-    background-color: var(--Powder-Petal) !important;
-}
-
-.bg-pastel-yellow {
-    background-color: var(--Lemon-Chiffon) !important;
-}
-
-.bg-pastel-green {
-    background-color: var(--Celadon) !important;
-}
-
-.bg-pastel-orchid {
-    background-color: var(--Pink-Orchid) !important;
-}
-
-.bg-pastel-cyan {
-    background-color: var(--Soft-Cyan) !important;
-}
 
 
-/* --- NAVBAR STYLES --- */
-.font-medium {
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-  
-  /* Línea rosa debajo del elemento activo */
-  .active-link {
-    border-bottom: 3px solid #e04b7b;
-  }
+/* =========================================
+   4. MISIÓN, VISIÓN Y VALORES
+   ========================================= */
 
-  /* Botón Regístrate personalizado */
-  .btn-outline-custom {
-    color: #e04b7b;
-    border-color: #e04b7b;
-    background-color: transparent;
-    font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
-  }
-  .btn-outline-custom:hover {
-    background-color: #e04b7b;
-    color: #ffffff;
-    border-color: #e04b7b;
-  }
-
-  /* Burbuja roja/rosa del carrito */
-  .badge-custom {
-    background-color: #e04b7b;
-    color: white;
-    font-size: 0.65rem;
-    padding: 0.25em 0.45em;
-  }
-
-/* Misión, Visión y Valores */
 .seccion-cards{
     max-width: auto;
     max-height: auto;
@@ -450,7 +350,116 @@ body {
     transform: translateY(-10px);;
 }
 
-/* --- FOOTER STYLES --- */
+
+/* =========================================
+   5. EQUIPO
+   ========================================= */
+
+/* Titles and Subtitles with DynaPuff */
+.team-title,
+.team-subtitle,
+.card-title,
+.team-badge,
+.role-title {
+    font-family: var(--font-titles);
+}
+
+/* Card descriptions with Poppins (or Nunito, both are for texts, let's use Poppins for card text) */
+.card-text {
+    font-family: var(--font-text-secondary);
+}
+
+.team-badge {
+    /* Using a combination of custom colors or fallback for green design if needed, but let's stick to a green badge */
+    background-color: #eaf5ee; /* We can use var(--Celadon) if we want a pastel green */
+    color: #38a169;
+    font-size: 0.85rem;
+    padding: 0.5em 1.2em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.team-title {
+    font-size: 2.5rem;
+    color: #212529;
+}
+
+.team-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.team-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+.team-card .card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.role-title {
+    color: #38a169;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #f8f9fa;
+    color: #adb5bd;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    border: 1px solid #f1f3f5;
+}
+
+.social-icon:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+
+/* =========================================
+   6. CORPORATIVO PELUDITOS
+   ========================================= */
+
+
+.corporativo-foto {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid #8eecf5;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   7. PIE DE PÁGINA (FOOTER)
+   ========================================= */
+
 footer{
     position: relative;
     overflow: hidden;
@@ -680,3 +689,40 @@ footer{
     bottom: 11rem;       /* Distancia desde abajo */
     left: 75rem;         
 }
+
+
+/* =========================================
+   8. CLASES UTILITARIAS Y COLORES
+   ========================================= */
+
+.bg-pastel-pink {
+    background-color: var(--Cotton-Rose) !important;
+}
+.bg-pastel-blue {
+    background-color: var(--Baby-Blue-Ice) !important;
+}
+.bg-pastel-purple {
+    background-color: var(--Periwinkle) !important;
+}
+
+.bg-pastel-orange {
+    background-color: var(--Powder-Petal) !important;
+}
+
+.bg-pastel-yellow {
+    background-color: var(--Lemon-Chiffon) !important;
+}
+
+.bg-pastel-green {
+    background-color: var(--Celadon) !important;
+}
+
+.bg-pastel-orchid {
+    background-color: var(--Pink-Orchid) !important;
+}
+
+.bg-pastel-cyan {
+    background-color: var(--Soft-Cyan) !important;
+}
+
+
