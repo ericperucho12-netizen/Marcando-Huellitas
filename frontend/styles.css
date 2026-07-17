@@ -104,3 +104,6 @@ body {
     background-color: #e9ecef;
     color: #495057;
 }
+.bg-pastel-pink {
+    background-color: var(--Cotton-Rose) !important;
+}
