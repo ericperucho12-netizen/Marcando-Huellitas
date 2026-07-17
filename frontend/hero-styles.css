@@ -1,0 +1,278 @@
+:root {
+    --Lemon-Chiffon: #fbf8cc;
+    --Powder-Petal: #fde4cf;
+    --Cotton-Rose: #ffcfd2;
+    --Pink-Orchid: #f1c0e8;
+    --Periwinkle: #cfbaf0;
+    --Baby-Blue-Ice: #a3c4f3;
+    --Sky-Blue-Light: #90dbf4;
+    --Electric-Aqua: #8eecf5;
+    --Soft-Cyan: #98f5e1;
+    --Celadon: #b9fbc0;
+
+    --Text-Dark: #2F2F3A;
+    --White: #ffffff;
+    --Accent-Pink: #FF6FAE;
+
+    --font-titles: 'DynaPuff', cursive;
+    --font-text-primary: 'Nunito', sans-serif;
+    --font-text-secondary: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-text-primary);
+    color: var(--Text-Dark);
+    background-color: var(--White);
+}
+
+.hero-about {
+    min-height: 340px;
+    background: linear-gradient(
+        135deg,
+        var(--Lemon-Chiffon) 0%,
+        var(--Powder-Petal) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-about .container {
+    max-width: 1100px;
+}
+
+.hero-row {
+    min-height: 340px;
+}
+
+/* Huellitas*/
+.hero-about::before {
+    content: "🐾";
+    position: absolute;
+    left: 45px;
+    bottom: 28px;
+    font-size: 2rem;
+    opacity: 0.45;
+}
+
+/*Texto izquierdo*/
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding-left: 2rem;
+}
+
+/* Etiqueta superior */
+.hero-badge {
+    display: inline-block;
+    font-family: var(--font-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--Accent-Pink);
+    background-color: var(--Cotton-Rose);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.7rem;
+}
+
+.hero-title {
+    font-family: var(--font-titles);
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--Text-Dark);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-title span:not(.decor-line) {
+    color: var(--Accent-Pink);
+}
+
+.decor-line {
+    color: var(--Accent-Pink);
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.hero-description {
+    font-family: var(--font-text-primary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-width: 430px;
+    margin-bottom: 0.6rem;
+}
+
+.hero-mini-text {
+    font-family: var(--font-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--Accent-Pink);
+    margin-bottom: 1rem;
+}
+
+/* Botones */
+.hero-buttons {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    font-family: var(--font-text-secondary);
+    background-color: var(--Accent-Pink);
+    color: var(--White);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 30px;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(255, 111, 174, 0.28);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: var(--Pink-Orchid);
+    color: var(--Text-Dark);
+    transform: translateY(-2px);
+}
+
+.btn-hero-secondary {
+    font-family: var(--font-text-secondary);
+    background-color: var(--Celadon);
+    color: var(--Text-Dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-hero-secondary:hover {
+    background-color: var(--Soft-Cyan);
+    color: var(--Text-Dark);
+    transform: translateY(-2px);
+}
+
+/* Corazón cerca del texto */
+.hero-content::after {
+    content: "♡";
+    position: absolute;
+    right: 90px;
+    top: 120px;
+    color: var(--Accent-Pink);
+    font-size: 2rem;
+}
+
+.hero-image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 1rem;
+}
+
+.hero-blob {
+    width: 430px;
+    height: 280px;
+    background-color: rgba(251, 248, 204, 0.72);
+    border-radius: 55% 45% 0 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: visible;
+}
+
+/* Forma amarilla detrás */
+.hero-blob::after {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 235px;
+    background-color: rgba(251, 248, 204, 0.85);
+    border-radius: 55% 45% 0 0;
+    right: -35px;
+    bottom: 0;
+    z-index: 0;
+}
+
+/* Imagen perro y gato */
+.hero-pets-img {
+    width: 325px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 3;
+    transform: translateY(48px);
+}
+
+@media (max-width: 991px) {
+    .hero-about {
+        min-height: auto;
+        padding: 2.5rem 0;
+        text-align: center;
+    }
+
+    .hero-row {
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-mini-text {
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-content::after {
+        display: none;
+    }
+
+    .hero-image-content {
+        margin-top: 2rem;
+        padding-top: 0;
+    }
+
+    .hero-blob {
+        width: 320px;
+        height: 230px;
+    }
+
+    .hero-blob::after {
+        width: 330px;
+        height: 200px;
+        right: -15px;
+    }
+
+    .hero-pets-img {
+        width: 240px;
+    }
+}

@@ -9,10 +9,14 @@
   --Electric-Aqua: #8eecf5;
   --Soft-Cyan: #98f5e1;
   --Celadon: #b9fbc0;
+  
+  --font-titles: 'DynaPuff', cursive;
+  --font-text-primary: 'Nunito', sans-serif;
+  --font-text-secondary: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-text-primary);
     background-color: #ffffff;
 }
 
@@ -22,12 +26,12 @@ body {
 .card-title,
 .team-badge,
 .role-title {
-    font-family: 'DynaPuff', cursive;
+    font-family: var(--font-titles);
 }
 
 /* Card descriptions with Poppins (or Nunito, both are for texts, let's use Poppins for card text) */
 .card-text {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-text-secondary);
 }
 
 .team-badge {
