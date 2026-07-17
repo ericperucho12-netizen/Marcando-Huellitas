@@ -38,8 +38,15 @@ body {
     font-family: var(--font-text-primary);
     color: var(--Text-Dark);
     background-color: var(--White);
+    line-height: 1.6;
 }
 
+
+
+.historia-text {
+    text-align: justify;
+    font-size: 1.1rem;
+}
 
 /* =========================================
    2. BARRA DE NAVEGACIÓN (NAVBAR)
