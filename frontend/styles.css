@@ -44,8 +44,7 @@ body {
 
 
 .historia-text {
-    text-align: justify;
-    font-size: 1.1rem;
+    text-align: center;
 }
 
 /* =========================================
@@ -90,7 +89,8 @@ body {
    ========================================= */
 
 .hero-about {
-    min-height: 340px;
+    min-height: 550px;
+    padding: 3rem 0;
     background: linear-gradient(
         135deg,
         var(--Lemon-Chiffon) 0%,
@@ -107,7 +107,7 @@ body {
 }
 
 .hero-row {
-    min-height: 340px;
+    min-height: 550px;
 }
 
 /* Huellitas*/
@@ -142,7 +142,7 @@ body {
 
 .hero-title {
     font-family: var(--font-titles);
-    font-size: 2.25rem;
+    font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.05;
     color: var(--Text-Dark);
@@ -162,7 +162,7 @@ body {
 
 .hero-description {
     font-family: var(--font-text-primary);
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     line-height: 1.4;
     max-width: 430px;
     margin-bottom: 0.6rem;
@@ -170,7 +170,7 @@ body {
 
 .hero-mini-text {
     font-family: var(--font-text-secondary);
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--Accent-Pink);
     margin-bottom: 1rem;
@@ -189,8 +189,8 @@ body {
     background-color: var(--Accent-Pink);
     color: var(--White);
     font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.65rem 1.35rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 30px;
     border: none;
     text-decoration: none;
@@ -209,8 +209,8 @@ body {
     background-color: var(--Celadon);
     color: var(--Text-Dark);
     font-weight: 700;
-    font-size: 0.85rem;
-    padding: 0.65rem 1.35rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 30px;
     text-decoration: none;
     border: none;
@@ -243,8 +243,8 @@ body {
 }
 
 .hero-blob {
-    width: 430px;
-    height: 280px;
+    width: 550px;
+    height: 350px;
     background-color: rgba(251, 248, 204, 0.72);
     border-radius: 55% 45% 0 0;
     position: relative;
@@ -258,8 +258,8 @@ body {
 .hero-blob::after {
     content: "";
     position: absolute;
-    width: 450px;
-    height: 235px;
+    width: 580px;
+    height: 300px;
     background-color: rgba(251, 248, 204, 0.85);
     border-radius: 55% 45% 0 0;
     right: -35px;
@@ -269,13 +269,13 @@ body {
 
 /* Imagen perro y gato */
 .hero-pets-img {
-    width: 325px;
+    width: 450px;
     max-width: 100%;
     height: auto;
     object-fit: contain;
     position: relative;
     z-index: 3;
-    transform: translateY(48px);
+    transform: translateY(65px);
 }
 
 @media (max-width: 991px) {
@@ -336,6 +336,17 @@ body {
     }
 }
 
+
+
+.historia-section {
+    background-color: #4CAF50;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 17v-5h1v5h5v1h-5v5h-1v-5h-5v-1h5z' fill='rgba(255,255,255,0.07)' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+}
+.historia-title {
+    font-family: var(--font-titles);
+}
 
 /* =========================================
    4. MISIÓN, VISIÓN Y VALORES
