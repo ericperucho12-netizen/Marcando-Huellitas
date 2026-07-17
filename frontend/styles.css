@@ -120,7 +120,6 @@ body {
     background-color: #e9ecef;
     color: #495057;
 }
-<<<<<<< HEAD
 
 /* --- HERO & ABOUT STYLES --- */
 
@@ -370,7 +369,6 @@ body {
         width: 240px;
     }
 }
-=======
 .bg-pastel-pink {
     background-color: var(--Cotton-Rose) !important;
 }
@@ -400,4 +398,54 @@ body {
 .bg-pastel-cyan {
     background-color: var(--Soft-Cyan) !important;
 }
->>>>>>> f5db6120f16e2990fccb1766d1d0ad98ffa63c60
+
+
+/* --- NAVBAR STYLES --- */
+.font-medium {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  /* Línea rosa debajo del elemento activo */
+  .active-link {
+    border-bottom: 3px solid #e04b7b;
+  }
+
+  /* Botón Regístrate personalizado */
+  .btn-outline-custom {
+    color: #e04b7b;
+    border-color: #e04b7b;
+    background-color: transparent;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-outline-custom:hover {
+    background-color: #e04b7b;
+    color: #ffffff;
+    border-color: #e04b7b;
+  }
+
+  /* Burbuja roja/rosa del carrito */
+  .badge-custom {
+    background-color: #e04b7b;
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.25em 0.45em;
+  }
+
+/* Misión, Visión y Valores */
+.seccion-cards{
+    max-width: auto;
+    max-height: auto;
+    padding: 40px 20px;
+}
+
+/* Transición de cards con hover*/
+.card {
+    transition: transform 0.3s ease;
+    overflow: hidden; 
+}
+
+.card:hover {
+    transform: translateY(-10px);;
+}

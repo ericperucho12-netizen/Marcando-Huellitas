@@ -20,6 +20,68 @@
 </head>
 
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container-fluid px-md-5">
+
+            <a class="navbar-brand d-flex align-items-center fw-bold text-dark fs-4" href="index.html">
+                <img src="assets/img/logo-huellita.png" alt="Logo" width="40" class="me-2 align-text-top">
+                <div class="d-flex flex-column lh-1">
+                    <span
+                        style="color: #2b2b2b; font-size: 1.1rem; letter-spacing: 0.5px; font-family: sans-serif;">marcando</span>
+                    <span style="color: #e04b7b; font-size: 1.2rem; font-family: sans-serif;">huellitas</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMarcandoHuellitas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMarcandoHuellitas">
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="#adopciones">Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="#asociaciones">Asociaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="#refugios">Refugios</a>
+                    </li>
+                    <li class="nav-item active-link">
+                        <a class="nav-link font-medium" href="#donaciones" style="color: #e04b7b;">Donaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-medium" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-4">
+                    <a href="#registro" class="btn btn-outline-custom rounded-3 px-4 py-2 fw-semibold">
+                        Regístrate
+                    </a>
+
+                    <a href="#carrito" class="position-relative text-dark">
+                        <i class="bi bi-cart3 fs-4"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-circle badge-custom">
+                            2
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
     <section class="hero-about">
         <div class="container">
             <div class="row align-items-center hero-row">
@@ -27,7 +89,6 @@
                 <div class="col-lg-6 col-md-12 hero-content">
                     <span class="hero-badge">Acerca de nosotros</span>
 
-<<<<<<< HEAD
                     <h1 class="hero-title">
                         ADOPTA CON EL <span>CORAZÓN</span>,<br>
                         CUIDA CON AMOR
@@ -63,7 +124,84 @@
                     </div>
                 </div>
 
-=======
+            </div>
+        </div>
+    </section>
+    <section class="historia-section py-5">
+        <div class="container">
+            <!-- Encabezado + texto -->
+            <div class="row align-items-center g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="paw-badge"><i class="fas fa-paw"></i></span>
+                        <h2 class="fw-bold historia-title mb-0">Nuestra historia</h2>
+                    </div>
+                    <div class="historia-underline"></div>
+                </div>
+                <div class="col-lg-8">
+                    <p class="historia-text mb-0">
+                        Somos un grupo de desarrolladores con un gran amor por los animales y el firme deseo
+                        de sumar una huella más a la lucha por la concientización social. Por azares del
+                        destino nuestros caminos se cruzaron, descubriendo que compartíamos una misma misión:
+                        ayudar a los animales a encontrar un hogar digno. Queremos conectar a estos peluditos
+                        con familias dispuestas a brindarles el amor, el respeto y la responsabilidad que
+                        tanto merecen.
+                    </p>
+                </div>
+                <!-- Aquí puede ir Misión / Visión / Valores -->
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-cards py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm" style="width: 18rem; height: 30rem;">
+                        <img src="../assets/Mision_cat.png" class="card-img-top border-top border-success border-4"
+                            alt="Mision_Cat" style="width: 18rem; height: 16.5rem;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">MISIÓN</h5>
+                            <p class="card-text">Salvaguardar la vida de nuestros compañeros mediante adopciones seguras
+                                y responsables.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm" style="width: 18rem; height: 30rem;">
+                        <img src="../assets/Vision_cat.png" class="card-img-top border-top border-primary border-4"
+                            alt="Vision_Cat" style="width: 18rem; height: 16.5rem;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">VISIÓN</h5>
+                            <p class="card-text">Ser un referente nacional en la difusión y concientización sobre el
+                                respeto, amor y cuidado digno hacia los animales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm" style="width: 18rem; height: 30rem;">
+                        <img src="../assets/Valores_cat.png" class="card-img-top border-top border-warning border-4"
+                            alt="Valores_Cat" style="width: 18rem; height: 16.5rem;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">VALORES</h5>
+                            <p class="card-text">Actuar con total transparencia, seguridad y honestidad, garantizando
+                                que cada apoyo llegue íntegro a los refugios para transformar la educación y el cuidado
+                                animal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge team-badge rounded-pill mb-3">EQUIPO</span>
+                <h1 class="fw-bold mb-3 team-title">Las personas detrás de Marcando Huellitas</h1>
+                <p class="team-subtitle">Un equipo apasionado y comprometido con el bienestar animal</p>
+            </div>
+
             <div class="row g-4">
                 <!-- Team Member 1 -->
                 <div class="col-md-6 col-lg-3">
@@ -109,8 +247,10 @@
                             <p class="card-text text-muted small flex-grow-1">Comunicóloga y mamá de 3 gatos rescatados.
                                 Coordina nuestra red de voluntarios y campañas de adopción.</p>
                             <div class="social-icons mt-3">
-                                <a href="www.linkedin.com/in/pérez-casiano-andrea" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/Andreapc02" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="www.linkedin.com/in/pérez-casiano-andrea" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Andreapc02" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -126,8 +266,10 @@
                             <p class="card-text text-muted small flex-grow-1">MBA y fanático de los perros. Gestiona las
                                 alianzas con tiendas, marcas y organizaciones nacionales.</p>
                             <div class="social-icons mt-3">
-                                <a href="www.linkedin.com/in/evelin-garcia-romero" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/Evegr12" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="www.linkedin.com/in/evelin-garcia-romero" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Evegr12" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -143,8 +285,10 @@
                             <p class="card-text text-muted small flex-grow-1">Especialista en medicina preventiva.
                                 Supervisa la salud de todos los rescatados antes de su adopción.</p>
                             <div class="social-icons mt-3">
-                                <a href="www.linkedin.com/in/eric-perucho-128706133" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/ericperucho12-netizen" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="www.linkedin.com/in/eric-perucho-128706133" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/ericperucho12-netizen" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -160,8 +304,10 @@
                             <p class="card-text text-muted small flex-grow-1">Experto en marketing digital y creador de
                                 contenido. Ayuda a conectar los peluditos con sus nuevas familias.</p>
                             <div class="social-icons mt-3">
-                                <a href="https://www.linkedin.com/in/daniel-montero-figueroa/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/Daniel-Mon-Fig" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/daniel-montero-figueroa/" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Daniel-Mon-Fig" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -177,8 +323,10 @@
                             <p class="card-text text-muted small flex-grow-1">Organizadora incansable de los eventos de
                                 adopción y principal punto de contacto para nuestros voluntarios.</p>
                             <div class="social-icons mt-3">
-                                <a href="www.linkedin.com/in/zuleyka-velazquez-lopez-2641aa214" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/MilettLopez" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="www.linkedin.com/in/zuleyka-velazquez-lopez-2641aa214" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/MilettLopez" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
@@ -194,200 +342,265 @@
                             <p class="card-text text-muted small flex-grow-1">Programador apasionado por las interfaces
                                 amigables. Desarrolla las nuevas herramientas de la plataforma.</p>
                             <div class="social-icons mt-3">
-                                <a href="www.linkedin.com/in/maría-adriana-contreras-soto" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/piripili" class="social-icon"><i class="fab fa-github"></i></a>
+                                <a href="www.linkedin.com/in/maría-adriana-contreras-soto" class="social-icon"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/piripili" class="social-icon"><i
+                                        class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
->>>>>>> f5db6120f16e2990fccb1766d1d0ad98ffa63c60
+
             </div>
-        </div>
     </section>
-    <section class="historia-section py-5">
+
+    <section class="py-5" style="background-color: #fbf8cc; font-family: 'Nunito', sans-serif;">
         <div class="container">
-            <!-- Encabezado + texto -->
-            <div class="row align-items-center g-4 mb-5">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center gap-3 mb-2">
-                        <span class="paw-badge"><i class="fas fa-paw"></i></span>
-                        <h2 class="fw-bold historia-title mb-0">Nuestra historia</h2>
-                    </div>
-                    <div class="historia-underline"></div>
-                </div>
-                <div class="col-lg-8">
-                    <p class="historia-text mb-0">
-                        Somos un grupo de desarrolladores con un gran amor por los animales y el firme deseo
-                        de sumar una huella más a la lucha por la concientización social. Por azares del
-                        destino nuestros caminos se cruzaron, descubriendo que compartíamos una misma misión:
-                        ayudar a los animales a encontrar un hogar digno. Queremos conectar a estos peluditos
-                        con familias dispuestas a brindarles el amor, el respeto y la responsabilidad que
-                        tanto merecen.
+
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                    <h2 class="fw-bold text-dark" style="font-size: 2rem;">
+                        <span></span> CORPORATIVO PELUDITOS
+                    </h2>
+                    <p class="text-tertiary">El verdadero motor y soporte emocional de nuestros corazones y esta pagina
                     </p>
                 </div>
-                <!-- Aquí puede ir Misión / Visión / Valores -->
             </div>
-        </div>
-    </section>
-    
-    <section class="team-section py-5">
-                <div class="container">
-                    <div class="text-center mb-5">
-                        <span class="badge team-badge rounded-pill mb-3">EQUIPO</span>
-                        <h1 class="fw-bold mb-3 team-title">Las personas detrás de Marcando Huellitas</h1>
-                        <p class="team-subtitle">Un equipo apasionado y comprometido con el bienestar animal</p>
-                    </div>
+            <div class="row g-4 justify-content-center">
 
-                    <div class="row g-4">
-                        <!-- Team Member 1 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Alma.jpeg" class="card-img-top" alt="Carmona Movis Alma Alicia">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Carmona Movis Alma Alicia</h5>
-                                    <p class="role-title mb-3">CEO & CO-FUNDADORA</p>
-                                    <p class="card-text text-muted small flex-grow-1">Veterinaria y activista animal.
-                                        Lleva 10
-                                        años trabajando por el bienestar felino y canino en México.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Kali-3.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 1">
                         </div>
-
-                        <!-- Team Member 2 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Elios.jpeg" class="card-img-top" alt="Elios Hiram Martínez Sanchez">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Elios Hiram Martínez Sanchez</h5>
-                                    <p class="role-title mb-3">CTO & CO-FUNDADOR</p>
-                                    <p class="card-text text-muted small flex-grow-1">Ingeniero en sistemas y
-                                        adopcionista.
-                                        Construyó la plataforma desde cero con pasión y 3 tazas de café al día.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 3 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Andrea.jpeg" class="card-img-top" alt="Andrea Pérez Casiano">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Andrea Pérez Casiano</h5>
-                                    <p class="role-title mb-3">HEAD OF COMMUNITY</p>
-                                    <p class="card-text text-muted small flex-grow-1">Comunicóloga y mamá de 3 gatos
-                                        rescatados.
-                                        Coordina nuestra red de voluntarios y campañas de adopción.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 4 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Evelin.jpeg" class="card-img-top" alt="Evelin García Romero">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Evelin García Romero</h5>
-                                    <p class="role-title mb-3">HEAD OF SALES</p>
-                                    <p class="card-text text-muted small flex-grow-1">MBA y fanático de los perros.
-                                        Gestiona las
-                                        alianzas con tiendas, marcas y organizaciones nacionales.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 5 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Perucho.jpeg" class="card-img-top" alt="Eric Perucho Solis">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Eric Perucho Solis</h5>
-                                    <p class="role-title mb-3">LEAD VETERINARY</p>
-                                    <p class="card-text text-muted small flex-grow-1">Especialista en medicina
-                                        preventiva.
-                                        Supervisa la salud de todos los rescatados antes de su adopción.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 6 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Daniel.jpeg" class="card-img-top" alt="Daniel Montero Figueroa">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Daniel Montero Figueroa</h5>
-                                    <p class="role-title mb-3">MARKETING MANAGER</p>
-                                    <p class="card-text text-muted small flex-grow-1">Experto en marketing digital y
-                                        creador de
-                                        contenido. Ayuda a conectar los peluditos con sus nuevas familias.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 7 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Milett.jpeg" class="card-img-top" alt="Milett">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Milett</h5>
-                                    <p class="role-title mb-3">VOLUNTEER COORDINATOR</p>
-                                    <p class="card-text text-muted small flex-grow-1">Organizadora incansable de los
-                                        eventos de
-                                        adopción y principal punto de contacto para nuestros voluntarios.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Team Member 8 -->
-                        <div class="col-md-6 col-lg-3">
-                            <div class="card team-card h-100 border-0 shadow-sm text-center">
-                                <img src="../assets/Adriana.jpeg" class="card-img-top" alt="Adriana">
-                                <div class="card-body d-flex flex-column px-4 py-4">
-                                    <h5 class="card-title fw-bold mb-1 text-dark">Adriana</h5>
-                                    <p class="role-title mb-3">FULLSTACK DEVELOPER</p>
-                                    <p class="card-text text-muted small flex-grow-1">Programador apasionado por las
-                                        interfaces
-                                        amigables. Desarrolla las nuevas herramientas de la plataforma.</p>
-                                    <div class="social-icons mt-3">
-                                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1"> Kali</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #08cec4; font-size: 0.85rem;">Directora del area de
+                                Marketing</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong> 3 años</strong><br>
+                                <span class="text-tertiary">Traviesa, Coqueta y muy Cariñosa</span>
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Hanabi-8.jpg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 2">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Hanabi</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">Directora general del
+                                area de Finanzas</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>8 años</strong><br>
+                                <span class="text-tertiary">Peludita, Cariñosa y Leal</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Bootstrap JS -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/GeneralGerardoGarciaGomez-10.jpeg" class="w-100 h-100"
+                                style="object-fit: cover;" alt="Mascota 3">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">General Gerardo García Gómez</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">C.E.O del
+                                departamento de Ventas</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Amado, Recordado y Extrañado</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Galita-10.jpeg" class="w-100 h-100"
+                                style="object-fit: cover;" alt="Mascota 4">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Galita</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">Directora del área de
+                                Recursos Humanos</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Consentida, Querida y Admirada</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Spike-10.jpeg" class="w-100 h-100"
+                                style="object-fit: cover;" alt="Mascota 5">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Spike</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">Director del área de
+                                Administración</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Juguetón, Travieso y Lleno de energía</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Ramon-2.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 6">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Ramon</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">Jefe de Área</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>2 años</strong><br>
+                                <span class="text-tertiary">Consentido, Amado y Adorado</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Mylove-9.jpeg" class="w-100 h-100"
+                                style="object-fit: cover;" alt="Mascota 7">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Maylo</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">C.E.O del area de
+                                Productos</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>9 años</strong><br>
+                                <span class="text-tertiary">Travieso, Precioso y Cariñoso</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascota 8 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4"
+                            style="width: 280px; height: 280px; overflow: hidden; border-radius: 12px; border: 3px solid #8eecf5;">
+                            <img src="../CorporativoPeludos/Leo-8ç.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 8">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-semibold text-dark mb-1">Leo</h3>
+                            <span class="badge border mb-2 px-3 py-1.5 rounded-pill"
+                                style="color: #d63384; border-color: #f1c0e8; font-size: 0.85rem;">Jefe de
+                                Seguridad</span>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>8 años</strong><br>
+                                <span class="text-tertiary">Leal, Protector y muy Juguetón</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                    crossorigin="anonymous"></script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+        <div class="container py-5">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <img src="" alt="Descripción de la imagen">
+                    <h3>Marcando</h3>
+                    <h4>Huellitas</h4>
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Navegador</h4>
+
+                    <ul>
+                        <li> Catálogo</li>
+                        <li> Perros</li>
+                        <li> Gatos</li>
+                        <li> Alimento</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Nosotros</h4>
+
+                    <ul>
+                        <li>Historia</li>
+                        <li>Misión</li>
+                        <li>Visión</li>
+                        <li>Valores</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Contacto</h4>
+
+                    <ul>
+                        <li>contacto@gmail.com</li>
+                        <li>55 1234 5678</li>
+                        <li>Ciudad de México</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Marcando Huellitas
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
