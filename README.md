@@ -6,13 +6,13 @@ El objetivo del proyecto es combinar una tienda en línea funcional con una caus
 
 ---
 
-## 💡 Slogan
+## Slogan
 
 **Adopta con el corazón, cuida con amor.**
 
 ---
 
-## 📌 Descripción del proyecto
+## Descripción del proyecto
 
 Marcando Huellitas nace como una plataforma digital donde los usuarios pueden encontrar productos para sus mascotas, conocer mascotas disponibles para adopción, apoyar mediante donaciones y acceder a información útil sobre refugios, organizaciones y cuidados responsables.
 
@@ -20,13 +20,13 @@ El proyecto busca ofrecer una experiencia amigable, visualmente atractiva y fác
 
 ---
 
-## 🎯 Objetivo general
+## Objetivo general
 
 Desarrollar un ecommerce para productos de mascotas que también integre secciones informativas y sociales relacionadas con adopción, donaciones, refugios y casos de éxito.
 
 ---
 
-## ✨ Funcionalidades principales
+## Funcionalidades principales
 
 - Visualización de productos para mascotas.
 - Sección de artículos en venta.
@@ -44,7 +44,7 @@ Desarrollar un ecommerce para productos de mascotas que también integre seccion
 
 ---
 
-## 🧭 Estructura del sitio
+## Estructura del sitio
 
 El sitio contempla las siguientes secciones principales:
 
@@ -61,7 +61,7 @@ El sitio contempla las siguientes secciones principales:
 
 ---
 
-## 🎨 Guía de diseño
+## Guía de diseño
 
 ### Paleta de colores
 
