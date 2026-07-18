@@ -51,38 +51,28 @@ body {
    2. BARRA DE NAVEGACIÓN (NAVBAR)
    ========================================= */
 
-.font-medium {
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-  
-  /* Línea rosa debajo del elemento activo */
-  .active-link {
-    border-bottom: 3px solid #e04b7b;
-  }
+/* texto del logo */
+    .brand-text {
+      font-family: 'Fredoka', sans-serif;
+    }
 
-  /* Botón Regístrate personalizado */
-  .btn-outline-custom {
-    color: #e04b7b;
-    border-color: #e04b7b;
-    background-color: transparent;
-    font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
-  }
-  .btn-outline-custom:hover {
-    background-color: #e04b7b;
-    color: #ffffff;
-    border-color: #e04b7b;
-  }
+    .font-medium {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
 
-  /* Burbuja roja/rosa del carrito */
-  .badge-custom {
-    background-color: #e04b7b;
-    color: white;
-    font-size: 0.65rem;
-    padding: 0.25em 0.45em;
-  }
+    
+    .active-link {
+      color: #e04b7b !important;
+      border-bottom: 2px solid #e04b7b;
+      padding-bottom: 2px !important;
+    }
 
+    /* Cambio de color suave al pasar el cursor  */
+    .navbar-nav .nav-link:hover, .iconos-derecha a:hover {
+      color: #e04b7b !important;
+      transition: color 0.2s ease-in-out;
+    }
 
 /* =========================================
    3. SECCIÓN HERO Y ACERCA DE
