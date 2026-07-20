@@ -103,6 +103,7 @@ body {
     background-color: #e9ecef;
     color: #495057;
 }
+<<<<<<< HEAD
 
 
 /* Misión, Visión y Valores */
@@ -121,3 +122,34 @@ body {
 .card:hover {
     transform: translateY(-10px);;
 }
+=======
+.bg-pastel-pink {
+    background-color: var(--Cotton-Rose) !important;
+}
+.bg-pastel-blue {
+    background-color: var(--Baby-Blue-Ice) !important;
+}
+.bg-pastel-purple {
+    background-color: var(--Periwinkle) !important;
+}
+
+.bg-pastel-orange {
+    background-color: var(--Powder-Petal) !important;
+}
+
+.bg-pastel-yellow {
+    background-color: var(--Lemon-Chiffon) !important;
+}
+
+.bg-pastel-green {
+    background-color: var(--Celadon) !important;
+}
+
+.bg-pastel-orchid {
+    background-color: var(--Pink-Orchid) !important;
+}
+
+.bg-pastel-cyan {
+    background-color: var(--Soft-Cyan) !important;
+}
+>>>>>>> 4cbbc32d7b50362fec231ca98af34ee97d1ae8ae
