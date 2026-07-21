@@ -104,3 +104,5 @@ El proyecto utiliza tres fuentes principales:
 - Figma
 
 ---
+## Última actualización del proyecto.
+Agregado de la página Contactos.
