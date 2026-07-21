@@ -745,7 +745,7 @@ footer{
 .col-lg-6 h2,
 .col-lg-6 p,
 .texto-contacto,
-#forms
+.forms
 {
     font-family: var(--font-text-secondary)
 }
