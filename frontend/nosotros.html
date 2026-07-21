@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Marcando Huellitas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- 1. BARRA NARANJA -->
+    <div class="text-white text-center py-2 fw-medium" style="background-color: #ff9161; font-size: 0.9rem;">
+        🐾 Cada compra ayuda a un refugio animal — ¡Gracias por tu apoyo! 🐾
+    </div>
+
+    <!-- 2. NAVBAR PRINCIPAL -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container-fluid px-md-5">
+
+            <!-- Logo Izquierda con Fredoka Redondeada -->
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="/assets/Logo.png" alt="Logo" width="40" class="me-2">
+                <div class="d-flex flex-column lh-1 brand-text fw-bold">
+                    <span style="color: #2b2b2b; font-size: 1.2rem;">Marcando</span>
+                    <span style="color: #e04b7b; font-size: 1.3rem;">Huellitas</span>
+                </div>
+            </a>
+
+            <!-- Botón Hamburguesa para Celulares -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMarcandoHuellitas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Enlaces y Buscador -->
+            <div class="collapse navbar-collapse" id="navbarMarcandoHuellitas">
+
+                <!-- Enlaces del Menú (Centro) -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="#adopciones">Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="#asociaciones">Asociaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="#refugios">Refugios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="#donaciones">Donaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  font-medium active-link" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary font-medium" href="Contactenos.html">Contacto</a>
+                    </li>
+                </ul>
+
+                <!-- Buscador e Iconos -->
+                <div class="d-flex align-items-center gap-3 iconos-derecha">
+                    <!-- Input de Búsqueda -->
+                    <div class="position-relative">
+                        <input type="text" class="form-control form-control-sm rounded-pill px-3"
+                            placeholder="Search..."
+                            style="background-color: #f5f5f5; border: none; width: 160px; font-size: 0.85rem; padding-right: 2.5rem;">
+                        <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-secondary"
+                            style="font-size: 0.75rem;"></i>
+                    </div>
+
+                    <!-- Iconos de Acción -->
+                    <a href="#favoritos" class="text-secondary fs-5"><i class="bi bi-heart"></i></a>
+
+                    <!-- Carrito con Burbuja -->
+                    <a href="#carrito" class="position-relative text-secondary fs-5">
+                        <i class="bi bi-cart3"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle"
+                            style="background-color: #e04b7b; font-size: 0.55rem; padding: 0.25em 0.45em;">
+                            2
+                        </span>
+                    </a>
+
+                    <!-- Perfil/Usuario -->
+                    <a href="#perfil" class="text-secondary fs-5"><i class="bi bi-person"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-about">
+        <div class="container">
+            <div class="row align-items-center hero-row">
+                <!-- Texto izquierdo -->
+                <div class="col-lg-6 col-md-12 hero-content">
+                    <span class="hero-badge">Acerca de nosotros</span>
+
+                    <h1 class="hero-title">
+                        ADOPTA CON EL <span>CORAZÓN</span>,<br>
+                        CUIDA CON AMOR
+                    </h1>
+
+                    <p class="hero-description">
+                        En Marcando Huellitas creemos que cada adopción y cada compra pueden convertirse
+                        en una oportunidad para cuidar, apoyar y transformar la vida de una mascota.
+                    </p>
+
+                    <p class="hero-mini-text">
+                        Compra, adopta y apoya a más huellitas.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#historia" class="btn btn-hero">
+                            Conoce más 🐾
+                        </a>
+
+                        <a href="#adopciones" class="btn btn-hero-secondary">
+                            Ver adopciones ♡
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Imagen derecha -->
+                <div class="col-lg-6 col-md-12 hero-image-content">
+                    <div class="hero-blob">
+                        <div class="heart-outline"></div>
+
+                        <img src="../assets/PerroGato.png" alt="Perro y gato de Marcando Huellitas"
+                            class="hero-pets-img">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="historia-section py-5 text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 py-4">
+                    <p class="text-white small mb-3">Inicio &gt; Nosotros</p>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                        <h2 class="fw-bold historia-title mb-0 text-white" style="font-size: 3.5rem;">Nuestra historia
+                        </h2>
+                        <span class="fs-1">🌿</span>
+                    </div>
+                    <p class="historia-text text-white mb-4 mx-auto"
+                        style="max-width: 800px; font-size: 1.25rem; line-height: 1.8;">
+                        Somos un grupo de desarrolladores con un gran amor por los animales y el firme deseo
+                        de sumar una huella más a la lucha por la concientización social. Por azares del
+                        destino nuestros caminos se cruzaron, descubriendo que compartíamos una misma misión:
+                        ayudar a los animales a encontrar un hogar digno. Queremos conectar a estos peluditos
+                        con familias dispuestas a brindarles el amor, el respeto y la responsabilidad que
+                        tanto merecen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-cards py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../assets/Mision_cat.png" class="card-img-top border-top border-success border-4"
+                            alt="Mision_Cat" style="height: 16.5rem; object-fit: cover; width: 100%;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">MISIÓN</h5>
+                            <p class="card-text">Salvaguardar la vida de nuestros compañeros mediante adopciones seguras
+                                y responsables.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../assets/Vision_cat.png" class="card-img-top border-top border-primary border-4"
+                            alt="Vision_Cat" style="height: 16.5rem; object-fit: cover; width: 100%;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">VISIÓN</h5>
+                            <p class="card-text">Ser un referente nacional en la difusión y concientización sobre el
+                                respeto, amor y cuidado digno hacia los animales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../assets/Valores_cat.png" class="card-img-top border-top border-warning border-4"
+                            alt="Valores_Cat" style="height: 16.5rem; object-fit: cover; width: 100%;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title">VALORES</h5>
+                            <p class="card-text">Actuar con total transparencia, seguridad y honestidad, garantizando
+                                que cada apoyo llegue íntegro a los refugios para transformar la educación y el cuidado
+                                animal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge team-badge rounded-pill mb-3">EQUIPO</span>
+                <h1 class="fw-bold mb-3 team-title">Las personas detrás de Marcando Huellitas</h1>
+                <p class="team-subtitle">Un equipo apasionado y comprometido con el bienestar animal</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-pink">
+                        <img src="../assets/Alma.jpeg" class="card-img-top" alt="Carmona Movis Alma Alicia">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Carmona Movis Alma Alicia</h5>
+                            <p class="role-title mb-3">CEO & CO-FUNDADORA</p>
+                            <p class="card-text text-muted small flex-grow-1">Veterinaria y activista animal. Lleva 10
+                                años trabajando por el bienestar felino y canino en México.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/alma-alicia-carmona-movis/" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Almita-Movis-Chuan" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-blue">
+                        <img src="../assets/Elios.jpeg" class="card-img-top" alt="Elios Hiram Martínez Sanchez">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Elios Hiram Martínez Sanchez</h5>
+                            <p class="role-title mb-3">CTO & CO-FUNDADOR</p>
+                            <p class="card-text text-muted small flex-grow-1">Ingeniero en sistemas y adopcionista.
+                                Construyó la plataforma desde cero con pasión y 3 tazas de café al día.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/elios-h-martinez/" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/EliosHMartinezS" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-purple">
+                        <img src="../assets/Andrea.jpeg" class="card-img-top" alt="Andrea Pérez Casiano">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Andrea Pérez Casiano</h5>
+                            <p class="role-title mb-3">HEAD OF COMMUNITY</p>
+                            <p class="card-text text-muted small flex-grow-1">Comunicóloga y mamá de 3 gatos rescatados.
+                                Coordina nuestra red de voluntarios y campañas de adopción.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/pérez-casiano-andrea" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Andreapc02" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-orange">
+                        <img src="../assets/Evelin.jpeg" class="card-img-top" alt="Evelin García Romero">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Evelin García Romero</h5>
+                            <p class="role-title mb-3">HEAD OF SALES</p>
+                            <p class="card-text text-muted small flex-grow-1">MBA y fanático de los perros. Gestiona las
+                                alianzas con tiendas, marcas y organizaciones nacionales.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/evelin-garcia-romero" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Evegr12" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-yellow">
+                        <img src="../assets/Perucho.jpeg" class="card-img-top" alt="Eric Perucho Solis">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Eric Perucho Solis</h5>
+                            <p class="role-title mb-3">LEAD VETERINARY</p>
+                            <p class="card-text text-muted small flex-grow-1">Especialista en medicina preventiva.
+                                Supervisa la salud de todos los rescatados antes de su adopción.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/eric-perucho-128706133" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/ericperucho12-netizen" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-green">
+                        <img src="../assets/Daniel.jpeg" class="card-img-top" alt="Daniel Montero Figueroa">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Daniel Montero Figueroa</h5>
+                            <p class="role-title mb-3">MARKETING MANAGER</p>
+                            <p class="card-text text-muted small flex-grow-1">Experto en marketing digital y creador de
+                                contenido. Ayuda a conectar los peluditos con sus nuevas familias.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/daniel-montero-figueroa/" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Daniel-Mon-Fig" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 7 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-orchid">
+                        <img src="../assets/Milett.jpeg" class="card-img-top" alt="Zuleyka Milett Velazquez Lopez">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Zuleyka Milett Velazquez Lopez</h5>
+                            <p class="role-title mb-3">VOLUNTEER COORDINATOR</p>
+                            <p class="card-text text-muted small flex-grow-1">Organizadora incansable de los eventos de
+                                adopción y principal punto de contacto para nuestros voluntarios.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/zuleyka-velazquez-lopez-2641aa214" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/MilettLopez" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 8 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card team-card h-100 border-0 shadow-sm text-center bg-pastel-cyan">
+                        <img src="../assets/Adriana.jpeg" class="card-img-top" alt="Mari Adriana Contreras Soto">
+                        <div class="card-body d-flex flex-column px-4 py-4">
+                            <h5 class="card-title fw-bold mb-1 text-dark">Maria Adriana Contreras Soto</h5>
+                            <p class="role-title mb-3">FULLSTACK DEVELOPER</p>
+                            <p class="card-text text-muted small flex-grow-1">Programador apasionado por las interfaces
+                                amigables. Desarrolla las nuevas herramientas de la plataforma.</p>
+                            <div class="social-icons mt-3">
+                                <a href="https://www.linkedin.com/in/maría-adriana-contreras-soto" target="_blank"
+                                    rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/piripili" target="_blank" rel="noopener noreferrer"
+                                    class="social-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+
+    <!-- Parte de los animales -->
+
+    <section class="py-5" style="background-color: #fbf8cc; font-family: 'Nunito', sans-serif;">
+        <div class="container">
+
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                    <h2 class="team-title fw-bold text-dark mb-3 text-center">
+                        <span></span> CORPORATIVO PELUDITOS
+                    </h2>
+                    <p class="text-tertiary">El verdadero motor y soporte emocional de nuestros corazones y esta pagina
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Kali-3.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 1">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Kali</h3>
+
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong> 3 años</strong><br>
+                                <span class="text-tertiary">Traviesa, Coqueta y muy Cariñosa</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Hanabi-8.jpg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 2">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Hanabi</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>8 años</strong><br>
+                                <span class="text-tertiary">Peludita, Cariñosa y Leal</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/GeneralGerardoGarciaGomez-10.jpeg" class="w-100 h-100"
+                                style="object-fit: cover;" alt="Mascota 3">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">General Gerardo</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Amado, Recordado y Extrañado</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Galita-10.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 4">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Galita</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Consentida, Querida y Admirada</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Spike-10.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 5">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Spyke</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>10 años</strong><br>
+                                <span class="text-tertiary">Juguetón, Travieso y Lleno de energía</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Ramon-2.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 6">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Ramon</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>2 años</strong><br>
+                                <span class="text-tertiary">Consentido, Amado y Adorado</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Mylove-9.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 7">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Maylo</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>9 años</strong><br>
+                                <span class="text-tertiary">Travieso, Precioso y Cariñoso</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascota 8 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm text-center"
+                        style="background-color: #b9fbc0; border-radius: 15px;">
+                        <div class="contenedor-foto mx-auto mt-4 corporativo-foto">
+                            <img src="../assets/Leo-8ç.jpeg" class="w-100 h-100" style="object-fit: cover;"
+                                alt="Mascota 8">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-semibold text-dark mb-1">Leo</h3>
+                            <p class="card-text small mt-2 lh-sm">
+                                <strong>8 años</strong><br>
+                                <span class="text-tertiary">Leal, Protector y muy Juguetón</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                    crossorigin="anonymous"></script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+
+
+
+        <!--Ondulado parte superior-->
+        <div class="wave">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140" preserveAspectRatio="none">
+
+                <path fill="#A8BC67" d="M0,80
+                    C120,20 240,120 360,80
+                    C480,40 600,120 720,80
+                    C840,20 960,120 1080,80
+                    C1200,40 1320,120 1440,80
+                    L1440,0
+                    L0,0
+                    Z" />
+
+            </svg>
+
+        </div>
+
+        <img src="../assets/perrito1.png" class="perro1" alt="perrito_1">
+        <img src="../assets/perrito2.png" class="perro2" alt="perrito_2">
+        <img src="../assets/perrito3.png" class="perro3" alt="perrito_3">
+        <img src="../assets/gatito1.png" class="gatito1" alt="gatito_1">
+        <img src="../assets/gatito2.png" class="gatito2" alt="gatito_2">
+        <img src="../assets/gatito3.png" class="gatito3" alt="gatito_2">
+        <img src="../assets/gatito4.png" class="gatito4" alt="gatito_2">
+
+        <img src="../assets/imagen-footer2.png" alt="planta" class="imagen-lado">
+
+
+        <div class="container-fluid px-3 py-4">
+
+            <div class="row gx-5 align-items-start">
+
+                <!-- Logo -->
+                <div class="col-12 col-sm-6 col-md-3">
+
+                    <div class="logo-footer">
+
+                        <img src="../assets/Huellita-footer.png" alt="Huella" class="huellita">
+
+                        <h3 class="titulo-footer">
+                            <span class="blanco">Marcando</span><br>
+                            <span class="rosa">Huellitas</span>
+                        </h3>
+                        <h4 class="eslogan"> Adopta con el corazón, cuida con amor</h4>
+
+                    </div>
+
+                </div>
+
+                <!-- Navegador -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Tienda</h4>
+
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-house"></i>
+                                </span>
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                </span>
+                                Productos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-paw"></i>
+                                </span>
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Ayuda -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Huellitas</h4>
+
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-paw"></i>
+                                </span>
+                                Adopciones
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-handshake"></i>
+                                </span>
+                                Asociaciones
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-house"></i>
+                                </span>
+                                Refugios
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-heart"></i>
+                                </span>
+                                Donaciones
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Ayuda -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Síguenos</h4>
+
+                    <ul class="list-unstyled social-list">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-facebook"></i>
+                                Facebook
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-instagram"></i>
+                                Instagram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-twitter-x"></i>
+                                Twitter
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Mensaje -->
+                <div class="col-12 col-sm-6 col-md-3">
+
+                    <h4 class="mensaje">¡Tu ayuda deja una huellita en sus corazones!</h4>
+                    <br>
+
+                    <p class="submensaje">El 100% de las donaciones seran destinadas a los refugios participantes.</p>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Marcando Huellitas | Privacidad | Términos
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
