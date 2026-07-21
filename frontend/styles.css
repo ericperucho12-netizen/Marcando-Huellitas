@@ -53,7 +53,7 @@ body {
 
 /* texto del logo */
     .brand-text {
-      font-family: 'Fredoka', sans-serif;
+      font-family: var(--font-titles);
     }
 
     .font-medium {
@@ -494,7 +494,7 @@ footer{
 }
 
 .titulo-footer{
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-titles);
     text-align: center;
     margin: 0;
 }
@@ -772,11 +772,11 @@ footer{
 
 .hero-section {
     background-color: #fdfbe2; /* Amarillo pálido de la imagen */
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-text-secondary);
 }
 
 .hero-title {
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-titles);
     letter-spacing: -1px;
 }
 
@@ -811,7 +811,7 @@ footer{
 
 /* Tarjetas de Sección Explora */
 .explora-section {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-text-secondary);
 }
 
 .explora-card {
