@@ -1,75 +1,130 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
 
-document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita que la página se recargue inmediatamente
-            
-            // Validamos que los campos requeridos tengan datos
-            if (!contactForm.checkValidity()) {
-                e.stopPropagation();
-                contactForm.classList.add('was-validated');
-                return;
+    const nombre = document.getElementById("nombre");
+    const email = document.getElementById("email");
+    const telefono = document.getElementById("telefono");
+    const mensaje = document.getElementById("mensaje");
+    const formStatus = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        limpiarValidaciones();
+        limpiarEstado();
+
+        const formularioValido = validarFormulario();
+
+        if (!formularioValido) {
+            mostrarEstado("Por favor corrige los campos marcados.", "error");
+            return;
+        }
+
+        mostrarEstado("Enviando mensaje...", "info");
+
+        try {
+            const formData = new FormData(form);
+
+            const respuesta = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (respuesta.ok) {
+                form.reset();
+                limpiarValidaciones();
+                mostrarEstado("Mensaje enviado correctamente. ¡Gracias por contactarnos!", "success");
+            } else {
+                mostrarEstado("No se pudo enviar el mensaje. Intenta nuevamente.", "error");
             }
 
-            // Cambiar el texto del botón a "Enviando..."
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
-            submitBtn.disabled = true;
+        } catch (error) {
+            mostrarEstado("Error de conexión. Revisa tu internet e intenta otra vez.", "error");
+        }
+    });
 
-            // PREPARADO PARA TU PROPIO BACKEND:
-            // Extraer datos en formato JSON (muy común para backends propios)
-            const formData = new FormData(contactForm);
-            const dataObj = Object.fromEntries(formData.entries());
+    function validarFormulario() {
+        let valido = true;
 
-            fetch(contactForm.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(dataObj)
-            })
-            .then(async response => {
-                // Si el backend devuelve status 200/201, se asume exito
-                if (!response.ok) {
-                    const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.message || 'Error en el servidor');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Restaura el botón
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
+        const nombreValor = nombre.value.trim();
+        const emailValor = email.value.trim();
+        const telefonoValor = telefono.value.trim();
+        const mensajeValor = mensaje.value.trim();
 
-                // Muestra mensaje de éxito con SweetAlert2
-                Swal.fire({
-                    title: '¡Mensaje Enviado!',
-                    text: 'Tu mensaje ha sido enviado correctamente. Te contactaremos pronto 🐾',
-                    icon: 'success',
-                    confirmButtonColor: '#e04b7b',
-                    confirmButtonText: 'Genial'
-                }).then(() => {
-                    // Limpia el formulario
-                    contactForm.reset();
-                    contactForm.classList.remove('was-validated');
-                });
-            })
-            .catch(error => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                
-                Swal.fire({
-                    title: '¡Ups!',
-                    text: 'Hubo un problema al enviar tu mensaje. Asegúrate de que el servidor (backend) esté corriendo.',
-                    icon: 'error',
-                    confirmButtonColor: '#e04b7b'
-                });
-                console.error("Error al enviar el formulario:", error);
-            });
+        const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,50}$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const telefonoSoloNumeros = telefonoValor.replace(/\D/g, "");
+
+        if (!regexNombre.test(nombreValor)) {
+            marcarInvalido(nombre);
+            valido = false;
+        } else {
+            marcarValido(nombre);
+        }
+
+        if (!regexEmail.test(emailValor)) {
+            marcarInvalido(email);
+            valido = false;
+        } else {
+            marcarValido(email);
+        }
+
+        if (telefonoSoloNumeros.length !== 10) {
+            marcarInvalido(telefono);
+            valido = false;
+        } else {
+            telefono.value = telefonoSoloNumeros;
+            marcarValido(telefono);
+        }
+
+        if (mensajeValor.length < 10) {
+            marcarInvalido(mensaje);
+            valido = false;
+        } else {
+            marcarValido(mensaje);
+        }
+
+        return valido;
+    }
+
+    function marcarInvalido(input) {
+        input.classList.add("is-invalid");
+        input.classList.remove("is-valid");
+    }
+
+    function marcarValido(input) {
+        input.classList.add("is-valid");
+        input.classList.remove("is-invalid");
+    }
+
+    function limpiarValidaciones() {
+        const campos = [nombre, email, telefono, mensaje];
+
+        campos.forEach(function (campo) {
+            campo.classList.remove("is-invalid");
+            campo.classList.remove("is-valid");
         });
+    }
+
+    function limpiarEstado() {
+        if (formStatus) {
+            formStatus.textContent = "";
+            formStatus.className = "mt-3 text-center fw-bold";
+        }
+    }
+
+    function mostrarEstado(texto, tipo) {
+        formStatus.textContent = texto;
+
+        if (tipo === "success") {
+            formStatus.className = "mt-3 text-center fw-bold text-success";
+        } else if (tipo === "info") {
+            formStatus.className = "mt-3 text-center fw-bold text-primary";
+        } else {
+            formStatus.className = "mt-3 text-center fw-bold text-danger";
+        }
     }
 });
