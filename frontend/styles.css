@@ -603,99 +603,99 @@ footer{
 .perro1{
     position: absolute;
 
-    width: 100px;
+    width: clamp(50px, 6vw, 100px);
     height: auto;
 
     opacity: 0.1;
 
-    top: 95px;
-    right: 10rem;
+    top: 18%;
+    right: 10%;
 }
 
 .perro2{
     position: absolute;
 
-    width: 100px;
+    width: clamp(70px, 9vw, 90px);
     height: auto;
 
     opacity: 0.1;
 
-    bottom: 150px;       /* Distancia desde abajo */
-    left: 15rem;          /* La coloca en el centro */
+    bottom: 45%;       /* Distancia desde abajo */
+    left: 18%;          /* La coloca en el centro */
     
 }
 
 .perro3{
     position: absolute;
 
-    width: 100px;
+    width: clamp(50px, 6vw, 90px);
     height: auto;
 
     opacity: 0.1;
 
-    top: 150px;
-    left: 50rem;
+    top: 65%;
+    left: 62%;
 }
 
 .gatito1{
     position: absolute;
 
-    width: 100px;
+    width: clamp(50px, 6vw, 90px);
     height: auto;
 
     opacity: 0.1;
 
-    bottom: 4rem;       /* Distancia desde abajo */
-    left: 65rem;        
+    bottom: 13%;       /* Distancia desde abajo */
+    left: 82%;        
     
 }
 
 .gatito2{
     position: absolute;
 
-    width: 90px;
+    width:clamp(48px, 5vw, 88px);
     height: auto;
 
     opacity: 0.1;
 
-    bottom: 16rem;       /* Distancia desde abajo */
-    left: 32rem;         
+    bottom: 67%;       /* Distancia desde abajo */
+    left: 46%;         
     
 }
 .gatito3{
     position: absolute;
 
-    width: 100px;
+    width: clamp(60px, 7vw, 100px);
     height: auto;
 
     opacity: 0.1;
 
-    bottom: 18rem;       /* Distancia desde abajo */
-    left: 2rem;         /* La coloca en el centro */
+    bottom: 70%;       /* Distancia desde abajo */
+    left: 5%;         /* La coloca en el centro */
     
 }
 
 .gatito4{
     position: absolute;
 
-    width: 95px;
+    width: clamp(50px, 6vw, 90px);
     height: auto;
 
     opacity: 0.1;
 
-    bottom: 3rem;       /* Distancia desde abajo */
-    left: 35rem;         /* La coloca en el centro */
+    bottom: 10%;       /* Distancia desde abajo */
+    left: 37%;         /* La coloca en el centro */
     
 }
 
 .imagen-lado{
     position: absolute;
-
-    width: 100px;
+    width: clamp(60px, 7vw, 100px);
     height: auto;
 
-    bottom: 11rem;       /* Distancia desde abajo */
-    left: 75rem;         
+    bottom: 37%;
+    left: 98%;
+    transform: translateX(-100%);       
 }
 
 
@@ -732,6 +732,32 @@ footer{
 .bg-pastel-cyan {
     background-color: var(--Soft-Cyan) !important;
 }
+
+.bg-pastel-blue-light{
+    background-color: var(--Sky-Blue-Light) !important;
+
+}
+
+/* =========================================
+   9.          PAGÍNA DE CONTACTO
+   ========================================= */
+.col-lg-6 h1,
+.col-lg-6 h2,
+.col-lg-6 p,
+.texto-contacto,
+#forms
+{
+    font-family: var(--font-text-secondary)
+}
+
+.imagen-contacto{
+    width: 100%;
+    max-width: 290px;
+    height: auto;
+    
+}
+
+
 
 
 
