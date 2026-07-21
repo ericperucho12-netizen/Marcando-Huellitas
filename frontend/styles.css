@@ -1,3 +1,6 @@
+/* =========================================
+   1. ROOT, BODY Y ESTILOS GLOBALES
+   ========================================= */
 
 :root {
   --Lemon-Chiffon: #fbf8cc;
@@ -10,12 +13,355 @@
   --Electric-Aqua: #8eecf5;
   --Soft-Cyan: #98f5e1;
   --Celadon: #b9fbc0;
+  
+  --color-hex:#674846;
+  --salmon1: #ff8c69;
+  --black:#000000;
+  --Text-Dark: #2F2F3A;
+  --White: #ffffff;
+  --Accent-Pink: #FF6FAE;
+
+
+
+  --font-titles: 'DynaPuff', cursive;
+  --font-text-primary: 'Nunito', sans-serif;
+  --font-text-secondary: 'Poppins', sans-serif;
+
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    background-color: #ffffff;
+    margin: 0;
+    font-family: var(--font-text-primary);
+    color: var(--Text-Dark);
+    background-color: var(--Lemon-Chiffon);
+    line-height: 1.6;
 }
+
+
+
+.historia-text {
+    text-align: center;
+}
+
+/* =========================================
+   2. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================= */
+
+/* texto del logo */
+    .brand-text {
+      font-family: var(--font-titles);
+    }
+
+    .font-medium {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    
+    .active-link {
+      color: #e04b7b !important;
+      border-bottom: 2px solid #e04b7b;
+      padding-bottom: 2px !important;
+    }
+
+    /* Cambio de color suave al pasar el cursor  */
+    .navbar-nav .nav-link:hover, .iconos-derecha a:hover {
+      color: #e04b7b !important;
+      transition: color 0.2s ease-in-out;
+    }
+
+/* =========================================
+   3. SECCIÓN HERO Y ACERCA DE
+   ========================================= */
+
+.hero-about {
+    min-height: 550px;
+    padding: 3rem 0;
+    background: linear-gradient(
+        135deg,
+        var(--Lemon-Chiffon) 0%,
+        var(--Powder-Petal) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-about .container {
+    max-width: 1100px;
+}
+
+.hero-row {
+    min-height: 550px;
+}
+
+/* Huellitas*/
+.hero-about::before {
+    content: "🐾";
+    position: absolute;
+    left: 45px;
+    bottom: 28px;
+    font-size: 2rem;
+    opacity: 0.45;
+}
+
+/*Texto izquierdo*/
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding-left: 2rem;
+}
+
+/* Etiqueta superior */
+.hero-badge {
+    display: inline-block;
+    font-family: var(--font-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--Accent-Pink);
+    background-color: var(--Cotton-Rose);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.7rem;
+}
+
+.hero-title {
+    font-family: var(--font-titles);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--Text-Dark);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-title span:not(.decor-line) {
+    color: var(--Accent-Pink);
+}
+
+.decor-line {
+    color: var(--Accent-Pink);
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.hero-description {
+    font-family: var(--font-text-primary);
+    font-size: 1.15rem;
+    line-height: 1.4;
+    max-width: 430px;
+    margin-bottom: 0.6rem;
+}
+
+.hero-mini-text {
+    font-family: var(--font-text-secondary);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--Accent-Pink);
+    margin-bottom: 1rem;
+}
+
+/* Botones */
+.hero-buttons {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    font-family: var(--font-text-secondary);
+    background-color: var(--Accent-Pink);
+    color: var(--White);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(255, 111, 174, 0.28);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: var(--Pink-Orchid);
+    color: var(--Text-Dark);
+    transform: translateY(-2px);
+}
+
+.btn-hero-secondary {
+    font-family: var(--font-text-secondary);
+    background-color: var(--Celadon);
+    color: var(--Text-Dark);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-hero-secondary:hover {
+    background-color: var(--Soft-Cyan);
+    color: var(--Text-Dark);
+    transform: translateY(-2px);
+}
+
+/* Corazón cerca del texto */
+.hero-content::after {
+    content: "♡";
+    position: absolute;
+    right: 90px;
+    top: 120px;
+    color: var(--Accent-Pink);
+    font-size: 2rem;
+}
+
+.hero-image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-top: 1rem;
+}
+
+.hero-blob {
+    width: 550px;
+    height: 350px;
+    background-color: rgba(251, 248, 204, 0.72);
+    border-radius: 55% 45% 0 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: visible;
+}
+
+/* Forma amarilla detrás */
+.hero-blob::after {
+    content: "";
+    position: absolute;
+    width: 580px;
+    height: 300px;
+    background-color: rgba(251, 248, 204, 0.85);
+    border-radius: 55% 45% 0 0;
+    right: -35px;
+    bottom: 0;
+    z-index: 0;
+}
+
+/* Imagen perro y gato */
+.hero-pets-img {
+    width: 450px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 3;
+    transform: translateY(65px);
+}
+
+@media (max-width: 991px) {
+    .hero-about {
+        min-height: auto;
+        padding: 2.5rem 0;
+        text-align: center;
+    }
+
+    .hero-row {
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-mini-text {
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-content::after {
+        display: none;
+    }
+
+    .hero-image-content {
+        margin-top: 2rem;
+        padding-top: 0;
+    }
+
+    .hero-blob {
+        width: 320px;
+        height: 230px;
+    }
+
+    .hero-blob::after {
+        width: 330px;
+        height: 200px;
+        right: -15px;
+    }
+
+    .hero-pets-img {
+        width: 240px;
+    }
+}
+
+
+
+.historia-section {
+    background-color: #4CAF50;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 17v-5h1v5h5v1h-5v5h-1v-5h-5v-1h5z' fill='rgba(255,255,255,0.07)' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+}
+.historia-title {
+    font-family: var(--font-titles);
+}
+
+/* =========================================
+   4. MISIÓN, VISIÓN Y VALORES
+   ========================================= */
+
+.seccion-cards{
+    max-width: auto;
+    max-height: auto;
+    padding: 40px 20px;
+}
+
+/* Transición de cards con hover*/
+.card {
+    transition: transform 0.3s ease;
+    overflow: hidden; 
+}
+
+.card:hover {
+    transform: translateY(-10px);;
+}
+
+
+/* =========================================
+   5. EQUIPO
+   ========================================= */
 
 /* Titles and Subtitles with DynaPuff */
 .team-title,
@@ -23,12 +369,12 @@ body {
 .card-title,
 .team-badge,
 .role-title {
-    font-family: 'DynaPuff', cursive;
+    font-family: var(--font-titles);
 }
 
 /* Card descriptions with Poppins (or Nunito, both are for texts, let's use Poppins for card text) */
 .card-text {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-text-secondary);
 }
 
 .team-badge {
@@ -99,4 +445,388 @@ body {
 .social-icon:hover {
     background-color: #e9ecef;
     color: #495057;
+}
+
+
+/* =========================================
+   6. CORPORATIVO PELUDITOS
+   ========================================= */
+
+
+.corporativo-foto {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid #8eecf5;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   7. PIE DE PÁGINA (FOOTER)
+   ========================================= */
+
+footer{
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(111, 86, 66, 0.9);
+    
+}
+
+.wave svg{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+}
+
+.huellita{
+    width: 100px;
+    margin-bottom: 5px;
+}
+
+.titulo-footer{
+    font-family: var(--font-titles);
+    text-align: center;
+    margin: 0;
+}
+
+.rosa{
+    color: #FF8AAE;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 2rem;
+
+}
+
+.blanco{
+    color: white;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 2rem;
+}
+.eslogan{
+    color: white;
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+     font-size: 1rem;
+     text-align: center;
+
+}
+.lista{
+    color: #FF8AAE;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 1.5rem;
+
+}
+.textlist{
+        color: white;
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+     font-size: 1rem;
+     text-align: center;
+
+}
+
+.mensaje{
+        color: #A9B96B;
+    font-family: var(--font-titles);
+    font-weight: 600;
+        max-width:230px;
+}
+
+
+.submensaje{
+    color: white;
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+    font-size: .9rem;
+    line-height:1.5rem;
+
+    max-width:200px;;
+}
+
+
+.footer-bottom{
+    background:#A9B96B;
+    padding:12px;
+    text-align:center;
+    font-size:12px;
+}
+/*color del texto*/
+
+.social-list a{
+    color: white;           
+    text-decoration: none;
+}
+
+/*color del icono*/
+.social-list i{
+    color: #A9B96B;           
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.textlist{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.icon-circle{
+    width: 27px;
+    height: 27px;
+    background: #A9B96B;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-circle i{
+    color: white;
+    font-size: 16px;
+}
+
+/*imagenes de fondo*/
+.perro1{
+    position: absolute;
+
+    width: clamp(50px, 6vw, 100px);
+    height: auto;
+
+    opacity: 0.1;
+
+    top: 18%;
+    right: 10%;
+}
+
+.perro2{
+    position: absolute;
+
+    width: clamp(70px, 9vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 45%;       /* Distancia desde abajo */
+    left: 18%;          /* La coloca en el centro */
+    
+}
+
+.perro3{
+    position: absolute;
+
+    width: clamp(50px, 6vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    top: 65%;
+    left: 62%;
+}
+
+.gatito1{
+    position: absolute;
+
+    width: clamp(50px, 6vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 13%;       /* Distancia desde abajo */
+    left: 82%;        
+    
+}
+
+.gatito2{
+    position: absolute;
+
+    width:clamp(48px, 5vw, 88px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 67%;       /* Distancia desde abajo */
+    left: 46%;         
+    
+}
+.gatito3{
+    position: absolute;
+
+    width: clamp(60px, 7vw, 100px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 70%;       /* Distancia desde abajo */
+    left: 5%;         /* La coloca en el centro */
+    
+}
+
+.gatito4{
+    position: absolute;
+
+    width: clamp(50px, 6vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 10%;       /* Distancia desde abajo */
+    left: 37%;         /* La coloca en el centro */
+    
+}
+
+.imagen-lado{
+    position: absolute;
+    width: clamp(60px, 7vw, 100px);
+    height: auto;
+
+    bottom: 37%;
+    left: 98%;
+    transform: translateX(-100%);       
+}
+
+
+/* =========================================
+   8. CLASES UTILITARIAS Y COLORES
+   ========================================= */
+
+.bg-pastel-pink {
+    background-color: var(--Cotton-Rose) !important;
+}
+.bg-pastel-blue {
+    background-color: var(--Baby-Blue-Ice) !important;
+}
+.bg-pastel-purple {
+    background-color: var(--Periwinkle) !important;
+}
+
+.bg-pastel-orange {
+    background-color: var(--Powder-Petal) !important;
+}
+
+.bg-pastel-yellow {
+    background-color: var(--Lemon-Chiffon) !important;
+}
+
+.bg-pastel-green {
+    background-color: var(--Celadon) !important;
+}
+
+.bg-pastel-orchid {
+    background-color: var(--Pink-Orchid) !important;
+}
+
+.bg-pastel-cyan {
+    background-color: var(--Soft-Cyan) !important;
+}
+
+.bg-pastel-blue-light{
+    background-color: var(--Sky-Blue-Light) !important;
+
+}
+
+/* =========================================
+   9.          PAGÍNA DE CONTACTO
+   ========================================= */
+.col-lg-6 h1,
+.col-lg-6 h2,
+.col-lg-6 p,
+.texto-contacto,
+#forms
+{
+    font-family: var(--font-text-secondary)
+}
+
+.imagen-contacto{
+    width: 100%;
+    max-width: 290px;
+    height: auto;
+    
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ESTILOS NUEVOS: HERO Y EXPLORA (INDEX)
+   ========================================= */
+
+.hero-section {
+    background-color: #fdfbe2; /* Amarillo pálido de la imagen */
+    font-family: var(--font-text-secondary);
+}
+
+.hero-title {
+    font-family: var(--font-titles);
+    letter-spacing: -1px;
+}
+
+/* Botones del Hero */
+.btn-ver-productos {
+    background-color: #0aa738;
+    border: 2px solid #0aa738;
+}
+.btn-ver-productos:hover {
+    background-color: #088b2e;
+    color: white;
+}
+
+.btn-adoptar {
+    background-color: transparent;
+    border: 2px solid #ff8e6a;
+    color: #ff8e6a;
+}
+.btn-adoptar:hover {
+    background-color: #ff8e6a;
+    color: white;
+}
+
+.btn-donar {
+    background-color: #ff8e6a;
+    border: 2px solid #ff8e6a;
+}
+.btn-donar:hover {
+    background-color: #ff744b;
+    color: white;
+}
+
+/* Tarjetas de Sección Explora */
+.explora-section {
+    font-family: var(--font-text-secondary);
+}
+
+.explora-card {
+    width: 140px;
+    height: 140px;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.explora-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.explora-card:hover .icon-circle {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
 }

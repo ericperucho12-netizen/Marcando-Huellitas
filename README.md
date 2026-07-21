@@ -1,3 +1,4 @@
+# Marcando-Huellitas  Comment
 # 🐾 Marcando Huellitas
 
 **Marcando Huellitas** es un ecommerce enfocado en la venta de productos para mascotas, con una sección informativa dedicada a la adopción, donaciones, refugios y guías de cuidado animal.
@@ -92,7 +93,7 @@ El proyecto utiliza tres fuentes principales:
 
 ---
 
-## 🖥️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - HTML5
 - CSS3
