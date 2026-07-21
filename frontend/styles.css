@@ -53,7 +53,7 @@ body {
 
 /* texto del logo */
     .brand-text {
-      font-family: 'Fredoka', sans-serif;
+      font-family: var(--font-titles);
     }
 
     .font-medium {
@@ -494,7 +494,7 @@ footer{
 }
 
 .titulo-footer{
-    font-family: 'Fredoka', sans-serif;
+    font-family: var(--font-titles);
     text-align: center;
     margin: 0;
 }
@@ -764,3 +764,69 @@ footer{
 
 
 
+
+
+/* =========================================
+   ESTILOS NUEVOS: HERO Y EXPLORA (INDEX)
+   ========================================= */
+
+.hero-section {
+    background-color: #fdfbe2; /* Amarillo pálido de la imagen */
+    font-family: var(--font-text-secondary);
+}
+
+.hero-title {
+    font-family: var(--font-titles);
+    letter-spacing: -1px;
+}
+
+/* Botones del Hero */
+.btn-ver-productos {
+    background-color: #0aa738;
+    border: 2px solid #0aa738;
+}
+.btn-ver-productos:hover {
+    background-color: #088b2e;
+    color: white;
+}
+
+.btn-adoptar {
+    background-color: transparent;
+    border: 2px solid #ff8e6a;
+    color: #ff8e6a;
+}
+.btn-adoptar:hover {
+    background-color: #ff8e6a;
+    color: white;
+}
+
+.btn-donar {
+    background-color: #ff8e6a;
+    border: 2px solid #ff8e6a;
+}
+.btn-donar:hover {
+    background-color: #ff744b;
+    color: white;
+}
+
+/* Tarjetas de Sección Explora */
+.explora-section {
+    font-family: var(--font-text-secondary);
+}
+
+.explora-card {
+    width: 140px;
+    height: 140px;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.explora-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.explora-card:hover .icon-circle {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
