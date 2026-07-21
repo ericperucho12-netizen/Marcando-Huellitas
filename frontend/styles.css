@@ -37,7 +37,7 @@ body {
     margin: 0;
     font-family: var(--font-text-primary);
     color: var(--Text-Dark);
-    background-color: var(--White);
+    background-color: var(--Lemon-Chiffon);
     line-height: 1.6;
 }
 
@@ -732,5 +732,9 @@ footer{
 .bg-pastel-cyan {
     background-color: var(--Soft-Cyan) !important;
 }
+
+
+
+
 
 

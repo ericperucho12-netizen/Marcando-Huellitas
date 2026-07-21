@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+
+<body> 
+
+  <!-- 1. BARRA NARANJA -->
+  <div class="text-white text-center py-2 fw-medium" style="background-color: #ff9161; font-size: 0.9rem;">
+    🐾 Cada compra ayuda a un refugio animal — ¡Gracias por tu apoyo! 🐾
+  </div>
+
+  <!-- 2. NAVBAR PRINCIPAL -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container-fluid px-md-5">
+      
+      <!-- Logo Izquierda con Fredoka Redondeada -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="../assets/img/logo-huellita.png" alt="Logo" width="40" class="me-2"> 
+        <div class="d-flex flex-column lh-1 brand-text fw-bold">
+          <span style="color: #2b2b2b; font-size: 1.2rem;">Marcando</span>
+          <span style="color: #e04b7b; font-size: 1.3rem;">Huellitas</span>
+        </div>
+      </a>
+
+      <!-- Botón Hamburguesa para Celulares -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMarcandoHuellitas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Enlaces y Buscador -->
+      <div class="collapse navbar-collapse" id="navbarMarcandoHuellitas">
+        
+        <!-- Enlaces del Menú (Centro) -->
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
+          <li class="nav-item">
+            <a class="nav-link font-medium active-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#productos">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#adopciones">Adopciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#asociaciones">Asociaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#refugios">Refugios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#donaciones">Donaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary font-medium" href="#contacto">Contacto</a>
+          </li>
+        </ul>
+
+        <!-- Buscador e Iconos -->
+        <div class="d-flex align-items-center gap-3 iconos-derecha">
+          <!-- Input de Búsqueda -->
+          <div class="position-relative">
+            <input type="text" class="form-control form-control-sm rounded-pill px-3" placeholder="Search..." style="background-color: #f5f5f5; border: none; width: 160px; font-size: 0.85rem; padding-right: 2.5rem;">
+            <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-secondary" style="font-size: 0.75rem;"></i>
+          </div>
+
+          <!-- Iconos de Acción -->
+          <a href="#favoritos" class="text-secondary fs-5"><i class="bi bi-heart"></i></a>
+          
+          <!-- Carrito con Burbuja -->
+          <a href="#carrito" class="position-relative text-secondary fs-5">
+            <i class="bi bi-cart3"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle" style="background-color: #e04b7b; font-size: 0.55rem; padding: 0.25em 0.45em;">
+              2
+            </span>
+          </a>
+
+          <!-- Perfil/Usuario -->
+          <a href="#perfil" class="text-secondary fs-5"><i class="bi bi-person"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="card-title text-center mb-4">Contáctenos</h2>
+            
+    
+            <form id="contactForm" action="https://formspree.io/f/TU_FORM_ID" method="POST" novalidate>
+              
+              <!-- Nombre -->
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                <div class="invalid-feedback">Por favor ingresa tu nombre (mínimo 2 caracteres).</div>
+              </div>
+
+             
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+              </div>
+
+        
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ej. 5512345678" required>
+                <div class="invalid-feedback">Ingresa un número de teléfono válido (al menos 7 dígitos).</div>
+              </div>
+
+             
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                <div class="invalid-feedback">Por favor escribe tu mensaje (mínimo 10 caracteres).</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Enviar mensaje</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Archivo JS con la validación personalizada -->
+  <script src="script.js"></script>
+
+
+
+
+<footer>
+
+
+
+        <!--Ondulado parte superior-->
+        <div class="wave">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140" preserveAspectRatio="none">
+
+                <path fill="#A8BC67" d="M0,80
+                    C120,20 240,120 360,80
+                    C480,40 600,120 720,80
+                    C840,20 960,120 1080,80
+                    C1200,40 1320,120 1440,80
+                    L1440,0
+                    L0,0
+                    Z" />
+
+            </svg>
+
+        </div>
+
+        <img src="../assets/perrito1.png" class="perro1" alt="perrito_1">
+        <img src="../assets/perrito2.png" class="perro2" alt="perrito_2">
+        <img src="../assets/perrito3.png" class="perro3" alt="perrito_3">
+        <img src="../assets/gatito1.png" class="gatito1" alt="gatito_1">
+        <img src="../assets/gatito2.png" class="gatito2" alt="gatito_2">
+        <img src="../assets/gatito3.png" class="gatito3" alt="gatito_2">
+        <img src="../assets/gatito4.png" class="gatito4" alt="gatito_2">
+
+        <img src="../assets/imagen-footer2.png" alt="planta" class="imagen-lado">
+
+
+        <div class="container-fluid px-3 py-4">
+
+            <div class="row gx-5 align-items-start">
+
+                <!-- Logo -->
+                <div class="col-12 col-sm-6 col-md-3">
+
+                    <div class="logo-footer">
+
+                        <img src="../assets/Huellita-footer.png" alt="Huella" class="huellita">
+
+                        <h3 class="titulo-footer">
+                            <span class="blanco">Marcando</span><br>
+                            <span class="rosa">Huellitas</span>
+                        </h3>
+                        <h4 class="eslogan"> Adopta con el corazón, cuida con amor</h4>
+
+                    </div>
+
+                </div>
+
+                <!-- Navegador -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Tienda</h4>
+
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-house"></i>
+                                </span>
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                </span>
+                                Productos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-paw"></i>
+                                </span>
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Ayuda -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Huellitas</h4>
+
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-paw"></i>
+                                </span>
+                                Adopciones
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-handshake"></i>
+                                </span>
+                                Asociaciones
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-house"></i>
+                                </span>
+                                Refugios
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <span class="icon-circle">
+                                    <i class="fa-solid fa-heart"></i>
+                                </span>
+                                Donaciones
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Ayuda -->
+                <div class="col-12 col-sm-6 col-md-2">
+
+                    <h4 class="lista">Síguenos en:</h4>
+
+                    <ul class="list-unstyled social-list">
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-facebook"></i>
+                                Facebook
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-instagram"></i>
+                                Instagram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="textlist">
+                                <i class="bi bi-twitter-x"></i>
+                                Twitter
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Mensaje -->
+                <div class="col-12 col-sm-6 col-md-3">
+
+                    <h4 class="mensaje">¡Tu ayuda deja una huellita en sus corazones!</h4>
+                    <br>
+
+                    <p class="submensaje">El 100% de las donaciones seran destinadas a los refugios participantes.</p>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Marendo Huellitas | Privacidad | Términos
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
