@@ -33,12 +33,27 @@
     box-sizing: border-box;
 }
 
+/* Animación de entrada de página */
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
 body {
     margin: 0;
     font-family: var(--font-text-primary);
     color: var(--Text-Dark);
     background-color: var(--Lemon-Chiffon);
     line-height: 1.6;
+    animation: pageFadeIn 0.35s ease both;
+}
+
+/* Clase aplicada por JS al salir de la página */
+body.page-leaving {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
 }
 
 
