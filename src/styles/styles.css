@@ -1074,3 +1074,216 @@ footer{
   display: grid;
   place-items: center;
 }
+
+
+/*Carrito*/
+.cart-page {
+    background-color: #FBF8CC;
+    min-height: 70vh;
+}
+
+.cart-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.cart-card,
+.order-summary {
+    background-color: #ffffff;
+    border-radius: 28px;
+    padding: 2rem;
+}
+
+.cart-card h2,
+.order-summary h2 {
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+    color: #2F2F3A;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-product-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.cart-product-info {
+    flex: 1;
+}
+
+.cart-product-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.cart-product-info p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quantity-controls button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    font-weight: 700;
+}
+
+.cart-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.remove-item {
+    border: none;
+    background: transparent;
+    font-weight: 700;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-row.total {
+    font-weight: 700;
+}
+
+.btn-checkout,
+.btn-continue {
+    width: 100%;
+    border-radius: 30px;
+    padding: 0.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.btn-checkout {
+    background-color: #FF6FAE;
+    color: white;
+    border: none;
+}
+
+.btn-continue {
+    background-color: transparent;
+    color: #F1C0E8;
+    border: 3px solid #F1C0E8;
+}
+
+/*Responsive del carrito*/
+@media (max-width: 991px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-price {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .order-summary {
+        margin-top: 1rem;
+    }
+}
+
+/* Carrusel juguetes para perros */
+.dog-toys-carousel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.dog-toys-carousel #dogToysList {
+    flex: 1;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+/* Contenedor individual de cada card */
+.dog-toy-card-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Solo imagen dentro de tus cards */
+.dog-toys-carousel .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botones del carrusel */
+.dog-toys-carousel .carousel-btn {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: none;
+    background-color: #FFCFD2;
+    color: #2F2F3A;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dog-toys-carousel .carousel-btn:hover {
+    background-color: #F1C0E8;
+}
+
+/* Tablet: 2 cards */
+@media (max-width: 991px) {
+    .dog-toys-carousel #dogToysList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Móvil: 1 card */
+@media (max-width: 576px) {
+    .dog-toys-carousel {
+        gap: 0.5rem;
+    }
+
+    .dog-toys-carousel #dogToysList {
+        grid-template-columns: 1fr;
+    }
+
+    .dog-toys-carousel .carousel-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 1.6rem;
+    }
+}
