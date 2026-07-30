@@ -1,4 +1,5 @@
-# Marcando-Huellitas  Comment
+# Marcando-Huellitas Comment
+
 # 🐾 Marcando Huellitas
 
 **Marcando Huellitas** es un ecommerce enfocado en la venta de productos para mascotas, con una sección informativa dedicada a la adopción, donaciones, refugios y guías de cuidado animal.
@@ -68,32 +69,32 @@ El sitio contempla las siguientes secciones principales:
 
 La identidad visual de Marcando Huellitas utiliza una paleta de colores pastel para transmitir ternura, confianza, cercanía y bienestar animal.
 
-| Color | HEX | Uso |
-|---|---|---|
-| Amarillo pastel | `#FBF8CC` | Fondos principales, banners y secciones suaves |
-| Beige durazno | `#FDE4CF` | Fondos secundarios y bloques decorativos |
-| Rosa pastel | `#FFCFD2` | Etiquetas, detalles visuales y elementos destacados |
-| Lila rosado | `#F1C0E8` | Acentos, hover e iconos decorativos |
-| Lavanda | `#CFBAF0` | Botones secundarios y elementos de identidad visual |
-| Azul pastel | `#A3C4F3` | Botones principales, enlaces y acciones de compra |
-| Azul cielo | `#90DBF4` | Formularios de contacto, login y registro |
-| Turquesa claro | `#8EECF5` | Tarjetas informativas y secciones de ayuda |
-| Verde menta | `#98F5E1` | Sección de adopción y bienestar animal |
-| Verde pastel | `#B9FBC0` | Donaciones, confirmaciones y mensajes positivos |
+| Color           | HEX       | Uso                                                 |
+| --------------- | --------- | --------------------------------------------------- |
+| Amarillo pastel | `#FBF8CC` | Fondos principales, banners y secciones suaves      |
+| Beige durazno   | `#FDE4CF` | Fondos secundarios y bloques decorativos            |
+| Rosa pastel     | `#FFCFD2` | Etiquetas, detalles visuales y elementos destacados |
+| Lila rosado     | `#F1C0E8` | Acentos, hover e iconos decorativos                 |
+| Lavanda         | `#CFBAF0` | Botones secundarios y elementos de identidad visual |
+| Azul pastel     | `#A3C4F3` | Botones principales, enlaces y acciones de compra   |
+| Azul cielo      | `#90DBF4` | Formularios de contacto, login y registro           |
+| Turquesa claro  | `#8EECF5` | Tarjetas informativas y secciones de ayuda          |
+| Verde menta     | `#98F5E1` | Sección de adopción y bienestar animal              |
+| Verde pastel    | `#B9FBC0` | Donaciones, confirmaciones y mensajes positivos     |
 
 ### Tipografías
 
 El proyecto utiliza tres fuentes principales:
 
-| Fuente | Uso |
-|---|---|
+| Fuente       | Uso                                           |
+| ------------ | --------------------------------------------- |
 | **DynaPuff** | Logo, títulos principales y textos destacados |
-| **Poppins** | Menú, botones, subtítulos y navegación |
-| **Nunito** | Párrafos, descripciones y textos informativos |
+| **Poppins**  | Menú, botones, subtítulos y navegación        |
+| **Nunito**   | Párrafos, descripciones y textos informativos |
 
 ---
 
-## 🖥️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - HTML5
 - CSS3
@@ -104,5 +105,9 @@ El proyecto utiliza tres fuentes principales:
 - Figma
 
 ---
-## Última actualización del proyecto.
-Agregado de la página Contactos.
+
+=========
+
+# Marcando-Huellitas Comment
+
+> > > > > > > > > Temporary merge branch 2
