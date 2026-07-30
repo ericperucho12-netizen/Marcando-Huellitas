@@ -4,7 +4,7 @@ const alimentosPerro = [
         id: "alimento-1",
         nombre: "Ganador Premium Adulto Razas Medianas y Grandes 20kg",
         precio: "$1,150.00 MXN",
-        imagen: "../assets/productos/alimentos-perro/ganador-premium-adulto.jpg"
+        imagen: "../assets/productos/Imagenes_Alimento_Perro/Ganador_Premium_Adulto.jpeg"
     },
     {
         id: "alimento-2",
