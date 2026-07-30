@@ -1220,9 +1220,20 @@ footer{
 
 .dog-toys-carousel #dogToysList {
     flex: 1;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    justify-items: center;
 }
 
-/* Solo imágenes de juguetes para perros */
+/* Contenedor individual de cada card */
+.dog-toy-card-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Solo imagen dentro de tus cards */
 .dog-toys-carousel .product-img {
     width: 100%;
     height: 100%;
@@ -1252,9 +1263,21 @@ footer{
     background-color: #F1C0E8;
 }
 
+/* Tablet: 2 cards */
+@media (max-width: 991px) {
+    .dog-toys-carousel #dogToysList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Móvil: 1 card */
 @media (max-width: 576px) {
     .dog-toys-carousel {
         gap: 0.5rem;
+    }
+
+    .dog-toys-carousel #dogToysList {
+        grid-template-columns: 1fr;
     }
 
     .dog-toys-carousel .carousel-btn {

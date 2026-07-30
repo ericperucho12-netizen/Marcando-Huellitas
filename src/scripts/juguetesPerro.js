@@ -2,42 +2,42 @@ const dogToys = new ItemsController();
 
 dogToys.addItem(
     "Hueso mordedor",
-    "../assets/juguete_masticable_texturizado_sobre_lino_crema.png",
+    "/src/assets/productos/hueso_mordedor.png",
     "Mordedor resistente para fortalecer dientes y encías.",
     "$95.00 MXN"
 );
 
 dogToys.addItem(
     "Frisbee flexible",
-    "../assets/disco_lavanda_con_huella_en_relieve.png",
+    "/src/assets/productos/frisbee.png",
     "Disco ligero para jugar al aire libre.",
     "$150.00 MXN"
 );
 
 dogToys.addItem(
     "Peluche con sonido",
-    "../assets/perro_de_peluche_sobre_alfombra_tejida.png",
+    "/src/assets/productos/peluche-sonido.png",
     "Peluche suave con sonido para entretenimiento.",
     "$180.00 MXN"
 );
 
 dogToys.addItem(
     "Juguete dispensador",
-    "../assets/pelota_dispensadora_de_premios_para_mascotas.png",
+    "/src/assets/productos/dispensador_premios.png",
     "Juguete interactivo para colocar premios o croquetas.",
     "$210.00 MXN"
 );
 
 dogToys.addItem(
     "Aro mordedor",
-    "../assets/juguete_de_caucho_rosa_sobre_tapete_tejido.png",
+    "/src/assets/productos/aro_mordedor.png",
     "Aro resistente para morder, lanzar y jugar.",
     "$130.00 MXN"
 );
 
 dogToys.addItem(
     "Pelota con textura",
-    "../assets/esferas_con_textura_azul_sobre_alfombra_cálida.png",
+    "/src/assets/productos/juguete_texturizado.png",
     "Pelota con relieve para estimular el juego y la mordida.",
     "$145.00 MXN"
 );
@@ -55,7 +55,7 @@ function getItemsPerView() {
         return 2;
     }
 
-    return 3;
+    return 4;
 }
 
 function renderDogToys(products) {
@@ -77,13 +77,7 @@ function renderDogToys(products) {
 
     visibleProducts.forEach(function (product) {
         const productCard = document.createElement("div");
-
-        productCard.classList.add(
-            "col-12",
-            "col-sm-6",
-            "col-lg-4"
-        );
-
+        productCard.classList.add("dog-toy-card-wrapper");
         productCard.innerHTML = `
             <div class="product-item-card">
                 <div class="image">
