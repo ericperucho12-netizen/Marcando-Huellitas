@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -29,105 +29,8 @@
 
 <body>
 
-    <!-- Barra Superior -->
-    <div class="text-white text-center py-2 fw-medium" style="background-color:#ff9161; font-size:0.9rem;">
-        🐾 Cada compra ayuda a un refugio animal — ¡Gracias por tu apoyo! 🐾
-    </div>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-        <div class="container-fluid px-md-5">
-
-            <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="../../index.html">
-                <img src="../assets/Logo.png" alt="Logo" width="40" class="me-2">
-
-                <div class="d-flex flex-column lh-1 brand-text fw-bold">
-                    <span style="color:#2b2b2b;font-size:1.2rem;">Marcando</span>
-                    <span style="color:#e04b7b;font-size:1.3rem;">Huellitas</span>
-                </div>
-            </a>
-
-            <!-- Botón móvil -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarMarcandoHuellitas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Menú -->
-            <div class="collapse navbar-collapse" id="navbarMarcandoHuellitas">
-
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="../../index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#productos">Productos</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#adopciones">Adopciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#asociaciones">Asociaciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#refugios">Refugios</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#donaciones">Donaciones</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="nosotros.html">Nosotros</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active-link" href="Contactenos.html">Contacto</a>
-                    </li>
-
-                </ul>
-
-                <!-- Buscador e iconos -->
-                <div class="d-flex align-items-center gap-3">
-
-                    <div class="position-relative">
-                        <input type="text" class="form-control form-control-sm rounded-pill px-3"
-                            placeholder="Search..."
-                            style="background:#f5f5f5;border:none;width:160px;padding-right:2.5rem;">
-
-                        <i
-                            class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-secondary"></i>
-                    </div>
-
-                    <a href="#favoritos" class="text-secondary fs-5">
-                        <i class="bi bi-heart"></i>
-                    </a>
-
-                    <a href="#carrito" class="position-relative text-secondary fs-5">
-                        <i class="bi bi-cart3"></i>
-
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle"
-                            style="background:#e04b7b;font-size:.55rem;">
-                            2
-                        </span>
-                    </a>
-
-                    <a href="#perfil" class="text-secondary fs-5">
-                        <i class="bi bi-person"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-    </nav>
+    <!-- Contenedor del Navbar -->
+    <div data-template="../layout/navbar.html" data-root="../.." data-src=".."></div>
 
     <!-- CONTACTO -->
     <section class="py-5">
@@ -147,7 +50,7 @@
                             ¿Cómo podemos ayudarte hoy?
                         </h2>
 
-                        <img src="../assets/perro-gato.png" class="img-fluid imagen-contacto" alt="Perro y gato">
+                        <img src="../assets/contacto/perro-gato.png" class="img-fluid imagen-contacto" alt="Perro y gato">
 
                     </div>
 
@@ -221,12 +124,12 @@
 
                             <form id="contactForm" action="https://formspree.io/f/mpqvlkdp" method="POST" novalidate>
 
-                                <div class="mb-3 nombre-form">
-                                    <label for="nombre" class="form-label fw-medium">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label" id="nombre">
                                         Nombre completo
                                     </label>
 
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
 
                                     <div class="invalid-feedback">
                                         Por favor ingresa tu nombre.
@@ -234,11 +137,11 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="email" class="form-label fw-medium correo-form">
+                                    <label for="email" class="form-label" id="email">
                                         Correo electrónico
                                     </label>
 
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="usuario@correo.com" required>
+                                    <input type="email" class="form-control" id="email" name="email" required>
 
                                     <div class="invalid-feedback">
                                         Ingresa un correo válido.
@@ -246,7 +149,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="telefono" class="form-label fw-medium telefono-form">
+                                    <label for="telefono" class="form-label" id="telefono">
                                         Teléfono
                                     </label>
 
@@ -260,20 +163,20 @@
 
                                 <div class="mb-4">
 
-                                    <label for="mensaje" class="form-label fw-medium mensaje-form">
+                                    <label for="mensaje" class="form-label" id="mensaje">
                                         Mensaje
                                     </label>
 
-                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje"
+                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4"
                                         required></textarea>
 
-                                    <div class="invalid-feedback mesaje-form">
+                                    <div class="invalid-feedback">
                                         Escribe tu mensaje.
                                     </div>
 
                                 </div>
 
-                                <button type="submit" class="btn btn-primary w-100 enviar-form">
+                                <button type="submit" class="btn btn-primary w-100">
                                     Enviar mensaje
                                 </button>
                                 <p id="formStatus" class="mt-3 text-center fw-bold"></p>
@@ -292,7 +195,7 @@
     </section>
 
 
-    
+
     <!-- SECCIÓN PREGUNTAS FRECUENTES -->
     <section class="faq-section py-5 bg-light">
         <div class="container">
@@ -300,17 +203,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="accordion" id="faqAccordion">
-                        
+
                         <!-- Pregunta 1 -->
                         <div class="accordion-item border-0 shadow-sm mb-3 rounded">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
+                                <button class="accordion-button collapsed fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne"
+                                    style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
                                     ¿Cómo puedo adoptar una mascota?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-secondary">
-                                    Para adoptar una mascota, primero debes llenar nuestro formulario de adopción en línea. Después, nuestro equipo se pondrá en contacto contigo para una breve entrevista y conocer más sobre el entorno donde vivirá el nuevo integrante de la familia.
+                                    Para adoptar una mascota, primero debes llenar nuestro formulario de adopción en
+                                    línea. Después, nuestro equipo se pondrá en contacto contigo para una breve
+                                    entrevista y conocer más sobre el entorno donde vivirá el nuevo integrante de la
+                                    familia.
                                 </div>
                             </div>
                         </div>
@@ -318,13 +228,19 @@
                         <!-- Pregunta 2 -->
                         <div class="accordion-item border-0 shadow-sm mb-3 rounded">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
+                                <button class="accordion-button collapsed fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo"
+                                    style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
                                     ¿Aceptan donaciones en especie?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-secondary">
-                                    ¡Sí! Aceptamos donaciones de alimento, cobijas, juguetes y medicamentos no caducados. Puedes entregarlos directamente en nuestros puntos de acopio o refugios afiliados.
+                                    ¡Sí! Aceptamos donaciones de alimento, cobijas, juguetes y medicamentos no
+                                    caducados. Puedes entregarlos directamente en nuestros puntos de acopio o refugios
+                                    afiliados.
                                 </div>
                             </div>
                         </div>
@@ -332,13 +248,19 @@
                         <!-- Pregunta 3 -->
                         <div class="accordion-item border-0 shadow-sm mb-3 rounded">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
+                                <button class="accordion-button collapsed fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree"
+                                    style="color: #4a4a4a; background-color: #fff; border-radius: 8px;">
                                     ¿Cómo funcionan las compras con causa?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-secondary">
-                                    Un porcentaje de cada compra que realizas en nuestra tienda en línea se destina directamente a apoyar a los refugios de animales con los que trabajamos, ayudando a cubrir gastos de alimentación y atención veterinaria.
+                                    Un porcentaje de cada compra que realizas en nuestra tienda en línea se destina
+                                    directamente a apoyar a los refugios de animales con los que trabajamos, ayudando a
+                                    cubrir gastos de alimentación y atención veterinaria.
                                 </div>
                             </div>
                         </div>
@@ -349,228 +271,11 @@
         </div>
     </section>
 
-    <footer>
+    <!-- Contenedor del Footer -->
+    <div data-template="../layout/footer.html" data-root="../.." data-src=".."></div>
 
-
-
-        <!--Ondulado parte superior-->
-        <div class="wave">
-
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140" preserveAspectRatio="none">
-
-                <path fill="#A8BC67" d="M0,80
-                    C120,20 240,120 360,80
-                    C480,40 600,120 720,80
-                    C840,20 960,120 1080,80
-                    C1200,40 1320,120 1440,80
-                    L1440,0
-                    L0,0
-                    Z" />
-
-            </svg>
-
-        </div>
-
-        <img src="../assets/perrito1.png" class="perro1" alt="perrito_1">
-        <img src="../assets/perrito2.png" class="perro2" alt="perrito_2">
-        <img src="../assets/perrito3.png" class="perro3" alt="perrito_3">
-        <img src="../assets/gatito1.png" class="gatito1" alt="gatito_1">
-        <img src="../assets/gatito2.png" class="gatito2" alt="gatito_2">
-        <img src="../assets/gatito3.png" class="gatito3" alt="gatito_3">
-        <img src="../assets/gatito4.png" class="gatito4" alt="gatito_4">
-
-        
-
-
-        <div class="container py-5">
-
-        <div class="row gy-4 justify-content-around align-items-start">
-
-            <!-- Logo -->
-            <div class="col-12 col-sm-6 col-lg-2 text-center text-lg-start">
-
-                <div class="logo-footer">
-
-                    <img src="../assets/Huellita-footer.png" alt="Huella" class="huellita">
-
-                    <h3 class="titulo-footer">
-                        <span class="blanco">Marcando</span><br>
-                        <span class="rosa">Huellitas</span>
-                    </h3>
-
-                    <h4 class="eslogan">
-                        Adopta con el corazón, cuida con amor
-                    </h4>
-
-                </div>
-
-            </div>
-
-            <!-- Tienda -->
-            <div class="col-12 col-sm-6 col-lg-2">
-
-                <h4 class="lista">Tienda</h4>
-
-                <ul class="list-unstyled">
-
-                    <li>
-                        <a href="../index.html" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-house"></i>
-                            </span>
-                            Inicio
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-bag-shopping"></i>
-                            </span>
-                            Productos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="nosotros.html" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-paw"></i>
-                            </span>
-                            Nosotros
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="Contactenos.html" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-phone"></i>
-                            </span>
-                            Contacto
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <!-- Huellitas -->
-            <div class="col-12 col-sm-6 col-lg-2">
-
-                <h4 class="lista">Huellitas</h4>
-
-                <ul class="list-unstyled">
-
-                    <li>
-                        <a href="#" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-paw"></i>
-                            </span>
-                            Adopciones
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-handshake"></i>
-                            </span>
-                            Asociaciones
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-house"></i>
-                            </span>
-                            Refugios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="textlist">
-                            <span class="icon-circle">
-                                <i class="fa-solid fa-heart"></i>
-                            </span>
-                            Donaciones
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <!-- Redes -->
-<div class="col-12 col-sm-6 col-lg-2">
-
-    <h4 class="lista">Síguenos</h4>
-
-    <ul class="list-unstyled social-list">
-
-        <li>
-            <a href="#" class="textlist">
-                <span class="icon-circle">
-                    <i class="bi bi-facebook"></i>
-                </span>
-                Facebook
-            </a>
-        </li>
-
-        <li>
-            <a href="#" class="textlist">
-                <span class="icon-circle">
-                    <i class="bi bi-instagram"></i>
-                </span>
-                Instagram
-            </a>
-        </li>
-
-        <li>
-            <a href="#" class="textlist">
-                <span class="icon-circle">
-                    <i class="bi bi-twitter-x"></i>
-                </span>
-                Twitter
-            </a>
-        </li>
-
-    </ul>
-
-</div> 
-
-<div class="col-12 col-lg-3 d-flex align-items-center">
-    <!-- Texto -->
-    <div>
-
-    <div class="d-flex align-items-center justify-content-between">
-        <h4 class="mensaje mb-0">
-            ¡Tu ayuda deja una huellita en sus corazones!
-        </h4>
-        <img src="../assets/imagen-footer2.png"
-        alt="Perro y gato"
-        class="img-fluid imagen-footer2">
-    </div>
-
-    <p class="submensaje mt-3">
-        El 100% de las donaciones serán destinadas a los refugios participantes.
-    </p>
-
-</div>
-
-</div>
-
-        </div>
-
-    </div> 
-
-    
-    <div class="footer-bottom">
-        © 2026 Marcando Huellitas | Privacidad | Términos
-    </div>
-
-
-</footer>
-
+    <!-- Layout JS -->
+    <script src="../scripts/layout.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Archivo JS con la validación personalizada -->
