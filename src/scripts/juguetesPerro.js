@@ -1,46 +1,5 @@
-const dogToys = new ItemsController();
-
-dogToys.addItem(
-    "Hueso mordedor",
-    "../assets/productos/juguetes-perro/hueso_mordedor.png",
-    "Mordedor resistente para fortalecer dientes y encías.",
-    "$95.00 MXN" 
-);
-
-dogToys.addItem(
-    "Frisbee flexible",
-    "../assets/productos/juguetes-perro/frisbee.png",
-    "Disco ligero para jugar al aire libre.",
-    "$150.00 MXN"
-);
-
-dogToys.addItem(
-    "Peluche con sonido",
-    "../assets/productos/juguetes-perro/peluche-sonido.png",
-    "Peluche suave con sonido para entretenimiento.",
-    "$180.00 MXN"
-);
-
-dogToys.addItem(
-    "Juguete dispensador",
-    "../assets/productos/juguetes-perro/dispensador_premios.png",
-    "Juguete interactivo para colocar premios o croquetas.",
-    "$210.00 MXN"
-);
-
-dogToys.addItem(
-    "Aro mordedor",
-    "../assets/productos/juguetes-perro/aro_mordedor.png",
-    "Aro resistente para morder, lanzar y jugar.",
-    "$130.00 MXN"
-);
-
-dogToys.addItem(
-    "Pelota con textura",
-    "../assets/productos/juguetes-perro/juguete_texturizado.png",
-    "Pelota con relieve para estimular el juego y la mordida.",
-    "$145.00 MXN"
-);
+﻿// Filtramos los juguetes del store global
+const dogToysItems = store.items.filter(item => item.category === "juguete");
 
 // Índice inicial del carrusel
 let currentDogToyIndex = 0;
@@ -50,11 +9,9 @@ function getItemsPerView() {
     if (window.innerWidth < 576) {
         return 1;
     }
-
     if (window.innerWidth < 992) {
         return 2;
     }
-
     return 4;
 }
 
@@ -62,7 +19,6 @@ function renderDogToys(products) {
     const dogToysList = document.getElementById("dogToysList");
 
     if (!dogToysList) {
-        console.error("No se encontró el contenedor dogToysList");
         return;
     }
 
@@ -83,7 +39,6 @@ function renderDogToys(products) {
                 <div class="image">
                     <img src="${product.img}" alt="${product.name}" class="product-img">
                 </div>
-
                 <span class="title">${product.name}</span>
                 <span class="price">${product.price}</span>
             </div>
@@ -97,39 +52,39 @@ function renderDogToys(products) {
 const prevDogToy = document.getElementById("prevDogToy");
 const nextDogToy = document.getElementById("nextDogToy");
 
-prevDogToy.addEventListener("click", function () {
-    const itemsPerView = getItemsPerView();
-    const maxIndex = dogToys.items.length - itemsPerView;
+if (prevDogToy && nextDogToy) {
+    prevDogToy.addEventListener("click", function () {
+        const itemsPerView = getItemsPerView();
+        const maxIndex = dogToysItems.length - itemsPerView;
 
-    if (currentDogToyIndex > 0) {
-        currentDogToyIndex--;
-    } else {
-        currentDogToyIndex = maxIndex;
-    }
+        if (currentDogToyIndex > 0) {
+            currentDogToyIndex--;
+        } else {
+            currentDogToyIndex = maxIndex;
+        }
+        renderDogToys(dogToysItems);
+    });
 
-    renderDogToys(dogToys.items);
-});
+    nextDogToy.addEventListener("click", function () {
+        const itemsPerView = getItemsPerView();
+        const maxIndex = dogToysItems.length - itemsPerView;
 
-nextDogToy.addEventListener("click", function () {
-    const itemsPerView = getItemsPerView();
-    const maxIndex = dogToys.items.length - itemsPerView;
-
-    if (currentDogToyIndex < maxIndex) {
-        currentDogToyIndex++;
-    } else {
-        currentDogToyIndex = 0;
-    }
-
-    renderDogToys(dogToys.items);
-});
+        if (currentDogToyIndex < maxIndex) {
+            currentDogToyIndex++;
+        } else {
+            currentDogToyIndex = 0;
+        }
+        renderDogToys(dogToysItems);
+    });
+}
 
 // Si cambia el tamaño de pantalla, reinicia el carrusel
 window.addEventListener("resize", function () {
     currentDogToyIndex = 0;
-    renderDogToys(dogToys.items);
+    renderDogToys(dogToysItems);
 });
 
 // Render inicial
-renderDogToys(dogToys.items);
-
-console.log("Juguetes para perros:", dogToys.items);
+document.addEventListener("DOMContentLoaded", () => {
+    renderDogToys(dogToysItems);
+});
