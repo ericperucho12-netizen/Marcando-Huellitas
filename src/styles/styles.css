@@ -1194,3 +1194,58 @@ footer{
         margin-top: 1rem;
     }
 }
+
+/* Carrusel juguetes para perros */
+.dog-toys-carousel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.dog-toys-carousel #dogToysList {
+    flex: 1;
+}
+
+/* Solo imágenes de juguetes para perros */
+.dog-toys-carousel .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botones del carrusel */
+.dog-toys-carousel .carousel-btn {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: none;
+    background-color: #FFCFD2;
+    color: #2F2F3A;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dog-toys-carousel .carousel-btn:hover {
+    background-color: #F1C0E8;
+}
+
+@media (max-width: 576px) {
+    .dog-toys-carousel {
+        gap: 0.5rem;
+    }
+
+    .dog-toys-carousel .carousel-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 1.6rem;
+    }
+}
