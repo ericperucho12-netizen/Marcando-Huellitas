@@ -1,4 +1,4 @@
-﻿// Filtramos los juguetes del store global
+// Filtramos los juguetes del store global
 const dogToysItems = store.items.filter(item => item.category === "juguete");
 
 // Índice inicial del carrusel
@@ -36,9 +36,7 @@ function renderDogToys(products) {
         productCard.classList.add("dog-toy-card-wrapper");
         productCard.innerHTML = `
             <div class="product-item-card">
-                <div class="image">
-                    <img src="${product.img}" alt="${product.name}" class="product-img">
-                </div>
+                <img src="${product.img}" class="product-img" alt="${product.name}" style="width: 100%; height: 180px; object-fit: cover;">
                 <span class="title">${product.name}</span>
                 <span class="price">${product.price}</span>
             </div>
