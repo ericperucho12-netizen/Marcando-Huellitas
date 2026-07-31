@@ -198,4 +198,164 @@ store.addItem(
     "juguete"
 );
 
+// --- 3. ACCESORIOS PARA PERROS ---
+store.addItem(
+    "Cama en forma de avellana",
+    "../assets/productos/accesorios_perro/producto-cama-perro.png",
+    "Cama en forma de avellana para razas pequeñas.",
+    "$550.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Cama Multicolor",
+    "../assets/productos/accesorios_perro/producto-cama2-perro.png",
+    "Cama Multicolor para razas pequeñas.",
+    "$350.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Cama Tejido Confort",
+    "../assets/productos/accesorios_perro/cama3_perro.png",
+    "Cama suave con diseño trenzado que brinda comodidad y un descanso acogedor para tu mascota.",
+    "$450.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Casa Blanca Premium ",
+    "../assets/productos/accesorios_perro/casa1_perro.png",
+    "Casa resistente para interiores",
+    "$2,450.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Casa de Madera para Exterior ",
+    "../assets/productos/accesorios_perro/producto-casa3-perro.png",
+    "Casa resistente con acabado color madera, ideal para brindar protección y comodidad a tu perro en exteriores",
+    "$2,950.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Casa para Exterior ",
+    "../assets/productos/accesorios_perro/casa5_perro.png",
+    "Casa resistente, ideal para brindar protección y comodidad a tu perro en exteriores",
+    "$2,950.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Casa Confort Translúcida ",
+    "../assets/productos/accesorios_perro/casa6_perro.png",
+    "Casa de plástico resistente con diseño moderno, ideal para brindar un refugio cómodo y seguro.",
+    "$2,950.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Kit de Platos ",
+    "../assets/productos/accesorios_perro/platos4_perros.png",
+    "Incluye dos platos resistentes para alimento y agua, ideales para el uso diario.",
+    "$320.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Kit de Platos con Base de Madera",
+    "../assets/productos/accesorios_perro/producto-plato-perro.png",
+    "Set de dos platos con base de madera resistente, ideal para servir alimento y agua con estilo.",
+    "$550.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Comedero Doble con Soporte",
+    "../assets/productos/accesorios_perro/platos5_perro.png",
+    "Dos platos de acero inoxidable con estructura resistente, ideales para alimento y agua.",
+    "$530.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Comedero Elevado Premium Ámbar",
+    "../assets/productos/accesorios_perro/producto-plato2-perro.png",
+    "Brinda mayor comodidad a tu mascota durante la hora de la comida",
+    "$499.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Plato colorido",
+    "../assets/productos/accesorios_perro/producto-plato3-perro.png",
+    "Haz que la hora de la comida sea más divertida con este plato colorido para mascotas.",
+    "$120.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Arcoíris con Collar Reflectante",
+    "../assets/productos/accesorios_perro/producto-correa-perro.png",
+    "Añade estilo y seguridad a cada paseo con este set de correa y collar premium",
+    "$349.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Correa Azul Clásica",
+    "../assets/productos/accesorios_perro/correa2_perro.png",
+    "Disfruta de paseos cómodos y seguros con esta correa azul clásica para perros",
+    "$175.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Set Verde Pet",
+    "../assets/productos/accesorios_perro/producto-coleccion-perro.png",
+    "Set de pechera, collar y correa en color verde. Fabricado con materiales resistentes y cómodos, ideal para paseos seguros y con estilo.",
+    "$549.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Pechera Colorida",
+    "../assets/productos/accesorios_perro/producto-pechera-perro.png",
+    "Pechera para perros con diseño colorido, elaborada con materiales resistentes y cómodos.",
+    "$349.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Chaleco Naranja Aventurero",
+    "../assets/productos/accesorios_perro/ropa_chaleconaranja2_perro.png",
+    "Chaleco para perro cómodo y ligero, ideal para paseos diarios.",
+    "$249.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Chaleco Verde Fresco",
+    "../assets/productos/accesorios_perro/ropa_chalecoverde_perro.png",
+    "Chaleco cómodo y ligero para perros, ideal para brindar estilo y protección durante sus paseos",
+    "$349.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Chaleco Arcoíris Pet",
+    "../assets/productos/accesorios_perro/ropa_chalecolores_perro.png",
+    "Chaleco colorido para perros con diseño alegre y cómodo, ideal para darle un toque divertido a sus paseos",
+    "$349.00 MXN",
+    "accesorio"
+);
+
+store.addItem(
+    "Playera Rayitas Pet",
+    "../assets/productos/accesorios_perro/ropa_playera_perro.png",
+    "Playera de rayas para perros, ligera y cómoda, perfecta para mantener a tu mascota con un estilo moderno",
+    "$219.99 MXN",
+    "accesorio"
+);
 // Exportar store si usamos modulos, o dejarlo global en el navegador
