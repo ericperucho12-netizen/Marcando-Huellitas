@@ -2,42 +2,42 @@ const dogToys = new ItemsController();
 
 dogToys.addItem(
     "Hueso mordedor",
-    "/src/assets/productos/hueso_mordedor.png",
+    "../assets/productos/juguetes-perro/hueso_mordedor.png",
     "Mordedor resistente para fortalecer dientes y encías.",
-    "$95.00 MXN"
+    "$95.00 MXN" 
 );
 
 dogToys.addItem(
     "Frisbee flexible",
-    "/src/assets/productos/frisbee.png",
+    "../assets/productos/juguetes-perro/frisbee.png",
     "Disco ligero para jugar al aire libre.",
     "$150.00 MXN"
 );
 
 dogToys.addItem(
     "Peluche con sonido",
-    "/src/assets/productos/peluche-sonido.png",
+    "../assets/productos/juguetes-perro/peluche-sonido.png",
     "Peluche suave con sonido para entretenimiento.",
     "$180.00 MXN"
 );
 
 dogToys.addItem(
     "Juguete dispensador",
-    "/src/assets/productos/dispensador_premios.png",
+    "../assets/productos/juguetes-perro/dispensador_premios.png",
     "Juguete interactivo para colocar premios o croquetas.",
     "$210.00 MXN"
 );
 
 dogToys.addItem(
     "Aro mordedor",
-    "/src/assets/productos/aro_mordedor.png",
+    "../assets/productos/juguetes-perro/aro_mordedor.png",
     "Aro resistente para morder, lanzar y jugar.",
     "$130.00 MXN"
 );
 
 dogToys.addItem(
     "Pelota con textura",
-    "/src/assets/productos/juguete_texturizado.png",
+    "../assets/productos/juguetes-perro/juguete_texturizado.png",
     "Pelota con relieve para estimular el juego y la mordida.",
     "$145.00 MXN"
 );
