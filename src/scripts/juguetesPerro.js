@@ -1,4 +1,3 @@
-// Filtramos los juguetes del store global
 const dogToysItems = store.items.filter(item => item.category === "juguete");
 
 function getItemsPerView() {
@@ -9,28 +8,36 @@ function getItemsPerView() {
 
 function renderDogToys() {
     const dogToysList = document.getElementById("dogToysList");
+
     if (!dogToysList) return;
 
     const itemsPerView = getItemsPerView();
     let html = "";
 
     for (let i = 0; i < dogToysItems.length; i += itemsPerView) {
-        let chunk = dogToysItems.slice(i, i + itemsPerView);
-        let activeClass = i === 0 ? "active" : "";
-        
-        let chunkHtml = chunk.map(product => `
-            <div class="col d-flex justify-content-center">
-                <div class="product-item-card" style="width: 100%; max-width: 250px;">
-                    <img src="${product.img}" class="product-img" alt="${product.name}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
-                    <span class="title text-center mt-2 d-block fw-bold">${product.name}</span>
-                    <span class="price text-center d-block text-success">${product.price}</span>
+        const chunk = dogToysItems.slice(i, i + itemsPerView);
+        const activeClass = i === 0 ? "active" : "";
+
+        const chunkHtml = chunk.map(product => `
+            <div class="col-auto">
+                <div class="product-item-card">
+                    <div class="image">
+                        <img 
+                            src="${product.img}" 
+                            class="product-img" 
+                            alt="${product.name}"
+                        >
+                    </div>
+
+                    <span class="title">${product.name}</span>
+                    <span class="price">${product.price}</span>
                 </div>
             </div>
         `).join("");
 
         html += `
             <div class="carousel-item ${activeClass}">
-                <div class="row justify-content-center">
+                <div class="row g-4 justify-content-center">
                     ${chunkHtml}
                 </div>
             </div>
@@ -38,21 +45,27 @@ function renderDogToys() {
     }
 
     dogToysList.innerHTML = html;
+
+    const dogToysCarousel = document.getElementById("dogToysCarousel");
+    if (dogToysCarousel && typeof bootstrap !== "undefined" && bootstrap.Carousel) {
+        bootstrap.Carousel.getOrCreateInstance(dogToysCarousel, {
+            interval: 6000,
+            pause: "hover"
+        }).cycle();
+    }
 }
 
-// Bandera para optimizar el resize
 let lastItemsPerView = getItemsPerView();
 
 window.addEventListener("resize", function () {
     const currentItemsPerView = getItemsPerView();
+
     if (currentItemsPerView !== lastItemsPerView) {
         lastItemsPerView = currentItemsPerView;
         renderDogToys();
     }
 });
 
-// Render inicial
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     renderDogToys();
 });
-
