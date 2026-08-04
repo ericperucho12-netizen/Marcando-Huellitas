@@ -1,34 +1,73 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿
+function getFoodItemsPerView() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 4;
+}
+
+function renderDogFood() {
     const dogFoodList = document.getElementById("dogFoodList");
-    const prevBtn = document.getElementById("prevDogFood");
-    const nextBtn = document.getElementById("nextDogFood");
 
-    if (dogFoodList && typeof store !== "undefined") {
-        const items = store.getItems ? store.getItems() : store.items;
-        const alimentos = items.filter(item => item.category === "alimento");
+    if (!dogFoodList || typeof store === "undefined") return;
 
-        if (alimentos.length > 0) {
-            dogFoodList.innerHTML = alimentos.map(producto => `
-                <div class="p-2 flex-shrink-0" style="width: 250px;">
-                    <div class="card h-100 border-0 shadow-sm p-3 rounded-4 bg-white text-center">
-                        <img src="${producto.img}" class="card-img-top rounded-3 mb-2" alt="${producto.name}" style="height: 180px; object-fit: cover;">
-                        <div class="card-body p-0 d-flex flex-column justify-content-between">
-                            <h6 class="card-title fw-bold text-dark mb-2" style="font-size: 0.95rem;">${producto.name}</h6>
-                            <span class="fw-bold text-success" style="font-size: 0.9rem;">${producto.price}</span>
-                        </div>
-                    </div>
+    const items = store.getItems ? store.getItems() : store.items;
+
+    const dogFoodItems = items.filter(item =>
+        item.category && item.category.trim().toLowerCase() === "alimento"
+    );
+
+    console.log("Alimentos encontrados:", dogFoodItems);
+
+    const itemsPerView = getFoodItemsPerView();
+    let html = "";
+
+    for (let i = 0; i < dogFoodItems.length; i += itemsPerView) {
+        const chunk = dogFoodItems.slice(i, i + itemsPerView);
+        const activeClass = i === 0 ? "active" : "";
+
+        const chunkHtml = chunk.map(product => `
+            <div class="col d-flex justify-content-center">
+                <div class="product-item-card" style="width:110%; max-width:200px;">
+                    <img 
+                        src="${product.img}" 
+                        class="product-img"
+                        alt="${product.name}"
+                        style="width:100%; height:180px; object-fit:cover; border-radius:8px;"
+                    >
+                    <span class="title mt-2 d-block">
+                        ${product.name}
+                    </span>
+                    <span class="price text-center d-block">
+                        ${product.price}
+                    </span>
                 </div>
-            `).join("");
-        }
+            </div>
+        `).join("");
+
+        html += `
+            <div class="carousel-item ${activeClass}">
+                <div class="row justify-content-center">
+                    ${chunkHtml}
+                </div>
+            </div>
+        `;
     }
 
-    // Navegación horizontal para las flechas
-    if (prevBtn && nextBtn && dogFoodList) {
-        prevBtn.addEventListener("click", () => {
-            dogFoodList.scrollBy({ left: -260, behavior: "smooth" });
-        });
-        nextBtn.addEventListener("click", () => {
-            dogFoodList.scrollBy({ left: 260, behavior: "smooth" });
-        });
+    dogFoodList.innerHTML = html;
+    console.log("HTML alimentos generado");
+}
+
+let lastFoodItemsPerView = getFoodItemsPerView();
+
+window.addEventListener("resize", function () {
+    const currentFoodItemsPerView = getFoodItemsPerView();
+
+    if (currentFoodItemsPerView !== lastFoodItemsPerView) {
+        lastFoodItemsPerView = currentFoodItemsPerView;
+        renderDogFood();
     }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderDogFood();
 });
