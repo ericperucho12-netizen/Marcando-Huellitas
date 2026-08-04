@@ -1209,7 +1209,18 @@ footer{
         margin-top: 1rem;
     }
 }
+.dog-food-carousel, 
+.dog-toys-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
 
+#dogFoodList .card, 
+#dogToysList .card {
+    flex: 0 0 250px; 
+}
 /* Carrusel juguetes para perros */
 .dog-toys-carousel {
     display: flex;
