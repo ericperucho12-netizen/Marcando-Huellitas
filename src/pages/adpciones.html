@@ -32,7 +32,198 @@
     <!-- Contenedor del Navbar -->
     <div data-template="../layout/navbar.html" data-root="../.." data-src=".."></div>
 
+    <!-- SECCIÓN HERO DE ADOPCIONES -->
+    <section class="hero-about">
+        <div class="container">
+            <div class="row align-items-center hero-row text-center text-lg-start">
+                <div class="col-lg-7 hero-content">
+                    <span class="hero-badge">Encuentra un amigo</span>
+                    <h1 class="hero-title">
+                        BUSCANDO <span>HOGAR</span>
+                    </h1>
+                    <p class="hero-description">
+                        Cada uno de estos peluditos ha pasado por momentos difíciles pero están listos para darte el amor más sincero. ¡Dale un giro a su vida!
+                    </p>
+                </div>
+                <div class="col-lg-5 hero-image-content">
+                    <div class="hero-blob">
+                        <img src="../assets/nosotros/seccion/PerroGato.png" alt="Mascotas buscando hogar" class="hero-pets-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- SECCIÓN DE PERFILES DE MASCOTAS CON FILTROS INNOVADORES -->
+    <section class="py-5" style="background-color: var(--Lemon-Chiffon);">
+        <div class="container">
+            
+            <!-- Botones de Filtrado Interactivo -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto">
+                    <div class="btn-group p-1 bg-white shadow-sm rounded-pill" role="group" aria-label="Filtro de mascotas">
+                        <button type="button" class="btn rounded-pill px-4 active filter-btn" data-filter="all">Todos 🐾</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="perro">Perritos 🐶</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="gato">Gatitos 🐱</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de Perfiles de Mascotas -->
+            <div class="row g-4" id="pet-grid">
+
+                <!-- Card 1: Bruno -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-3 shadow-sm" style="width: 35px; height: 35px;"><i class="bi bi-heart text-danger"></i></button>
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Bruno" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1">Bruno</h3>
+                            <p class="text-muted small mb-3">Labrador Mix · 2 años</p>
+                            
+                            <!-- Etiquetas informativas -->
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-blue text-dark px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Sano</span>
+                            </div>
+
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#petModal"
+                                data-name="Bruno"
+                                data-age="2 años"
+                                data-breed="Labrador Mix"
+                                data-img="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
+                                data-desc="Bruno es un perrito sumamente alegre, le encanta correr en el parque y convive excelente con niños y otros perros. Busca una familia activa que lo llene de amor.">
+                                Conoce más 🐾
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Mochi -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">En Proceso</span>
+                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-3 shadow-sm" style="width: 35px; height: 35px;"><i class="bi bi-heart text-danger"></i></button>
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Mochi" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1">Mochi</h3>
+                            <p class="text-muted small mb-3">Siamés Mix · 1 año</p>
+                            
+                            <!-- Etiquetas informativas -->
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-purple text-dark px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Tranquilo</span>
+                            </div>
+
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#petModal"
+                                data-name="Mochi"
+                                data-age="1 año"
+                                data-breed="Siamés Mix"
+                                data-img="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
+                                data-desc="Mochi es un tierno minino amante de las siestas al rayo del sol. Es muy independiente pero adora recibir mimos por las tardes.">
+                                Conoce más 🐾
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Luna -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-3 shadow-sm" style="width: 35px; height: 35px;"><i class="bi bi-heart text-danger"></i></button>
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1">Luna</h3>
+                            <p class="text-muted small mb-3">Jack Russell · 10 meses</p>
+                            
+                            <!-- Etiquetas informativas -->
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activa</span>
+                            </div>
+
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#petModal"
+                                data-name="Luna"
+                                data-age="10 meses"
+                                data-breed="Jack Russell"
+                                data-img="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
+                                data-desc="Luna es una cachorrita llena de energía, ideal para hogares con espacios amplios o personas que disfruten salir a correr al aire libre.">
+                                Conoce más 🐾
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Canela -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-3 shadow-sm" style="width: 35px; height: 35px;"><i class="bi bi-heart text-danger"></i></button>
+                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1">Canela</h3>
+                            <p class="text-muted small mb-3">Maltés Mix · 4 meses</p>
+                            
+                            <!-- Etiquetas informativas -->
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-cyan text-dark px-2 py-1 small">Cachorra</span>
+                            </div>
+
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#petModal"
+                                data-name="Canela"
+                                data-age="4 meses"
+                                data-breed="Maltés Mix"
+                                data-img="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
+                                data-desc="Canela fue rescatada junto a sus hermanos. Es muy dócil, le gusta dormir en el regazo y se adapta perfectamente a departamentos.">
+                                Conoce más 🐾
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DINÁMICO PARA "CONOCE MÁS" -->
+    <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 overflow-hidden">
+                <div class="modal-header bg-pastel-pink border-0">
+                    <h5 class="modal-title fw-bold" id="petModalLabel" style="font-family: var(--font-titles);">Detalles de la Mascota</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <img id="modal-pet-img" src="" alt="Mascota" class="img-fluid rounded-4 shadow-sm w-100" style="height: 300px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modal-pet-name" class="fw-bold text-dark mb-1"></h3>
+                            <p id="modal-pet-breed" class="text-muted mb-2"></p>
+                            <p class="mb-3"><strong>Edad:</strong> <span id="modal-pet-age"></span></p>
+                            <hr>
+                            <p id="modal-pet-desc" class="text-secondary mb-4"></p>
+                            <a href="Contactenos.html" class="btn btn-hero w-100 py-2">¡Quiero adoptar a este peludito! ♡</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contenedor del Footer -->
     <div data-template="../layout/footer.html" data-root="../.." data-src=".."></div>
