@@ -1,53 +1,73 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿
+function getFoodItemsPerView() {
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
+    return 4;
+}
+
+function renderDogFood() {
     const dogFoodList = document.getElementById("dogFoodList");
-    const prevBtn = document.getElementById("prevDogFood");
-    const nextBtn = document.getElementById("nextDogFood");
 
-    if (dogFoodList && typeof store !== "undefined") {
-        // Filtrar solo los alimentos
-        const alimentos = store.items.filter(item => item.category === "alimento");
+    if (!dogFoodList || typeof store === "undefined") return;
 
-        dogFoodList.innerHTML = alimentos.map(producto => `
-            <div class="col-auto">
-                <div class="product-item-card">
-                    <img src="${producto.img}" class="product-img" alt="${producto.name}" style="width: 100%; height: 180px; object-fit: cover;">
-                    <span class="title">${producto.name}</span>
-                    <span class="price">${producto.price}</span>
+    const items = store.getItems ? store.getItems() : store.items;
+
+    const dogFoodItems = items.filter(item =>
+        item.category && item.category.trim().toLowerCase() === "alimento"
+    );
+
+    console.log("Alimentos encontrados:", dogFoodItems);
+
+    const itemsPerView = getFoodItemsPerView();
+    let html = "";
+
+    for (let i = 0; i < dogFoodItems.length; i += itemsPerView) {
+        const chunk = dogFoodItems.slice(i, i + itemsPerView);
+        const activeClass = i === 0 ? "active" : "";
+
+        const chunkHtml = chunk.map(product => `
+            <div class="col d-flex justify-content-center">
+                <div class="product-item-card" style="width:110%; max-width:200px;">
+                    <img 
+                        src="${product.img}" 
+                        class="product-img"
+                        alt="${product.name}"
+                        style="width:100%; height:180px; object-fit:cover; border-radius:8px;"
+                    >
+                    <span class="title mt-2 d-block">
+                        ${product.name}
+                    </span>
+                    <span class="price text-center d-block">
+                        ${product.price}
+                    </span>
                 </div>
             </div>
         `).join("");
-    } else {
-        console.error("No se encontró el contenedor dogFoodList o los datos de alimentosPerro.");
+
+        html += `
+            <div class="carousel-item ${activeClass}">
+                <div class="row justify-content-center">
+                    ${chunkHtml}
+                </div>
+            </div>
+        `;
     }
 
-    // 2. Lógica del Carrusel (Desplazamiento Horizontal)
-    const container = dogFoodList.parentElement; 
-    let scrollAmount = 0;
-    const cardWidth = 260; 
-    const scrollStep = 3; 
+    dogFoodList.innerHTML = html;
+    console.log("HTML alimentos generado");
+}
 
-    // Función para actualizar el estado de los botones (opcional, para deshabilitar si no hay más scroll)
-    const updateButtons = () => {
-        prevBtn.disabled = container.scrollLeft <= 0;
-        nextBtn.disabled = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-    };
+let lastFoodItemsPerView = getFoodItemsPerView();
 
-    if (prevBtn && nextBtn && container) {
-        // Botón "Anterior" (‹)
-        prevBtn.addEventListener("click", () => {
-            container.scrollBy({ left: -(cardWidth * scrollStep), behavior: 'smooth' });
-            setTimeout(updateButtons, 500); // Esperamos a que termine la animación
-        });
+window.addEventListener("resize", function () {
+    const currentFoodItemsPerView = getFoodItemsPerView();
 
-        // Botón "Siguiente" (›)
-        nextBtn.addEventListener("click", () => {
-            container.scrollBy({ left: (cardWidth * scrollStep), behavior: 'smooth' });
-            setTimeout(updateButtons, 500);
-        });
-
-        // Inicializar botones
-        container.addEventListener('scroll', updateButtons);
-        window.addEventListener('resize', updateButtons);
-        updateButtons();
+    if (currentFoodItemsPerView !== lastFoodItemsPerView) {
+        lastFoodItemsPerView = currentFoodItemsPerView;
+        renderDogFood();
     }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderDogFood();
 });
