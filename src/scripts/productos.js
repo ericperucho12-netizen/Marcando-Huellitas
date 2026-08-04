@@ -7,18 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const alertContainer = document.getElementById("alertContainer");
     const btnClearAll = document.getElementById("btnClearAll");
 
-    // Simulador de Rol (Cambiar a true para probar como Administrador)
+    // Simulador de Rol Administrador (cambiar a true para mostrar el panel)
     const isAdmin = true; 
 
-    if (isAdmin) {
-        if (adminPanel) adminPanel.style.display = "block";
-        if (accessDeniedMsg) accessDeniedMsg.style.display = "none";
-    } else {
-        if (adminPanel) adminPanel.style.display = "none";
-        if (accessDeniedMsg) accessDeniedMsg.style.display = "block";
+    if (adminPanel && accessDeniedMsg) {
+        if (isAdmin) {
+            adminPanel.style.display = "block";
+            accessDeniedMsg.style.display = "none";
+        } else {
+            adminPanel.style.display = "none";
+            accessDeniedMsg.style.display = "block";
+        }
     }
 
-    // Obtener productos guardados en localStorage
     let productos = JSON.parse(localStorage.getItem("productosAdmin")) || [];
     renderizarProductos();
 
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const price = document.getElementById("productPrice").value.trim();
             const category = document.getElementById("productCategory").value;
 
-            // Validación
             if (!name || !img || !description || !price || !category) {
                 mostrarAlerta("Por favor completa todos los campos obligatorios.", "danger");
                 return;
@@ -49,18 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             if (id) {
-                // Editar
                 productos = productos.map(p => p.id === parseInt(id) ? nuevoProducto : p);
                 mostrarAlerta("Producto actualizado con éxito.", "success");
             } else {
-                // Crear
                 productos.push(nuevoProducto);
                 mostrarAlerta("Producto agregado correctamente.", "success");
             }
 
             localStorage.setItem("productosAdmin", JSON.stringify(productos));
             productForm.reset();
-            document.getElementById("productId").value = "";
+            if (document.getElementById("productId")) {
+                document.getElementById("productId").value = "";
+            }
             renderizarProductos();
         });
     }

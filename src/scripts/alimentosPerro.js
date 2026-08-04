@@ -4,50 +4,31 @@
     const nextBtn = document.getElementById("nextDogFood");
 
     if (dogFoodList && typeof store !== "undefined") {
-        // Filtrar solo los alimentos
-        const alimentos = store.items.filter(item => item.category === "alimento");
+        const items = store.getItems ? store.getItems() : store.items;
+        const alimentos = items.filter(item => item.category === "alimento");
 
-        dogFoodList.innerHTML = alimentos.map(producto => `
-            <div class="col-auto">
-                <div class="product-item-card">
-                    <img src="${producto.img}" class="product-img" alt="${producto.name}" style="width: 100%; height: 180px; object-fit: cover;">
-                    <span class="title">${producto.name}</span>
-                    <span class="price">${producto.price}</span>
+        if (alimentos.length > 0) {
+            dogFoodList.innerHTML = alimentos.map(producto => `
+                <div class="p-2 flex-shrink-0" style="width: 250px;">
+                    <div class="card h-100 border-0 shadow-sm p-3 rounded-4 bg-white text-center">
+                        <img src="${producto.img}" class="card-img-top rounded-3 mb-2" alt="${producto.name}" style="height: 180px; object-fit: cover;">
+                        <div class="card-body p-0 d-flex flex-column justify-content-between">
+                            <h6 class="card-title fw-bold text-dark mb-2" style="font-size: 0.95rem;">${producto.name}</h6>
+                            <span class="fw-bold text-success" style="font-size: 0.9rem;">${producto.price}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        `).join("");
-    } else {
-        console.error("No se encontró el contenedor dogFoodList o los datos de alimentosPerro.");
+            `).join("");
+        }
     }
 
-    // 2. Lógica del Carrusel (Desplazamiento Horizontal)
-    const container = dogFoodList.parentElement; 
-    let scrollAmount = 0;
-    const cardWidth = 260; 
-    const scrollStep = 3; 
-
-    // Función para actualizar el estado de los botones (opcional, para deshabilitar si no hay más scroll)
-    const updateButtons = () => {
-        prevBtn.disabled = container.scrollLeft <= 0;
-        nextBtn.disabled = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-    };
-
-    if (prevBtn && nextBtn && container) {
-        // Botón "Anterior" (‹)
+    // Navegación horizontal para las flechas
+    if (prevBtn && nextBtn && dogFoodList) {
         prevBtn.addEventListener("click", () => {
-            container.scrollBy({ left: -(cardWidth * scrollStep), behavior: 'smooth' });
-            setTimeout(updateButtons, 500); // Esperamos a que termine la animación
+            dogFoodList.scrollBy({ left: -260, behavior: "smooth" });
         });
-
-        // Botón "Siguiente" (›)
         nextBtn.addEventListener("click", () => {
-            container.scrollBy({ left: (cardWidth * scrollStep), behavior: 'smooth' });
-            setTimeout(updateButtons, 500);
+            dogFoodList.scrollBy({ left: 260, behavior: "smooth" });
         });
-
-        // Inicializar botones
-        container.addEventListener('scroll', updateButtons);
-        window.addEventListener('resize', updateButtons);
-        updateButtons();
     }
 });
