@@ -772,8 +772,65 @@ footer{
     
 }
 
+/* =========================================
+            PAGÍNA DE ADOPCIONES
+   ========================================= */
 
+.team-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+/* Colores pasteles personalizados de etiquetas */
+.bg-pastel-green {
+    background-color: #d1e7dd;
+}
+
+.bg-pastel-blue {
+    background-color: #cff4fc;
+}
+
+.bg-pastel-orange {
+    background-color: #ffe5d0;
+}
+
+.bg-pastel-purple {
+    background-color: #e2d9f3;
+}
+
+.bg-pastel-pink {
+    background-color: #f8d7da;
+}
+
+.bg-pastel-yellow {
+    background-color: #fff3cd;
+}
+
+.bg-pastel-cyan {
+    background-color: #c3e6cb;
+}
+
+/* Botones de filtro activos */
+.filter-btn {
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover {
+    color: #212529;
+}
+
+.filter-btn.active {
+    color: #212529;
+    background-color: #ffffff;
+}
 
 
 
