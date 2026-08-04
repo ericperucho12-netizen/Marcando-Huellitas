@@ -1,135 +1,58 @@
-const dogToys = new ItemsController();
+// Filtramos los juguetes del store global
+const dogToysItems = store.items.filter(item => item.category === "juguete");
 
-dogToys.addItem(
-    "Hueso mordedor",
-    "../assets/productos/juguetes-perro/hueso_mordedor.png",
-    "Mordedor resistente para fortalecer dientes y encías.",
-    "$95.00 MXN" 
-);
-
-dogToys.addItem(
-    "Frisbee flexible",
-    "../assets/productos/juguetes-perro/frisbee.png",
-    "Disco ligero para jugar al aire libre.",
-    "$150.00 MXN"
-);
-
-dogToys.addItem(
-    "Peluche con sonido",
-    "../assets/productos/juguetes-perro/peluche-sonido.png",
-    "Peluche suave con sonido para entretenimiento.",
-    "$180.00 MXN"
-);
-
-dogToys.addItem(
-    "Juguete dispensador",
-    "../assets/productos/juguetes-perro/dispensador_premios.png",
-    "Juguete interactivo para colocar premios o croquetas.",
-    "$210.00 MXN"
-);
-
-dogToys.addItem(
-    "Aro mordedor",
-    "../assets/productos/juguetes-perro/aro_mordedor.png",
-    "Aro resistente para morder, lanzar y jugar.",
-    "$130.00 MXN"
-);
-
-dogToys.addItem(
-    "Pelota con textura",
-    "../assets/productos/juguetes-perro/juguete_texturizado.png",
-    "Pelota con relieve para estimular el juego y la mordida.",
-    "$145.00 MXN"
-);
-
-// Índice inicial del carrusel
-let currentDogToyIndex = 0;
-
-// Define cuántas cards se muestran según el tamaño de pantalla
 function getItemsPerView() {
-    if (window.innerWidth < 576) {
-        return 1;
-    }
-
-    if (window.innerWidth < 992) {
-        return 2;
-    }
-
+    if (window.innerWidth < 576) return 1;
+    if (window.innerWidth < 992) return 2;
     return 4;
 }
 
-function renderDogToys(products) {
+function renderDogToys() {
     const dogToysList = document.getElementById("dogToysList");
-
-    if (!dogToysList) {
-        console.error("No se encontró el contenedor dogToysList");
-        return;
-    }
+    if (!dogToysList) return;
 
     const itemsPerView = getItemsPerView();
+    let html = "";
 
-    const visibleProducts = products.slice(
-        currentDogToyIndex,
-        currentDogToyIndex + itemsPerView
-    );
-
-    dogToysList.innerHTML = "";
-
-    visibleProducts.forEach(function (product) {
-        const productCard = document.createElement("div");
-        productCard.classList.add("dog-toy-card-wrapper");
-        productCard.innerHTML = `
-            <div class="product-item-card">
-                <div class="image">
-                    <img src="${product.img}" alt="${product.name}" class="product-img">
+    for (let i = 0; i < dogToysItems.length; i += itemsPerView) {
+        let chunk = dogToysItems.slice(i, i + itemsPerView);
+        let activeClass = i === 0 ? "active" : "";
+        
+        let chunkHtml = chunk.map(product => `
+            <div class="col d-flex justify-content-center">
+                <div class="product-item-card" style="width: 100%; max-width: 250px;">
+                    <img src="${product.img}" class="product-img" alt="${product.name}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                    <span class="title text-center mt-2 d-block fw-bold">${product.name}</span>
+                    <span class="price text-center d-block text-success">${product.price}</span>
                 </div>
+            </div>
+        `).join("");
 
-                <span class="title">${product.name}</span>
-                <span class="price">${product.price}</span>
+        html += `
+            <div class="carousel-item ${activeClass}">
+                <div class="row justify-content-center">
+                    ${chunkHtml}
+                </div>
             </div>
         `;
+    }
 
-        dogToysList.appendChild(productCard);
-    });
+    dogToysList.innerHTML = html;
 }
 
-// Botones del carrusel
-const prevDogToy = document.getElementById("prevDogToy");
-const nextDogToy = document.getElementById("nextDogToy");
+// Bandera para optimizar el resize
+let lastItemsPerView = getItemsPerView();
 
-prevDogToy.addEventListener("click", function () {
-    const itemsPerView = getItemsPerView();
-    const maxIndex = dogToys.items.length - itemsPerView;
-
-    if (currentDogToyIndex > 0) {
-        currentDogToyIndex--;
-    } else {
-        currentDogToyIndex = maxIndex;
-    }
-
-    renderDogToys(dogToys.items);
-});
-
-nextDogToy.addEventListener("click", function () {
-    const itemsPerView = getItemsPerView();
-    const maxIndex = dogToys.items.length - itemsPerView;
-
-    if (currentDogToyIndex < maxIndex) {
-        currentDogToyIndex++;
-    } else {
-        currentDogToyIndex = 0;
-    }
-
-    renderDogToys(dogToys.items);
-});
-
-// Si cambia el tamaño de pantalla, reinicia el carrusel
 window.addEventListener("resize", function () {
-    currentDogToyIndex = 0;
-    renderDogToys(dogToys.items);
+    const currentItemsPerView = getItemsPerView();
+    if (currentItemsPerView !== lastItemsPerView) {
+        lastItemsPerView = currentItemsPerView;
+        renderDogToys();
+    }
 });
 
 // Render inicial
-renderDogToys(dogToys.items);
+document.addEventListener("DOMContentLoaded", () => {
+    renderDogToys();
+});
 
-console.log("Juguetes para perros:", dogToys.items);

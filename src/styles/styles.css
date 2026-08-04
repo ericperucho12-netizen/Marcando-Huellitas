@@ -479,142 +479,84 @@ body.page-leaving {
 }
 
 
-
-/*==========================
-    7.FOOTER
-===========================*/
+/* =========================================
+   7. PIE DE PÁGINA (FOOTER)
+   ========================================= */
 
 footer{
     position: relative;
     overflow: hidden;
-    background-color: rgba(111,86,66,.9);
+    background-color: rgba(111, 86, 66, 0.9);
+    
 }
 
 .wave svg{
-    width:100%;
-    height:auto;
-    display:block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .logo-footer{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
 }
 
 .huellita{
-    width:clamp(80px,12vw,120px);
-    margin-bottom:8px;
+    width: 100px;
+    margin-bottom: 5px;
 }
 
 .titulo-footer{
-    margin:0;
-    text-align:center;
-}
-
-.blanco{
-    color:white;
-    font-family:var(--font-titles);
-    font-weight:700;
-    font-size:clamp(1.5rem,4vw,2rem);
+    font-family: var(--font-titles);
+    text-align: center;
+    margin: 0;
 }
 
 .rosa{
-    color:#FF8AAE;
-    font-family:var(--font-titles);
-    font-weight:700;
-    font-size:clamp(1.5rem,4vw,2rem);
+    color: #FF8AAE;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 2rem;
+
 }
 
+.blanco{
+    color: white;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 2rem;
+}
 .eslogan{
-    margin-top:10px;
-    color:white;
-    font-family:var(--font-text-secondary);
-    font-weight:700;
-    font-size:clamp(.9rem,2vw,1rem);
-    text-align:center;
+    color: white;
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+     font-size: 1rem;
+     text-align: center;
+
 }
-
-
 .lista{
-    color:#FF8AAE;
-    font-family:var(--font-titles);
-    font-weight:700;
-    font-size:clamp(1.3rem,3vw,1.5rem);
-    margin-bottom:18px;
-    text-align:left;
-}
-
-.list-unstyled{
-
-    padding-left:0;
-    margin:0;
+    color: #FF8AAE;
+    font-family: var(--font-titles);
+    font-weight: 700;
+     font-size: 1.5rem;
 
 }
-
 .textlist{
-
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:12px;
-    color:white;
-    text-decoration:none;
-    font-family:var(--font-text-secondary);
-    font-weight:600;
-    margin-bottom:14px;
-    transition:.3s;
+        color: white;
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+     font-size: 1rem;
+     text-align: center;
 
 }
 
-.textlist:hover{
-
-    color:#FF8AAE;
-    transform:translateX(5px);
-
-}
-
-/*----ICONOS----- */
-
-.icon-circle{
-
-    width:30px;
-    height:30px;
-
-    background:#A9B96B;
-
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    flex-shrink:0;
-
-    transition:.3s;
-
-}
-
-.icon-circle i{
-
-    color:white;
-    font-size:15px;
-
-}
-
-.textlist:hover .icon-circle{
-
-    background:#FF8AAE;
-
-}
-
- .mensaje{
+.mensaje{
         color: #A9B96B;
     font-family: var(--font-titles);
-    font-weight: 550;
-    max-width:300px;
+    font-weight: 600;
+        max-width:230px;
 }
 
 
@@ -628,233 +570,148 @@ footer{
     max-width:200px;;
 }
 
+
 .footer-bottom{
-
     background:#A9B96B;
-
-    color:white;
-
+    padding:12px;
     text-align:center;
+    font-size:12px;
+}
+/*color del texto*/
 
-    padding:15px;
-
-    font-size:clamp(.75rem,2vw,.9rem);
-
+.social-list a{
+    color: white;           
+    text-decoration: none;
 }
 
-/*---IMÁGENES DECORATIVAS----*/
+/*color del icono*/
+.social-list i{
+    color: #A9B96B;           
+    font-size: 18px;
+    margin-right: 10px;
+}
 
+.textlist{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.icon-circle{
+    width: 27px;
+    height: 27px;
+    background: #A9B96B;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-circle i{
+    color: white;
+    font-size: 16px;
+}
+
+/*imagenes de fondo*/
 .perro1{
-    position:absolute;
-    width:clamp(50px,6vw,100px);
-    opacity:.10;
-    top:18%;
-    right:10%;
-    pointer-events:none;
+    position: absolute;
+
+    width: clamp(50px, 6vw, 100px);
+    height: auto;
+
+    opacity: 0.1;
+
+    top: 18%;
+    right: 10%;
 }
 
 .perro2{
-    position:absolute;
-    width:clamp(70px,9vw,90px);
-    opacity:.10;
-    bottom:10%;
-    left:2%;
-    pointer-events:none;
+    position: absolute;
+
+    width: clamp(70px, 9vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 45%;       /* Distancia desde abajo */
+    left: 18%;          /* La coloca en el centro */
+    
 }
 
 .perro3{
-    position:absolute;
-    width:clamp(50px,6vw,90px);
-    opacity:.10;
-    top:72%;
-    left:32%;
-    pointer-events:none;
+    position: absolute;
+
+    width: clamp(50px, 6vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    top: 65%;
+    left: 62%;
 }
 
 .gatito1{
-    position:absolute;
-    width:clamp(50px,6vw,90px);
-    opacity:.10;
-    bottom:13%;
-    left:85%;
-    pointer-events:none;
+    position: absolute;
+
+    width: clamp(50px, 6vw, 90px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 13%;       /* Distancia desde abajo */
+    left: 82%;        
+    
 }
 
 .gatito2{
-    position:absolute;
-    width:clamp(48px,5vw,88px);
-    opacity:.10;
-    bottom:71%;
-    left:50%;
-    pointer-events:none;
-}
+    position: absolute;
 
+    width:clamp(48px, 5vw, 88px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 67%;       /* Distancia desde abajo */
+    left: 46%;         
+    
+}
 .gatito3{
-    position:absolute;
-    width:clamp(60px,7vw,100px);
-    opacity:.10;
-    bottom:70%;
-    left:5%;
-    pointer-events:none;
+    position: absolute;
+
+    width: clamp(60px, 7vw, 100px);
+    height: auto;
+
+    opacity: 0.1;
+
+    bottom: 70%;       /* Distancia desde abajo */
+    left: 5%;         /* La coloca en el centro */
+    
 }
 
 .gatito4{
-    position:absolute;
-    width:clamp(50px,6vw,90px);
-    opacity:.10;
-    bottom:10%;
-    left:60%;
-    pointer-events:none;
-}
+    position: absolute;
 
-.imagen-footer2{
-    width: clamp(50px, 6vw, 100px);
+    width: clamp(50px, 6vw, 90px);
     height: auto;
+
+    opacity: 0.1;
+
+    bottom: 10%;       /* Distancia desde abajo */
+    left: 37%;         /* La coloca en el centro */
+    
 }
 
-/*=========================================
-            TABLETS
-==========================================*/
+.imagen-lado{
+    position: absolute;
+    width: clamp(60px, 7vw, 100px);
+    height: auto;
 
-@media (max-width:991px){
-
-    footer .row{
-        row-gap:2rem;
-    }
-
-    .logo-footer{
-        margin-bottom:15px;
-    }
-
-
-    .lista{
-        text-align:left;
-        margin-bottom:15px;
-    }
-
-    .mensaje,
-    .submensaje{
-        text-align:center;
-    }
-
-    .list-unstyled{
-
-        padding-left:0;
-        padding-right:0;
-        margin:0;
-
-    }
-
-    .textlist{
-
-        display:flex;
-        align-items:center;
-        justify-content:flex-start;
-        gap:10px;
-        text-decoration:none;
-    }
-
-    .mensaje,
-    .submensaje{
-
-        max-width:100%;
-        margin:auto;
-    }
-
-    /* Ocultar imágenes decorativas */
-
-    .perro1,
-    .perro2,
-    .perro3,
-    .gatito1,
-    .gatito2,
-    .gatito3,
-    .gatito4{
-
-        display:none;
-
-    }
-
+    bottom: 37%;
+    left: 98%;
+    transform: translateX(-100%);       
 }
-
-
-/*=========================================
-            CELULARES
-==========================================*/
-
-@media (max-width:767px){
-
-    footer{
-        text-align:center;
-    }
-
-
-    footer .row{
-        row-gap:2.5rem;
-    }
-
-
-    .logo-footer{
-        margin-bottom:20px;
-    }
-
-    .lista{
-
-        text-align:center;
-        margin-bottom:15px;
-
-    }
-
-    .list-unstyled{
-
-        padding-left:0;
-        margin:0 auto;
-        width:max-content;
-
-    }
-
-    .textlist{
-
-        display:flex;
-        align-items:center;
-        justify-content:flex-start;
-        gap:10px;
-        text-decoration:none;
-
-    }
-
-
-    .mensaje{
-
-        margin-top:10px;
-        text-align:center;
-
-    }
-
-    .submensaje{
-
-        padding:0 15px;
-        text-align:center;
-
-    }
-
-
-    /* Ocultar imágenes decorativas */
-
-    .perro1,
-    .perro2,
-    .perro3,
-    .gatito1,
-    .gatito2,
-    .gatito3,
-    .gatito4{
-
-        display:none;
-
-    }
-
-}
-
 
 
 /* =========================================
@@ -902,13 +759,9 @@ footer{
 .col-lg-6 h1,
 .col-lg-6 h2,
 .col-lg-6 p,
-.text-center,
 .texto-contacto,
-.nombre-form,
-.correo-form,
-.telefono-form,
-.mensaje-form,
-.enviar-form{
+.forms
+{
     font-family: var(--font-text-secondary)
 }
 
@@ -1073,228 +926,4 @@ footer{
   height: 100%;
   display: grid;
   place-items: center;
-}
-
-
-/*Carrito*/
-.cart-page {
-    background-color: #FBF8CC;
-    min-height: 70vh;
-}
-
-.cart-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-
-.cart-card,
-.order-summary {
-    background-color: #ffffff;
-    border-radius: 28px;
-    padding: 2rem;
-}
-
-.cart-card h2,
-.order-summary h2 {
-    font-family: var(--font-text-secondary);
-    font-weight: 700;
-    color: #2F2F3A;
-    margin-bottom: 1.5rem;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.cart-product-img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-}
-
-.cart-product-info {
-    flex: 1;
-}
-
-.cart-product-info h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-}
-
-.cart-product-info p {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.quantity-controls button {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    background-color: #ffffff;
-    font-weight: 700;
-}
-
-.cart-price {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 2rem;
-}
-
-.remove-item {
-    border: none;
-    background: transparent;
-    font-weight: 700;
-}
-
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.15rem;
-    margin-bottom: 1.5rem;
-}
-
-.summary-row.total {
-    font-weight: 700;
-}
-
-.btn-checkout,
-.btn-continue {
-    width: 100%;
-    border-radius: 30px;
-    padding: 0.8rem;
-    font-weight: 700;
-    margin-top: 1rem;
-}
-
-.btn-checkout {
-    background-color: #FF6FAE;
-    color: white;
-    border: none;
-}
-
-.btn-continue {
-    background-color: transparent;
-    color: #F1C0E8;
-    border: 3px solid #F1C0E8;
-}
-
-/*Responsive del carrito*/
-@media (max-width: 991px) {
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-price {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .order-summary {
-        margin-top: 1rem;
-    }
-}
-.dog-food-carousel, 
-.dog-toys-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-#dogFoodList .card, 
-#dogToysList .card {
-    flex: 0 0 250px; 
-}
-/* Carrusel juguetes para perros */
-.dog-toys-carousel {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
-.dog-toys-carousel #dogToysList {
-    flex: 1;
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    justify-items: center;
-}
-
-/* Contenedor individual de cada card */
-.dog-toy-card-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-/* Solo imagen dentro de tus cards */
-.dog-toys-carousel .product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Botones del carrusel */
-.dog-toys-carousel .carousel-btn {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    border-radius: 50%;
-    border: none;
-    background-color: #FFCFD2;
-    color: #2F2F3A;
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.dog-toys-carousel .carousel-btn:hover {
-    background-color: #F1C0E8;
-}
-
-/* Tablet: 2 cards */
-@media (max-width: 991px) {
-    .dog-toys-carousel #dogToysList {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Móvil: 1 card */
-@media (max-width: 576px) {
-    .dog-toys-carousel {
-        gap: 0.5rem;
-    }
-
-    .dog-toys-carousel #dogToysList {
-        grid-template-columns: 1fr;
-    }
-
-    .dog-toys-carousel .carousel-btn {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-        font-size: 1.6rem;
-    }
 }
