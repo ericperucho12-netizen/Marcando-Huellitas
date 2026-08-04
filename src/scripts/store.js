@@ -4,11 +4,10 @@
         this.currentId = currentId;
     }
 
-    // Funcion requerida por la tarea para agregar elementos
+    //Agregar un nuevo objeto/publicación
     addItem(name, img, description, price, category) {
         this.currentId++;
 
-        // Objeto que cumple estrictamente con el JSON de la tarea
         const item = {
             id: this.currentId,
             name: name,
@@ -20,11 +19,40 @@
         };
 
         this.items.push(item);
+        return item;
+    }
+
+    //Modificar/Actualizar un objeto existente por su ID
+    updateItem(id, updatedData) {
+        const index = this.items.findIndex(item => item.id === id);
+        if (index !== -1) {
+            // Mantiene el ID y fecha original, actualiza los campos proporcionados
+            this.items[index] = { ...this.items[index], ...updatedData };
+            return this.items[index];
+        }
+        return null; // Retorna null si no lo encuentra
+    }
+
+    //Eliminar un objeto específico por su ID
+    deleteItem(id) {
+        const initialLength = this.items.length;
+        this.items = this.items.filter(item => item.id !== id);
+        return this.items.length < initialLength; // Retorna true si se eliminó algo
+    }
+
+    //Eliminar toda la lista de objetos
+    clearItems() {
+        this.items = [];
+    }
+
+    //Método para btener todos los objetos
+    getItems() {
+        return this.items;
     }
 }
 
 // Instancia global para manejar todos los productos
-const store = new ProductController();
+export const store = new ProductController();
 
 // --- 1. ALIMENTOS PARA PERROS ---
 store.addItem(
