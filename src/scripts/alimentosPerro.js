@@ -1,4 +1,3 @@
-﻿
 function getFoodItemsPerView() {
     if (window.innerWidth < 576) return 1;
     if (window.innerWidth < 992) return 2;
@@ -10,13 +9,11 @@ function renderDogFood() {
 
     if (!dogFoodList || typeof store === "undefined") return;
 
-    const items = store.getItems ? store.getItems() : store.items;
+    const items = typeof store.getItems === "function" ? store.getItems() : store.items;
 
     const dogFoodItems = items.filter(item =>
         item.category && item.category.trim().toLowerCase() === "alimento"
     );
-
-    console.log("Alimentos encontrados:", dogFoodItems);
 
     const itemsPerView = getFoodItemsPerView();
     let html = "";
@@ -26,8 +23,8 @@ function renderDogFood() {
         const activeClass = i === 0 ? "active" : "";
 
         const chunkHtml = chunk.map(product => `
-            <div class="col d-flex justify-content-center">
-                <div class="product-item-card" style="width:110%; max-width:200px;">
+            <div class="col-12 col-sm-auto">
+                <div class="product-item-card" style="max-width:200px;">
                     <img 
                         src="${product.img}" 
                         class="product-img"
@@ -46,7 +43,7 @@ function renderDogFood() {
 
         html += `
             <div class="carousel-item ${activeClass}">
-                <div class="row justify-content-center">
+                <div class="row g-4 justify-content-center">
                     ${chunkHtml}
                 </div>
             </div>
@@ -54,7 +51,6 @@ function renderDogFood() {
     }
 
     dogFoodList.innerHTML = html;
-    console.log("HTML alimentos generado");
 }
 
 let lastFoodItemsPerView = getFoodItemsPerView();
