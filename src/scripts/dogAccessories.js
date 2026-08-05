@@ -27,7 +27,7 @@ function renderDogAccessories() {
         const activeClass = i === 0 ? "active" : "";
 
         const chunkHtml = chunk.map(product => `
-            <div class="col-auto">
+            <div class="col-12 col-sm-auto">
                 <div class="product-item-card">
                     <div class="image">
                         <img 
