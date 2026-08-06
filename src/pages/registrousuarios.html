@@ -77,7 +77,12 @@
                                 <!-- 4. Contraseña -->
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="password" aria-label="Mostrar u ocultar contraseña">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
                                     <div class="invalid-feedback">
                                         Por favor ingresa una contraseña.
                                     </div>
@@ -86,14 +91,19 @@
                                 <!-- 5. Confirmar Contraseña (Validación) -->
                                 <div class="mb-4">
                                     <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+                                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="confirmPassword" aria-label="Mostrar u ocultar contraseña">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
                                     <div class="invalid-feedback">
                                         Las contraseñas deben coincidir.
                                     </div>
                                 </div>
 
                                 <!-- Botón de envío -->
-                                 <div id="alertContainer"></div>
+                                <div id="alertContainer"></div>
                                 <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
                                     Registrarse
                                 </button>

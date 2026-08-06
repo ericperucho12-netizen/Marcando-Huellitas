@@ -56,7 +56,46 @@ body.page-leaving {
     pointer-events: none;
 }
 
+.toggle-password {
+    color: var(--salmon1);
+    border-color: var(--salmon1);
+    background-color: transparent;
+    border-left: 0;
+}
 
+.toggle-password:hover,
+.toggle-password:focus,
+.toggle-password:active {
+    color: var(--White);
+    background-color: var(--salmon1);
+    border-color: var(--salmon1);
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
+}
+
+#registerForm .form-control {
+    border: 1.5px solid #f5c8a8;
+    border-radius: 12px;
+    padding: 0.7rem 0.9rem;
+    transition: all 0.2s ease;
+}
+
+#registerForm .form-control:focus {
+    border-color: var(--salmon1);
+    box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
+}
+
+#registerForm .btn-primary {
+    background: linear-gradient(135deg, #ff8c69, #f27b4b);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(91, 155, 99, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#registerForm .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(242, 123, 75, 0.28);
+}
 
 .historia-text {
     text-align: center;
