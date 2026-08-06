@@ -280,6 +280,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    
+    /*Mostrar y ocultar contraseña en formulario registro */
+    const toggleButtons = document.querySelectorAll(".toggle-password");
+
+    toggleButtons.forEach(function(button){
+        button.addEventListener("click", function(event){
+            event.preventDefault();
+
+            const targetId = button.getAttribute("data-target");
+            const passwordInput = document.getElementById(targetId);
+            const icon = button.querySelector("i");
+
+            if (!passwordInput) return;
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
+        });
+    });
 
 });
