@@ -256,5 +256,20 @@ document.addEventListener("DOMContentLoaded", function () {
     initTogglePassword();
     // Inicializar validación en tiempo real para login
     initLoginFieldValidation();
+    
+    //usuario de prueba para login
+    const usuarioPrueba = {
+    nombre: "Andrea Pérez",
+    telefono: "5512345678",
+    email: "andrea_123@gmail.com",
+    password: "Contraseña123"
+};
+
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+if (!usuarios.some(usuario => usuario.email === usuarioPrueba.email)) {
+    usuarios.push(usuarioPrueba);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+}
 
 });
