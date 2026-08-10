@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar alerta reutilizable
     function mostrarAlerta(container, tipo, mensaje) {
         if (!container) return;
+        // Estilo especial para errores de login: icono y borde destacado
+        if (container === loginAlertContainer && tipo === 'danger') {
+            container.innerHTML = `
+        <div class="alert auth-alert-danger alert-dismissible fade show" role="alert">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-exclamation-circle-fill fs-4 me-2" aria-hidden="true"></i>
+                <div class="flex-grow-1">${mensaje}</div>
+                <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        </div>
+        `;
+            return;
+        }
+
+        // Comportamiento por defecto
         container.innerHTML = `
         <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
             ${mensaje}
@@ -66,6 +81,50 @@ document.addEventListener("DOMContentLoaded", function () {
             campo.classList.remove("is-valid");
             campo.classList.remove("is-invalid");
         });
+    }
+
+    // Validación en tiempo real para campos de login (misma lógica/estilos que registro)
+    function initLoginFieldValidation() {
+        const userOrEmailEl = document.getElementById("userOrEmail");
+        const passwordLoginEl = document.getElementById("passwordLogin");
+
+        if (userOrEmailEl) {
+            // marcar como válido si cumple mientras escribe
+            userOrEmailEl.addEventListener('input', function () {
+                const val = userOrEmailEl.value.trim();
+                if (val === '') { userOrEmailEl.classList.remove('is-valid'); userOrEmailEl.classList.remove('is-invalid'); return; }
+                if (val.includes('@')) {
+                    if (validarEmail(val)) marcarCorrecto(userOrEmailEl); else { userOrEmailEl.classList.remove('is-valid'); userOrEmailEl.classList.remove('is-invalid'); }
+                } else {
+                    if (validarNombre(val)) marcarCorrecto(userOrEmailEl); else { userOrEmailEl.classList.remove('is-valid'); userOrEmailEl.classList.remove('is-invalid'); }
+                }
+            });
+
+            // al perder foco, mostrar error si no es válido
+            userOrEmailEl.addEventListener('blur', function () {
+                const val = userOrEmailEl.value.trim();
+                if (val === '') { userOrEmailEl.classList.remove('is-valid'); userOrEmailEl.classList.remove('is-invalid'); return; }
+                if (val.includes('@')) {
+                    if (!validarEmail(val)) marcarError(userOrEmailEl, 'Ingresa un correo válido'); else marcarCorrecto(userOrEmailEl);
+                } else {
+                    if (!validarNombre(val)) marcarError(userOrEmailEl, 'Ingresa un nombre/usuario válido (mín 3 letras)'); else marcarCorrecto(userOrEmailEl);
+                }
+            });
+        }
+
+        if (passwordLoginEl) {
+            passwordLoginEl.addEventListener('input', function () {
+                const val = passwordLoginEl.value;
+                if (val === '') { passwordLoginEl.classList.remove('is-valid'); passwordLoginEl.classList.remove('is-invalid'); return; }
+                if (validarPassword(val)) marcarCorrecto(passwordLoginEl); else { passwordLoginEl.classList.remove('is-valid'); passwordLoginEl.classList.remove('is-invalid'); }
+            });
+
+            passwordLoginEl.addEventListener('blur', function () {
+                const val = passwordLoginEl.value;
+                if (val === '') { passwordLoginEl.classList.remove('is-valid'); passwordLoginEl.classList.remove('is-invalid'); return; }
+                if (!validarPassword(val)) marcarError(passwordLoginEl, 'Mínimo 8 caracteres, una mayúscula, una minúscula y un número'); else marcarCorrecto(passwordLoginEl);
+            });
+        }
     }
 
     // Manejo de registro (si existe el formulario)
@@ -166,6 +225,10 @@ document.addEventListener("DOMContentLoaded", function () {
             loginSection.classList.add("d-none");
             registerSection.classList.remove("d-none");
             initTogglePassword();
+            // limpiar validaciones de login al mostrar registro
+            const userOrEmailEl = document.getElementById("userOrEmail");
+            const passwordLoginEl = document.getElementById("passwordLogin");
+            limpiarValidaciones([userOrEmailEl, passwordLoginEl]);
             // un botón activo y el otro no activo
             showRegisterBtn.classList.add('active');
             if (showLoginBtn) showLoginBtn.classList.remove('active');
@@ -177,6 +240,13 @@ document.addEventListener("DOMContentLoaded", function () {
             registerSection.classList.add("d-none");
             loginSection.classList.remove("d-none");
             initTogglePassword();
+            // limpiar validaciones de registro al mostrar login
+            const nombre = document.getElementById("nombre");
+            const telefono = document.getElementById("telefono");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+            limpiarValidaciones([nombre, telefono, email, password, confirmPassword]);
             // un botón activo y el otro no activo
             showLoginBtn.classList.add('active');
             if (showRegisterBtn) showRegisterBtn.classList.remove('active');
@@ -184,5 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     initTogglePassword();
+    // Inicializar validación en tiempo real para login
+    initLoginFieldValidation();
 
 });

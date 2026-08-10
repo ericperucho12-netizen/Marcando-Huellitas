@@ -134,6 +134,30 @@ body.page-leaving {
     background: rgba(255,140,105,0.06);
 }
 
+/* Estilo mejorado para alerta de credenciales inválidas (login) */
+.auth-alert-danger {
+    background: linear-gradient(90deg, rgba(255,140,105,0.06), rgba(242,123,75,0.03));
+    border-left: 4px solid var(--salmon1);
+    color: var(--salmon1);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+}
+.auth-alert-danger .bi-exclamation-circle-fill {
+    color: var(--salmon1);
+}
+.auth-alert-danger .btn-close {
+    filter: hue-rotate(330deg) brightness(0.9);
+}
+
+/* pequeña animación de entrada */
+.auth-alert-danger {
+    animation: alertPop 220ms ease both;
+}
+@keyframes alertPop {
+    from { transform: translateY(-6px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 .historia-text {
     text-align: center;
 }
