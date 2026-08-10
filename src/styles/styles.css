@@ -72,19 +72,22 @@ body.page-leaving {
     box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
 }
 
-#registerForm .form-control {
+#registerForm .form-control,
+#loginForm .form-control {
     border: 1.5px solid #f5c8a8;
     border-radius: 12px;
     padding: 0.7rem 0.9rem;
     transition: all 0.2s ease;
 }
 
-#registerForm .form-control:focus {
+#registerForm .form-control:focus,
+#loginForm .form-control:focus {
     border-color: var(--salmon1);
     box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
 }
 
-#registerForm .btn-primary {
+#registerForm .btn-primary,
+#loginForm .btn-primary {
     background: linear-gradient(135deg, #ff8c69, #f27b4b);
     border: none;
     border-radius: 999px;
@@ -92,9 +95,67 @@ body.page-leaving {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#registerForm .btn-primary:hover {
+#registerForm .btn-primary:hover,
+#loginForm .btn-primary:hover {
     transform: translateY(-1px);
     box-shadow: 0 10px 20px rgba(242, 123, 75, 0.28);
+}
+
+/* Botones de alternancia (Crear cuenta / Iniciar sesión) */
+.auth-toggle-btn {
+    font-family: var(--font-text-secondary);
+    background: transparent;
+    color: var(--salmon1);
+    border: 1.5px solid var(--salmon1);
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    font-weight: 700;
+    box-shadow: none;
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+}
+
+/* Estado activo: relleno con gradiente (cuando el usuario hizo clic) */
+.auth-toggle-btn.active {
+    background: linear-gradient(135deg, #ff8c69, #f27b4b);
+    color: var(--White);
+    border: 1px solid transparent;
+    box-shadow: 0 8px 18px rgba(242, 123, 75, 0.18);
+    transform: translateY(-1px);
+}
+
+/* Hover solo realza cuando está activo; si no está activo se mantiene como outline */
+.auth-toggle-btn.active:hover,
+.auth-toggle-btn.active:focus {
+    box-shadow: 0 10px 22px rgba(242, 123, 75, 0.28);
+    outline: none;
+}
+
+.auth-toggle-btn:hover:not(.active) {
+    background: rgba(255,140,105,0.06);
+}
+
+/* Estilo mejorado para alerta de credenciales inválidas (login) */
+.auth-alert-danger {
+    background: linear-gradient(90deg, rgba(255,140,105,0.06), rgba(242,123,75,0.03));
+    border-left: 4px solid var(--salmon1);
+    color: var(--salmon1);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+}
+.auth-alert-danger .bi-exclamation-circle-fill {
+    color: var(--salmon1);
+}
+.auth-alert-danger .btn-close {
+    filter: hue-rotate(330deg) brightness(0.9);
+}
+
+/* pequeña animación de entrada */
+.auth-alert-danger {
+    animation: alertPop 220ms ease both;
+}
+@keyframes alertPop {
+    from { transform: translateY(-6px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .historia-text {
