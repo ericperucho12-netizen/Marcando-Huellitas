@@ -178,37 +178,117 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // login
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const userOrEmail = document.getElementById("userOrEmail");
-            const passwordLogin = document.getElementById("passwordLogin");
+if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-            limpiarValidaciones([userOrEmail, passwordLogin]);
-            if (loginAlertContainer) loginAlertContainer.innerHTML = "";
+        const userOrEmail =
+            document.getElementById("userOrEmail");
 
-            const userOrEmailVal = userOrEmail ? userOrEmail.value.trim() : "";
-            const passwordVal = passwordLogin ? passwordLogin.value : "";
+        const passwordLogin =
+            document.getElementById("passwordLogin");
 
-            let valido = true;
-            if (!validarCampoVacio(userOrEmailVal)) { marcarError(userOrEmail, "Ingresa usuario o correo"); valido = false; }
-            if (!validarCampoVacio(passwordVal)) { marcarError(passwordLogin, "Ingresa contraseña"); valido = false; }
-            if (!valido) return;
+        limpiarValidaciones([
+            userOrEmail,
+            passwordLogin
+        ]);
 
-            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            const usuarioEncontrado = usuarios.find(function (u) {
-                return (u.email === userOrEmailVal || u.nombre === userOrEmailVal) && u.password === passwordVal;
+        if (loginAlertContainer) {
+            loginAlertContainer.innerHTML = "";
+        }
+
+        const userOrEmailVal =
+            userOrEmail
+                ? userOrEmail.value.trim()
+                : "";
+
+        const passwordVal =
+            passwordLogin
+                ? passwordLogin.value
+                : "";
+
+        let valido = true;
+
+        if (!validarCampoVacio(userOrEmailVal)) {
+            marcarError(
+                userOrEmail,
+                "Ingresa usuario o correo"
+            );
+            valido = false;
+        }
+
+        if (!validarCampoVacio(passwordVal)) {
+            marcarError(
+                passwordLogin,
+                "Ingresa contraseña"
+            );
+            valido = false;
+        }
+
+        if (!valido) {
+            return;
+        }
+
+        const usuariosLogin =
+            JSON.parse(
+                localStorage.getItem("usuarios")
+            ) || [];
+
+        const usuarioEncontrado =
+            usuariosLogin.find(function (usuario) {
+                const coincideUsuario =
+                    usuario.email === userOrEmailVal ||
+                    usuario.nombre === userOrEmailVal;
+
+                const coincidePassword =
+                    usuario.password === passwordVal;
+
+                return (
+                    coincideUsuario &&
+                    coincidePassword
+                );
             });
 
-            if (usuarioEncontrado) {
-                mostrarAlerta(loginAlertContainer, 'success', 'Sesión iniciada correctamente');
-                loginForm.reset();
-                limpiarValidaciones([userOrEmail, passwordLogin]);
-            } else {
-                mostrarAlerta(loginAlertContainer, 'danger', 'Usuario o contraseña inválidos');
-            }
-        });
-    }
+        if (usuarioEncontrado) {
+
+            sessionStorage.setItem(
+                "usuarioActual",
+                JSON.stringify(
+                    usuarioEncontrado
+                )
+            );
+
+            mostrarAlerta(
+                loginAlertContainer,
+                "success",
+                "¡Bienvenido/a, " +
+                    usuarioEncontrado.nombre +
+                    "!"
+            );
+
+            loginForm.reset();
+
+            limpiarValidaciones([
+                userOrEmail,
+                passwordLogin
+            ]);
+
+            setTimeout(function () {
+                window.location.href =
+                    "../../index.html";
+            }, 1200);
+
+        } else {
+
+            mostrarAlerta(
+                loginAlertContainer,
+                "danger",
+                "Usuario o contraseña inválidos"
+            );
+        }
+
+    });
+} 
 
     // Vista entre login y registro
     const showRegisterBtn = document.getElementById("showRegisterBtn");
@@ -265,11 +345,19 @@ document.addEventListener("DOMContentLoaded", function () {
     password: "Contraseña123"
 };
 
-const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const usuariosGuardados =
+    JSON.parse(localStorage.getItem("usuarios")) || [];
 
-if (!usuarios.some(usuario => usuario.email === usuarioPrueba.email)) {
-    usuarios.push(usuarioPrueba);
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-}
+if (
+    !usuariosGuardados.some(
+        usuario => usuario.email === usuarioPrueba.email
+    )
+) {
+    usuariosGuardados.push(usuarioPrueba);
 
-});
+    localStorage.setItem(
+        "usuarios",
+        JSON.stringify(usuariosGuardados)
+      );
+} 
+}); 
