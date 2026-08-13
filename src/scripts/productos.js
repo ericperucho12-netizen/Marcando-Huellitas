@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (btnToggleAdmin && adminPanel) {
         btnToggleAdmin.addEventListener("click", () => {
             if (adminPanel.style.display === "none") {
-                adminPanel.style.display = "block";
+                adminPanel.style.display = "flex"; // El nuevo diseño requiere flex
                 btnToggleAdmin.textContent = "Cerrar Panel Administrador";
             } else {
                 adminPanel.style.display = "none";
@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const imagePreview = document.getElementById("imagen-preview");
             if(imagePreview){
                 imagePreview.innerHTML = "Sin imagen";
+                imagePreview.style.backgroundImage = "";
             }
 
             renderizarProductos();
@@ -85,30 +86,30 @@ document.addEventListener("DOMContentLoaded", function () {
             const col = document.createElement("div");
             col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
 
-            col.innerHTML = \
+            col.innerHTML = `
                 <div class="product-item-card h-100">
                     <img
-                        src="\"
+                        src="${escaparAtributo(producto.imagen)}"
                         class="product-img"
-                        alt="\"
+                        alt="${escaparAtributo(producto.nombre)}"
                         style="width: 100%; height: 180px; object-fit: cover;"
                     >
                     <span class="title">
-                        \
+                        ${escaparHTML(producto.nombre)}
                     </span>
                     <span class="price">
-                        \
+                        ${formatearPrecio(producto.precio)}
                     </span>
-                    <div class="mt-2 d-flex justify-content-between">
-                        <button type="button" class="btn btn-sm btn-outline-primary btn-edit" data-id="\" aria-label="Editar producto">
-                            <i class="bi bi-pencil"></i>
+                    <div class="mt-2 d-flex justify-content-between" style="width: 100%; position: absolute; top: 10px; px: 10px; z-index: 10;">
+                        <button type="button" class="btn btn-sm btn-light btn-edit mx-1 shadow-sm" data-id="${escaparAtributo(producto.id)}" aria-label="Editar producto">
+                            <i class="bi bi-pencil" style="color: #0aa738;"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-danger btn-delete" data-id="\" aria-label="Eliminar producto">
-                            <i class="bi bi-trash"></i>
+                        <button type="button" class="btn btn-sm btn-light btn-delete mx-1 shadow-sm" data-id="${escaparAtributo(producto.id)}" aria-label="Eliminar producto">
+                            <i class="bi bi-trash" style="color: red;"></i>
                         </button>
                     </div>
                 </div>
-            \;
+            `;
 
             productsList.appendChild(col);
         });
@@ -152,12 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if(producto.imagen && producto.imagen !== "https://via.placeholder.com/150"){
                     const imagePreview = document.getElementById("imagen-preview");
                     if(imagePreview){
-                        imagePreview.innerHTML = \<img src="\" alt="Vista previa">\;
+                        imagePreview.innerHTML = `<img src="${producto.imagen}" alt="Vista previa">`;
                     }
                 }
 
                 if (adminPanel) {
-                    adminPanel.style.display = "block";
+                    adminPanel.style.display = "flex";
                     if (btnToggleAdmin) btnToggleAdmin.textContent = "Cerrar Panel Administrador";
                     window.scrollTo({
                         top: adminPanel.offsetTop - 20,
