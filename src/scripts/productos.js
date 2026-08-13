@@ -1,33 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const adminPanel = document.getElementById("adminPanel");
-    const btnToggleAdmin = document.getElementById("btnToggleAdmin");
     const dynamicProductsSection = document.getElementById("dynamicProductsSection");
     const productsList = document.getElementById("productsList");
+    const emptyStateMsg = document.getElementById("emptyStateMsg");
     const productoForm = document.getElementById("producto-form");
+    const adminToggleContainer = document.getElementById("adminToggleContainer");
 
     // Simulador de rol administrador
     const isAdmin = true;
 
-    if (!isAdmin && btnToggleAdmin) {
-        btnToggleAdmin.style.display = "none";
-    }
-
-    // Toggle de Admin Panel
-    if (btnToggleAdmin && adminPanel) {
-        btnToggleAdmin.addEventListener("click", () => {
-            if (adminPanel.style.display === "none") {
-                adminPanel.style.display = "flex"; // El nuevo diseño requiere flex
-                btnToggleAdmin.textContent = "Cerrar Panel Administrador";
-            } else {
-                adminPanel.style.display = "none";
-                btnToggleAdmin.textContent = "Activar Modo Administrador";
-            }
-        });
+    if (isAdmin && adminToggleContainer) {
+        adminToggleContainer.style.display = "block";
     }
 
     let productos = JSON.parse(localStorage.getItem("productosAdmin")) || [];
+    let currentFilter = "todos"; // todos, perro, gato
 
     renderizarProductos();
+
+    // Filtros por Pestañas (Tabs)
+    const filterTabs = document.querySelectorAll("#productTabs .nav-link");
+    filterTabs.forEach(tab => {
+        tab.addEventListener("click", function(e) {
+            currentFilter = this.getAttribute("data-filter");
+            renderizarProductos();
+        });
+    });
 
     // Escuchar el evento personalizado emitido por adminForms.js
     if (productoForm) {
@@ -46,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 oferta: data.oferta,
                 precio_oferta: data.precio_oferta ? Number(data.precio_oferta) : null,
                 cantidad: data.cantidad,
-                especie: data.especie,
+                especie: data.especie ? data.especie.toLowerCase() : "todos", // Por defecto
                 createdAt: new Date().toISOString().split("T")[0]
             };
 
@@ -68,6 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             renderizarProductos();
+
+            // Cerrar modal de Bootstrap automáticamente
+            const modalEl = document.getElementById('adminModal');
+            if (modalEl && typeof bootstrap !== 'undefined') {
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) {
+                    modal.hide();
+                }
+            }
         });
     }
 
@@ -75,36 +81,49 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!productsList) return;
         productsList.innerHTML = "";
 
-        if (productos.length === 0) {
-            if (dynamicProductsSection) dynamicProductsSection.style.display = "none";
+        // Filtrar productos
+        let productosFiltrados = productos;
+        if (currentFilter !== "todos") {
+            productosFiltrados = productos.filter(p => p.especie.includes(currentFilter));
+        }
+
+        if (productosFiltrados.length === 0) {
+            if (emptyStateMsg) emptyStateMsg.style.display = "block";
             return;
         }
 
-        if (dynamicProductsSection) dynamicProductsSection.style.display = "block";
+        if (emptyStateMsg) emptyStateMsg.style.display = "none";
 
-        productos.forEach((producto) => {
+        productosFiltrados.forEach((producto) => {
             const col = document.createElement("div");
             col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
 
             col.innerHTML = `
-                <div class="product-item-card h-100">
+                <div class="product-item-card h-100 position-relative shadow-sm" style="border-radius: 12px;">
                     <img
                         src="${escaparAtributo(producto.imagen)}"
-                        class="product-img"
+                        class="product-img rounded-top"
                         alt="${escaparAtributo(producto.nombre)}"
-                        style="width: 100%; height: 180px; object-fit: cover;"
+                        style="width: 100%; height: 180px; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;"
                     >
-                    <span class="title">
-                        ${escaparHTML(producto.nombre)}
-                    </span>
-                    <span class="price">
-                        ${formatearPrecio(producto.precio)}
-                    </span>
-                    <div class="mt-2 d-flex justify-content-between" style="width: 100%; position: absolute; top: 10px; px: 10px; z-index: 10;">
-                        <button type="button" class="btn btn-sm btn-light btn-edit mx-1 shadow-sm" data-id="${escaparAtributo(producto.id)}" aria-label="Editar producto">
+                    <div class="p-3 bg-white rounded-bottom">
+                        <span class="d-block title mb-1 text-truncate" style="font-size: 1rem; font-weight: 600;">
+                            ${escaparHTML(producto.nombre)}
+                        </span>
+                        <span class="d-block text-muted small mb-2 text-truncate">
+                            ${escaparHTML(producto.categoria || 'Sin categoría')}
+                        </span>
+                        <span class="price text-success fw-bold">
+                            ${formatearPrecio(producto.precio)}
+                        </span>
+                    </div>
+
+                    <!-- BOTONES ADMIN -->
+                    <div class="admin-actions d-flex justify-content-end p-2" style="position: absolute; top: 5px; right: 5px; z-index: 10; display: ${isAdmin ? 'flex' : 'none'} !important;">
+                        <button type="button" class="btn btn-sm btn-light btn-edit me-2 shadow-sm rounded-circle" style="width: 35px; height: 35px;" data-id="${escaparAtributo(producto.id)}" aria-label="Editar producto" title="Editar">
                             <i class="bi bi-pencil" style="color: #0aa738;"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-light btn-delete mx-1 shadow-sm" data-id="${escaparAtributo(producto.id)}" aria-label="Eliminar producto">
+                        <button type="button" class="btn btn-sm btn-light btn-delete shadow-sm rounded-circle" style="width: 35px; height: 35px;" data-id="${escaparAtributo(producto.id)}" aria-label="Eliminar producto" title="Eliminar">
                             <i class="bi bi-trash" style="color: red;"></i>
                         </button>
                     </div>
@@ -153,29 +172,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 if(producto.imagen && producto.imagen !== "https://via.placeholder.com/150"){
                     const imagePreview = document.getElementById("imagen-preview");
                     if(imagePreview){
-                        imagePreview.innerHTML = `<img src="${producto.imagen}" alt="Vista previa">`;
+                        imagePreview.innerHTML = `<img src="${producto.imagen}" alt="Vista previa" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
                     }
                 }
 
-                if (adminPanel) {
-                    adminPanel.style.display = "flex";
-                    if (btnToggleAdmin) btnToggleAdmin.textContent = "Cerrar Panel Administrador";
-                    window.scrollTo({
-                        top: adminPanel.offsetTop - 20,
-                        behavior: "smooth"
-                    });
+                const modalEl = document.getElementById('adminModal');
+                if (modalEl && typeof bootstrap !== 'undefined') {
+                    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                    modal.show();
                 }
             });
         });
     }
 
     function escaparHTML(texto) {
+        if (texto == null) return "";
         const elemento = document.createElement("div");
         elemento.textContent = String(texto);
         return elemento.innerHTML;
     }
 
     function escaparAtributo(texto) {
+        if (texto == null) return "";
         return String(texto)
             .replaceAll("&", "&amp;")
             .replaceAll('"', "&quot;")
