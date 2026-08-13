@@ -1,0 +1,417 @@
+/* =========================================
+   8. CLASES UTILITARIAS Y COLORES
+   ========================================= */
+
+.bg-pastel-pink {
+    background-color: var(--Cotton-Rose) !important;
+}
+.bg-pastel-blue {
+    background-color: var(--Baby-Blue-Ice) !important;
+}
+.bg-pastel-purple {
+    background-color: var(--Periwinkle) !important;
+}
+
+.bg-pastel-orange {
+    background-color: var(--Powder-Petal) !important;
+}
+
+.bg-pastel-yellow {
+    background-color: var(--Lemon-Chiffon) !important;
+}
+
+.bg-pastel-green {
+    background-color: var(--Celadon) !important;
+}
+
+.bg-pastel-orchid {
+    background-color: var(--Pink-Orchid) !important;
+}
+
+.bg-pastel-cyan {
+    background-color: var(--Soft-Cyan) !important;
+}
+
+.bg-pastel-blue-light{
+    background-color: var(--Sky-Blue-Light) !important;
+
+}
+
+/* =========================================
+   9.          PAGÍNA DE CONTACTO
+   ========================================= */
+.col-lg-6 h1,
+.col-lg-6 h2,
+.col-lg-6 p,
+.texto-contacto,
+.forms
+{
+    font-family: var(--font-text-secondary)
+}
+
+.imagen-contacto{
+    width: 100%;
+    max-width: 290px;
+    height: auto;
+    
+}
+
+/* =========================================
+            PAGÍNA DE ADOPCIONES
+   ========================================= */
+
+.team-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+/* Colores pasteles personalizados de etiquetas */
+.bg-pastel-green {
+    background-color: #d1e7dd;
+}
+
+.bg-pastel-blue {
+    background-color: #cff4fc;
+}
+
+.bg-pastel-orange {
+    background-color: #ffe5d0;
+}
+
+.bg-pastel-purple {
+    background-color: #e2d9f3;
+}
+
+.bg-pastel-pink {
+    background-color: #f8d7da;
+}
+
+.bg-pastel-yellow {
+    background-color: #fff3cd;
+}
+
+.bg-pastel-cyan {
+    background-color: #c3e6cb;
+}
+
+/* Botones de filtro activos */
+.filter-btn {
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-btn:hover {
+    color: #212529;
+}
+
+.filter-btn.active {
+    color: #212529;
+    background-color: #ffffff;
+}
+
+
+
+
+
+
+
+/* =========================================
+   ESTILOS NUEVOS: HERO Y EXPLORA (INDEX)
+   ========================================= */
+
+.hero-section {
+    background-color: #fdfbe2; /* Amarillo pálido de la imagen */
+    font-family: var(--font-text-secondary);
+}
+
+.hero-title {
+    font-family: var(--font-titles);
+    letter-spacing: -1px;
+}
+
+/* Botones del Hero */
+.btn-ver-productos {
+    background-color: #0aa738;
+    border: 2px solid #0aa738;
+}
+.btn-ver-productos:hover {
+    background-color: #088b2e;
+    color: white;
+}
+
+.btn-adoptar {
+    background-color: transparent;
+    border: 2px solid #ff8e6a;
+    color: #ff8e6a;
+}
+.btn-adoptar:hover {
+    background-color: #ff8e6a;
+    color: white;
+}
+
+.btn-donar {
+    background-color: #ff8e6a;
+    border: 2px solid #ff8e6a;
+}
+.btn-donar:hover {
+    background-color: #ff744b;
+    color: white;
+}
+
+/* Tarjetas de Sección Explora */
+.explora-section {
+    font-family: var(--font-text-secondary);
+}
+
+.explora-card {
+    width: 140px;
+    height: 140px;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.explora-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.explora-card:hover .icon-circle {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* From Uiverse.io by dovatgabriel - actualizado para productos */
+.product-item-card {
+    position: relative;
+    width: 11.875em;
+    height: 16.5em;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+    overflow: hidden;
+}
+
+.product-item-card::after {
+    content: "Agregar";
+    padding-top: 1.25em;
+    padding-left: 1.25em;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background: #00AC7C;
+    color: #fff;
+    height: 3.4em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 80ms;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+    z-index: 3;
+}
+
+.product-item-card .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 1.875em;
+    font-weight: 400;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 1.25em);
+    z-index: 2;
+}
+
+.product-item-card .price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 0.625em;
+    color: #000;
+    z-index: 2;
+}
+
+.product-item-card:hover::after {
+    bottom: 0;
+    opacity: 1;
+}
+
+.product-item-card:active {
+    transform: scale(0.98);
+}
+
+.product-item-card:active::after {
+    content: "¡Agregado!";
+    height: 3.4em;
+}
+
+.product-item-card .text {
+    max-width: 55px;
+}
+
+/* Contenedor de imagen de las cards */
+.product-item-card .image {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    height: 11.8em;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+/* Imágenes dentro de .image */
+.product-item-card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Para cards que tienen la imagen directa sin div .image */
+.product-item-card > img,
+.product-item-card .product-img {
+    width: 100%;
+    height: 11.8em;
+    object-fit: cover;
+    display: block;
+    background: rgb(241, 241, 241);
+}
+
+/* Carruseles de productos dinámicos */
+#dogFoodCarousel .carousel-inner,
+#dogToysCarousel .carousel-inner,
+#dogAccessoriesCarousel .carousel-inner,
+.product-carousel .carousel-inner {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+#dogFoodCarousel .carousel-item,
+#dogToysCarousel .carousel-item,
+#dogAccessoriesCarousel .carousel-item,
+.product-carousel .carousel-item {
+    transition: transform 0.9s ease, opacity 0.9s ease;
+}
+
+#dogFoodCarousel .carousel-item .row,
+#dogToysCarousel .carousel-item .row,
+#dogAccessoriesCarousel .carousel-item .row,
+.product-carousel .carousel-item .row {
+    gap: 1.5rem 0;
+}
+
+/* Flechas de carrusel */
+#dogToysCarousel .carousel-control-prev,
+#dogToysCarousel .carousel-control-next,
+#dogAccessoriesCarousel .carousel-control-prev,
+#dogAccessoriesCarousel .carousel-control-next,
+#dogFoodCarousel .carousel-control-prev,
+#dogFoodCarousel .carousel-control-next,
+.product-carousel .carousel-control-prev,
+.product-carousel .carousel-control-next {
+    opacity: 1;
+}
+
+#dogToysCarousel .carousel-control-prev-icon,
+#dogToysCarousel .carousel-control-next-icon,
+#dogAccessoriesCarousel .carousel-control-prev-icon,
+#dogAccessoriesCarousel .carousel-control-next-icon,
+.product-carousel .carousel-control-prev-icon,
+.product-carousel .carousel-control-next-icon {
+    background-color: #A9B96B;
+    border-radius: 50%;
+    padding: 1.4rem;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+}
+
+#dogToysCarousel .carousel-control-prev,
+#dogToysCarousel .carousel-control-next,
+#dogAccessoriesCarousel .carousel-control-prev,
+#dogAccessoriesCarousel .carousel-control-next,
+#dogFoodCarousel .carousel-control-prev,
+#dogFoodCarousel .carousel-control-next,
+.product-carousel .carousel-control-prev,
+.product-carousel .carousel-control-next {
+    outline: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Responsive */
+@media (max-width: 580px) {
+    .product-item-card {
+        width: 100%;
+        max-width: 18rem;
+        height: auto;
+        padding-bottom: 2.6em;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .product-item-card .image,
+    .product-item-card > img,
+    .product-item-card .product-img {
+        height: 10rem;
+    }
+
+    .product-item-card .title,
+    .product-item-card .price {
+        position: static;
+        width: auto;
+        overflow: visible;
+        text-overflow: clip;
+        margin-top: 0.75rem;
+        display: block;
+    }
+
+    .product-item-card .price {
+        margin-bottom: 0.75rem;
+    }
+
+    .carousel-item .col-auto,
+    .carousel-item .col-12,
+    .carousel-item .col-12.col-sm-auto {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Mostrar solo la primera tarjeta por slide en los carruseles estáticos de gatos */
+    #catProductsCarousel .carousel-item .col-auto:not(:first-child),
+    #catToysCarousel .carousel-item .col-auto:not(:first-child),
+    #catFoodCarousel .carousel-item .col-auto:not(:first-child) {
+        display: none;
+    }
+
+    #dogToysCarousel .carousel-inner,
+    #dogAccessoriesCarousel .carousel-inner,
+    #dogFoodCarousel .carousel-inner,
+    .product-carousel .carousel-inner {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 3rem;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        padding: 0.85rem;
