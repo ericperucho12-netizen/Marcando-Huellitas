@@ -42,23 +42,25 @@
                             <div id="loginSection">
                                 <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-                                <form id="loginForm">
+                                <form id="loginForm" novalidate>
                                     <div class="mb-3">
                                         <label for="userOrEmail" class="form-label">Nombre de usuario o correo electrónico</label>
-                                        <div class="input-group">
+                                        <div class="input-group has-validation">
                                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                                             <input type="text" class="form-control" id="userOrEmail" placeholder="usuario o correo@ejemplo.com" required>
+                                            <div class="invalid-feedback">Ingresa tu nombre de usuario o un correo electrónico válido.</div>
                                         </div>
                                     </div>
 
                                     <div class="mb-4">
                                         <label for="passwordLogin" class="form-label">Contraseña</label>
-                                        <div class="input-group">
+                                        <div class="input-group has-validation">
                                             <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
                                             <input type="password" class="form-control" id="passwordLogin" placeholder="••••••••" required>
                                             <button type="button" class="btn btn-outline-secondary toggle-password" data-target="passwordLogin" aria-label="Mostrar u ocultar contraseña">
                                                 <i class="bi bi-eye"></i>
                                             </button>
+                                            <div class="invalid-feedback">Ingresa tu contraseña.</div>
                                         </div>
                                     </div>
 
