@@ -160,8 +160,21 @@ document.addEventListener("DOMContentLoaded", () => {
           }
     );
 
-    // Aquí se integraría la llamada real al backend / API.
-    console.log("Formulario válido. Datos:", Object.fromEntries(new FormData(form).entries()));
+    // Emite un evento personalizado para que otros scripts (ej. productos.js) puedan escuchar y procesar los datos
+    const formData = new FormData(form);
+    const dataObj = Object.fromEntries(formData.entries());
+
+    // Si hay una imagen previsualizada (convertida a base64 por FileReader), la agregamos al objeto
+    if (imagePreview) {
+      const imgEl = imagePreview.querySelector("img");
+      if (imgEl) {
+        dataObj.imagenBase64 = imgEl.src;
+      }
+    }
+
+    form.dispatchEvent(new CustomEvent("formularioValido", {
+      detail: dataObj
+    }));
   });
 
   /* ---------- Botón Cancelar ---------- */

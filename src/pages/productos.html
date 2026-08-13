@@ -34,63 +34,119 @@
     <section class="py-5">
         <div class="container">
 
-            <!-- Mensaje cuando NO es Administrador -->
-            <div id="accessDeniedMsg" class="alert alert-warning mb-4" style="display: none;">
-                <strong>Aviso:</strong> Solo los administradores pueden agregar, modificar o eliminar productos.
+            
+
+                        <!-- BOTÓN PARA ACTIVAR MODO ADMINISTRADOR -->
+            <div class="text-center mb-4">
+                <button id="btnToggleAdmin" class="btn btn-hero-secondary">Activar Modo Administrador</button>
             </div>
 
             <!-- PANEL EXCLUSIVO PARA ADMINISTRADORES -->
-            <div id="adminPanel" class="card mb-5 shadow-sm" style="display: none;">
-                <div class="card-header bg-primary text-white">
-                    <h3 id="formTitle" class="m-0">Crear Nuevo Producto / Publicación</h3>
-                </div>
-                <div class="card-body">
+            <main class="page-main" id="adminPanel" style="display: none;">
+                <section class="form-card">
+                    <div class="form-card__header">
+                        <h1>Nuevo Producto</h1>
+                        <p>Información General</p>
+                    </div>
 
-                    <!-- Contenedor para las Alertas de Bootstrap -->
-                    <div id="alertContainer"></div>
-
-                    <form id="productForm" novalidate>
-                        <!-- Campo oculto para guardar el ID en edición -->
-                        <input type="hidden" id="productId" />
-
-                        <div class="mb-3">
-                            <label for="productName" class="form-label font-weight-bold">Nombre del Producto *</label>
-                            <input type="text" id="productName" class="form-control" placeholder="Ej. Alimento Cachorro 5kg">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="productImg" class="form-label font-weight-bold">URL de la Imagen *</label>
-                            <input type="url" id="productImg" class="form-control" placeholder="https://ejemplo.com/imagen.jpg">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="productDescription" class="form-label font-weight-bold">Descripción *</label>
-                            <textarea id="productDescription" class="form-control" rows="3" placeholder="Descripción detallada del producto..."></textarea>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="productPrice" class="form-label font-weight-bold">Precio ($) *</label>
-                                <input type="number" id="productPrice" class="form-control" step="0.01" placeholder="250.00">
+                    <form id="producto-form" novalidate>
+                        <!-- ---------- Sección: Información General ---------- -->
+                        <div class="form-section">
+                            <h2 class="form-section__title">Información General</h2>
+                            <div class="form-grid">
+                                <div class="form-field" data-field="nombre">
+                                    <label for="nombre-producto">Nombre del Producto</label>
+                                    <input type="text" id="nombre-producto" name="nombre"
+                                        placeholder="Ej. Croquetas premium para perro" required />
+                                    <span class="field-error"></span>
+                                </div>
+                                <div class="form-field" data-field="imagen">
+                                    <label for="imagen-producto">Imagen del producto</label>
+                                    <div class="image-upload">
+                                        <label class="image-upload__trigger" for="imagen-producto">+ Agregar Imagen</label>
+                                        <input type="file" id="imagen-producto" name="imagen" accept="image/*" />
+                                        <div class="image-upload__preview" id="imagen-preview">Sin imagen</div>
+                                    </div>
+                                </div>
+                                <div class="form-field form-field--full" data-field="descripcion">
+                                    <label for="descripcion-producto">Descripción Del Producto</label>
+                                    <textarea id="descripcion-producto" name="descripcion"
+                                        placeholder="Describe el producto..."></textarea>
+                                    <span class="field-error"></span>
+                                </div>
+                                <div class="form-field" data-field="oferta">
+                                    <label for="producto-oferta">Producto en oferta</label>
+                                    <select id="producto-oferta" name="oferta">
+                                        <option value="">Seleccione respuesta</option>
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-field" data-field="precio-oferta">
+                                    <label for="precio-oferta">Precio de oferta</label>
+                                    <div class="input-prefix">
+                                        <span>MXN</span>
+                                        <input type="number" id="precio-oferta" name="precio_oferta" min="0" step="0.01"
+                                            placeholder="0.00" />
+                                    </div>
+                                </div>
+                                <div class="form-field" data-field="precio">
+                                    <label for="precio">Precio</label>
+                                    <div class="input-prefix">
+                                        <span>MXN</span>
+                                        <input type="number" id="precio" name="precio" min="0" step="0.01"
+                                            placeholder="0.00" required />
+                                    </div>
+                                    <span class="field-error"></span>
+                                </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label for="productCategory" class="form-label font-weight-bold">Categoría *</label>
-                                <select id="productCategory" class="form-select">
-                                    <option value="">Selecciona una opción</option>
-                                    <option value="Alimentos">Alimentos</option>
-                                    <option value="Accesorios">Accesorios</option>
-                                    <option value="Juguetes">Juguetes</option>
-                                    <option value="Higiene">Higiene</option>
-                                </select>
+                        <!-- ---------- Sección: Información Inventario ---------- -->
+                        <div class="form-section">
+                            <h2 class="form-section__title">Información Inventario</h2>
+                            <div class="form-grid">
+                                <div class="form-field" data-field="id">
+                                    <label for="id-producto">ID</label>
+                                    <input type="text" id="id-producto" name="id" placeholder="Ej. PRD-0001" required />
+                                    <span class="field-error"></span>
+                                </div>
+                                <div class="form-field" data-field="cantidad">
+                                    <label for="cantidad-inventario">Cantidad en inventario</label>
+                                    <input type="number" id="cantidad-inventario" name="cantidad" min="0"
+                                        placeholder="0" />
+                                </div>
+                                <div class="form-field" data-field="especie">
+                                    <label for="especie">Especie</label>
+                                    <input type="text" id="especie" name="especie" placeholder="Ej. Perro, Gato..." />
+                                </div>
+                                <div class="form-field" data-field="categoria">
+                                    <label for="categoria">Categoría</label>
+                                    <input type="text" id="categoria" name="categoria"
+                                        placeholder="Ej. Alimento, Juguetes..." />
+                                </div>
+                                <div class="form-field" data-field="umbral">
+                                    <label for="umbral">Umbral de pocas existencias</label>
+                                    <input type="number" id="umbral" name="umbral" min="0" placeholder="0" />
+                                    <span class="hint">Cantidad mínima antes de avisar reabastecimiento</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success"><i class="bi bi-plus-circle"></i> Guardar Producto</button>
-                            <button type="button" id="btnClearAll" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Vaciar Todos los Productos</button>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            <button type="reset" class="btn btn-secondary" id="cancelar-btn">Cancelar</button>
                         </div>
                     </form>
+                </section>
+            </main>
+
+            <!-- TOAST DECORATIVO -->
+            <div class="toast" id="toast">
+                <div class="toast__icon">✅</div>
+                <div>
+                    <div class="toast__title">¡Producto guardado!</div>
+                    <div class="toast__message">Los cambios se guardaron con éxito.</div>
                 </div>
             </div>
 
@@ -107,18 +163,21 @@
             <div id="dogFoodCarousel" class="carousel slide product-carousel" data-bs-ride="carousel">
                 <div class="carousel-inner px-5" id="dogFoodList">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#dogFoodCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#dogFoodCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#dogFoodCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#dogFoodCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Siguiente</span>
                 </button>
             </div>
-            
+
             <h3 class="mb-4 text-secondary text-center">Juguetes para perros</h3>
-            <div id="dogToysCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+            <div id="dogToysCarousel" class="carousel slide product-carousel" data-bs-ride="carousel"
+                data-bs-interval="6000" data-bs-pause="hover">
 
                 <div class="carousel-inner px-5" id="dogToysList">
                     <!-- Aquí JavaScript va a insertar los juguetes -->
@@ -138,7 +197,8 @@
             </div>
 
             <h3 class="mb-4 text-secondary text-center">Accesorios para perros</h3>
-            <div id="dogAccessoriesCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+            <div id="dogAccessoriesCarousel" class="carousel slide product-carousel" data-bs-ride="carousel"
+                data-bs-interval="6000" data-bs-pause="hover">
                 <div class="carousel-inner px-5" id="dogAccessoriesList">
                     <!-- Aquí JavaScript va a insertar los accesorios -->
                 </div>
@@ -159,7 +219,8 @@
             <!-- PRODUCTOS PARA GATOS -->
             <h3 class="mb-4 text-secondary text-center">Para los consentidos de la casa, los gatos</h3>
 
-            <div id="catProductsCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+            <div id="catProductsCarousel" class="carousel slide product-carousel" data-bs-ride="carousel"
+                data-bs-interval="6000" data-bs-pause="hover">
                 <div class="carousel-inner px-5" id="catProductsList">
                     <div class="carousel-item active">
                         <div class="row g-4 justify-content-center">
@@ -272,7 +333,8 @@
             </div>
             <h3 class="mb-4 text-secondary text-center">Juguetes Para Gatos</h3>
 
-            <div id="catToysCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+            <div id="catToysCarousel" class="carousel slide product-carousel" data-bs-ride="carousel"
+                data-bs-interval="6000" data-bs-pause="hover">
                 <div class="carousel-inner px-5" id="catToysList">
                     <div class="carousel-item active">
                         <div class="row g-4 justify-content-center">
@@ -386,7 +448,8 @@
             <!-- COMIDA PARA GATOS -->
             <h3 class="mb-4 text-secondary text-center">Comida Para Gatos</h3>
 
-            <div id="catFoodCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+            <div id="catFoodCarousel" class="carousel slide product-carousel" data-bs-ride="carousel"
+                data-bs-interval="6000" data-bs-pause="hover">
                 <div class="carousel-inner px-5" id="catFoodList">
                     <div class="carousel-item active">
                         <div class="row g-4 justify-content-center">
@@ -474,8 +537,8 @@
                             <div class="col-auto">
                                 <div class="product-item-card">
                                     <div class="image">
-                                        <img src="../assets/productos/comida gato/ProPlan Lata.png"
-                                            class="product-img" alt="ProPlan Lata">
+                                        <img src="../assets/productos/comida gato/ProPlan Lata.png" class="product-img"
+                                            alt="ProPlan Lata">
                                     </div>
                                     <span class="title">ProPlan Focus Urinary</span>
                                     <span class="price">$45.00 MXN</span>
@@ -489,8 +552,8 @@
                             <div class="col-auto">
                                 <div class="product-item-card">
                                     <div class="image">
-                                        <img src="../assets/productos/comida gato/Roya Lata.png"
-                                            class="product-img" alt="Royal Canin Lata">
+                                        <img src="../assets/productos/comida gato/Roya Lata.png" class="product-img"
+                                            alt="Royal Canin Lata">
                                     </div>
                                     <span class="title">Royal Canin Lata</span>
                                     <span class="price">$40.00 MXN</span>
@@ -535,7 +598,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Scripts de productos -->
     <script src="../scripts/store.js"></script>
     <script src="../scripts/productos.js"></script>
@@ -564,6 +627,6 @@
             });
         });
     </script>
-    <!-- Script de validación de formularios Admin -->`n    <script src="../scripts/adminForms.js"></script>`n</body>
+</body>
 
 </html>
