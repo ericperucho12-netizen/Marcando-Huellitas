@@ -415,3 +415,6 @@
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         padding: 0.85rem;
+        border-width: 1.5px;
+    }
+}
