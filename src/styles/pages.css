@@ -204,10 +204,7 @@
     overflow: hidden;
 }
 
-.product-item-card::after {
-    content: "Agregar";
-    padding-top: 1.25em;
-    padding-left: 1.25em;
+.product-item-card .cart-overlay {
     position: absolute;
     left: 0;
     bottom: -60px;
@@ -221,6 +218,10 @@
     text-transform: uppercase;
     opacity: 0;
     z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .product-item-card .title {
@@ -248,7 +249,7 @@
     z-index: 2;
 }
 
-.product-item-card:hover::after {
+.product-item-card:hover .cart-overlay {
     bottom: 0;
     opacity: 1;
 }
@@ -257,8 +258,7 @@
     transform: scale(0.98);
 }
 
-.product-item-card:active::after {
-    content: "¡Agregado!";
+.product-item-card:active .cart-overlay {
     height: 3.4em;
 }
 
@@ -418,3 +418,6 @@
         border-width: 1.5px;
     }
 }
+
+
+

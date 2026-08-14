@@ -586,3 +586,29 @@
         openMiniCart
     };
 })();
+// --- INYECCIÓN DE ICONO ANIMADO EN TARJETAS ---
+function injectAnimatedCart() {
+    if (typeof lordicon === 'undefined') return;
+    const cards = document.querySelectorAll('.product-item-card');
+    cards.forEach(card => {
+        if (!card.querySelector('.cart-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'cart-overlay';
+            overlay.innerHTML = \
+                <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="hover" colors="primary:#ffffff" style="width:28px;height:28px"></lord-icon>
+                <span>Agregar</span>
+            \;
+            card.appendChild(overlay);
+            card.addEventListener('mouseenter', () => {
+                const icon = overlay.querySelector('lord-icon');
+                if (icon && typeof icon.play === 'function') icon.play();
+            });
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(injectAnimatedCart, 500); // Dar tiempo a cargar lordicon
+});
+const observer = new MutationObserver(() => injectAnimatedCart());
+observer.observe(document.body, { childList: true, subtree: true });
+
