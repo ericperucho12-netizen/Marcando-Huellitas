@@ -594,10 +594,10 @@ function injectAnimatedCart() {
         if (!card.querySelector('.cart-overlay')) {
             const overlay = document.createElement('div');
             overlay.className = 'cart-overlay';
-            overlay.innerHTML = \
+            overlay.innerHTML = `
                 <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="hover" colors="primary:#ffffff" style="width:28px;height:28px"></lord-icon>
                 <span>Agregar</span>
-            \;
+            `;
             card.appendChild(overlay);
             card.addEventListener('mouseenter', () => {
                 const icon = overlay.querySelector('lord-icon');
