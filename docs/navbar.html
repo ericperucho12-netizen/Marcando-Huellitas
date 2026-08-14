@@ -109,11 +109,20 @@
           <a href="#favoritos" class="text-secondary fs-5"><i class="bi bi-heart"></i></a>
           
           <!-- Carrito con Burbuja -->
-          <a href="#carrito" class="position-relative text-secondary fs-5">
-            <i class="bi bi-cart3"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle" style="background-color: #e04b7b; font-size: 0.55rem; padding: 0.25em 0.45em;">
-              2
-            </span>
+          <a href="#"
+            class="position-relative text-secondary fs-5 cart-navbar-link"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#miniCartOffcanvas"
+            aria-controls="miniCartOffcanvas">
+
+              <i class="bi bi-cart3"></i>
+
+              <span id="cartCountBadge"
+                    data-cart-count
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle"
+                    style="background-color: #e04b7b; font-size: 0.55rem; padding: 0.25em 0.45em;">
+                  0
+              </span>
           </a>
 
           <!-- Perfil/Usuario -->

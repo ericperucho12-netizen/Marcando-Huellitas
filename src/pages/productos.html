@@ -24,6 +24,45 @@
     </style>
 </head>
 <body class="bg-light">
+    <!-- Mini carrito lateral -->
+    <div class="offcanvas offcanvas-end mini-cart-panel"
+        tabindex="-1"
+        id="miniCartOffcanvas"
+        aria-labelledby="miniCartLabel"
+        data-bs-scroll="true"
+        data-bs-backdrop="false">
+
+        <div class="offcanvas-header mini-cart-header">
+            <div>
+                <h5 class="offcanvas-title" id="miniCartLabel">Mi carrito</h5>
+                <p class="mini-cart-count mb-0">
+                    <span id="miniCartTotalItems">0</span> producto(s)
+                </p>
+            </div>
+
+            <button type="button" class="btn-close mini-cart-close" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="offcanvas-body mini-cart-body">
+            <div class="mini-cart-subtotal-box">
+                <span>Subtotal</span>
+                <strong id="miniCartSubtotal">$0.00 MXN</strong>
+            </div>
+
+            <button type="button" class="mini-cart-go-btn" onclick="window.location.href='carrito.html'">
+                Ir al carrito
+            </button>
+
+            <div id="miniCartItems" class="mini-cart-items">
+                <!-- JS inserta productos -->
+            </div>
+
+            <div id="miniCartEmpty" class="mini-cart-empty">
+                <i class="bi bi-cart-x"></i>
+                <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Contenedor del Navbar -->
     <div data-template="../layout/navbar.html" data-root="../.." data-src=".."></div>
@@ -477,10 +516,6 @@
                     <span class="visually-hidden">Siguiente</span>
                 </button>
             </div>
-
-        </div>
-    </section>
-
         </div>
     </section>
     <hr class="my-0" style="border-color: #eee;">
@@ -651,6 +686,7 @@
     <!-- Scripts Catálogo Dinámico y Admin -->
     <script src="../scripts/adminForms.js"></script>
     <script src="../scripts/productos.js"></script>
+    <!-- Cart Script -->
     <script src="../scripts/cart.js"></script>
     
     <!-- Inicializador de Carruseles -->
