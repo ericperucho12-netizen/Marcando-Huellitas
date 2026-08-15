@@ -419,5 +419,190 @@
     }
 }
 
+/* =========================================
+   SECCIÓN CASOS DE ÉXITO - INDEX
+   ========================================= */
 
+.success-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.success-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* =========================================
+   ORGANIZACIONES ALIADAS - DOBLE MARQUEE
+   ========================================= */
+
+@keyframes marqueeLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+}
+
+.marquee-left {
+    animation: marqueeLeft 28s linear infinite;
+}
+
+.marquee-right {
+    animation: marqueeRight 28s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-left,
+.marquee-wrapper:hover .marquee-right {
+    animation-play-state: paused;
+}
+
+.ally-pill {
+    flex-shrink: 0;
+    padding: 14px 28px;
+    background-color: white;
+    border: 1.5px solid #2ac36a;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #1f6b3d; /* Base color verde oscuro */
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(42, 195, 106, 0.1);
+    
+    /* El truco de la prueba: todo en gris y semitransparente por defecto */
+    filter: grayscale(1) opacity(0.55);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.ally-pill:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 14px rgba(42, 195, 106, 0.25);
+    /* Revela el color verde al pasar el cursor */
+    filter: grayscale(0) opacity(1);
+}
+
+.ally-pill--alt {
+    border-color: #ff8e6a;
+    color: #e65c00; /* Base color naranja oscuro */
+    box-shadow: 0 2px 8px rgba(255, 142, 106, 0.1);
+}
+
+.ally-pill--alt:hover {
+    box-shadow: 0 4px 14px rgba(255, 142, 106, 0.25);
+}
+
+/* =========================================
+   BOTONES INTERACTIVOS (Ver Todos)
+   ========================================= */
+
+.btn-interactive {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid;
+}
+
+.btn-interactive svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-interactive:hover {
+    transform: translateY(-2px);
+}
+
+.btn-interactive:hover svg {
+    transform: translateX(4px);
+}
+
+.btn-interactive-primary {
+    color: #1f6b3d;
+    border-color: #8fc0a9;
+    background: transparent;
+}
+.btn-interactive-primary:hover {
+    background: #1f6b3d;
+    border-color: #1f6b3d;
+    color: white;
+}
+
+.btn-interactive-secondary {
+    color: #e65c00;
+    border-color: #ff8e6a;
+    background: transparent;
+}
+.btn-interactive-secondary:hover {
+    background: #e65c00;
+    border-color: #e65c00;
+    color: white;
+}
+
+/* ESTILOS DE INDEX.HTML (MISION HERO) */
+        .mission-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-icon {
+            transition: all 0.3s ease;
+        }
+
+        .mission-card:hover .mission-icon {
+            animation: missionJump 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes missionJump {
+            0% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                transform: scale(1.1) translateY(-10px);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .btn-adoptar-hero {
+            background-color: transparent !important;
+            border: 2px solid #ff8e6a !important;
+            color: #ff8e6a !important;
+        }
+        .btn-adoptar-hero:hover {
+            background-color: #ff8e6a !important;
+            color: white !important;
+        }
+
+        .btn-donar-mission {
+            background-color: white !important;
+            border: 2px solid #ff8e6a !important;
+            color: #ff8e6a !important;
+        }
+        .btn-donar-mission:hover {
+            background-color: #ff547a !important;
+            border-color: #ff547a !important;
+            color: white !important;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
