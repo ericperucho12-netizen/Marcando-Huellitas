@@ -430,13 +430,23 @@
 
     // Muestra mensaje al agregar producto
     function showToast(message) {
+        const miniCartElement = document.getElementById("miniCartOffcanvas");
+
+        if (!miniCartElement) {
+            return;
+        }
+
         let toast = document.getElementById("cartToast");
 
         if (!toast) {
             toast = document.createElement("div");
             toast.id = "cartToast";
             toast.className = "cart-toast";
-            document.body.appendChild(toast);
+        }
+
+        // Lo mete dentro del mini carrito para que siga su posición sticky
+        if (toast.parentElement !== miniCartElement) {
+            miniCartElement.appendChild(toast);
         }
 
         toast.textContent = message;
@@ -446,7 +456,7 @@
 
         showToast.timeoutId = setTimeout(function () {
             toast.classList.remove("show");
-        }, 3200);
+        }, 3000);
     }
 
     // Detecta clics en tarjetas de productos

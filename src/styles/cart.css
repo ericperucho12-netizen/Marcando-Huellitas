@@ -243,9 +243,9 @@
 
 /* Toast carrito */
 .cart-toast {
-    position: fixed;
-    top: 115px;
-    right: 340px;
+    position: fixed !important;
+    top: var(--mini-cart-top, 110px) !important;
+    right: 340px !important;
 
     background: #fff4e9;
     color: #2f2f3a;
@@ -261,7 +261,7 @@
     pointer-events: none;
 
     transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 12000;
+    z-index: 13000;
 
     max-width: 270px;
     font-family: var(--font-text-secondary);
@@ -737,4 +737,82 @@ body.mini-cart-scrolled {
     #miniCartOffcanvas.offcanvas.offcanvas-end.mini-cart-panel {
         display: none !important;
     }
+}
+
+.product-item-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product-item-card::after {
+    content: "Agregar";
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+
+    width: 100%;
+    height: 3.4em;
+
+    background: #00ac7c;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.product-item-card:hover::after {
+    bottom: 0;
+    opacity: 1;
+}
+
+.product-item-card:active::after {
+    content: "¡Agregado!";
+}
+
+#miniCartOffcanvas .cart-toast {
+    position: absolute !important;
+
+    top: 25px !important;
+    right: calc(100% + 14px) !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 260px;
+    max-width: 260px;
+
+    background: #fff4e9;
+    color: #2f2f3a;
+    border: 1px solid #f3d9c6;
+    border-left: 6px solid #e04b7b;
+
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+
+    opacity: 0;
+    transform: translateX(12px);
+    pointer-events: none;
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 20000 !important;
+
+    font-family: var(--font-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+#miniCartOffcanvas .cart-toast.show {
+    opacity: 1;
+    transform: translateX(0);
 }
