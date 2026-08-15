@@ -406,8 +406,8 @@
             <div class="row g-4 justify-content-center mb-5">
                 <!-- Perros rescatados -->
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 p-4 text-white" style="background-color: rgba(255, 255, 255, 0.15); border-radius: 20px;">
-                        <img src="https://img.icons8.com/?size=100&id=olDI0uD2USQE&format=png&color=000000" alt="Perros rescatados" class="mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <img src="https://img.icons8.com/?size=100&id=olDI0uD2USQE&format=png&color=000000" alt="Perros rescatados" class="mission-icon mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
                         <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Perros rescatados</h4>
                         <p class="mb-0" style="font-size: 0.95rem;">Cada compra financia alimento, veterinaria y amor para perros en espera</p>
                     </div>
@@ -415,8 +415,8 @@
 
                 <!-- Gatos en refugio -->
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 p-4 text-white" style="background-color: rgba(255, 255, 255, 0.15); border-radius: 20px;">
-                        <img src="https://img.icons8.com/?size=100&id=VkkAxxw8UOST&format=png&color=000000" alt="Gatos en refugio" class="mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <img src="https://img.icons8.com/?size=100&id=VkkAxxw8UOST&format=png&color=000000" alt="Gatos en refugio" class="mission-icon mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
                         <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Gatos en refugio</h4>
                         <p class="mb-0" style="font-size: 0.95rem;">Apoyamos colonias felinas y hogares temporales para gatos callejeros</p>
                     </div>
@@ -424,8 +424,8 @@
 
                 <!-- Hogares encontrados -->
                 <div class="col-md-4">
-                    <div class="card h-100 border-0 p-4 text-white" style="background-color: rgba(255, 255, 255, 0.15); border-radius: 20px;">
-                        <img src="https://img.icons8.com/?size=100&id=XKFHfgAsrGtk&format=png&color=000000" alt="Hogares encontrados" class="mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <img src="https://img.icons8.com/?size=100&id=XKFHfgAsrGtk&format=png&color=000000" alt="Hogares encontrados" class="mission-icon mx-auto mb-3" style="width: 80px; height: 80px; object-fit: contain;">
                         <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Hogares encontrados</h4>
                         <p class="mb-0" style="font-size: 0.95rem;">Conectamos adoptantes con mascotas que buscan un hogar permanente</p>
                     </div>
@@ -437,6 +437,32 @@
             </a>
         </div>
     </section>
+
+    <style>
+        .mission-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .mission-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .mission-icon {
+            transition: all 0.3s ease;
+        }
+        .mission-card:hover .mission-icon {
+            animation: missionJump 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+        @keyframes missionJump {
+            0% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-10px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+    </style>
+
     <!-- Contenedor del Footer -->
     <div data-template="src/layout/footer.html" data-root="." data-src="src"></div>
     <!-- Layout JS -->
