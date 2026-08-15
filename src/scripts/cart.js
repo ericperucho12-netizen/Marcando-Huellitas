@@ -588,7 +588,6 @@
 })();
 // --- INYECCIÓN DE ICONO ANIMADO EN TARJETAS ---
 function injectAnimatedCart() {
-    if (typeof lordicon === 'undefined') return;
     const cards = document.querySelectorAll('.product-item-card');
     cards.forEach(card => {
         if (!card.querySelector('.cart-overlay')) {
@@ -596,12 +595,25 @@ function injectAnimatedCart() {
             overlay.className = 'cart-overlay';
             overlay.innerHTML = `
                 <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="hover" colors="primary:#ffffff" style="width:28px;height:28px"></lord-icon>
-                <span>Agregar</span>
+                <span class="cart-text">Agregar</span>
             `;
             card.appendChild(overlay);
+            
+            // Hover animation
             card.addEventListener('mouseenter', () => {
                 const icon = overlay.querySelector('lord-icon');
                 if (icon && typeof icon.play === 'function') icon.play();
+            });
+
+            // Click animation ("Agregado")
+            card.addEventListener('click', (e) => {
+                const textSpan = overlay.querySelector('.cart-text');
+                if (textSpan) {
+                    textSpan.textContent = '¡Agregado!';
+                    setTimeout(() => {
+                        textSpan.textContent = 'Agregar';
+                    }, 1500);
+                }
             });
         }
     });
