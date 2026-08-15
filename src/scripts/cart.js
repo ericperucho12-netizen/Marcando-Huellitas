@@ -132,7 +132,7 @@
         renderCartPage();
         renderMiniCart();
 
-        showToast(`${normalizedProduct.name} añadido al carrito`);
+        showToast(`${normalizedProduct.name} se agregó al carrito`);
 
         if (isDesktop()) {
             openMiniCart();
@@ -446,7 +446,7 @@
 
         showToast.timeoutId = setTimeout(function () {
             toast.classList.remove("show");
-        }, 1800);
+        }, 3200);
     }
 
     // Detecta clics en tarjetas de productos
@@ -548,6 +548,17 @@
 
     // Inicializa el carrito al cargar la página
     document.addEventListener("DOMContentLoaded", function () {
+        function updateMiniCartTop() {
+            if (window.scrollY > 180) {
+                document.body.classList.add("mini-cart-scrolled");
+            } else {
+                document.body.classList.remove("mini-cart-scrolled");
+            }
+        }
+
+        updateMiniCartTop();
+        window.addEventListener("scroll", updateMiniCartTop);
+
         updateCartBadge();
         renderCartPage();
         renderMiniCart();
