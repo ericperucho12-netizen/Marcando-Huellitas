@@ -275,7 +275,7 @@ if (loginForm) {
 
             setTimeout(function () {
                 window.location.href =
-                    "../../index.html";
+                    "../../../index.html";
             }, 1200);
 
         } else {
@@ -337,27 +337,32 @@ if (loginForm) {
     // Inicializar validación en tiempo real para login
     initLoginFieldValidation();
     
-    //usuario de prueba para login
+    // usuario de prueba para login
     const usuarioPrueba = {
-    nombre: "Andrea Pérez",
-    telefono: "5512345678",
-    email: "andrea_123@gmail.com",
-    password: "Contraseña123"
-};
+        nombre: "Andrea Pérez",
+        telefono: "5512345678",
+        email: "andrea_123@gmail.com",
+        password: "Contraseña123",
+        rol: "user"
+    };
 
-const usuariosGuardados =
-    JSON.parse(localStorage.getItem("usuarios")) || [];
+    // usuario administrador
+    const usuarioAdmin = {
+        nombre: "Administrador",
+        telefono: "5500000000",
+        email: "admin@marcandohuellitas.com",
+        password: "Admin123",
+        rol: "admin"
+    };
 
-if (
-    !usuariosGuardados.some(
-        usuario => usuario.email === usuarioPrueba.email
-    )
-) {
-    usuariosGuardados.push(usuarioPrueba);
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    localStorage.setItem(
-        "usuarios",
-        JSON.stringify(usuariosGuardados)
-      );
-} 
-}); 
+    if (!usuariosGuardados.some(usuario => usuario.email === usuarioPrueba.email)) {
+        usuariosGuardados.push(usuarioPrueba);
+    }
+    if (!usuariosGuardados.some(usuario => usuario.email === usuarioAdmin.email)) {
+        usuariosGuardados.push(usuarioAdmin);
+    }
+
+    localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
+});  

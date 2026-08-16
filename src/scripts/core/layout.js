@@ -36,6 +36,33 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
+                // Lógica de Autenticación en la Barra de Navegación
+                const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
+                const navLoginBtn = container.querySelector("#navLoginBtn");
+                const navUserDropdown = container.querySelector("#navUserDropdown");
+                const navUserName = container.querySelector("#navUserName");
+                const navUserHeader = container.querySelector("#navUserHeader");
+                const navLogoutBtn = container.querySelector("#navLogoutBtn");
+
+                if (usuarioActual) {
+                    if (navLoginBtn) navLoginBtn.classList.add("d-none");
+                    if (navUserDropdown) {
+                        navUserDropdown.classList.remove("d-none");
+                        if (navUserName) navUserName.textContent = usuarioActual.nombre.split(" ")[0]; // Mostrar solo el primer nombre
+                        if (navUserHeader) navUserHeader.textContent = "Hola, " + usuarioActual.nombre;
+                    }
+                    if (navLogoutBtn) {
+                        navLogoutBtn.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            sessionStorage.removeItem("usuarioActual");
+                            window.location.reload();
+                        });
+                    }
+                } else {
+                    if (navLoginBtn) navLoginBtn.classList.remove("d-none");
+                    if (navUserDropdown) navUserDropdown.classList.add("d-none");
+                }
+
                 // Animación de salida al hacer clic en cualquier enlace interno
                 container.querySelectorAll('a[href]').forEach(link => {
                     const href = link.getAttribute('href');

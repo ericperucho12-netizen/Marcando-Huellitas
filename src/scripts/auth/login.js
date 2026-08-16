@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         limpiarValidaciones();
 
         setTimeout(function () {
-            window.location.href = "../../index.html";
+            window.location.href = "../../../index.html";
         }, 1200);
 
     });

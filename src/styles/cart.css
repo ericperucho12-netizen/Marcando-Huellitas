@@ -745,40 +745,7 @@ body.mini-cart-scrolled {
     cursor: pointer;
 }
 
-.product-item-card::after {
-    content: "Agregar";
-    position: absolute;
-    left: 0;
-    bottom: -60px;
 
-    width: 100%;
-    height: 3.4em;
-
-    background: #00ac7c;
-    color: #ffffff;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: var(--font-text-secondary);
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-
-    opacity: 0;
-    transition: all 0.2s ease;
-    z-index: 5;
-}
-
-.product-item-card:hover::after {
-    bottom: 0;
-    opacity: 1;
-}
-
-.product-item-card:active::after {
-    content: "¡Agregado!";
-}
 
 #miniCartOffcanvas .cart-toast {
     position: absolute !important;
