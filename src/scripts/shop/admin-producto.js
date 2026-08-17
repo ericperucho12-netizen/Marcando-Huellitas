@@ -18,11 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (producto) {
             pageTitle.textContent = "Editar Producto";
             formTitle.textContent = "Modificar información del producto";
-            
+    
             document.getElementById("id-producto").value = producto.id;
             // Deshabilitar el ID para que no se cambie si es edición
             document.getElementById("id-producto").setAttribute("readonly", true);
-
             document.getElementById("nombre-producto").value = producto.nombre || "";
             document.getElementById("descripcion-producto").value = producto.descripcion || "";
             document.getElementById("precio").value = producto.precio || "";
