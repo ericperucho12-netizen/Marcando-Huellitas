@@ -1,3 +1,4 @@
+// Filtramos los juguetes del store global
 const dogToysItems = store.items.filter(item => item.category === "juguete");
 
 function getItemsPerView() {
@@ -28,7 +29,6 @@ function renderDogToys() {
                             alt="${product.name}"
                         >
                     </div>
-
                     <span class="title">${product.name}</span>
                     <span class="price">${product.price}</span>
                 </div>
