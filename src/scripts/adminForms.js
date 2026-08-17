@@ -189,3 +189,83 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/* ============================================================
+   VALIDACIONES FORMULARIO MASCOTAS
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("adopcion-form");
+    if (!form) return;
+
+    const requiredFieldNames = isProducto
+    ? ["nombre", "precio", "id"]
+    : ["nombre", "imagen", "descripcion", "edad", "vacunado", "salud", "esterilizacion", "temperamento", "id", "refugio"];
+
+    /* ---------- Funciones de Validación ---------- */
+
+    function getFieldWrapper(name) {
+        return form.querySelector(`[name="${name}"]`)?.closest(".form-field");
+    }
+
+    function setFieldError(wrapper, message) {
+        if (!wrapper) return;
+        wrapper.classList.add("is-invalid");
+        const errorEl = wrapper.querySelector(".field-error");
+        if (errorEl) errorEl.textContent = message;
+    }
+
+    function clearFieldError(wrapper) {
+        if (!wrapper) return;
+        wrapper.classList.remove("is-invalid");
+        const errorEl = wrapper.querySelector(".field-error");
+        if (errorEl) errorEl.textContent = "";
+    }
+
+    function validateField(name) {
+        const input = form.querySelector(`[name="${name}"]`);
+        const wrapper = getFieldWrapper(name);
+        if (!input || !wrapper) return true;
+
+        if (!input.value.trim()) {
+            setFieldError(wrapper, "Este campo es obligatorio.");
+            return false;
+        }
+
+        clearFieldError(wrapper);
+        return true;
+    }
+
+    /* ---------- Eventos en tiempo real ---------- */
+    requiredFields.forEach((name) => {
+        const input = form.querySelector(`[name="${name}"]`);
+        input.addEventListener("input", () => validateField(name));
+        input.addEventListener("blur", () => validateField(name));
+    });
+
+    /* ---------- Envío del formulario ---------- */
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Validar todos los campos antes de enviar
+        const isValid = requiredFields.every(name => validateField(name));
+
+        if (!isValid) {
+            console.warn("Formulario incompleto");
+            return;
+        }
+
+        // Si es válido, preparar objeto de datos
+        const formData = new FormData(form);
+        const dataObj = Object.fromEntries(formData.entries());
+        
+        // Incluir la imagen si existe una previsualización
+        const imgEl = document.querySelector("#imagen-preview img");
+        if (imgEl) dataObj.imagenBase64 = imgEl.src;
+
+        // Disparar evento para adminForms.js
+        form.dispatchEvent(new CustomEvent("formularioValido", {
+            detail: dataObj,
+            bubbles: true
+        }));
+    });
+});

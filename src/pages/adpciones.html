@@ -74,21 +74,27 @@
             </div>
 
             <div class="form-field" data-field="vacunado">
-              <label for="vacunado">Vacunado</label>
-              <select id="vacunado" name="vacunado">
+              <label for="vacunado">Vacunas</label>
+              <input type="text" id="vacunado" name="vacunado" placeholder="Ej. Al día / Completa" />
+            </div>
+
+            <div class="form-field" data-field="salud">
+              <label for="salud">Salud</label>
+              <input type="text" id="salud" name="salud" placeholder="Ej. Excelente / Sano" />
+            </div>
+
+            <div class="form-field" data-field="esterilizacion">
+              <label for="esterilizacion">Esterilización</label>
+              <select id="esterilizacion" name="esterilizacion">
                 <option value="">Seleccione respuesta</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+                <option value="Esterilizado/a">Sí</option>
+                <option value="No esterilizado/a">No</option>
               </select>
             </div>
 
-            <div class="form-field" data-field="enfermedad">
-              <label for="enfermedad">Alguna Enfermedad</label>
-              <select id="enfermedad" name="enfermedad">
-                <option value="">Seleccione respuesta</option>
-                <option value="ninguna">Ninguna</option>
-                <option value="si">Sí</option>
-              </select>
+            <div class="form-field" data-field="temperamento">
+              <label for="temperamento">Temperamento</label>
+              <input type="text" id="temperamento" name="temperamento" placeholder="Ej. Juguetón, Tranquilo" />
             </div>
 
             <div class="form-field" data-field="id">
@@ -117,7 +123,7 @@
 
   <!-- ============ TOAST DECORATIVO ============ -->
   <div class="toast" id="toast">
-    <div class="toast__icon">✅</div>
+    <div class="toast__icon">i</div>
     <div>
       <div class="toast__title">¡Perfil guardado!</div>
       <div class="toast__message">La información de la mascota se guardó con éxito.</div>
@@ -155,9 +161,9 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-auto">
                     <div class="btn-group p-1 bg-white shadow-sm rounded-pill" role="group" aria-label="Filtro de mascotas">
-                        <button type="button" class="btn rounded-pill px-4 active filter-btn" data-filter="all">Todos 🐾</button>
-                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="perro">Perritos 🐶</button>
-                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="gato">Gatitos 🐱</button>
+                        <button type="button" class="btn rounded-pill px-4 active filter-btn" data-filter="all">Todos</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="perro">Perritos</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="gato">Gatitos</button>
                     </div>
                 </div>
             </div>
@@ -173,13 +179,14 @@
                         <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Bruno" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Bruno</h3>
-                            <p class="text-muted small mb-3">Labrador Mix · 2 años</p>
+                            <p class="text-muted small mb-3">Especie: Perro · 2 años</p>
                             
-                            <!-- Etiquetas informativas -->
+                            <!-- Pines / Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
-                                <span class="badge bg-pastel-blue text-dark px-2 py-1 small">Esterilizado</span>
-                                <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Sano</span>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 small">Vacunas: Al día</span>
+                                <span class="badge bg-info-subtle text-info px-2 py-1 small">Salud: Sano</span>
+                                <span class="badge bg-warning-subtle text-warning px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small">Juguetón</span>
                             </div>
 
                             <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
@@ -187,9 +194,13 @@
                                 data-bs-target="#petModal"
                                 data-name="Bruno"
                                 data-age="2 años"
-                                data-breed="Labrador Mix"
+                                data-species="Perro (Labrador Mix)"
                                 data-img="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
-                                data-desc="Bruno es un perrito sumamente alegre, le encanta correr en el parque y convive excelente con niños y otros perros. Busca una familia activa que lo llene de amor.">
+                                data-desc="Bruno es un perrito sumamente alegre, le encanta correr en el parque y convive excelente con niños y otros perros. Busca una familia activa que lo llene de amor."
+                                data-vacunas="Al día"
+                                data-salud="Excelente, sin padecimientos"
+                                data-esterilizacion="Esterilizado"
+                                data-temperamento="Juguetón y activo">
                                 Conoce más
                             </button>
                         </div>
@@ -204,13 +215,14 @@
                         <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Mochi" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Mochi</h3>
-                            <p class="text-muted small mb-3">Siamés Mix · 1 año</p>
+                            <p class="text-muted small mb-3">Especie: Gato · 1 año</p>
                             
-                            <!-- Etiquetas informativas -->
+                            <!-- Pines / Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
-                                <span class="badge bg-pastel-purple text-dark px-2 py-1 small">Esterilizado</span>
-                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Tranquilo</span>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 small">Vacunas: Completas</span>
+                                <span class="badge bg-info-subtle text-info px-2 py-1 small">Salud: Sano</span>
+                                <span class="badge bg-warning-subtle text-warning px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small">Tranquilo</span>
                             </div>
 
                             <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
@@ -218,9 +230,13 @@
                                 data-bs-target="#petModal"
                                 data-name="Mochi"
                                 data-age="1 año"
-                                data-breed="Siamés Mix"
+                                data-species="Gato (Siamés Mix)"
                                 data-img="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
-                                data-desc="Mochi es un tierno minino amante de las siestas al rayo del sol. Es muy independiente pero adora recibir mimos por las tardes.">
+                                data-desc="Mochi es un tierno minino amante de las siestas al rayo del sol. Es muy independiente pero adora recibir mimos por las tardes."
+                                data-vacunas="Completas"
+                                data-salud="Óptima"
+                                data-esterilizacion="Esterilizado"
+                                data-temperamento="Tranquilo y cariñoso">
                                 Conoce más
                             </button>
                         </div>
@@ -235,12 +251,14 @@
                         <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Luna</h3>
-                            <p class="text-muted small mb-3">Jack Russell · 10 meses</p>
+                            <p class="text-muted small mb-3">Especie: Perro · 10 meses</p>
                             
-                            <!-- Etiquetas informativas -->
+                            <!-- Pines / Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
-                                <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activa</span>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 small">Vacunas: Al día</span>
+                                <span class="badge bg-info-subtle text-info px-2 py-1 small">Salud: Sano</span>
+                                <span class="badge bg-warning-subtle text-warning px-2 py-1 small">No esterilizada</span>
+                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small">Muy Activa</span>
                             </div>
 
                             <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
@@ -248,9 +266,13 @@
                                 data-bs-target="#petModal"
                                 data-name="Luna"
                                 data-age="10 meses"
-                                data-breed="Jack Russell"
+                                data-species="Perro"
                                 data-img="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
-                                data-desc="Luna es una cachorrita llena de energía, ideal para hogares con espacios amplios o personas que disfruten salir a correr al aire libre.">
+                                data-desc="Luna es una cachorrita llena de energía, ideal para hogares con espacios amplios o personas que disfruten salir a correr al aire libre."
+                                data-vacunas="Al día"
+                                data-salud="Saludable"
+                                data-esterilizacion="No esterilizada"
+                                data-temperamento="Muy activa y enérgica">
                                 Conoce más
                             </button>
                         </div>
@@ -265,12 +287,14 @@
                         <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Canela</h3>
-                            <p class="text-muted small mb-3">Maltés Mix · 4 meses</p>
+                            <p class="text-muted small mb-3">Especie: Gato · 4 meses</p>
                             
-                            <!-- Etiquetas informativas -->
+                            <!-- Pines / Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
-                                <span class="badge bg-pastel-cyan text-dark px-2 py-1 small">Cachorra</span>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 small">Vacunas: Primeras dosis</span>
+                                <span class="badge bg-info-subtle text-info px-2 py-1 small">Salud: Sano</span>
+                                <span class="badge bg-warning-subtle text-warning px-2 py-1 small">No esterilizada</span>
+                                <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small">Dócil</span>
                             </div>
 
                             <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
@@ -278,9 +302,13 @@
                                 data-bs-target="#petModal"
                                 data-name="Canela"
                                 data-age="4 meses"
-                                data-breed="Maltés Mix"
+                                data-species="Gato"
                                 data-img="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
-                                data-desc="Canela fue rescatada junto a sus hermanos. Es muy dócil, le gusta dormir en el regazo y se adapta perfectamente a departamentos.">
+                                data-desc="Canela fue rescatada junto a sus hermanos. Es muy dócil, le gusta dormir en el regazo y se adapta perfectamente a departamentos."
+                                data-vacunas="Primeras dosis"
+                                data-salud="Sana"
+                                data-esterilizacion="No esterilizada"
+                                data-temperamento="Dócil y tierna">
                                 Conoce más
                             </button>
                         </div>
@@ -305,12 +333,18 @@
                             <img id="modal-pet-img" src="" alt="Mascota" class="img-fluid rounded-4 shadow-sm w-100" style="height: 300px; object-fit: cover;">
                         </div>
                         <div class="col-md-6">
+                            <!-- Nombre, especie y edad -->
                             <h3 id="modal-pet-name" class="fw-bold text-dark mb-1"></h3>
-                            <p id="modal-pet-breed" class="text-muted mb-2"></p>
-                            <p class="mb-3"><strong>Edad:</strong> <span id="modal-pet-age"></span></p>
+                            <p id="modal-pet-species" class="text-muted mb-1"></p>
+                            <p class="mb-3 text-muted"><strong>Edad:</strong> <span id="modal-pet-age"></span></p>
+                            
+                            <!-- Etiquetas dinámicas en el modal -->
+                            <div id="modal-pet-tags" class="d-flex flex-wrap gap-1 mb-3"></div>
+
                             <hr>
+                            <!-- Descripción breve del animal -->
                             <p id="modal-pet-desc" class="text-secondary mb-4"></p>
-                            <a href="Contactenos.html" class="btn btn-hero w-100 py-2">¡Quiero adoptar a este peludito! ♡</a>
+                            <a href="RegistroAdopcion.html" class="btn btn-hero w-100 py-2">¡Quiero adoptar a este peludito! ♡</a>
                         </div>
                     </div>
                 </div>
@@ -327,9 +361,71 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Archivo JS con la validación personalizada -->
     <script src="../scripts/app.js"></script>
-    <!-- Script de validación de formularios Admin -->`n    <script src="../scripts/adminForms.js"></script>`n 
-    
+    <!-- Script de validación de formularios Admin -->
+    <script src="../scripts/adminForms.js"></script> 
     <!-- Cart Script -->
     <script src="../scripts/cart.js"></script>
-    </body>
+
+    <!-- Modal información -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. FUNCIONALIDAD DE FILTROS
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const petItems = document.querySelectorAll('.pet-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Cambiar estado activo de los botones
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                petItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 2. FUNCIONALIDAD DEL MODAL
+        const petModal = document.getElementById('petModal');
+        if (petModal) {
+
+            petModal.classList.add('modal-dialog-scrollable');
+
+            petModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                
+                const name = button.getAttribute('data-name');
+                const age = button.getAttribute('data-age');
+                const species = button.getAttribute('data-species').split('(')[0].trim(); 
+                const img = button.getAttribute('data-img');
+                const desc = button.getAttribute('data-desc');
+                const vacunas = button.getAttribute('data-vacunas');
+                const salud = button.getAttribute('data-salud');
+                const esterilizacion = button.getAttribute('data-esterilizacion');
+                const temperamento = button.getAttribute('data-temperamento');
+
+                document.getElementById('modal-pet-img').src = img;
+                document.getElementById('modal-pet-name').textContent = name;
+                document.getElementById('modal-pet-species').textContent = "Especie: " + species;
+                document.getElementById('modal-pet-age').textContent = age;
+                document.getElementById('modal-pet-desc').textContent = desc;
+
+                const tagsContainer = document.getElementById('modal-pet-tags');
+                tagsContainer.innerHTML = `
+                    <span class="badge bg-success-subtle text-success px-2 py-1">Vacunas: ${vacunas}</span>
+                    <span class="badge bg-info-subtle text-info px-2 py-1">Salud: ${salud}</span>
+                    <span class="badge bg-warning-subtle text-warning px-2 py-1">${esterilizacion}</span>
+                    <span class="badge bg-secondary-subtle text-secondary px-2 py-1">Temperamento: ${temperamento}</span>
+                `;
+            });
+        }
+    });
+    </script>
+</body>
 </html>
