@@ -191,15 +191,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ============================================================
-   VALIDACIONES FORMULARIO MASCOTAS
+   VALIDACIONES FORMULARIO MASCOTAS (TODOS OBLIGATORIOS)
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("adopcion-form");
     if (!form) return;
 
-    const requiredFieldNames = isProducto
-    ? ["nombre", "precio", "id"]
-    : ["nombre", "imagen", "descripcion", "edad", "vacunado", "salud", "esterilizacion", "temperamento", "id", "refugio"];
+    // Lista con todos los campos obligatorios para el registro de mascotas
+    const requiredFields = [
+        "nombre", 
+        "imagen", 
+        "descripcion", 
+        "edad", 
+        "vacunado", 
+        "salud", 
+        "esterilizacion", 
+        "temperamento", 
+        "id", 
+        "refugio"
+    ];
 
     /* ---------- Funciones de Validación ---------- */
 
@@ -210,8 +220,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function setFieldError(wrapper, message) {
         if (!wrapper) return;
         wrapper.classList.add("is-invalid");
-        const errorEl = wrapper.querySelector(".field-error");
-        if (errorEl) errorEl.textContent = message;
+        
+        // Busca el span de error o créalo dinámicamente si falta en el HTML
+        let errorEl = wrapper.querySelector(".field-error");
+        if (!errorEl) {
+            errorEl = document.createElement("span");
+            errorEl.className = "field-error";
+            wrapper.appendChild(errorEl);
+        }
+        errorEl.textContent = message;
     }
 
     function clearFieldError(wrapper) {
@@ -226,9 +243,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const wrapper = getFieldWrapper(name);
         if (!input || !wrapper) return true;
 
-        if (!input.value.trim()) {
-            setFieldError(wrapper, "Este campo es obligatorio.");
-            return false;
+        // Validación específica para input de tipo archivo (imagen)
+        if (input.type === "file") {
+            if (input.files.length === 0) {
+                setFieldError(wrapper, "Este campo es obligatorio.");
+                return false;
+            }
+        } else {
+            // Validación para texto, textarea y selects
+            if (!input.value.trim()) {
+                setFieldError(wrapper, "Este campo es obligatorio.");
+                return false;
+            }
         }
 
         clearFieldError(wrapper);
@@ -238,8 +264,13 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ---------- Eventos en tiempo real ---------- */
     requiredFields.forEach((name) => {
         const input = form.querySelector(`[name="${name}"]`);
+        if (!input) return;
+
         input.addEventListener("input", () => validateField(name));
         input.addEventListener("blur", () => validateField(name));
+        if (input.tagName === "SELECT" || input.type === "file") {
+            input.addEventListener("change", () => validateField(name));
+        }
     });
 
     /* ---------- Envío del formulario ---------- */
@@ -251,6 +282,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!isValid) {
             console.warn("Formulario incompleto");
+            
+            // Enfocar automáticamente el primer campo que tenga error
+            const firstInvalid = form.querySelector(".form-field.is-invalid input, .form-field.is-invalid select, .form-field.is-invalid textarea");
+            if (firstInvalid) firstInvalid.focus();
             return;
         }
 
