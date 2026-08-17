@@ -4,8 +4,9 @@
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
     // Determinar la ruta base según donde estamos
-    const rootPath = window.location.pathname.includes('/src/pages/') ? '../..' : '.';
-    cssLink.href = `${rootPath}/src/styles/loader.css`;
+    const scriptTag = document.querySelector('script[src*="main.js"]');
+    const basePath = scriptTag ? scriptTag.getAttribute('src').replace('/scripts/main.js', '') : '.';
+    cssLink.href = basePath + '/styles/loader.css';
     document.head.appendChild(cssLink);
 
     // 2. Inyectar HTML del loader
@@ -793,4 +794,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const observer = new MutationObserver(() => injectAnimatedCart());
 observer.observe(document.body, { childList: true, subtree: true });
+
 
