@@ -671,3 +671,114 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
+
+/* ====================== 
+    Sección Historias 
+   ====================== */
+
+/* Fuentes personalizadas */
+.font-dynapuff {
+    font-family: 'DynaPuff', cursive, sans-serif;
+}
+
+.font-fredoka {
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Fondo general de la vista */
+.bg-historias-page {
+    background-color: #fcf8e3;
+    font-family: 'Nunito', sans-serif;
+    color: #4a4a4a;
+}
+
+/* Contenedor principal flotante (Efecto Tarjeta Blanca) */
+.main-card-container {
+    background-color: #ffffff;
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Estilos para inputs del formulario */
+.form-label-custom {
+    font-weight: 600;
+    color: #555555;
+    margin-bottom: 0.4rem;
+}
+
+.form-control-custom {
+    border-radius: 50px;
+    border: 1.5px solid #e2d9cbea;
+    padding: 0.75rem 1.25rem;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    transition: all 0.2s ease;
+}
+
+.form-control-custom:focus {
+    border-color: #ff6584;
+    box-shadow: 0 0 0 0.2rem rgba(255, 101, 132, 0.15);
+    background-color: #ffffff;
+}
+
+textarea.form-control-custom {
+    border-radius: 20px;
+}
+
+/* Caja de carga de imagen */
+.upload-box {
+    border: 1.5px dashed #e2d9cb;
+    border-radius: 50px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    background-color: #ffffff;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.upload-box:hover {
+    border-color: #ff6584;
+    color: #ff6584;
+    background-color: #fff9fa;
+}
+
+/* Botones del formulario */
+.btn-pink {
+    background-color: #ff6584;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 101, 132, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-pink:hover {
+    background-color: #f45273;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 101, 132, 0.4);
+}
+
+.btn-outline-custom {
+    border-radius: 50px;
+    border: 1.5px solid #e2d9cb;
+    color: #6c757d;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    background-color: #ffffff;
+}
+
+.btn-outline-custom:hover {
+    background-color: #f8f9fa;
+    color: #4a4a4a;
+}
