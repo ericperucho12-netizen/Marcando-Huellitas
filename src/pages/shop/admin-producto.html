@@ -51,6 +51,21 @@
             padding: 12px 16px !important;
         }
     </style>
+    
+    <!-- Protección de Ruta Admin -->
+    <script>
+        (function() {
+            const userStr = localStorage.getItem("usuarioActual");
+            if (!userStr) {
+                window.location.href = "../auth/login.html";
+                return;
+            }
+            const user = JSON.parse(userStr);
+            if (user.rol !== "admin" && user.email !== "admin@marcandohuellitas.com") {
+                window.location.href = "../../index.html";
+            }
+        })();
+    </script>
     <!-- Loader Script -->
     <script src="../../scripts/core/loader.js"></script>
 </head>
