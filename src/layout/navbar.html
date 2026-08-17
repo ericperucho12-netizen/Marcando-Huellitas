@@ -31,25 +31,32 @@
                     <a class="nav-link font-medium" data-nav-page="index" href="{{root}}/index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="productos" href="{{src}}/pages/shop/productos.html">Productos</a>
+                    <a class="nav-link font-medium" data-nav-page="productos"
+                        href="{{src}}/pages/shop/productos.html">Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="adpciones" href="{{src}}/pages/community/adpciones.html">Adopciones</a>
+                    <a class="nav-link font-medium" data-nav-page="adpciones"
+                        href="{{src}}/pages/community/adpciones.html">Adopciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="Asociaciones" href="{{src}}/pages/community/Asociaciones.html">Asociaciones</a>
+                    <a class="nav-link font-medium" data-nav-page="Asociaciones"
+                        href="{{src}}/pages/community/Asociaciones.html">Historias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="Refugios" href="{{src}}/pages/community/Refugios.html">Refugios</a>
+                    <a class="nav-link font-medium" data-nav-page="Refugios"
+                        href="{{src}}/pages/community/Refugios.html">Refugios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="Donaciones" href="{{src}}/pages/community/donaciones.html">Donaciones</a>
+                    <a class="nav-link font-medium" data-nav-page="Donaciones"
+                        href="{{src}}/pages/community/donaciones.html">Donaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="nosotros" href="{{src}}/pages/info/nosotros.html">Nosotros</a>
+                    <a class="nav-link font-medium" data-nav-page="nosotros"
+                        href="{{src}}/pages/info/nosotros.html">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-medium" data-nav-page="Contactenos" href="{{src}}/pages/info/Contactenos.html">Contacto</a>
+                    <a class="nav-link font-medium" data-nav-page="Contactenos"
+                        href="{{src}}/pages/info/Contactenos.html">Contacto</a>
                 </li>
             </ul>
 
@@ -69,7 +76,9 @@
                 <!-- Notificaciones con puntito rojo -->
                 <a href="#notificaciones" class="position-relative text-secondary fs-5 ms-2 me-2">
                     <i class="bi bi-bell"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle" style="width: 8px; height: 8px;">
+                    <span
+                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"
+                        style="width: 8px; height: 8px;">
                         <span class="visually-hidden">Nuevas notificaciones</span>
                     </span>
                 </a>
@@ -77,7 +86,8 @@
                 <!-- Carrito con Burbuja -->
                 <a href="{{src}}/pages/shop/carrito.html" class="position-relative text-secondary fs-5 me-2">
                     <i class="bi bi-cart3"></i>
-                    <span id="cartBadge" data-cart-count class="position-absolute top-0 start-100 translate-middle badge rounded-circle"
+                    <span id="cartBadge" data-cart-count
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-circle"
                         style="background-color: #e04b7b; font-size: 0.55rem; padding: 0.25em 0.45em; display:none;">
                         0
                     </span>
@@ -86,21 +96,34 @@
                 <!-- Perfil / Autenticación -->
                 <div class="dropdown ms-2" id="navAuthContainer">
                     <!-- Botón cuando NO está logueado -->
-                    <a href="{{src}}/pages/auth/login.html" id="navLoginBtn" class="text-secondary fs-6 text-decoration-none d-flex align-items-center fw-medium">
+                    <a href="{{src}}/pages/auth/login.html" id="navLoginBtn"
+                        class="text-secondary fs-6 text-decoration-none d-flex align-items-center fw-medium">
                         Iniciar sesión
                     </a>
-                    
+
                     <!-- Dropdown cuando SÍ está logueado (oculto por defecto) -->
-                    <a href="#" id="navUserDropdown" class="text-secondary fs-5 d-none dropdown-toggle text-decoration-none d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle me-1"></i> <span id="navUserName" class="fs-6 ms-1 fw-medium">Perfil</span>
+                    <a href="#" id="navUserDropdown"
+                        class="text-secondary fs-5 d-none dropdown-toggle text-decoration-none d-flex align-items-center"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle me-1"></i> <span id="navUserName"
+                            class="fs-6 ms-1 fw-medium">Perfil</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="navUserDropdown" style="min-width: 200px; border-radius: 12px; margin-top: 10px;">
-                        <li><h6 class="dropdown-header text-success" id="navUserHeader">Mi Cuenta</h6></li>
-                        <li><a class="dropdown-item py-2" href="#"><i class="bi bi-person-badge me-2 text-muted"></i>Datos de perfil</a></li>
-                        <li><a class="dropdown-item py-2" href="#"><i class="bi bi-credit-card me-2 text-muted"></i>Métodos de pago</a></li>
-                        <li><a class="dropdown-item py-2" href="#"><i class="bi bi-geo-alt me-2 text-muted"></i>Direcciones</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item py-2 text-danger" href="#" id="navLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="navUserDropdown"
+                        style="min-width: 200px; border-radius: 12px; margin-top: 10px;">
+                        <li>
+                            <h6 class="dropdown-header text-success" id="navUserHeader">Mi Cuenta</h6>
+                        </li>
+                        <li><a class="dropdown-item py-2" href="#"><i
+                                    class="bi bi-person-badge me-2 text-muted"></i>Datos de perfil</a></li>
+                        <li><a class="dropdown-item py-2" href="#"><i
+                                    class="bi bi-credit-card me-2 text-muted"></i>Métodos de pago</a></li>
+                        <li><a class="dropdown-item py-2" href="#"><i
+                                    class="bi bi-geo-alt me-2 text-muted"></i>Direcciones</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item py-2 text-danger" href="#" id="navLogoutBtn"><i
+                                    class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
                     </ul>
                 </div>
             </div>

@@ -86,7 +86,15 @@
             </div>
 
             <!-- Grid de Perfiles de Mascotas -->
-            <div class="row g-4" id="pet-grid">
+            
+              <!-- BOTÓN DE ADMIN (AGREGAR MASCOTA) -->
+              <div id="adminAdopcionToggleContainer" class="text-center mb-4" style="display: none;">
+                  <a href="admin-adopcion.html" class="btn btn-warning rounded-pill px-4 fw-bold shadow-sm">
+                      <i class="bi bi-plus-circle me-2"></i>Agregar Mascota (Modo Admin)
+                  </a>
+              </div>
+
+<div class="row g-4" id="pet-grid">
 
                 <!-- Card 1: Bruno -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
@@ -254,7 +262,22 @@
     <!-- Cart Script -->
     <script src="../../scripts/shop/cart.js"></script>
 
-    <!-- Modal información -->
+    
+    <!-- Script para revelar botón admin -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userStr = localStorage.getItem("usuarioActual");
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                if (user.rol === "admin" || user.email === "admin@marcandohuellitas.com") {
+                    const toggleContainer = document.getElementById("adminAdopcionToggleContainer");
+                    if (toggleContainer) toggleContainer.style.display = "block";
+                }
+            }
+        });
+    </script>
+
+<!-- Modal información -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         // 1. FUNCIONALIDAD DE FILTROS
