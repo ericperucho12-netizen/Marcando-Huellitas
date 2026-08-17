@@ -606,3 +606,68 @@
             color: white !important;
             box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
         }
+
+/* Estilos exactos del prototipo para el toggle */
+.view-toggle {
+    display: flex;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.view-toggle__btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+.view-toggle__btn.active,
+.view-toggle__btn:hover {
+    background: #1f6b3d;
+    color: #fff;
+}
+
+/* Override para vista de lista */
+.product-item-card.list-view-card {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    display: block !important;
+    min-height: 200px;
+}
+.product-item-card.list-view-card .row {
+    margin: 0 !important;
+}
+
+.product-item-card.list-view-card .title,
+.product-item-card.list-view-card .price {
+    position: static !important;
+    white-space: normal !important;
+    width: auto !important;
+}
+
+.product-item-card.list-view-card .text {
+    position: static !important;
+}
+
+/* Custom scrollbar for sidebar filters */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

@@ -66,8 +66,7 @@
         }
     </style>
     <!-- Loader Script -->
-    <script src="../../scripts/core/loader.js"></script>
-</head>
+    </head>
 
 <body class="bg-light">
     <!-- Mini carrito lateral -->
@@ -142,31 +141,72 @@
         </div>
     </section>
 
-    <!-- BARRA DE CATEGORÍAS -->
-    <section style="background:white;border-bottom:1px solid #ebebeb;position:sticky;top:70px;z-index:100;">
-        <div class="container">
-            <div class="d-flex align-items-center gap-2 py-3 flex-wrap">
-                <button class="cat-pill active" data-cat="todos">Todos</button>
-                <button class="cat-pill" data-cat="alimento">Alimento</button>
-                <button class="cat-pill" data-cat="juguetes">Juguetes</button>
-                <button class="cat-pill" data-cat="descanso">Descanso</button>
-                <button class="cat-pill" data-cat="salud">Salud</button>
-                <button class="cat-pill" data-cat="accesorios">Accesorios</button>
-            </div>
-        </div>
-    </section>
+    
 
 
 
 
     <!-- SECCIÓN CON SIDEBAR + CATÁLOGO DINÁMICO -->
     <section class="py-5" style="background:#f8f9fa;">
-        <div class="container">
+        <div class="container-fluid px-4 px-xl-5">
             <div class="row g-4">
 
                 <!-- SIDEBAR DE FILTROS -->
                 <div class="col-12 col-lg-3">
-                    <div class="card border-0 shadow-sm p-4" style="border-radius:16px;position:sticky;top:130px;">
+                    <div class="card border-0 shadow-sm p-4 custom-scrollbar" style="border-radius:16px;position:sticky;top:130px; max-height: calc(100vh - 150px); overflow-y: auto;">
+
+                        
+                        <!-- Filtro: CATEGORÍAS -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">CATEGORÍAS</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="alimento" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Alimento</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="juguetes" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Juguetes</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="descanso" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Descanso</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="salud" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Salud</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="accesorios" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Accesorios</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: OFERTAS -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">OFERTAS</h6>
+                            <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="checkbox" id="filterOffers" value="si" style="accent-color:#ff4d4f;width:16px;height:16px;">
+                                    <span style="color:#ff4d4f; font-weight:bold;">Solo Ofertas</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <hr class="my-3">
 
                         <!-- Filtro: Precio -->
                         <div class="mb-4">
@@ -279,10 +319,6 @@
                             </div>
                         </div>
 
-                        <!-- Botón Aplicar -->
-                        <button id="applyFiltersBtn" class="btn w-100 fw-bold py-2 rounded-pill"
-                            style="background:#1f6b3d;color:white;transition:all .2s;">Aplicar filtros</button>
-
                     </div>
                 </div>
 
@@ -305,15 +341,7 @@
                                 <option value="precio_desc">Precio: mayor a menor</option>
                                 <option value="nombre">Nombre A-Z</option>
                             </select>
-                            <button id="viewGrid" class="btn btn-sm rounded-2 active"
-                                style="background:#1f6b3d;color:white;width:34px;height:34px;" title="Vista cuadrícula">
-                                <i class="bi bi-grid-fill"></i>
-                            </button>
-                            <button id="viewList" class="btn btn-sm rounded-2"
-                                style="background:#f0f0f0;color:#555;width:34px;height:34px;" title="Vista lista">
-                                <i class="bi bi-list-task"></i>
-                            </button>
-                        </div>
+                            </div>
                     </div>
 
                     <div id="dynamicProductsSection">
@@ -352,9 +380,8 @@
     <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
 
     <!-- Scripts Base -->
+    <script src="../../scripts/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../scripts/core/layout.js"></script>
-
     <!-- Scripts Carruseles Fijos -->
     <script src="../../scripts/core/store.js"></script>
     <script src="../../scripts/shop/alimentosPerro.js"></script>
@@ -364,9 +391,6 @@
     <!-- Scripts Catálogo Dinámico y Admin -->
     <script src="../../scripts/shop/productos.js"></script>
     <!-- Cart Script -->
-    <script src="../../scripts/shop/cart.js"></script>
-
-
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </body>
 
