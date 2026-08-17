@@ -467,3 +467,168 @@
 .payment-info.active {
     display: block;
 }
+
+/* ----- PROPÓSITOS DE DONACIÓN ----- */
+.donation-purpose {
+    background: var(--White);
+}
+.donation-purpose-card {
+    background: var(--card-color, #f8f9fa);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.donation-purpose-card:hover {
+    transform: translateY(-5px);
+}
+.purpose-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.purpose-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.purpose-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.purpose-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--White);
+    color: var(--icon-color, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-top: -30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+/* ----- CÓMO DONAR ----- */
+.how-to-donate {
+    background: var(--Powder-Petal);
+}
+.how-to-donate-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+.how-title {
+    margin-bottom: 3rem;
+}
+.how-to-donate .donation-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .how-to-donate .donation-steps {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+.how-to-donate .donation-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.how-to-donate .step-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+.how-to-donate .credit-icon {
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--White);
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.how-to-donate .step-arrow {
+    font-size: 3rem;
+    color: var(--Accent-Pink);
+    display: none;
+}
+@media (min-width: 768px) {
+    .how-to-donate .step-arrow {
+        display: block;
+        margin-top: 2rem;
+    }
+}
+
+/* ----- HISTORIA COMPLETA (MODAL) ----- */
+.story-full {
+    display: none;
+    background: var(--White);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+.story-full.active {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease;
+}
+@media (min-width: 768px) {
+    .story-full.active {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+.story-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f8f9fa;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 10;
+}
+.story-close:hover {
+    background: #e9ecef;
+}
+.story-full-image {
+    flex: 1;
+}
+.story-full-image img {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.story-full-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
