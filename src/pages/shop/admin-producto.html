@@ -55,7 +55,7 @@
     <!-- Protección de Ruta Admin -->
     <script>
         (function() {
-            const userStr = localStorage.getItem("usuarioActual");
+            const userStr = sessionStorage.getItem("usuarioActual");
             if (!userStr) {
                 window.location.href = "../auth/login.html";
                 return;

@@ -266,7 +266,7 @@
     <!-- Script para revelar botón admin -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const userStr = localStorage.getItem("usuarioActual");
+            const userStr = sessionStorage.getItem("usuarioActual");
             if (userStr) {
                 const user = JSON.parse(userStr);
                 if (user.rol === "admin" || user.email === "admin@marcandohuellitas.com") {
