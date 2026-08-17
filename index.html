@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Marcando Huellitas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="src/styles/styles.css">
+</head>
+
+<body>
+
+
+    <!-- Contenedor del Navbar -->
+    <div data-template="src/layout/navbar.html" data-root="." data-src="src"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section py-5 position-relative overflow-hidden">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <!-- Izquierda: Textos y Botones -->
+                <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+
+                    <!-- Etiqueta verde flotante -->
+                    <div class="d-inline-flex align-items-center rounded-pill px-3 py-1 mb-4"
+                        style="background-color: #d8eed3; color: #1f6b3d; font-size: 0.85rem; font-weight: 600;">
+                        <i class="fa-solid fa-leaf me-2"></i> 100% de ganancias a refugios
+                    </div>
+
+                    <!-- Título -->
+                    <h1 class="hero-title fw-bold text-dark mb-3 lh-sm"
+                        style="font-size: 4rem; font-family: 'DynaPuff', cursive;">
+                        Compra con<br>amor,<br>
+                        <span style="color: #ff8e6a;">salva una vida</span>
+                        <i class="fa-solid fa-paw ms-2 text-dark" style="transform: rotate(15deg);"></i>
+                    </h1>
+
+                    <!-- Párrafo -->
+                    <p class="hero-text text-secondary mb-5 pe-lg-5 lh-lg" style="font-size: 1.1rem; max-width: 90%;">
+                        Cada producto que adquieras contribuye directamente al bienestar de gatos y perros en refugios y
+                        asociaciones de toda la ciudad. Tu compra hace la diferencia.
+                    </p>
+
+                    <!-- Botones -->
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-5">
+                        <a href="src/pages/shop/productos.html"
+                            class="btn btn-ver-productos px-4 py-2 rounded-pill fw-medium text-white">Ver Productos</a>
+                        <a href="src/pages/community/adpciones.html"
+                            class="btn btn-adoptar-hero px-4 py-2 rounded-pill fw-medium">Adoptar</a>
+                        <a href="src/pages/community/donaciones.html"
+                            class="btn btn-donar px-4 py-2 rounded-pill fw-medium text-white">Donar
+                            ahora</a>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div class="d-flex flex-wrap gap-5 justify-content-center justify-content-lg-start pt-3">
+                        <div>
+                            <h3 class="fw-bold mb-0" style="color: #ff8e6a; font-size: 1.8rem;">1,240+</h3>
+                            <small class="text-secondary fw-medium" style="font-size: 0.8rem;">Animales ayudados</small>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0" style="color: #ff8e6a; font-size: 1.8rem;">38</h3>
+                            <small class="text-secondary fw-medium" style="font-size: 0.8rem;">Refugios aliados</small>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-0" style="color: #ff8e6a; font-size: 1.8rem;">5,800+</h3>
+                            <small class="text-secondary fw-medium" style="font-size: 0.8rem;">Donantes activos</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Derecha: Imagen/Carrusel con etiquetas flotantes -->
+                <div class="col-lg-6 position-relative">
+
+                    <!-- Etiqueta Flotante Superior -->
+                    <div class="position-absolute rounded-pill shadow-sm px-3 py-2 d-flex align-items-center"
+                        style="background-color: #d8eed3; color: #1f6b3d; top: -15px; right: 10px; z-index: 10; font-weight: bold;">
+                        <i class="fa-solid fa-paw me-2"></i> ¡Adopta!
+                    </div>
+
+                    <!-- Carrusel de Bootstrap -->
+                    <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg rounded-4 overflow-hidden"
+                        data-bs-ride="carousel" style="border: 8px solid white;">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="4000">
+                                <img src="src/assets/home/Index1.jfif" class="d-block w-100" alt="Mascota 1"
+                                    style="height: 400px; object-fit: cover;">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="src/assets/home/index2.jpg" class="d-block w-100" alt="Mascota 2"
+                                    style="height: 400px; object-fit: cover;">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <img src="src/assets/home/index3.avif" class="d-block w-100" alt="Mascota 3"
+                                    style="height: 400px; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Etiqueta Flotante Inferior -->
+                    <div class="position-absolute bg-white rounded-3 shadow d-flex align-items-center px-3 py-2"
+                        style="bottom: -20px; left: -20px; z-index: 10;">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 40px; height: 40px; background-color: #fff4ca;">
+                            <i class="fa-solid fa-heart text-warning fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold text-dark lh-1" style="font-size: 0.95rem;">¡Gracias!</p>
+                            <small class="text-secondary" style="font-size: 0.75rem;">por cada compra</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXPLORA -->
+    <section class="explora-section py-5 bg-white text-center">
+        <div class="container py-4">
+
+            <div class="d-inline-flex align-items-center rounded-pill px-3 py-1 mb-3"
+                style="background-color: #f1fcf5; color: #1fb963; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px;">
+                <i class="bi bi-grid-3x3-gap me-2"></i> EXPLORA
+            </div>
+
+            <h2 class="fw-bold text-dark mb-2 explora-title"
+                style="font-size: 2.8rem; font-family: var(--font-titles);">¿Qué estás buscando?</h2>
+            <p class="text-secondary mb-5 fs-5 explora-subtitle" style="font-family: var(--font-text-primary);">
+                Encuentra todo lo que necesitas para tu mascota en un solo lugar</p>
+
+            <!-- Grid de Tarjetas -->
+            <div class="row justify-content-center gap-3 px-3">
+
+                <a href="/src/pages/shop/productos.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #eaf3ff;">
+                        <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="hover" target="a"
+                            colors="primary:#4384eb" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Productos</span>
+                </a>
+
+                <a href="/src/pages/community/adpciones.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #f1fcf5;">
+                        <lord-icon src="https://cdn.lordicon.com/rjzlnunf.json" trigger="hover" target="a"
+                            colors="primary:#2ac36a" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Adopciones</span>
+                </a>
+
+                <a href="/src/pages/community/Asociaciones.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #fff4e6;">
+                        <lord-icon src="https://cdn.lordicon.com/nocvdjmh.json" trigger="hover" target="a"
+                            colors="primary:#ff9d42" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Asociaciones</span>
+                </a>
+
+                <a href="/src/pages/community/Refugios.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #f7efff;">
+                        <lord-icon src="https://cdn.lordicon.com/zzcjjxew.json" trigger="hover" target="a"
+                            colors="primary:#a45af4" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Refugios</span>
+                </a>
+
+                <a href="/src/pages/community/donaciones.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #ffeef2;">
+                        <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="hover" target="a"
+                            colors="primary:#ff547a" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Donaciones</span>
+                </a>
+
+                <a href="/src/pages/info/nosotros.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #e8f9f8;">
+                        <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" target="a"
+                            colors="primary:#2ebdb8" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Nosotros</span>
+                </a>
+
+                <a href="/src/pages/info/Contactenos.html"
+                    class="explora-card text-decoration-none col-auto bg-white rounded-4 shadow-sm d-flex flex-column align-items-center justify-content-center p-4 transition-all">
+                    <div class="icon-circle mb-3 rounded-circle d-flex align-items-center justify-content-center"
+                        style="width: 60px; height: 60px; background-color: #f5f5f5;">
+                        <lord-icon src="https://cdn.lordicon.com/nzixoeyk.json" trigger="hover" target="a"
+                            colors="primary:#6c757d" style="width:32px;height:32px"></lord-icon>
+                    </div>
+                    <span class="fw-bold text-dark" style="font-size: 0.9rem;">Contacto</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MASCOTAS QUE ESPERAN UN HOGAR -->
+    <section class="py-5" style="background-color: #fde8d7;">
+        <div class="container py-4">
+            <!-- Header de la Sección -->
+            <div class="text-center mb-4">
+                <p class="mb-1 fw-bold" style="color: #c9b1f5; font-size: 1.1rem; font-family: var(--font-titles);">
+                    Perfiles de mascota</p>
+                <h2 class="fw-bold mb-3" style="color: #e85d04; font-size: 2.8rem; font-family: var(--font-titles);">
+                    Mascotas que esperan un hogar</h2>
+                <p class="text-secondary mx-auto"
+                    style="max-width: 600px; font-size: 1.1rem; font-family: var(--font-text-primary);">Conoce a los
+                    peluditos que esperan una familia. Adoptar es la decisión más amorosa.</p>
+            </div>
+
+            <!-- Etiquetas superiores (Disponibles Ahora / Ver Todas) -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-inline-flex align-items-center rounded-pill px-3 py-1 fw-bold"
+                    style="background-color: #d8eed3; color: #1f6b3d; font-size: 0.8rem; font-family: var(--font-text-primary);">
+                    <i class="bi bi-suit-heart-fill me-2"></i> DISPONIBLES AHORA
+                </div>
+                <a href="/src/pages/community/adpciones.html" class="btn-interactive btn-interactive-primary"
+                    style="font-family: var(--font-text-primary);">
+                    Ver todas
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Grid de Mascotas (Reciclado de adpciones.html) -->
+            <div class="row g-4" id="pet-grid">
+                <!-- Card 1: Bruno -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Bruno" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Bruno</h3>
+                            <p class="text-muted small mb-3">Labrador Mix · 2 años</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-blue text-dark px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Sano</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Mochi -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #ffc4a3; color: #d35400; font-size: 0.75rem; z-index: 10;">En
+                            Proceso</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Mochi" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Mochi</h3>
+                            <p class="text-muted small mb-3">Siamés Mix · 1 año</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-purple text-dark px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Tranquilo</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Luna -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Luna</h3>
+                            <p class="text-muted small mb-3">Jack Russell · 10 meses</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activa</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Canela -->
+                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Canela</h3>
+                            <p class="text-muted small mb-3">Maltés Mix · 4 meses</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-cyan text-dark px-2 py-1 small">Cachorra</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Sección de Productos Destacados -->
+    <section class="py-5 position-relative" style="background-color: var(--Lemon-Chiffon, #fbf8cc);">
+        <div class="container py-4 position-relative">
+            <div class="d-flex justify-content-between align-items-end mb-4">
+                <div class="text-center w-100 position-relative">
+                    <p class="mb-2 fw-bold text-uppercase" style="color: #c4a4f9; letter-spacing: 1px;">Productos en
+                        venta</p>
+                    <h2 class="display-5 fw-bold" style="color: #e65c00; font-family: var(--font-titles);">Productos
+                        destacados</h2>
+                    <a href="src/pages/shop/productos.html"
+                        class="btn-interactive btn-interactive-secondary position-absolute bottom-0 end-0"
+                        style="font-family: var(--font-text-primary);">
+                        Ver todos
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grid de Productos -->
+            <div class="row g-4 justify-content-center mt-3">
+                <!-- Producto 1 -->
+                <div class="col-auto">
+                    <div class="product-item-card">
+                        <div class="image">
+                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Boina.jpg" class="product-img"
+                                alt="Gato con Boina">
+                        </div>
+                        <span class="title">Hermosa Michi Boina</span>
+                        <span class="price">$250.00 MXN</span>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="col-auto">
+                    <div class="product-item-card">
+                        <div class="image">
+                            <img src="src/assets/productos/accesorios_perro/producto-cama-perro.png" class="product-img"
+                                alt="Cama Premium para Perro">
+                        </div>
+                        <span class="title">Cama Premium para Perro</span>
+                        <span class="price">$850.00 MXN</span>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="col-auto">
+                    <div class="product-item-card">
+                        <div class="image">
+                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Bruja.jpg" class="product-img"
+                                alt="Gato disfrazado de bruja">
+                        </div>
+                        <span class="title">Hermoso Traje De Michi Bruja</span>
+                        <span class="price">$500.00 MXN</span>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="col-auto">
+                    <div class="product-item-card">
+                        <div class="image">
+                            <img src="src/assets/productos/accesorios_perro/producto-correa-perro.png"
+                                class="product-img" alt="Correa para perro">
+                        </div>
+                        <span class="title">Correa Resistente para Paseos</span>
+                        <span class="price">$150.00 MXN</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nuestra Misión -->
+    <section class="py-5 position-relative" style="background-color: var(--salmon1, #ff8c69); color: white;">
+        <div class="container py-5 text-center">
+            <h2 class="display-5 fw-bold mb-3" style="font-family: var(--font-titles);">Nuestra misión: cada huella
+                cuenta 🐾</h2>
+            <p class="lead mb-5 mx-auto px-3" style="max-width: 900px; font-weight: 500;">
+                Marcando Huellitas nace del amor por los animales. Conectamos a compradores conscientes con refugios y
+                asociaciones que necesitan apoyo. No es caridad — es comunidad.
+            </p>
+
+            <div class="row g-4 justify-content-center mb-5">
+                <!-- Perros rescatados -->
+                <div class="col-md-4">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <lord-icon src="https://lottie.host/66977150-2956-49e0-ad4d-cb841435500c/lVRpN0WBFj.json"
+                            trigger="hover" target="div" class="mx-auto mb-3"
+                            style="width: 80px; height: 80px;"></lord-icon>
+                        <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Perros rescatados</h4>
+                        <p class="mb-0" style="font-size: 0.95rem;">Cada compra financia alimento, veterinaria y amor
+                            para perros en espera</p>
+                    </div>
+                </div>
+
+                <!-- Gatos en refugio -->
+                <div class="col-md-4">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <lord-icon src="https://lottie.host/42caf6d1-5691-4932-880e-96bfbb6af8b1/AjpiEoOk8e.json"
+                            trigger="hover" target="div" class="mx-auto mb-3"
+                            style="width: 150px; height: 150px;"></lord-icon>
+                        <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Gatos en refugio</h4>
+                        <p class="mb-0" style="font-size: 0.95rem;">Apoyamos colonias felinas y hogares temporales para
+                            gatos callejeros</p>
+                    </div>
+                </div>
+
+                <!-- Hogares encontrados -->
+                <div class="col-md-4">
+                    <div class="card mission-card h-100 border-0 p-4 text-white">
+                        <lord-icon src="https://lottie.host/30473b08-9a0f-40b1-ae3d-e0546d519ac4/xmcJuWOEZU.json"
+                            trigger="hover" target="div" class="mx-auto mb-3"
+                            style="width: 110px; height: 110px;"></lord-icon>
+                        <h4 class="fw-bold mb-3" style="font-family: var(--font-titles);">Hogares encontrados</h4>
+                        <p class="mb-0" style="font-size: 0.95rem;">Conectamos adoptantes con mascotas que buscan un
+                            hogar permanente</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="src/pages/community/donaciones.html"
+                class="btn fw-bold rounded-pill shadow-sm d-inline-flex align-items-center justify-content-center transition-all btn-donar-mission"
+                style="font-family: var(--font-text-primary); font-size: 1.1rem; padding: 12px 40px;">
+                Quiero donar <span class="ms-2">💛</span>
+            </a>
+        </div>
+    </section>
+    <!-- Sección Casos de Éxito -->
+    <section class="py-5" style="background-color: #fafafa;">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <p class="mb-2 fw-bold text-uppercase" style="color: #2ac36a; letter-spacing: 1px; font-size: 0.85rem;">
+                    ⭐ Historias reales
+                </p>
+                <h2 class="fw-bold mb-3" style="color: #1a1a2e; font-size: 2.8rem; font-family: var(--font-titles);">
+                    Casos de éxito</h2>
+                <p class="text-secondary mx-auto"
+                    style="max-width: 600px; font-size: 1.05rem; font-family: var(--font-text-primary);">Cada adopción
+                    cambia dos vidas: la del animal y la del adoptante</p>
+            </div>
+
+            <!-- Tarjetas de historias -->
+            <div class="row g-4 justify-content-center">
+
+                <!-- Historia 1: Alma + Galita -->
+                <div class="col-12 col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 success-card">
+                        <!-- Fotos antes/después -->
+                        <div class="position-relative d-flex" style="height: 200px;">
+                            <img src="src/assets/nosotros/mascotas/Galita-10.jpeg" class="w-50 object-fit-cover"
+                                alt="Galita antes" style="object-fit: cover;">
+                            <img src="src/assets/nosotros/mascotas/Kali-3.jpeg" class="w-50 object-fit-cover"
+                                alt="Kali después" style="object-fit: cover;">
+                            <span class="position-absolute bottom-0 start-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: rgba(0,0,0,0.6); color: white; font-size: 0.65rem;">ANTES</span>
+                            <span class="position-absolute bottom-0 end-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: #2ac36a; color: white; font-size: 0.65rem;">DESPUÉS</span>
+                        </div>
+                        <!-- Contenido -->
+                        <div class="card-body p-4">
+                            <p class="text-muted mb-1" style="font-size: 1.3rem; color: #2ac36a !important;">❝</p>
+                            <p class="text-dark mb-3"
+                                style="font-size: 0.92rem; font-family: var(--font-text-primary); font-style: italic;">
+                                Galita llegó asustada y desnutrida. Hoy es la reina de la casa y la alegría de mi
+                                familia. Gracias Marcando Huellitas.
+                            </p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/assets/nosotros/equipo/Alma.jpeg" alt="Alma" class="rounded-circle"
+                                    style="width: 38px; height: 38px; object-fit: cover;">
+                                <div>
+                                    <p class="mb-0 fw-bold text-dark" style="font-size: 0.85rem;">Alma Alicia Carmona
+                                    </p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">CDMX · Adoptó en 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historia 2: Daniel + Spike -->
+                <div class="col-12 col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 success-card">
+                        <div class="position-relative d-flex" style="height: 200px;">
+                            <img src="src/assets/nosotros/mascotas/Spike-10.jpeg" class="w-50" alt="Spike antes"
+                                style="object-fit: cover;">
+                            <img src="src/assets/nosotros/mascotas/Ramon-2.jpeg" class="w-50" alt="Ramón después"
+                                style="object-fit: cover;">
+                            <span class="position-absolute bottom-0 start-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: rgba(0,0,0,0.6); color: white; font-size: 0.65rem;">ANTES</span>
+                            <span class="position-absolute bottom-0 end-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: #2ac36a; color: white; font-size: 0.65rem;">DESPUÉS</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="text-muted mb-1" style="font-size: 1.3rem; color: #2ac36a !important;">❝</p>
+                            <p class="text-dark mb-3"
+                                style="font-size: 0.92rem; font-family: var(--font-text-primary); font-style: italic;">
+                                Spike era muy tímido y no confiaba en nadie. Con amor y paciencia se convirtió en mi
+                                compañero inseparable.
+                            </p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/assets/nosotros/equipo/Daniel.jpeg" alt="Daniel" class="rounded-circle"
+                                    style="width: 38px; height: 38px; object-fit: cover;">
+                                <div>
+                                    <p class="mb-0 fw-bold text-dark" style="font-size: 0.85rem;">Daniel Montero
+                                        Figueroa</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Guadalajara · Adoptó en 2024
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historia 3: Milett + Mylove -->
+                <div class="col-12 col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 success-card">
+                        <div class="position-relative d-flex" style="height: 200px;">
+                            <img src="src/assets/nosotros/mascotas/Mylove-9.jpeg" class="w-50" alt="Mylove antes"
+                                style="object-fit: cover;">
+                            <img src="src/assets/nosotros/mascotas/GeneralGerardoGarciaGomez-10.jpeg" class="w-50"
+                                alt="General después" style="object-fit: cover;">
+                            <span class="position-absolute bottom-0 start-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: rgba(0,0,0,0.6); color: white; font-size: 0.65rem;">ANTES</span>
+                            <span class="position-absolute bottom-0 end-0 m-2 px-2 py-1 rounded fw-bold"
+                                style="background-color: #2ac36a; color: white; font-size: 0.65rem;">DESPUÉS</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="text-muted mb-1" style="font-size: 1.3rem; color: #2ac36a !important;">❝</p>
+                            <p class="text-dark mb-3"
+                                style="font-size: 0.92rem; font-family: var(--font-text-primary); font-style: italic;">
+                                Mylove llegó en muy malas condiciones. Hoy corre por el parque, juega con mis hijos y
+                                llena de amor nuestra vida.
+                            </p>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="src/assets/nosotros/equipo/Milett.jpeg" alt="Milett" class="rounded-circle"
+                                    style="width: 38px; height: 38px; object-fit: cover;">
+                                <div>
+                                    <p class="mb-0 fw-bold text-dark" style="font-size: 0.85rem;">Zuleyka Milett
+                                        Velazquez</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Monterrey · Adoptó en 2025
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección Organizaciones Aliadas (doble carrusel infinito) -->
+    <section style="background-color: #fff8f2; overflow: hidden; padding-top: 6rem; padding-bottom: 8rem;">
+        <div class="container mb-4">
+            <div class="text-center">
+                <p class="mb-1 fw-bold text-uppercase" style="color: #ff8e6a; letter-spacing: 1px; font-size: 0.85rem;">
+                    Alianzas</p>
+                <h2 class="fw-bold mb-2" style="color: #1a1a2e; font-family: var(--font-titles); font-size: 2.8rem;">
+                    Organizaciones aliadas</h2>
+                <p class="text-secondary" style="font-size: 1.2rem;">Trabajamos junto a las mejores asociaciones y
+                    refugios del país</p>
+            </div>
+        </div>
+
+        <!-- Carril 1: izquierda → derecha -->
+        <div class="marquee-wrapper mb-3" style="overflow: hidden; position: relative; padding: 1.2rem 0;">
+            <div class="marquee-track marquee-left d-flex gap-3">
+                <!-- bloque duplicado para scroll infinito -->
+                <div class="ally-pill"> Patitas Felices AC</div>
+                <div class="ally-pill"> Refugio Esperanza</div>
+                <div class="ally-pill"> Amor Animal MX</div>
+                <div class="ally-pill"> SOS Mascotas</div>
+                <div class="ally-pill"> Vida Animal AC</div>
+                <div class="ally-pill"> Hogar Temporal MX</div>
+                <div class="ally-pill"> Gatos Rescatados</div>
+                <div class="ally-pill"> Bienestar Animal</div>
+                <!-- duplicado para loop continuo -->
+                <div class="ally-pill"> Patitas Felices AC</div>
+                <div class="ally-pill"> Refugio Esperanza</div>
+                <div class="ally-pill"> Amor Animal MX</div>
+                <div class="ally-pill"> SOS Mascotas</div>
+                <div class="ally-pill"> Vida Animal AC</div>
+                <div class="ally-pill"> Hogar Temporal MX</div>
+                <div class="ally-pill"> Gatos Rescatados</div>
+                <div class="ally-pill"> Bienestar Animal</div>
+            </div>
+        </div>
+
+        <!-- Carril 2: derecha → izquierda -->
+        <div class="marquee-wrapper" style="overflow: hidden; position: relative; padding: 1.2rem 0;">
+            <div class="marquee-track marquee-right d-flex gap-3">
+                <div class="ally-pill ally-pill--alt"> Refugio Las Plumas</div>
+                <div class="ally-pill ally-pill--alt"> Amigos Peludos</div>
+                <div class="ally-pill ally-pill--alt"> Patas y Corazones</div>
+                <div class="ally-pill ally-pill--alt"> Huellitas Libres</div>
+                <div class="ally-pill ally-pill--alt"> Fauna Urbana AC</div>
+                <div class="ally-pill ally-pill--alt"> Felinos del Sur</div>
+                <div class="ally-pill ally-pill--alt"> Adopta No Compres</div>
+                <div class="ally-pill ally-pill--alt"> Rescate Animal MX</div>
+                <!-- duplicado -->
+                <div class="ally-pill ally-pill--alt"> Refugio Las Plumas</div>
+                <div class="ally-pill ally-pill--alt"> Amigos Peludos</div>
+                <div class="ally-pill ally-pill--alt"> Patas y Corazones</div>
+                <div class="ally-pill ally-pill--alt"> Huellitas Libres</div>
+                <div class="ally-pill ally-pill--alt"> Fauna Urbana AC</div>
+                <div class="ally-pill ally-pill--alt"> Felinos del Sur</div>
+                <div class="ally-pill ally-pill--alt"> Adopta No Compres</div>
+                <div class="ally-pill ally-pill--alt"> Rescate Animal MX</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor del Footer -->
+    <div data-template="src/layout/footer.html" data-root="." data-src="src"></div>
+    <script src="src/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="src/scripts/pages/home.js"></script>
+</body>
+
+</html>

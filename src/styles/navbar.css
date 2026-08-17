@@ -1,0 +1,32 @@
+/* =========================================
+   2. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================= */
+
+/* texto del logo */
+    .brand-text {
+      font-family: var(--font-titles);
+    }
+
+    .font-medium {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    
+    .active-link {
+      color: #e04b7b !important;
+      border-bottom: 2px solid #e04b7b;
+      padding-bottom: 2px !important;
+    }
+
+    /* Cambio de color suave al pasar el cursor  */
+    .navbar-nav .nav-link:hover, .iconos-derecha a:hover {
+      color: #e04b7b !important;
+      transition: color 0.2s ease-in-out;
+    }
+    
+
+/* Hace que el contenedor desaparezca estructuralmente y permita al nav ser sticky */
+[data-template$="navbar.html"] {
+    display: contents;
+}
