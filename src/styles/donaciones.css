@@ -97,7 +97,7 @@
     transform: translateY(-5px);
 }
 
-.story-image img {
+.story-image {
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -167,7 +167,7 @@
 .shelter-pink { border-color: var(--Pink-Orchid); }
 .shelter-blue { border-color: var(--Baby-Blue-Ice); }
 
-.shelter-icon img {
+.shelter-icon {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -631,4 +631,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.meta-urgency {
+    font-size: 1.1rem;
+    color: var(--Text-Dark);
+    font-weight: 600;
+    margin-top: 1rem;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
