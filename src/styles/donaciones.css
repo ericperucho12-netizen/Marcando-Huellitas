@@ -820,3 +820,13 @@
     color: #6c757d;
     font-size: 1.1rem;
 }
+.purpose-content h3.hero-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem;
+    word-break: break-word;
+    text-transform: uppercase;
+}
+.purpose-content .hero-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
