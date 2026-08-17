@@ -25,6 +25,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="stylesheet" href="../../styles/refugios.css">
+
+    <!-- Loader Script -->
+    <script src="../../scripts/core/loader.js"></script>
 </head>
 
 <body>
@@ -32,7 +36,289 @@
     <!-- Contenedor del Navbar -->
     <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
 
+    <!-- Hero de la página -->
+    <section class="refugios-hero">
+        <div class="container text-center">
+            <span class="hero-badge">Nuestra Red de Refugios</span>
+            <h1 class="hero-title refugios-title">Conoce Nuestras Casitas</h1>
+            <p class="refugios-subtitle">
+                Cada casita es un hogar temporal lleno de amor mientras nuestros huellitas encuentran
+                una familia definitiva. Desliza el carrusel para conocer su historia, su ubicación
+                y ver un video del refugio.
+            </p>
+        </div>
+    </section>
 
+    <!-- Carrusel de Refugios -->
+    <section class="refugios-carousel-section">
+        <div class="container">
+            <div id="refugiosCarousel" class="carousel slide refugios-carousel" data-bs-ride="false">
+
+                <!-- Indicadores -->
+                <div class="carousel-indicators refugios-indicators">
+                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="La Casita de Crispín"></button>
+                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="1"
+                        aria-label="La Casita de Cristóbal"></button>
+                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="2"
+                        aria-label="La Casita de Chespi"></button>
+                </div>
+
+                <div class="carousel-inner">
+
+                    <!-- ===================== CASITA 1: CRISPÍN ===================== -->
+                    <div class="carousel-item active" data-refugio-id="crispin">
+                        <div class="refugio-card">
+                            <div class="row g-4 g-lg-5 align-items-start">
+
+                                <!-- Galería de fotos -->
+                                <div class="col-lg-6">
+                                    <div class="refugio-photo-main">
+                                        <img src="https://picsum.photos/seed/casita-crispin-main/800/560"
+                                            class="img-fluid w-100" alt="Fachada de La Casita de Crispín">
+                                    </div>
+                                    <div class="row g-2 refugio-gallery">
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-crispin-1/300/220"
+                                                class="img-fluid w-100" alt="Área de descanso de La Casita de Crispín">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-crispin-2/300/220"
+                                                class="img-fluid w-100" alt="Patio de juegos de La Casita de Crispín">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-crispin-3/300/220"
+                                                class="img-fluid w-100" alt="Huellitas de La Casita de Crispín">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Información -->
+                                <div class="col-lg-6">
+                                    <span class="refugio-badge bg-pastel-green">Refugio activo</span>
+                                    <h2 class="refugio-name">La Casita de Crispín</h2>
+
+                                    <p class="refugio-address">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        Calle Framboyanes 312, Col. Las Puentes, San Nicolás de los Garza, N.L.
+                                    </p>
+
+                                    <p class="refugio-historia">
+                                        Todo comenzó cuando Crispín, un perrito senior abandonado en una gasolinera,
+                                        fue rescatado por una familia voluntaria. Desde entonces, esta casita se
+                                        dedica a recibir perros mayores y con necesidades especiales, ofreciéndoles
+                                        cobijas calientitas, cuidados veterinarios y muchísimo cariño mientras
+                                        esperan una segunda oportunidad.
+                                    </p>
+
+                                    <!-- Zona para vincular video de YouTube -->
+                                    <div class="refugio-video" data-refugio-video="crispin">
+                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
+
+                                        <div class="video-embed-wrapper d-none">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Crispín"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <button type="button" class="btn-video-remove">
+                                                <i class="bi bi-trash3"></i> Quitar video
+                                            </button>
+                                        </div>
+
+                                        <form class="video-link-form">
+                                            <label class="video-link-label" for="video-crispin">
+                                                Pega aquí el enlace de YouTube de este refugio
+                                            </label>
+                                            <div class="video-input-group">
+                                                <input type="url" id="video-crispin" class="video-link-input"
+                                                    placeholder="https://www.youtube.com/watch?v=..." required>
+                                                <button type="submit" class="btn-video-add">
+                                                    <i class="bi bi-link-45deg"></i> Vincular
+                                                </button>
+                                            </div>
+                                            <p class="video-link-feedback"></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===================== CASITA 2: CRISTÓBAL ===================== -->
+                    <div class="carousel-item" data-refugio-id="cristobal">
+                        <div class="refugio-card">
+                            <div class="row g-4 g-lg-5 align-items-start">
+
+                                <!-- Galería de fotos -->
+                                <div class="col-lg-6">
+                                    <div class="refugio-photo-main">
+                                        <img src="https://picsum.photos/seed/casita-cristobal-main/800/560"
+                                            class="img-fluid w-100" alt="Fachada de La Casita de Cristóbal">
+                                    </div>
+                                    <div class="row g-2 refugio-gallery">
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-cristobal-1/300/220"
+                                                class="img-fluid w-100" alt="Sala de gatos de La Casita de Cristóbal">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-cristobal-2/300/220"
+                                                class="img-fluid w-100" alt="Torres para gatos de La Casita de Cristóbal">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-cristobal-3/300/220"
+                                                class="img-fluid w-100" alt="Huellitas de La Casita de Cristóbal">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Información -->
+                                <div class="col-lg-6">
+                                    <span class="refugio-badge bg-pastel-blue">Refugio activo</span>
+                                    <h2 class="refugio-name">La Casita de Cristóbal</h2>
+
+                                    <p class="refugio-address">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        Av. Eugenio Garza Sada 1450, Col. Roma, Monterrey, N.L.
+                                    </p>
+
+                                    <p class="refugio-historia">
+                                        Cristóbal era un gatito que vivía escondido entre los talleres de un barrio
+                                        industrial hasta que un grupo de vecinas comenzó a alimentarlo. Hoy esta
+                                        casita se especializa en el rescate de gatitos de calle, con espacios de
+                                        juego en altura, esterilización responsable y un programa de socialización
+                                        para prepararlos para su nuevo hogar.
+                                    </p>
+
+                                    <!-- Zona para vincular video de YouTube -->
+                                    <div class="refugio-video" data-refugio-video="cristobal">
+                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
+
+                                        <div class="video-embed-wrapper d-none">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Cristóbal"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <button type="button" class="btn-video-remove">
+                                                <i class="bi bi-trash3"></i> Quitar video
+                                            </button>
+                                        </div>
+
+                                        <form class="video-link-form">
+                                            <label class="video-link-label" for="video-cristobal">
+                                                Pega aquí el enlace de YouTube de este refugio
+                                            </label>
+                                            <div class="video-input-group">
+                                                <input type="url" id="video-cristobal" class="video-link-input"
+                                                    placeholder="https://www.youtube.com/watch?v=..." required>
+                                                <button type="submit" class="btn-video-add">
+                                                    <i class="bi bi-link-45deg"></i> Vincular
+                                                </button>
+                                            </div>
+                                            <p class="video-link-feedback"></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===================== CASITA 3: CHESPI ===================== -->
+                    <div class="carousel-item" data-refugio-id="chespi">
+                        <div class="refugio-card">
+                            <div class="row g-4 g-lg-5 align-items-start">
+
+                                <!-- Galería de fotos -->
+                                <div class="col-lg-6">
+                                    <div class="refugio-photo-main">
+                                        <img src="https://picsum.photos/seed/casita-chespi-main/800/560"
+                                            class="img-fluid w-100" alt="Fachada de La Casita de Chespi">
+                                    </div>
+                                    <div class="row g-2 refugio-gallery">
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-chespi-1/300/220"
+                                                class="img-fluid w-100" alt="Área de cachorros de La Casita de Chespi">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-chespi-2/300/220"
+                                                class="img-fluid w-100" alt="Patio de juegos de La Casita de Chespi">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://picsum.photos/seed/casita-chespi-3/300/220"
+                                                class="img-fluid w-100" alt="Huellitas de La Casita de Chespi">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Información -->
+                                <div class="col-lg-6">
+                                    <span class="refugio-badge bg-pastel-orange">Refugio activo</span>
+                                    <h2 class="refugio-name">La Casita de Chespi</h2>
+
+                                    <p class="refugio-address">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        Calle Río Nazas 88, Col. del Valle, San Pedro Garza García, N.L.
+                                    </p>
+
+                                    <p class="refugio-historia">
+                                        Chespi llegó como el único sobreviviente de una camada encontrada en un
+                                        terreno baldío durante una tormenta. Esa noche marcó el inicio de esta
+                                        casita, enfocada en el cuidado de cachorros recién nacidos y camadas
+                                        completas, con incubadoras, alimentación especializada y un plan de
+                                        vacunación para que crezcan sanos y listos para adopción.
+                                    </p>
+
+                                    <!-- Zona para vincular video de YouTube -->
+                                    <div class="refugio-video" data-refugio-video="chespi">
+                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
+
+                                        <div class="video-embed-wrapper d-none">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Chespi"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <button type="button" class="btn-video-remove">
+                                                <i class="bi bi-trash3"></i> Quitar video
+                                            </button>
+                                        </div>
+
+                                        <form class="video-link-form">
+                                            <label class="video-link-label" for="video-chespi">
+                                                Pega aquí el enlace de YouTube de este refugio
+                                            </label>
+                                            <div class="video-input-group">
+                                                <input type="url" id="video-chespi" class="video-link-input"
+                                                    placeholder="https://www.youtube.com/watch?v=..." required>
+                                                <button type="submit" class="btn-video-add">
+                                                    <i class="bi bi-link-45deg"></i> Vincular
+                                                </button>
+                                            </div>
+                                            <p class="video-link-feedback"></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#refugiosCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#refugiosCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- Contenedor del Footer -->
     <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
@@ -45,6 +331,8 @@
     <script src="../../scripts/core/app.js"></script>
     <!-- Cart Script -->
     <script src="../../scripts/shop/cart.js"></script>
+    <!-- Refugios: carrusel y videos vinculados -->
+    <script src="../../scripts/pages/refugios.js"></script>
 </body>
 
 </html>
