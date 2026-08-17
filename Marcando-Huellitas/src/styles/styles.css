@@ -1,0 +1,12 @@
+/* =========================================
+   MARCANDO HUELLITAS - HOJA DE ESTILOS PRINCIPAL
+   ========================================= */
+
+@import url('global.css');
+@import url('navbar.css');
+@import url('about.css');
+@import url('footer.css');
+@import url('pages.css');
+@import url('forms.css');
+@import url('cart.css');
+@import url('refugios.css');

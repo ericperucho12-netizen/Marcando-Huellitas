@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Marcando Huellitas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <style>
+        .nav-pills .nav-link.active {
+            background-color: var(--color-brand);
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-pills .nav-link {
+            color: var(--color-text-soft);
+            font-weight: 500;
+        }
+
+        .nav-pills .nav-link:hover:not(.active) {
+            background-color: #fce4ec;
+            color: var(--color-brand);
+        }
+
+        /* Pills de Categoría */
+        .cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            font-weight: 600;
+            font-size: .875rem;
+            color: #555;
+            cursor: pointer;
+            transition: all .2s ease;
+            white-space: nowrap;
+        }
+
+        .cat-pill:hover {
+            border-color: #1f6b3d;
+            color: #1f6b3d;
+        }
+
+        .cat-pill.active {
+            background: #1f6b3d;
+            border-color: #1f6b3d;
+            color: white;
+        }
+    </style>
+    <!-- Loader Script -->
+    </head>
+
+<body class="bg-light">
+    <!-- Mini carrito lateral -->
+    <div class="offcanvas offcanvas-end mini-cart-panel" tabindex="-1" id="miniCartOffcanvas"
+        aria-labelledby="miniCartLabel" data-bs-scroll="true" data-bs-backdrop="false">
+
+        <div class="offcanvas-header mini-cart-header">
+            <div>
+                <h5 class="offcanvas-title" id="miniCartLabel">Mi carrito</h5>
+                <p class="mini-cart-count mb-0">
+                    <span id="miniCartTotalItems">0</span> producto(s)
+                </p>
+            </div>
+
+            <button type="button" class="btn-close mini-cart-close" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="offcanvas-body mini-cart-body">
+            <div class="mini-cart-subtotal-box">
+                <span>Subtotal</span>
+                <strong id="miniCartSubtotal">$0.00 MXN</strong>
+            </div>
+
+            <button type="button" class="mini-cart-go-btn" onclick="window.location.href='../shop/carrito.html'">
+                Ir al carrito
+            </button>
+
+            <div id="miniCartItems" class="mini-cart-items">
+                <!-- JS inserta productos -->
+            </div>
+
+            <div id="miniCartEmpty" class="mini-cart-empty">
+                <i class="bi bi-cart-x"></i>
+                <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor del Navbar -->
+    <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- HERO SECTION PARA PRODUCTOS (rediseñado) -->
+    <section
+        style="background: linear-gradient(135deg, #1f6b3d 0%, #2e9a58 100%); padding: 60px 0 50px; text-align: center; position: relative; overflow: hidden;">
+        <!-- Huellitas de fondo decorativas -->
+        <div
+            style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.06;background-image:url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><text y=\'.9em\' font-size=\'60\'>🐾</text></svg>');background-size:80px;pointer-events:none;">
+        </div>
+        <div class="container position-relative">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb justify-content-center mb-0" style="opacity:.8;">
+                    <li class="breadcrumb-item"><a href="../../index.html"
+                            style="color:rgba(255,255,255,.75);text-decoration:none;">Inicio</a></li>
+                    <li class="breadcrumb-item active" style="color:white;">Productos</li>
+                </ol>
+            </nav>
+            <h1
+                style="font-family:var(--font-titles);font-size:clamp(2.2rem,5vw,3.5rem);color:white;font-weight:800;margin-bottom:.5rem;">
+                Todo para tu mascota 🛍️</h1>
+            <p style="color:rgba(255,255,255,.85);font-size:1.1rem;max-width:480px;margin:0 auto 1.5rem;">Alimento,
+                accesorios, juguetes y más. Envío gratis a partir de <strong>$600 MXN</strong>.</p>
+
+            <!-- Botón Admin (solo visible si es admin) -->
+            <div id="adminToggleContainer" style="display:none;">
+                <a id="btnAgregarProducto" href="../shop/admin-producto.html"
+                    class="btn px-4 py-2 rounded-pill shadow fw-bold"
+                    style="background:white;color:#1f6b3d;border:none;text-decoration:none;display:inline-block;">
+                    <i class="bi bi-plus-circle-fill me-2"></i>Agregar Nuevo Producto
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+
+    <!-- SECCIÓN CON SIDEBAR + CATÁLOGO DINÁMICO -->
+    <section class="py-5" style="background:#f8f9fa;">
+        <div class="container-fluid px-4 px-xl-5">
+            <div class="row g-4">
+
+                <!-- SIDEBAR DE FILTROS -->
+                <div class="col-12 col-lg-3">
+                    <div class="card border-0 shadow-sm p-4 custom-scrollbar" style="border-radius:16px;position:sticky;top:130px; max-height: calc(100vh - 150px); overflow-y: auto;">
+
+                        
+                        <!-- Filtro: CATEGORÍAS -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">CATEGORÍAS</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="alimento" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Alimento</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="juguetes" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Juguetes</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="descanso" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Descanso</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="salud" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Salud</span>
+                                    </div>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="accesorios" class="category-check" style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Accesorios</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: OFERTAS -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">OFERTAS</h6>
+                            <label class="d-flex align-items-center justify-content-between" style="cursor:pointer;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="checkbox" id="filterOffers" value="si" style="accent-color:#ff4d4f;width:16px;height:16px;">
+                                    <span style="color:#ff4d4f; font-weight:bold;">Solo Ofertas</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: Precio -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="fw-bold mb-0" style="color:#2b2b2b;letter-spacing:.5px;">PRECIO</h6>
+                                <button id="clearPriceFilter"
+                                    class="btn btn-link btn-sm p-0 text-success fw-semibold">Limpiar</button>
+                            </div>
+                            <input type="range" class="form-range" id="priceRange" min="0" max="2000" value="2000"
+                                step="50" style="accent-color:#1f6b3d;">
+                            <div class="d-flex justify-content-between mt-1">
+                                <small class="text-muted">$0</small>
+                                <small class="fw-bold text-success" id="priceRangeValue">$2,000</small>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: PARA -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">PARA</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" id="filterPerros" value="perro" class="species-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>🐾 Perros</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#e8f5e9;color:#1f6b3d;">48</span>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" id="filterGatos" value="gato" class="species-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>🐈 Gatos</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#e8f5e9;color:#1f6b3d;">36</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: MARCA -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">MARCA</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="royal canin" class="brand-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Royal Canin</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#f5f5f5;color:#555;">24</span>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="purina" class="brand-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Purina</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#f5f5f5;color:#555;">18</span>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="hills" class="brand-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Hills</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#f5f5f5;color:#555;">15</span>
+                                </label>
+                                <label class="d-flex align-items-center justify-content-between"
+                                    style="cursor:pointer;">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" value="pedigree" class="brand-check"
+                                            style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                        <span>Pedigree</span>
+                                    </div>
+                                    <span class="badge rounded-pill" style="background:#f5f5f5;color:#555;">10</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <!-- Filtro: CALIFICACIÓN -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-3" style="color:#2b2b2b;letter-spacing:.5px;">CALIFICACION</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <label class="d-flex align-items-center gap-2" style="cursor:pointer;">
+                                    <input type="radio" name="rating" value="5" class="rating-check" checked
+                                        style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                    <span style="color:#f4a91f;">★★★★★</span><small class="text-muted">(5)</small>
+                                </label>
+                                <label class="d-flex align-items-center gap-2" style="cursor:pointer;">
+                                    <input type="radio" name="rating" value="4" class="rating-check"
+                                        style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                    <span style="color:#f4a91f;">★★★★☆</span><small class="text-muted">(4+)</small>
+                                </label>
+                                <label class="d-flex align-items-center gap-2" style="cursor:pointer;">
+                                    <input type="radio" name="rating" value="3" class="rating-check"
+                                        style="accent-color:#1f6b3d;width:16px;height:16px;">
+                                    <span style="color:#f4a91f;">★★★☆☆</span><small class="text-muted">(3+)</small>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CATÁLOGO DINÁMICO -->
+                <div class="col-12 col-lg-9">
+
+                    <!-- Encabezado de sección -->
+                    <h2 class="fw-bold mb-3" style="font-family:var(--font-titles);color:#1f6b3d;font-size:1.8rem;">
+                        Nuestro Catálogo Completo</h2>
+
+                    <!-- Barra superior: ordenamiento y vista -->
+                    <div
+                        class="d-flex align-items-center justify-content-between mb-4 p-3 bg-white rounded-3 shadow-sm">
+                        <small class="text-muted" id="productCount">Mostrando productos</small>
+                        <div class="d-flex align-items-center gap-2">
+                            <select id="sortSelect" class="form-select form-select-sm rounded-pill"
+                                style="min-width:160px;border-color:#ddd;">
+                                <option value="popular">Más populares</option>
+                                <option value="precio_asc">Precio: menor a mayor</option>
+                                <option value="precio_desc">Precio: mayor a menor</option>
+                                <option value="nombre">Nombre A-Z</option>
+                            </select>
+                            </div>
+                    </div>
+
+                    <div id="dynamicProductsSection">
+
+                        <hr class="my-4">
+                        <h3 class="fw-bold mb-4" style="color:#2b2b2b;font-size:1.1rem;">Productos del catálogo</h3>
+                    </div>
+
+                    <!-- Catálogo dinámico (admin) -->
+                    <div class="row g-4 justify-content-start" id="productsList">
+                        <!-- JS rellenará esto -->
+                    </div>
+                    <!-- Mensaje vacío -->
+                    <div id="emptyStateMsg" class="text-center py-5 text-muted"
+                        style="display: none; background: white; border-radius: 12px; border: 1px dashed #ccc;">
+                        <i class="bi bi-box-seam fs-1 mb-3 text-secondary"></i>
+                        <h4 style="font-family: var(--font-text-secondary);">Aún no hay productos</h4>
+                        <p>Los productos agregados desde el panel de administración aparecerán aquí.</p>
+                    </div>
+
+                    <!-- Paginación -->
+                    <div id="paginationContainer" class="d-flex justify-content-center mt-5 gap-2 flex-wrap">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- TOAST DECORATIVO ELIMINADO -->
+
+
+
+    <!-- Contenedor del Footer -->
+    <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- Scripts Base -->
+    <script src="../../scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts Carruseles Fijos -->
+    <script src="../../scripts/core/store.js"></script>
+    <script src="../../scripts/shop/alimentosPerro.js"></script>
+    <script src="../../scripts/shop/juguetesPerro.js"></script>
+    <script src="../../scripts/shop/dogAccessories.js"></script>
+
+    <!-- Scripts Catálogo Dinámico y Admin -->
+    <script src="../../scripts/shop/productos.js"></script>
+    <!-- Cart Script -->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</body>
+
+</html>
