@@ -33,293 +33,275 @@
     <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
 
     <!-- Sección Banner-->
-<section class="hero-section pt-5 pb-2 position-relative overflow-hidden"
-    style="background-color: #ffff;">
+    <section class="hero-section pt-5 pb-2 position-relative overflow-hidden" style="background-color: #ffff;">
 
-    <div class="container py-2">
+        <div class="container py-2">
 
-        <div class="row align-items-center">
+            <div class="row align-items-center">
 
-            <!-- TEXTO IZQUIERDA -->
-            <div class="col-lg-7 mb-5 mb-lg-0 text-center text-lg-start">
+                <!-- TEXTO IZQUIERDA -->
+                <div class="col-lg-7 mb-5 mb-lg-0 text-center text-lg-start">
 
-                <div class="d-inline-flex align-items-center rounded-pill px-3 py-1 mb-4"
-                    style="background-color: #f7ef85; color: #674846; font-size: 0.85rem; font-weight: 600;">
-                    <i class="fa-solid fa-heart me-2"></i>
-                    Tu ayuda es invaluable
+                    <div class="d-inline-flex align-items-center rounded-pill px-3 py-1 mb-4"
+                        style="background-color: #f7ef85; color: #674846; font-size: 0.85rem; font-weight: 600;">
+                        <i class="fa-solid fa-heart me-2"></i>
+                        Tu ayuda es invaluable
+                    </div>
+
+                    <h1 class="hero-title fw-bold mb-3 lh-sm"
+                        style="font-size: 4rem; font-family: 'DynaPuff', cursive; color:#674846;">
+                        TU AYUDA DEJA<br>
+                        <span style="color:#ff8e6a;">
+                            UNA HUELLA EN<br>
+                            SUS CORAZONES
+                        </span>
+
+                    </h1>
+
+                    <p class="hero-text text-secondary mb-5 pe-lg-5 lh-lg" style="font-size:1.1rem; max-width:90%;">
+
+                        Tu apoyo es fundamental para brindarles un hogar lleno de amor y cuidado.
+                        Cada contribución marca la diferencia en la vida de estos adorables animales.
+                        ¡Únete a nuestra causa!
+                    </p>
+
+
+                    <!-- Botón -->
+                    <div class="d-flex justify-content-center mb-5">
+                        <a href="form-donacion.html"
+                            class=" hero-title btn btn-donar px-5 py-3 rounded-pill fw-bold text-white"
+                            style="font-size: 1.2rem;">
+                            <i class="fa-regular fa-heart me-2"></i>
+                            Dona ahora
+                            <i class="fa-regular fa-heart ms-2"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <h1 class="hero-title fw-bold mb-3 lh-sm"
-                    style="font-size: 4rem; font-family: 'DynaPuff', cursive; color:#674846;">
-                    TU AYUDA DEJA<br>
-                    <span style="color:#ff8e6a;">
-                        UNA HUELLA EN<br>
-                        SUS CORAZONES
-                    </span>
+                <!-- Video del lado derecho -->
+                <div class="col-lg-5 col-md-6 col-12 d-flex justify-content-center align-items-center py-3">
+                    <div class="donation-image">
+                        <i class="fa-solid fa-paw paw-decoration paw-top"></i>
+                        <video id="donationVideo" class="donation-video" autoplay muted playsinline>
+                            <source src="../../assets/donaciones/video1.mp4" type="video/mp4">
+                        </video>
+                        <i class="fa-regular fa-heart heart-decoration"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                </h1>
 
-                <p class="hero-text text-secondary mb-5 pe-lg-5 lh-lg"
-                    style="font-size:1.1rem; max-width:90%;">
-                    
-                    Tu apoyo es fundamental para brindarles un hogar lleno de amor y cuidado.
-                    Cada contribución marca la diferencia en la vida de estos adorables animales.
-                    ¡Únete a nuestra causa!
+    <!-- SECCIÓN DE PROPÓSITOS DE DONACIÓN -->
+
+    <section class="donation-purpose py-5">
+
+        <div class="container">
+
+            <!-- Título -->
+            <div class="text-center mb-5">
+
+                <h2 class="hero-title fw-bold mb-3" style="font-size: 2.5rem; color: var(--color-hex);">
+
+                    ¿A DÓNDE VA TU DONACIÓN?
+                    <i class="fa-solid fa-heart" style="color: var(--salmon1); font-size: 1.7rem;"></i>
+
+                </h2>
+
+                <p class="hero-text text-secondary mx-auto" style="max-width: 700px;">
+
+                    Tu apoyo se transforma en alimento, cuidados y recursos
+                    especializados para perros y gatos que necesitan nuestra ayuda.
+
                 </p>
 
-
-                <!-- Botón -->
-                <div class="d-flex justify-content-center mb-5">
-                    <a href="form-donacion.html"
-                    class=" hero-title btn btn-donar px-5 py-3 rounded-pill fw-bold text-white"
-                    style="font-size: 1.2rem;">
-                    <i class="fa-regular fa-heart me-2"></i>
-                    Dona ahora
-                    <i class="fa-regular fa-heart ms-2"></i>
-                    </a>
-                </div>
             </div>
-            
-            <!-- Video del lado derecho -->
-            <div class="col-lg-5 col-md-6 col-12 d-flex justify-content-center align-items-center py-3">
-                <div class="donation-image">
-                    <i class="fa-solid fa-paw paw-decoration paw-top"></i>
-                    <video id="donationVideo"
-                            class="donation-video"
-                            autoplay
-                            muted
-                            playsinline>
-                            <source src="../../assets/donaciones/video1.mp4" type="video/mp4">
-                    </video>
-                    <i class="fa-regular fa-heart heart-decoration"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
-<!-- SECCIÓN DE PROPÓSITOS DE DONACIÓN -->
+            <!-- TARJETAS -->
 
-<section class="donation-purpose py-5">
+            <div class="row g-4 justify-content-center">
 
-    <div class="container">
+                <!-- ALIMENTACIÓN -->
 
-        <!-- Título -->
-        <div class="text-center mb-5">
+                <div class="col-12 col-sm-6 col-lg-3">
 
-            <h2 class="hero-title fw-bold mb-3"
-                style="font-size: 2.5rem; color: var(--color-hex);">
-
-                ¿A DÓNDE VA TU DONACIÓN?
-                <i class="fa-solid fa-heart"
-                   style="color: var(--salmon1); font-size: 1.7rem;"></i>
-
-            </h2>
-
-            <p class="hero-text text-secondary mx-auto"
-               style="max-width: 700px;">
-
-                Tu apoyo se transforma en alimento, cuidados y recursos
-                especializados para perros y gatos que necesitan nuestra ayuda.
-
-            </p>
-
-        </div>
-
-
-        <!-- TARJETAS -->
-
-        <div class="row g-4 justify-content-center">
-
-            <!-- ALIMENTACIÓN -->
-
-            <div class="col-12 col-sm-6 col-lg-3">
-
-                <div class="donation-purpose-card"
-                     style="
+                    <div class="donation-purpose-card" style="
                         --card-color: var(--Lemon-Chiffon);
                         --icon-color: var(--color-hex);
                     ">
 
-                    <div class="purpose-image">
+                        <div class="purpose-image">
 
-                        <img src="../../assets/donaciones/Alimentacion.jpeg"
-                            alt="Animal recibiendo alimento">
-
-                    </div>
-
-                    <div class="purpose-content">
-
-                        <div class="purpose-icon">
-
-                            <i class="fa-solid fa-bowl-food"></i>
+                            <img src="../../assets/donaciones/Alimentacion.jpeg" alt="Animal recibiendo alimento">
 
                         </div>
 
+                        <div class="purpose-content">
 
-                        <h3 class="hero-title"
-                            style="color: var(--color-hex);">
+                            <div class="purpose-icon">
 
-                            Alimentación
+                                <i class="fa-solid fa-bowl-food"></i>
 
-                        </h3>
+                            </div>
 
-                        <p>
 
-                            Ayuda a proporcionar comida nutritiva
-                            para su crecimiento y bienestar.
+                            <h3 class="hero-title" style="color: var(--color-hex);">
 
-                        </p>
+                                Alimentación
+
+                            </h3>
+
+                            <p>
+
+                                Ayuda a proporcionar comida nutritiva
+                                para su crecimiento y bienestar.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
 
+                <!-- ATENCIÓN VETERINARIA -->
 
-            <!-- ATENCIÓN VETERINARIA -->
+                <div class="col-12 col-sm-6 col-lg-3">
 
-            <div class="col-12 col-sm-6 col-lg-3">
-
-                <div class="donation-purpose-card"
-                     style="
+                    <div class="donation-purpose-card" style="
                         --card-color: var(--Celadon);
                         --icon-color: #6bb879;
                      ">
 
-                    <div class="purpose-image">
+                        <div class="purpose-image">
 
-                        <img src="../../assets/donaciones/Atencion-veterinaria.jpeg"
-                             alt="Gato recibiendo atención veterinaria">
-
-                    </div>
-
-
-                    <div class="purpose-content">
-
-                        <div class="purpose-icon">
-
-                            <i class="fa-solid fa-stethoscope"></i>
+                            <img src="../../assets/donaciones/Atencion-veterinaria.jpeg"
+                                alt="Gato recibiendo atención veterinaria">
 
                         </div>
 
 
-                        <h3 class="hero-title"
-                            style="color: #6bb879;">
+                        <div class="purpose-content">
 
-                            Atención veterinaria
+                            <div class="purpose-icon">
 
-                        </h3>
+                                <i class="fa-solid fa-stethoscope"></i>
+
+                            </div>
 
 
-                        <p>
+                            <h3 class="hero-title" style="color: #6bb879;">
 
-                            Cubre consultas, vacunas, medicamentos
-                            y tratamientos especializados.
+                                Atención veterinaria
 
-                        </p>
+                            </h3>
+
+
+                            <p>
+
+                                Cubre consultas, vacunas, medicamentos
+                                y tratamientos especializados.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
 
+                <!-- REFUGIOS Y CUIDADOS -->
 
-            <!-- REFUGIOS Y CUIDADOS -->
+                <div class="col-12 col-sm-6 col-lg-3">
 
-            <div class="col-12 col-sm-6 col-lg-3">
-
-                <div class="donation-purpose-card"
-                     style="
+                    <div class="donation-purpose-card" style="
                         --card-color: var(--Pink-Orchid);
                         --icon-color: #b45aa8;
                      ">
 
-                    <div class="purpose-image">
+                        <div class="purpose-image">
 
-                        <img src="../../assets/donaciones/Refugios-Perro.jpeg"
-                             alt="Perro en un refugio">
-
-                    </div>
-
-
-                    <div class="purpose-content">
-
-                        <div class="purpose-icon">
-
-                            <i class="fa-solid fa-house"></i>
+                            <img src="../../assets/donaciones/Refugios-Perro.jpeg" alt="Perro en un refugio">
 
                         </div>
 
 
-                        <h3 class="hero-title"
-                            style="color: #b45aa8;">
+                        <div class="purpose-content">
 
-                            Refugios y cuidados
+                            <div class="purpose-icon">
 
-                        </h3>
+                                <i class="fa-solid fa-house"></i>
+
+                            </div>
 
 
-                        <p>
+                            <h3 class="hero-title" style="color: #b45aa8;">
 
-                            Apoya las necesidades básicas de los refugios:
-                            limpieza, camas, transporte y más.
+                                Refugios y cuidados
 
-                        </p>
+                            </h3>
+
+
+                            <p>
+
+                                Apoya las necesidades básicas de los refugios:
+                                limpieza, camas, transporte y más.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
 
+                <!-- RESCATE Y RECUPERACIÓN -->
 
-            <!-- RESCATE Y RECUPERACIÓN -->
+                <div class="col-12 col-sm-6 col-lg-3">
 
-            <div class="col-12 col-sm-6 col-lg-3">
-
-                <div class="donation-purpose-card"
-                     style="
+                    <div class="donation-purpose-card" style="
                         --card-color: var(--Baby-Blue-Ice);
                         --icon-color: #5d8fd4;
                      ">
 
-                    <div class="purpose-image">
+                        <div class="purpose-image">
 
-                        <img src="../../assets/donaciones/Rescate-gato.jpeg"
-                             alt="Perro rescatado">
-
-                    </div>
-
-
-                    <div class="purpose-content">
-
-                        <div class="purpose-icon">
-
-                            <i class="fa-solid fa-paw"></i>
+                            <img src="../../assets/donaciones/Rescate-gato.jpeg" alt="Perro rescatado">
 
                         </div>
 
 
-                        <h3 class="hero-title"
-                            style="color: #5d8fd4;">
+                        <div class="purpose-content">
 
-                            Rescate y recuperación
+                            <div class="purpose-icon">
 
-                        </h3>
+                                <i class="fa-solid fa-paw"></i>
 
-                        <p>
+                            </div>
 
-                            Permite rescatar a más animales y brindarles
-                            la atención que necesitan para recuperarse.
 
-                        </p>
+                            <h3 class="hero-title" style="color: #5d8fd4;">
+
+                                Rescate y recuperación
+
+                            </h3>
+
+                            <p>
+
+                                Permite rescatar a más animales y brindarles
+                                la atención que necesitan para recuperarse.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -329,251 +311,233 @@
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
 
 
-<!-- ESTADISTICAS  -->
+    <!-- ESTADISTICAS  -->
 
-<section class="donation-stats py-4">
+    <section class="donation-stats py-4">
 
-    <div class="container">
+        <div class="container">
 
-        <!-- CONTENEDOR PRINCIPAL -->
-        <div class="p-3 p-md-4"
-             style="
+            <!-- CONTENEDOR PRINCIPAL -->
+            <div class="p-3 p-md-4" style="
                 border: 2px dashed #f2b58f;
                 border-radius: 15px;
                 background: #fffdf9;
              ">
 
 
-            <!-- TÍTULO -->
-            <div class="text-center mb-4">
+                <!-- TÍTULO -->
+                <div class="text-center mb-4">
 
-                <h2 class="hero-title fw-bold mb-0"
-                    style="
+                    <h2 class="hero-title fw-bold mb-0" style="
                         font-size: clamp(1.4rem, 3vw, 2rem);
                         color: var(--color-hex);
                     ">
 
-                    TU DONACIÓN HACE LA DIFERENCIA
+                        TU DONACIÓN HACE LA DIFERENCIA
 
-                    <i class="fa-solid fa-heart"
-                       style="
+                        <i class="fa-solid fa-heart" style="
                             color: var(--salmon1);
                             font-size: 1.1rem;
                        ">
-                    </i>
+                        </i>
 
-                </h2>
+                    </h2>
 
-            </div>
-
-
-            <!-- ESTADÍSTICAS -->
-
-            <div class="row row-cols-2 row-cols-lg-4 g-0">
+                </div>
 
 
-                <!-- ESTADÍSTICA 1 -->
-                <div class="col">
+                <!-- ESTADÍSTICAS -->
 
-                    <div class="d-flex align-items-center justify-content-center
-                                gap-2 h-100 p-3"
-                         style="border-right: 1px dashed #e5c8b8;">
+                <div class="row row-cols-2 row-cols-lg-4 g-0">
 
-                        <div class="flex-shrink-0">
 
-                            <img src="../../assets/donaciones/estadistica-perro.png"
-                                 alt="Animalitos apoyados"
-                                 style="
+                    <!-- ESTADÍSTICA 1 -->
+                    <div class="col">
+
+                        <div class="d-flex align-items-center justify-content-center
+                                gap-2 h-100 p-3" style="border-right: 1px dashed #e5c8b8;">
+
+                            <div class="flex-shrink-0">
+
+                                <img src="../../assets/donaciones/estadistica-perro.png" alt="Animalitos apoyados"
+                                    style="
                                     width: 60px;
                                     height: 60px;
                                     object-fit: contain;
                                  ">
 
-                        </div>
+                            </div>
 
-                        <div class="text-start">
+                            <div class="text-start">
 
-                            <strong class="d-block"
-                                    style="
+                                <strong class="d-block" style="
                                         color: var(--salmon1);
                                         font-size: 1.7rem;
                                         line-height: 1;
                                     ">
 
-                                500+
+                                    500+
 
-                            </strong>
+                                </strong>
 
-                            <span class="d-block"
-                                  style="
+                                <span class="d-block" style="
                                     color: #674846;
                                     font-size: .75rem;
                                     line-height: 1.2;
                                   ">
 
-                                animalitos<br>
-                                apoyados
+                                    animalitos<br>
+                                    apoyados
 
-                            </span>
+                                </span>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
 
 
+                    <!-- ESTADÍSTICA 2 -->
+                    <div class="col">
 
-                <!-- ESTADÍSTICA 2 -->
-                <div class="col">
+                        <div class="d-flex align-items-center justify-content-center
+                                gap-2 h-100 p-3" style="border-right: 1px dashed #e5c8b8;">
 
-                    <div class="d-flex align-items-center justify-content-center
-                                gap-2 h-100 p-3"
-                         style="border-right: 1px dashed #e5c8b8;">
+                            <div class="flex-shrink-0">
 
-                        <div class="flex-shrink-0">
-
-                            <img src="../../assets/donaciones/estadistica-refugio.png"
-                                 alt="Refugios beneficiados"
-                                 style="
+                                <img src="../../assets/donaciones/estadistica-refugio.png" alt="Refugios beneficiados"
+                                    style="
                                     width: 60px;
                                     height: 60px;
                                     object-fit: contain;
                                  ">
 
-                        </div>
+                            </div>
 
-                        <div class="text-start">
+                            <div class="text-start">
 
-                            <strong class="d-block"
-                                    style="
+                                <strong class="d-block" style="
                                         color: var(--salmon1);
                                         font-size: 1.7rem;
                                         line-height: 1;">
-                                        3
-                            </strong>
+                                    3
+                                </strong>
 
-                            <span class="d-block"
-                                  style="
+                                <span class="d-block" style="
                                     color: #674846;
                                     font-size: .75rem;
                                     line-height: 1.2;
                                   ">
 
-                                refugios<br>
-                                beneficiados
+                                    refugios<br>
+                                    beneficiados
 
-                            </span>
+                                </span>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
 
 
+                    <!-- ESTADÍSTICA 3 -->
+                    <div class="col">
 
-                <!-- ESTADÍSTICA 3 -->
-                <div class="col">
+                        <div class="d-flex align-items-center justify-content-center
+                                gap-2 h-100 p-3" style="border-right: 1px dashed #e5c8b8;">
 
-                    <div class="d-flex align-items-center justify-content-center
-                                gap-2 h-100 p-3"
-                         style="border-right: 1px dashed #e5c8b8;">
+                            <div class="flex-shrink-0">
 
-                        <div class="flex-shrink-0">
-
-                            <img src="../../assets/donaciones/estadistica-comida.png"
-                                 alt="Donaciones de alimento"
-                                 style="
+                                <img src="../../assets/donaciones/estadistica-comida.png" alt="Donaciones de alimento"
+                                    style="
                                     width: 60px;
                                     height: 60px;
                                     object-fit: contain;
                                  ">
 
-                        </div>
+                            </div>
 
-                        <div class="text-start">
+                            <div class="text-start">
 
-                            <strong class="d-block"
-                                    style="
+                                <strong class="d-block" style="
                                         color: var(--salmon1);
                                         font-size: 1.7rem;
                                         line-height: 1;
                                     ">
 
-                                320+
+                                    320+
 
-                            </strong>
+                                </strong>
 
-                            <span class="d-block"
-                                  style="
+                                <span class="d-block" style="
                                     color: #674846;
                                     font-size: .75rem;
                                     line-height: 1.2;
                                   ">
 
-                                donaciones de<br>
-                                alimento entregadas
+                                    donaciones de<br>
+                                    alimento entregadas
 
-                            </span>
+                                </span>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
 
 
+                    <!-- ESTADÍSTICA 4 -->
+                    <div class="col">
 
-                <!-- ESTADÍSTICA 4 -->
-                <div class="col">
-
-                    <div class="d-flex align-items-center justify-content-center
+                        <div class="d-flex align-items-center justify-content-center
                                 gap-2 h-100 p-3">
 
-                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
 
-                            <img src="../../assets/donaciones/estadistica-corazon.png"
-                                 alt="Rescates apoyados"
-                                 style="
+                                <img src="../../assets/donaciones/estadistica-corazon.png" alt="Rescates apoyados"
+                                    style="
                                     width: 60px;
                                     height: 60px;
                                     object-fit: contain;
                                  ">
 
-                        </div>
+                            </div>
 
-                        <div class="text-start">
+                            <div class="text-start">
 
-                            <strong class="d-block"
-                                    style="
+                                <strong class="d-block" style="
                                         color: var(--salmon1);
                                         font-size: 1.7rem;
                                         line-height: 1;
                                     ">
 
-                                80+
+                                    80+
 
-                            </strong>
+                                </strong>
 
-                            <span class="d-block"
-                                  style="
+                                <span class="d-block" style="
                                     color: #674846;
                                     font-size: .75rem;
                                     line-height: 1.2;
                                   ">
 
-                                rescates<br>
-                                apoyados
+                                    rescates<br>
+                                    apoyados
 
-                            </span>
+                                </span>
+
+                            </div>
 
                         </div>
 
@@ -581,819 +545,763 @@
 
                 </div>
 
-            </div>
 
+                <!--  MENSAJE FINAL-->
 
-            <!--  MENSAJE FINAL-->
+                <div class="text-center mt-3">
 
-            <div class="text-center mt-3">
-
-                <p class="mb-0"
-                   style="
+                    <p class="mb-0" style="
                         color: #806866;
                         font-size: .8rem;
                    ">
 
-                    Gracias a personas como tú, más animalitos tienen
-                    la oportunidad de vivir con dignidad y amor.
+                        Gracias a personas como tú, más animalitos tienen
+                        la oportunidad de vivir con dignidad y amor.
 
-                    <i class="fa-solid fa-heart"
-                       style="color: var(--salmon1);">
+                        <i class="fa-solid fa-heart" style="color: var(--salmon1);">
+                        </i>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECCION: TU DONACIÓN EN ACCIÓN -->
+
+
+    <section class="donation-action py-5">
+
+        <div class="container">
+
+
+
+            <div class="text-center mb-5">
+
+                <h2 class="hero-title fw-bold mb-3" style="
+                    font-size: 2.5rem;
+                    color: var(--color-hex);
+                ">
+
+                    TU DONACIÓN EN ACCIÓN
+
+                    <i class="fa-solid fa-paw" style="
+                        color: var(--salmon1);
+                        font-size: 1.8rem;
+                   ">
                     </i>
+
+                </h2>
+
+                <p class="hero-text text-secondary mx-auto" style="
+                    max-width: 700px;
+                    font-family: var(--font-text-secondary);
+               ">
+
+                    Cada aportación sigue un proceso para que la ayuda llegue
+                    a los animales que más la necesitan.
 
                 </p>
 
             </div>
 
-        </div>
 
-    </div>
+            <!-- PROCESO DE DONACIÓN -->
 
-</section>
-
-
-<!-- SECCION: TU DONACIÓN EN ACCIÓN -->
-
-
-<section class="donation-action py-5">
-
-    <div class="container">
+            <div class="row g-4 justify-content-center align-items-stretch">
 
 
 
-        <div class="text-center mb-5">
+                <!-- PASO 1 -->
 
-            <h2 class="hero-title fw-bold mb-3"
-                style="
-                    font-size: 2.5rem;
-                    color: var(--color-hex);
-                ">
+                <div class="col-12 col-md-6 col-lg-3 action-step">
 
-                TU DONACIÓN EN ACCIÓN
-
-                <i class="fa-solid fa-paw"
-                   style="
-                        color: var(--salmon1);
-                        font-size: 1.8rem;
-                   ">
-                </i>
-
-            </h2>
-
-            <p class="hero-text text-secondary mx-auto"
-               style="
-                    max-width: 700px;
-                    font-family: var(--font-text-secondary);
-               ">
-
-                Cada aportación sigue un proceso para que la ayuda llegue
-                a los animales que más la necesitan.
-
-            </p>
-
-        </div>
-
-
-        <!-- PROCESO DE DONACIÓN -->
-
-        <div class="row g-4 justify-content-center align-items-stretch">
-
-
-           
-            <!-- PASO 1 -->
-
-            <div class="col-12 col-md-6 col-lg-3 action-step">
-
-                <div class="donation-action-card"
-                     style="
+                    <div class="donation-action-card" style="
                         --card-color: var(--Lemon-Chiffon);
                         --icon-color: var(--color-hex);
                      ">
 
-                    <div class="action-number">
-                        01
-                    </div>
+                        <div class="action-number">
+                            01
+                        </div>
 
-                    <div class="action-icon">
+                        <div class="action-icon">
 
-                        <i class="fa-solid fa-hand-holding-heart"></i>
+                            <i class="fa-solid fa-hand-holding-heart"></i>
 
-                    </div>
+                        </div>
 
-                    <h3 class="hero-title"
-                        style="
+                        <h3 class="hero-title" style="
                             color: var(--color-hex);
                             font-size: 1.45rem;
                         ">
 
-                        Recibimos tu apoyo
+                            Recibimos tu apoyo
 
-                    </h3>
+                        </h3>
 
-                    <p style="
+                        <p style="
                         font-family: var(--font-text-secondary);
                     ">
 
-                        Cada donación se registra y se suma
-                        a nuestra meta mensual.
+                            Cada donación se registra y se suma
+                            a nuestra meta mensual.
 
-                    </p>
+                        </p>
+
+                    </div>
 
                 </div>
 
-            </div>
 
 
+                <!-- PASO 2 -->
 
-            <!-- PASO 2 -->
+                <div class="col-12 col-md-6 col-lg-3 action-step">
 
-            <div class="col-12 col-md-6 col-lg-3 action-step">
-
-                <div class="donation-action-card"
-                     style="
+                    <div class="donation-action-card" style="
                         --card-color: var(--Celadon);
                         --icon-color: #6bb879;
                      ">
 
-                    <div class="action-number">
-                        02
-                    </div>
+                        <div class="action-number">
+                            02
+                        </div>
 
-                    <div class="action-icon">
+                        <div class="action-icon">
 
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
 
-                    </div>
+                        </div>
 
-                    <h3 class="hero-title"
-                        style="
+                        <h3 class="hero-title" style="
                             color: #6bb879;
                             font-size: 1.45rem;
                         ">
 
-                        Identificamos necesidades
+                            Identificamos necesidades
 
-                    </h3>
+                        </h3>
 
-                    <p style="
+                        <p style="
                         font-family: var(--font-text-secondary);
                     ">
 
-                        Nos ponemos en contacto con refugios
-                        y rescatistas para conocer qué necesitan.
+                            Nos ponemos en contacto con refugios
+                            y rescatistas para conocer qué necesitan.
 
-                    </p>
+                        </p>
+
+                    </div>
+
+
 
                 </div>
 
 
 
-            </div>
+                <!-- PASO 3 -->
 
+                <div class="col-12 col-md-6 col-lg-3 action-step">
 
-
-            <!-- PASO 3 -->
-
-            <div class="col-12 col-md-6 col-lg-3 action-step">
-
-                <div class="donation-action-card"
-                     style="
+                    <div class="donation-action-card" style="
                         --card-color: var(--Pink-Orchid);
                         --icon-color: #b45aa8;
                      ">
 
 
-                    <div class="action-number">
-                        03
-                    </div>
+                        <div class="action-number">
+                            03
+                        </div>
 
-                    <div class="action-icon">
+                        <div class="action-icon">
 
-                        <i class="fa-solid fa-box-open"></i>
+                            <i class="fa-solid fa-box-open"></i>
 
-                    </div>
+                        </div>
 
-                    <h3 class="hero-title"
-                        style="
+                        <h3 class="hero-title" style="
                             color: #b45aa8;
                             font-size: 1.45rem;
                         ">
 
-                        Preparamos la ayuda
+                            Preparamos la ayuda
 
-                    </h3>
+                        </h3>
 
-                    <p style="
+                        <p style="
                         font-family: var(--font-text-secondary);
                     ">
 
-                        Destinamos los recursos a las necesidades
-                        prioritarias de cada refugio.
+                            Destinamos los recursos a las necesidades
+                            prioritarias de cada refugio.
 
-                    </p>
+                        </p>
+
+                    </div>
 
                 </div>
 
-            </div>
 
 
+                <!--  PASO 4 -->
 
-            <!--  PASO 4 -->
+                <div class="col-12 col-md-6 col-lg-3 action-step">
 
-            <div class="col-12 col-md-6 col-lg-3 action-step">
-
-                <div class="donation-action-card"
-                     style="
+                    <div class="donation-action-card" style="
                         --card-color: var(--Baby-Blue-Ice);
                         --icon-color: #5d8fd4;
                      ">
 
-                    <div class="action-number">
-                        04
-                    </div>
+                        <div class="action-number">
+                            04
+                        </div>
 
 
-                    <div class="action-icon">
+                        <div class="action-icon">
 
-                        <i class="fa-solid fa-truck"></i>
+                            <i class="fa-solid fa-truck"></i>
 
-                    </div>
+                        </div>
 
-  
-                    <h3 class="hero-title"
-                        style="
+
+                        <h3 class="hero-title" style="
                             color: #5d8fd4;
                             font-size: 1.45rem;
                         ">
 
-                        Entregamos y compartimos
+                            Entregamos y compartimos
 
-                    </h3>
+                        </h3>
 
 
-                    <p style="
+                        <p style="
                         font-family: var(--font-text-secondary);
                     ">
 
-                        La ayuda llega a los refugios y compartimos
-                        sus resultados e historias.
+                            La ayuda llega a los refugios y compartimos
+                            sus resultados e historias.
 
-                    </p>
+                        </p>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
 
+            <div class="text-center mt-5">
 
-        <div class="text-center mt-5">
-
-            <p class="hero-text"
-               style="
+                <p class="hero-text" style="
                     max-width: 650px;
                     margin: auto;
                     color: var(--color-hex);
                     font-family: var(--font-text-secondary);
                ">
 
-                <i class="fa-solid fa-heart"
-                   style="color: var(--salmon1);">
-                </i>
+                    <i class="fa-solid fa-heart" style="color: var(--salmon1);">
+                    </i>
 
-                Tu donación no se pierde: se convierte en alimento,
-                atención, refugio y nuevas oportunidades.
+                    Tu donación no se pierde: se convierte en alimento,
+                    atención, refugio y nuevas oportunidades.
 
-                <i class="fa-solid fa-paw"
-                   style="color: var(--salmon1);">
-                </i>
+                    <i class="fa-solid fa-paw" style="color: var(--salmon1);">
+                    </i>
 
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SECCION HISTORIAS QUE INSPIRAN -->
-
-
-<section class="inspiring-stories py-5"
-    style="background-color: #FFFCF9;">
-
-    <div class="container py-4">
-
-        <!-- TÍTULO -->
-
-        <div class="text-center mb-5">
-
-            <h2 class="hero-title fw-bold mb-3"
-                style="font-size: 2.5rem; color: #4A2C2A;">
-                🐾 HISTORIAS QUE INSPIRAN
-            </h2>
-
-            <p class="hero-text text-secondary mx-auto"
-                style="max-width: 650px;">
-                Cada historia es un recordatorio del poder de tu ayuda.
-            </p>
-
-        </div>
-
-
-        <!-- CARRUSEL -->
-
-        <div id="storiesCarousel"
-            class="carousel slide"
-            data-bs-ride="false">
-
-            <div class="carousel-inner">
-
-                <div class="carousel-item active">
-
-                    <div class="row g-4 justify-content-center">
-
-
-                        <!-- TIAGO -->
-
-                        <div class="col-12 col-md-4">
-
-                            <article class="story-card">
-
-                                <img src="../../assets/donaciones/Tiago.jpeg"
-                                    class="story-image"
-                                    alt="Tiago">
-
-                                <div class="story-content">
-
-                                    <h3 class="hero-title fw-bold text-center"
-                                        style="color: #4A2C2A; font-size: 1.4rem;">
-
-                                        Tiago
-
-                                        <i class="fa-solid fa-heart"
-                                            style="color: #ff8e6a; font-size: 0.9rem;">
-                                        </i>
-
-                                    </h3>
-
-                                    <p class="hero-text"
-                                        style="color: #6B6B6B;">
-
-                                        Lo encontramos solo y asustado en la calle.
-                                        Hoy es un gatito feliz y lleno de energía.
-
-                                    </p>
-
-                                    <a href="#"
-                                        class="story-link story-button"
-                                        data-story="tiago">
-
-                                        Ver historia
-
-                                        <i class="fa-solid fa-arrow-right"></i>
-
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                        </div>
-
-
-                        <!-- JUNIOR -->
-
-                        <div class="col-12 col-md-4">
-
-                            <article class="story-card">
-
-                                <img src="../../assets/donaciones/Junior.jpeg"
-                                    class="story-image"
-                                    alt="Junior">
-
-                                <div class="story-content">
-
-                                    <h3 class="hero-title fw-bold text-center"
-                                        style="color: #4A2C2A; font-size: 1.4rem;">
-
-                                        Junior
-
-                                        <i class="fa-solid fa-heart"
-                                            style="color: #ff8e6a; font-size: 0.9rem;">
-                                        </i>
-
-                                    </h3>
-
-                                    <p class="hero-text"
-                                        style="color: #6B6B6B;">
-
-                                        Fue rescatado con desnutrición y heridas.
-                                        Gracias a los cuidados, hoy corre, juega
-                                        y sonríe cada día.
-
-                                    </p>
-
-                                    <a href="#"
-                                        class="story-link story-button"
-                                        data-story="junior">
-
-                                        Ver historia
-
-                                        <i class="fa-solid fa-arrow-right"></i>
-
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                        </div>
-
-
-                        <!-- MICHI -->
-
-                        <div class="col-12 col-md-4">
-
-                            <article class="story-card">
-
-                                <img src="../../assets/donaciones/Michi.jpeg"
-                                    class="story-image"
-                                    alt="Michi">
-
-                                <div class="story-content">
-
-                                    <h3 class="hero-title fw-bold text-center"
-                                        style="color: #4A2C2A; font-size: 1.4rem;">
-
-                                        Michi
-
-                                        <i class="fa-solid fa-heart"
-                                            style="color: #ff8e6a; font-size: 0.9rem;">
-                                        </i>
-
-                                    </h3>
-
-                                    <p class="hero-text"
-                                        style="color: #6B6B6B;">
-
-                                        Abandonada y con miedo, encontró amor
-                                        y paciencia. Ahora es un gatito lleno
-                                        de vida y cariño.
-
-                                    </p>
-
-                                    <a href="#"
-                                        class="story-link story-button"
-                                        data-story="michi">
-
-                                        Ver historia
-
-                                        <i class="fa-solid fa-arrow-right"></i>
-
-                                    </a>
-
-                                </div>
-
-                            </article>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- FLECHA IZQUIERDA -->
-
-            <button class="carousel-control-prev story-control"
-                type="button"
-                data-bs-target="#storiesCarousel"
-                data-bs-slide="prev">
-
-                <span class="story-arrow">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </span>
-
-                <span class="visually-hidden">
-                    Anterior
-                </span>
-
-            </button>
-
-
-            <!-- FLECHA DERECHA -->
-
-            <button class="carousel-control-next story-control"
-                type="button"
-                data-bs-target="#storiesCarousel"
-                data-bs-slide="next">
-
-                <span class="story-arrow">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </span>
-
-                <span class="visually-hidden">
-                    Siguiente
-                </span>
-
-            </button>
-
-        </div>
-
-
-        <!-- HISTORIA COMPLETA -->
-
-        <div id="storyFull"
-            class="story-full mt-5">
-
-            <button id="closeStory"
-                class="story-close"
-                type="button"
-                aria-label="Cerrar historia">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-
-            <div class="story-full-image">
-
-                <img id="storyFullImage"
-                    src=""
-                    alt="">
-
-            </div>
-
-
-            <div class="story-full-content">
-
-                <h3 id="storyFullTitle"
-                    class="hero-title fw-bold">
-                </h3>
-
-                <div id="storyFullText"
-                    class="hero-text">
-                </div>
+                </p>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- SECCION HISTORIAS QUE INSPIRAN -->
 
 
-<!-- REFUGIOS QUE APOYAMOS -->
+    <section class="inspiring-stories py-5" style="background-color: #FFFCF9;">
 
-<section class="supported-shelters py-5">
+        <div class="container py-4">
 
-    <div class="container">
+            <!-- TÍTULO -->
 
-        <div class="shelters-container">
+            <div class="text-center mb-5">
 
-            <!-- ENCABEZADO -->
-
-            <div class="text-center mb-4">
-
-                <h2 class="hero-title fw-bold shelters-title">
-                    🏠  REFUGIOS QUE APOYAMOS
+                <h2 class="hero-title fw-bold mb-3" style="font-size: 2.5rem; color: #4A2C2A;">
+                    🐾 HISTORIAS QUE INSPIRAN
                 </h2>
 
-                <p class="hero-text shelters-subtitle">
-                    Trabajamos junto a refugios y rescatistas que dedican
-                    su tiempo y corazón a cambiar vidas.
+                <p class="hero-text text-secondary mx-auto" style="max-width: 650px;">
+                    Cada historia es un recordatorio del poder de tu ayuda.
                 </p>
 
             </div>
 
 
-            <!-- REFUGIOS -->
+            <!-- CARRUSEL -->
 
-            <div class="shelters-grid">
+            <div id="storiesCarousel" class="carousel slide" data-bs-ride="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+
+                        <div class="row g-4 justify-content-center">
 
 
-                <!-- REFUGIO ESPERANZA -->
+                            <!-- TIAGO -->
 
-                <article class="shelter-card shelter-green">
+                            <div class="col-12 col-md-4">
 
-                    <img src="../../assets/donaciones/refugio1.png"
-                         class="shelter-icon"
-                         alt="Refugio Esperanza">
+                                <article class="story-card">
 
-                    <div class="shelter-info">
+                                    <img src="../../assets/donaciones/Tiago.jpeg" class="story-image" alt="Tiago">
 
-                        <h3 class="shelter-info hero-title">
-                            La casita de Crispin
-                        </h3>
+                                    <div class="story-content">
 
-                        <p class="shelter-location">
-                            Monterrey, Nuevo León
+                                        <h3 class="hero-title fw-bold text-center"
+                                            style="color: #4A2C2A; font-size: 1.4rem;">
+
+                                            Tiago
+
+                                            <i class="fa-solid fa-heart" style="color: #ff8e6a; font-size: 0.9rem;">
+                                            </i>
+
+                                        </h3>
+
+                                        <p class="hero-text" style="color: #6B6B6B;">
+
+                                            Lo encontramos solo y asustado en la calle.
+                                            Hoy es un gatito feliz y lleno de energía.
+
+                                        </p>
+
+                                        <a href="#" class="story-link story-button" data-story="tiago">
+
+                                            Ver historia
+
+                                            <i class="fa-solid fa-arrow-right"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+
+                            <!-- JUNIOR -->
+
+                            <div class="col-12 col-md-4">
+
+                                <article class="story-card">
+
+                                    <img src="../../assets/donaciones/Junior.jpeg" class="story-image" alt="Junior">
+
+                                    <div class="story-content">
+
+                                        <h3 class="hero-title fw-bold text-center"
+                                            style="color: #4A2C2A; font-size: 1.4rem;">
+
+                                            Junior
+
+                                            <i class="fa-solid fa-heart" style="color: #ff8e6a; font-size: 0.9rem;">
+                                            </i>
+
+                                        </h3>
+
+                                        <p class="hero-text" style="color: #6B6B6B;">
+
+                                            Fue rescatado con desnutrición y heridas.
+                                            Gracias a los cuidados, hoy corre, juega
+                                            y sonríe cada día.
+
+                                        </p>
+
+                                        <a href="#" class="story-link story-button" data-story="junior">
+
+                                            Ver historia
+
+                                            <i class="fa-solid fa-arrow-right"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+
+                            <!-- MICHI -->
+
+                            <div class="col-12 col-md-4">
+
+                                <article class="story-card">
+
+                                    <img src="../../assets/donaciones/Michi.jpeg" class="story-image" alt="Michi">
+
+                                    <div class="story-content">
+
+                                        <h3 class="hero-title fw-bold text-center"
+                                            style="color: #4A2C2A; font-size: 1.4rem;">
+
+                                            Michi
+
+                                            <i class="fa-solid fa-heart" style="color: #ff8e6a; font-size: 0.9rem;">
+                                            </i>
+
+                                        </h3>
+
+                                        <p class="hero-text" style="color: #6B6B6B;">
+
+                                            Abandonada y con miedo, encontró amor
+                                            y paciencia. Ahora es un gatito lleno
+                                            de vida y cariño.
+
+                                        </p>
+
+                                        <a href="#" class="story-link story-button" data-story="michi">
+
+                                            Ver historia
+
+                                            <i class="fa-solid fa-arrow-right"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLECHA IZQUIERDA -->
+
+                <button class="carousel-control-prev story-control" type="button" data-bs-target="#storiesCarousel"
+                    data-bs-slide="prev">
+
+                    <span class="story-arrow">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </span>
+
+                    <span class="visually-hidden">
+                        Anterior
+                    </span>
+
+                </button>
+
+
+                <!-- FLECHA DERECHA -->
+
+                <button class="carousel-control-next story-control" type="button" data-bs-target="#storiesCarousel"
+                    data-bs-slide="next">
+
+                    <span class="story-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+
+                    <span class="visually-hidden">
+                        Siguiente
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- HISTORIA COMPLETA -->
+
+            <div id="storyFull" class="story-full mt-5">
+
+                <button id="closeStory" class="story-close" type="button" aria-label="Cerrar historia">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+
+                <div class="story-full-image">
+
+                    <img id="storyFullImage" src="" alt="">
+
+                </div>
+
+
+                <div class="story-full-content">
+
+                    <h3 id="storyFullTitle" class="hero-title fw-bold">
+                    </h3>
+
+                    <div id="storyFullText" class="hero-text">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- REFUGIOS QUE APOYAMOS -->
+
+    <section class="supported-shelters py-5">
+
+        <div class="container">
+
+            <div class="shelters-container">
+
+                <!-- ENCABEZADO -->
+
+                <div class="text-center mb-4">
+
+                    <h2 class="hero-title fw-bold shelters-title">
+                        🏠 REFUGIOS QUE APOYAMOS
+                    </h2>
+
+                    <p class="hero-text shelters-subtitle">
+                        Trabajamos junto a refugios y rescatistas que dedican
+                        su tiempo y corazón a cambiar vidas.
+                    </p>
+
+                </div>
+
+
+                <!-- REFUGIOS -->
+
+                <div class="shelters-grid">
+
+
+                    <!-- REFUGIO ESPERANZA -->
+
+                    <article class="shelter-card shelter-green">
+
+                        <img src="../../assets/donaciones/refugio1.png" class="shelter-icon" alt="Refugio Esperanza">
+
+                        <div class="shelter-info">
+
+                            <h3 class="shelter-info hero-title">
+                                La casita de Crispin
+                            </h3>
+
+                            <p class="shelter-location">
+                                Monterrey, Nuevo León
+                            </p>
+
+                            <strong>
+                                45 animalitos
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- HUELLITAS ENLODADAS -->
+
+                    <article class="shelter-card shelter-pink">
+
+                        <img src="../../assets/donaciones/refugio3.png" class="shelter-icon" alt="Huellitas de Amor">
+
+                        <div class="shelter-info ">
+
+                            <h3 class="shelter-info hero-title">
+                                Huellitas Enlodadas
+                            </h3>
+
+                            <p class="shelter-location">
+                                Estado de México
+                            </p>
+
+                            <strong>
+                                32 animalitos
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SAN CRISTOBAL -->
+
+                    <article class="shelter-card shelter-blue">
+
+                        <img src="../../assets/donaciones/refugio2.png" class="shelter-icon" alt="Patitas Felices">
+
+                        <div class="shelter-info">
+
+                            <h3 class="shelter-info hero-title">
+                                San Cristobal
+                            </h3>
+
+                            <p class="shelter-location">
+                                Querétaro
+                            </p>
+
+                            <strong>
+                                28 animalitos
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- VER TODOS -->
+
+                <div class="text-center shelters-link-container">
+
+                    <a href="../community/Refugios.html" class="shelters-link">
+                        Ver todos los refugios
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!--Seccion Meta-->
+
+    <section>
+
+        <div class="meta-card">
+
+            <h2 class="hero-title fw-bold">
+                META ACTUAL <span>♡</span>
+            </h2>
+
+            <p class="hero-text">
+                <strong id="currentAmount">$0</strong>
+                <span>/</span>
+                <strong id="goalAmount">$10,000</strong>
+            </p>
+
+            <div class="meta-progress">
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+
+                <strong id="progressPercent">0%</strong>
+
+            </div>
+
+            <p class="hero-text">
+                Nuestra meta es cubrir alimento y atención veterinaria
+                para los refugios aliados durante este mes.
+            </p>
+
+            <p class="meta-urgency">
+                ¡Faltan
+                <strong id="remainingAmount">$10,000</strong>
+                para alcanzar la meta!
+            </p>
+
+            <a href="form-donacion.html" class="meta-button">
+                DONAR AHORA
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- CÓMO DONAR -->
+
+    <section class="how-to-donate py-5">
+
+        <div class="how-to-donate-content">
+
+            <h2 class="hero-title fw-bold how-title">
+                ¿CÓMO DONAR? 🐾
+            </h2>
+
+            <div class="donation-steps">
+
+                <!-- PASO 1 -->
+                <article class="donation-step step-one">
+
+                    <div class="step-icon credit-icon" style="color: var(--Accent-Pink);"><i
+                            class="fa-solid fa-hand-holding-heart"></i></div>
+
+                    <div>
+                        <h3>Elige cuánto donar</h3>
+                        <p>
+                            Selecciona la cantidad que deseas aportar.
                         </p>
-
-                        <strong>
-                            45 animalitos
-                        </strong>
-
                     </div>
 
                 </article>
 
 
-                <!-- HUELLITAS ENLODADAS -->
+                <span class="step-arrow">→</span>
 
-                <article class="shelter-card shelter-pink">
 
-                    <img src="../../assets/donaciones/refugio3.png"
-                         class="shelter-icon"
-                         alt="Huellitas de Amor">
+                <!-- PASO 2 -->
+                <article class="donation-step step-two">
 
-                    <div class="shelter-info ">
+                    <div class="step-icon credit-icon" style="color: var(--Electric-Aqua);"><i
+                            class="fa-regular fa-credit-card"></i></div>
 
-                        <h3 class="shelter-info hero-title">
-                            Huellitas Enlodadas
-                        </h3>
-
-                        <p class="shelter-location">
-                            Estado de México
+                    <div>
+                        <h3>Realiza tu donación</h3>
+                        <p>
+                            Elige tu método de pago de forma segura.
                         </p>
-
-                        <strong>
-                            32 animalitos
-                        </strong>
-
                     </div>
 
                 </article>
 
 
-                <!-- SAN CRISTOBAL -->
+                <span class="step-arrow">→</span>
 
-                <article class="shelter-card shelter-blue">
 
-                    <img src="../../assets/donaciones/refugio2.png"
-                         class="shelter-icon"
-                         alt="Patitas Felices">
+                <!-- PASO 3 -->
+                <article class="donation-step step-three">
 
-                    <div class="shelter-info">
+                    <div class="step-icon credit-icon" style="color: var(--color-hex);"><i class="fa-solid fa-paw"></i>
+                    </div>
 
-                        <h3 class="shelter-info hero-title">
-                            San Cristobal
-                        </h3>
-
-                        <p class="shelter-location">
-                            Querétaro
+                    <div>
+                        <h3>Ayuda a cambiar una vida</h3>
+                        <p>
+                            Tu donación llega a quienes más lo necesitan.
                         </p>
-
-                        <strong>
-                            28 animalitos
-                        </strong>
-
                     </div>
 
                 </article>
 
             </div>
 
-
-            <!-- VER TODOS -->
-
-            <div class="text-center shelters-link-container">
-
-                <a href="../pages/Refugios.html" class="shelters-link">
-                    Ver todos los refugios
-                    <span>→</span>
-                </a>
-
-            </div>
-
         </div>
 
-    </div>
-
-</section>
-
-
-
-<!--Seccion Meta-->
-
-<section>
-
-    <div class="meta-card">
-
-        <h2 class="hero-title fw-bold">
-            META ACTUAL <span>♡</span>
-        </h2>
-
-        <p class="hero-text">
-            <strong id="currentAmount">$0</strong>
-            <span>/</span>
-            <strong id="goalAmount">$10,000</strong>
-        </p>
-
-        <div class="meta-progress">
-
-            <div class="progress-track">
-                <div class="progress-fill" id="progressBar"></div>
-            </div>
-
-            <strong id="progressPercent">0%</strong>
-
-        </div>
-
-        <p class="hero-text">
-            Nuestra meta es cubrir alimento y atención veterinaria
-            para los refugios aliados durante este mes.
-        </p>
-
-        <p class="meta-urgency">
-            ¡Faltan
-            <strong id="remainingAmount">$10,000</strong>
-            para alcanzar la meta!
-        </p>
-
-        <a href="form-donacion.html" class="meta-button">
-            DONAR AHORA 
-        </a>
-
-    </div>
-
-</section>
-
-<!-- CÓMO DONAR -->
-
-<section class="how-to-donate py-5">
-
-    <div class="how-to-donate-content">
-
-        <h2 class="hero-title fw-bold how-title">
-            ¿CÓMO DONAR? 🐾
-        </h2>
-
-        <div class="donation-steps">
-
-            <!-- PASO 1 -->
-            <article class="donation-step step-one">
-
-                <div class="step-icon credit-icon" style="color: var(--Accent-Pink);"><i class="fa-solid fa-hand-holding-heart"></i></div>
-
-                <div>
-                    <h3>Elige cuánto donar</h3>
-                    <p>
-                        Selecciona la cantidad que deseas aportar.
-                    </p>
-                </div>
-
-            </article>
-
-
-            <span class="step-arrow">→</span>
-
-
-            <!-- PASO 2 -->
-            <article class="donation-step step-two">
-
-                <div class="step-icon credit-icon" style="color: var(--Electric-Aqua);"><i class="fa-regular fa-credit-card"></i></div>
-
-                <div>
-                    <h3>Realiza tu donación</h3>
-                    <p>
-                        Elige tu método de pago de forma segura.
-                    </p>
-                </div>
-
-            </article>
-
-
-            <span class="step-arrow">→</span>
-
-
-            <!-- PASO 3 -->
-            <article class="donation-step step-three">
-
-                <div class="step-icon credit-icon" style="color: var(--color-hex);"><i class="fa-solid fa-paw"></i></div>
-
-                <div>
-                    <h3>Ayuda a cambiar una vida</h3>
-                    <p>
-                        Tu donación llega a quienes más lo necesitan.
-                    </p>
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
 
@@ -1403,7 +1311,7 @@
     <!-- Contenedor del Footer -->
     <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
 
-        <!-- Bundler JS -->
+    <!-- Bundler JS -->
     <script src="../../scripts/main.js"></script>
     <!-- Layout -->
     <script src="../../scripts/core/layout.js"></script>
@@ -1416,4 +1324,3 @@
 </body>
 
 </html>
-
