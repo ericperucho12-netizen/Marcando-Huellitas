@@ -164,12 +164,12 @@ INSERT INTO usuarios (nombre, apellido, correo, password, rol) VALUES
 ('Luis', 'Sánchez', 'luis@ejemplo.com', 'pwd123', 'USUARIO');
 
 -- Mock Data para Refugios (id 1 a 5)
-INSERT INTO refugios (nombre, responsable, correo, telefono, direccion, estado_entidad, logo_url) VALUES 
-('Refugio Esperanza', 'Laura Gómez', 'contacto@esperanza.org', '555-0001', 'Calle Falsa 123', 'Activo', 'logo1.png'),
-('Amigos Peludos', 'Pedro Ruiz', 'hola@peludos.com', '555-0002', 'Av. Siempre Viva 45', 'Activo', 'logo2.png'),
-('Patitas Seguras', 'Sofia Castro', 'info@patitas.org', '555-0003', 'Boulevard Principal 8', 'Activo', 'logo3.png'),
-('Huellas de Amor', 'Ricardo Vega', 'ayuda@huellas.com', '555-0004', 'Camino Real 150', 'Activo', 'logo4.png'),
-('El Gran Rescate', 'Carmen Silva', 'carmen@rescate.org', '555-0005', 'Calle del Sol 42', 'Activo', 'logo5.png');
+INSERT INTO refugios (nombre, responsable, correo, telefono, direccion, estado_entidad, tipo_organizacion, descripcion, imagen_url, estatus) VALUES 
+('Refugio Esperanza', 'Laura Gómez', 'contacto@esperanza.org', '555-0001', 'Calle Falsa 123', 'Activo', 'Asociación Civil', 'Refugio dedicado al rescate de perros callejeros.', 'logo1.png', 'APROBADO'),
+('Amigos Peludos', 'Pedro Ruiz', 'hola@peludos.com', '555-0002', 'Av. Siempre Viva 45', 'Activo', 'Independiente', 'Damos hogar temporal a gatos abandonados.', 'logo2.png', 'APROBADO'),
+('Patitas Seguras', 'Sofia Castro', 'info@patitas.org', '555-0003', 'Boulevard Principal 8', 'Activo', 'Fundación', 'Especialistas en rescate de cachorros.', 'logo3.png', 'APROBADO'),
+('Huellas de Amor', 'Ricardo Vega', 'ayuda@huellas.com', '555-0004', 'Camino Real 150', 'Activo', 'Asociación Civil', 'Brindamos atención médica y hogar.', 'logo4.png', 'PENDIENTE'),
+('El Gran Rescate', 'Carmen Silva', 'carmen@rescate.org', '555-0005', 'Calle del Sol 42', 'Activo', 'Independiente', 'Refugio para perros mayores.', 'logo5.png', 'APROBADO');
 
 -- Mock Data para Mascotas (id 1 a 5)
 INSERT INTO mascotas (nombre, especie, edad, descripcion, estado, imagen_url, caracteristicas, refugio_id) VALUES 
