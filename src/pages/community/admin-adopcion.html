@@ -184,5 +184,17 @@
     
     <!-- Script de Admin -->
     <script src="../../scripts/shop/adminForms.js"></script>
+    <script src="../../scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const formCard = document.querySelector('.form-card');
+            if (formCard) {
+                setTimeout(() => {
+                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    </script>
 </body>
 </html>
+
