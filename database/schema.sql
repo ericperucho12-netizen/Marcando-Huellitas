@@ -31,8 +31,10 @@ CREATE TABLE IF NOT EXISTS mascotas (
     estado VARCHAR(50) DEFAULT 'DISPONIBLE', -- 'DISPONIBLE', 'EN_PROCESO', 'ADOPTADO'
     imagen_url VARCHAR(255),
     caracteristicas VARCHAR(255), -- Características (ej: 'Tranquilo, Sano')
+    refugio_id BIGINT NULL,       -- Relación opcional con un refugio/asociación
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE SET NULL
 );
 
 -- 3. Tabla de Solicitudes de Adopción (Relación Usuario -> Mascota)
@@ -59,7 +61,8 @@ CREATE TABLE IF NOT EXISTS productos (
     categoria VARCHAR(100), -- Ej: 'Alimento', 'Juguetes', 'Accesorios'
     imagen_url VARCHAR(255),
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (refugio_id) REFERENCES refugios(id) ON DELETE SET NULL
 );
 
 -- 5. Tabla de Pedidos (Compras de la tienda)
@@ -131,3 +134,6 @@ CREATE TABLE IF NOT EXISTS historias_exito (
 -- Usuario Administrador por defecto
 INSERT INTO usuarios (nombre, apellido, correo, contrasena, rol) 
 VALUES ('Admin', 'Huellitas', 'admin@marcandohuellitas.com', '\\\/y...', 'ADMIN');
+
+
+
