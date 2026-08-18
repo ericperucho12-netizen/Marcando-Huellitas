@@ -100,10 +100,18 @@ CREATE TABLE IF NOT EXISTS donaciones (
 CREATE TABLE IF NOT EXISTS refugios (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
-    descripcion TEXT,
-    ubicacion VARCHAR(255),
-    telefono_contacto VARCHAR(20),
+    persona_responsable VARCHAR(150) NOT NULL,
+    correo_electronico VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    estado_entidad VARCHAR(100) NOT NULL,
+    tipo_organizacion VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
+    sitio_web VARCHAR(255),
+    instagram VARCHAR(255),
+    facebook VARCHAR(255),
     imagen_url VARCHAR(255),
+    estatus VARCHAR(50) DEFAULT 'PENDIENTE', -- Para validación por admin antes de publicar
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
