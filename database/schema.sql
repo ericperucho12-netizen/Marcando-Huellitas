@@ -148,3 +148,80 @@ VALUES (
         '\\\/y...',
         'ADMIN'
     );
+
+-- ==============================================================================
+-- DATOS DE PRUEBA (MOCK DATA)
+-- ==============================================================================
+
+-- Mock Data para Usuarios (id 2 a 6)
+INSERT INTO usuarios (nombre, apellido, correo, password, rol) VALUES 
+('Juan', 'Pérez', 'juan@ejemplo.com', 'pwd123', 'USUARIO'),
+('María', 'García', 'maria@ejemplo.com', 'pwd123', 'USUARIO'),
+('Carlos', 'López', 'carlos@ejemplo.com', 'pwd123', 'USUARIO'),
+('Ana', 'Martínez', 'ana@ejemplo.com', 'pwd123', 'USUARIO'),
+('Luis', 'Sánchez', 'luis@ejemplo.com', 'pwd123', 'USUARIO');
+
+-- Mock Data para Refugios (id 1 a 5)
+INSERT INTO refugios (nombre, responsable, correo, telefono, direccion, estado_entidad, logo_url) VALUES 
+('Refugio Esperanza', 'Laura Gómez', 'contacto@esperanza.org', '555-0001', 'Calle Falsa 123', 'Activo', 'logo1.png'),
+('Amigos Peludos', 'Pedro Ruiz', 'hola@peludos.com', '555-0002', 'Av. Siempre Viva 45', 'Activo', 'logo2.png'),
+('Patitas Seguras', 'Sofia Castro', 'info@patitas.org', '555-0003', 'Boulevard Principal 8', 'Activo', 'logo3.png'),
+('Huellas de Amor', 'Ricardo Vega', 'ayuda@huellas.com', '555-0004', 'Camino Real 150', 'Activo', 'logo4.png'),
+('El Gran Rescate', 'Carmen Silva', 'carmen@rescate.org', '555-0005', 'Calle del Sol 42', 'Activo', 'logo5.png');
+
+-- Mock Data para Mascotas (id 1 a 5)
+INSERT INTO mascotas (nombre, especie, edad, descripcion, estado, imagen_url, caracteristicas, refugio_id) VALUES 
+('Max', 'perro', 'Adulto', 'Perrito muy juguetón y cariñoso', 'DISPONIBLE', 'max.jpg', 'Juguetón, Activo', 1),
+('Luna', 'gato', 'Cachorro', 'Gatita curiosa y tranquila', 'DISPONIBLE', 'luna.jpg', 'Tranquila, Cariñosa', 2),
+('Rocky', 'perro', 'Adulto', 'Excelente guardián y compañero', 'EN_PROCESO', 'rocky.jpg', 'Protector, Leal', 3),
+('Milo', 'gato', 'Adulto', 'Le encanta dormir al sol', 'DISPONIBLE', 'milo.jpg', 'Perezoso, Tierno', 4),
+('Bella', 'perro', 'Cachorro', 'Perrita con mucha energía', 'ADOPTADO', 'bella.jpg', 'Energética, Juguetona', 5);
+
+-- Mock Data para Solicitudes de Adopción (id 1 a 5)
+INSERT INTO solicitudes_adopcion (usuario_id, mascota_id, telefono, direccion, motivacion, experiencia, estado) VALUES 
+(2, 1, '555-1234', 'Calle 10, #32', 'Quiero un compañero para salir a correr', 'Tuve un perro antes', 'PENDIENTE'),
+(3, 2, '555-5678', 'Avenida Central 50', 'Mis hijos quieren una mascota', 'Ninguna', 'PENDIENTE'),
+(4, 3, '555-9012', 'Residencial Las Flores 12', 'Para tener compañía en casa', 'Tuve un pastor alemán', 'APROBADA'),
+(5, 4, '555-3456', 'Callejón Sur 4', 'Amo a los gatos', 'Tengo otro gato', 'RECHAZADA'),
+(2, 5, '555-1234', 'Calle 10, #32', 'Me enamoré de ella', 'Tuve un perro antes', 'APROBADA');
+
+-- Mock Data para Productos (id 1 a 5)
+INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen_url) VALUES 
+('Croquetas Premium', 'Alimento balanceado 15kg', 850.00, 50, 'Alimento', 'croquetas.jpg'),
+('Juguete Mordedera', 'Hueso de goma resistente', 120.00, 100, 'Juguetes', 'hueso.jpg'),
+('Cama Suave', 'Cama acolchada tamaño mediano', 450.00, 20, 'Accesorios', 'cama.jpg'),
+('Collar Reflectante', 'Collar seguro para paseos nocturnos', 150.00, 80, 'Accesorios', 'collar.jpg'),
+('Arena para Gato', 'Arena aglutinante 10kg', 250.00, 40, 'Alimento', 'arena.jpg');
+
+-- Mock Data para Pedidos (id 1 a 5)
+INSERT INTO pedidos (usuario_id, monto_total, estado, direccion_envio) VALUES 
+(2, 850.00, 'PAGADO', 'Calle 10, #32'),
+(3, 120.00, 'PENDIENTE', 'Avenida Central 50'),
+(4, 600.00, 'ENVIADO', 'Residencial Las Flores 12'),
+(5, 250.00, 'ENTREGADO', 'Callejón Sur 4'),
+(2, 450.00, 'PAGADO', 'Calle 10, #32');
+
+-- Mock Data para Detalles de Pedido
+INSERT INTO detalles_pedido (pedido_id, producto_id, cantidad, precio_compra) VALUES 
+(1, 1, 1, 850.00),
+(2, 2, 1, 120.00),
+(3, 3, 1, 450.00),
+(3, 4, 1, 150.00),
+(4, 5, 1, 250.00),
+(5, 3, 1, 450.00);
+
+-- Mock Data para Donaciones
+INSERT INTO donaciones (usuario_id, monto, metodo_pago, comprobante_url, estado) VALUES 
+(2, 500.00, 'Tarjeta', 's3.com/comprobante1.pdf', 'COMPLETADA'),
+(NULL, 100.00, 'Efectivo OXXO', 's3.com/comp2.png', 'COMPLETADA'),
+(3, 1000.00, 'Transferencia', 's3.com/transf3.jpg', 'COMPLETADA'),
+(4, 250.00, 'PayPal', 's3.com/paypal4.pdf', 'COMPLETADA'),
+(5, 300.00, 'Tarjeta', 's3.com/comp5.pdf', 'PENDIENTE');
+
+-- Mock Data para Historias de Éxito
+INSERT INTO historias_exito (mascota_id, usuario_id, titulo, historia, imagen_url) VALUES 
+(5, 2, 'Bella llegó a mi vida', 'Desde que Bella llegó, la casa está llena de alegría.', 'bella_feliz.jpg'),
+(1, 4, 'Max es el mejor', 'Max nos acompaña a todos lados.', 'max_parque.jpg'),
+(2, 3, 'Luna la gatita', 'Luna ya se adaptó y duerme todo el día en mi cama.', 'luna_cama.jpg'),
+(3, 5, 'Rocky mi guardián', 'Rocky es muy leal y ya conoce todos mis comandos.', 'rocky_entrenado.jpg'),
+(4, 2, 'Milo el perezoso', 'A Milo le encanta su nueva camita que compramos en la tienda.', 'milo_dormido.jpg');
