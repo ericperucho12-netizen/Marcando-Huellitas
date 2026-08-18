@@ -180,12 +180,12 @@ INSERT INTO mascotas (nombre, especie, edad, descripcion, estado, imagen_url, ca
 ('Bella', 'perro', 'Cachorro', 'Perrita con mucha energía', 'ADOPTADO', 'bella.jpg', 'Energética, Juguetona', 5);
 
 -- Mock Data para Solicitudes de Adopción (id 1 a 5)
-INSERT INTO solicitudes_adopcion (usuario_id, mascota_id, telefono, direccion, motivacion, experiencia, estado) VALUES 
-(2, 1, '555-1234', 'Calle 10, #32', 'Quiero un compañero para salir a correr', 'Tuve un perro antes', 'PENDIENTE'),
-(3, 2, '555-5678', 'Avenida Central 50', 'Mis hijos quieren una mascota', 'Ninguna', 'PENDIENTE'),
-(4, 3, '555-9012', 'Residencial Las Flores 12', 'Para tener compañía en casa', 'Tuve un pastor alemán', 'APROBADA'),
-(5, 4, '555-3456', 'Callejón Sur 4', 'Amo a los gatos', 'Tengo otro gato', 'RECHAZADA'),
-(2, 5, '555-1234', 'Calle 10, #32', 'Me enamoré de ella', 'Tuve un perro antes', 'APROBADA');
+INSERT INTO solicitudes_adopcion (usuario_id, mascota_id, telefono, direccion, experiencia, estado) VALUES 
+(2, 1, '555-1234', 'Calle 10, #32', 'Tuve un perro antes', 'PENDIENTE'),
+(3, 2, '555-5678', 'Avenida Central 50', 'Ninguna', 'PENDIENTE'),
+(4, 3, '555-9012', 'Residencial Las Flores 12', 'Tuve un pastor alemán', 'APROBADA'),
+(5, 4, '555-3456', 'Callejón Sur 4', 'Tengo otro gato', 'RECHAZADA'),
+(2, 5, '555-1234', 'Calle 10, #32', 'Tuve un perro antes', 'APROBADA');
 
 -- Mock Data para Productos (id 1 a 5)
 INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen_url) VALUES 
