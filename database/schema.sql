@@ -124,10 +124,14 @@ CREATE TABLE IF NOT EXISTS donaciones (
 -- 9. Tabla de Historias de Éxito
 CREATE TABLE IF NOT EXISTS historias_exito (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre_mascota VARCHAR(100) NOT NULL,
+    mascota_id BIGINT NULL,
+    usuario_id BIGINT NULL,
+    titulo VARCHAR(150) NOT NULL,
     historia TEXT NOT NULL,
     imagen_url VARCHAR(255),
-    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (mascota_id) REFERENCES mascotas(id) ON DELETE SET NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
 
 -- ==============================================================================
