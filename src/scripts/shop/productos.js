@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         adminToggleContainer.style.display = "block";
     }
 
-    localStorage.removeItem("productosAdmin");
+    //localStorage.removeItem("productosAdmin");
     let productos = JSON.parse(localStorage.getItem("productosAdmin")) || [];
     
     // Si no hay productos, cargamos los de prueba para que no se vea vacío
@@ -474,11 +474,11 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
         "id": "prod-auto-42",
-        "nombre": "Dentastix",
+        "nombre": "Dentastix Pedigree",
         "categoria": "Alimento",
         "especie": "perro",
-        "marca": "otra",
-        "precio": "1111.00",
+        "marca": "Pedigree",
+        "precio": "111.00",
         "oferta": "si",
         "imagen": "../../assets/productos/Imagenes_Alimento_perro/Dentastix.jpeg",
         "descripcion": "Excelente producto de la categoría Alimento para tu perro. Alta calidad garantizada."
@@ -861,6 +861,90 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 1;
     const itemsPerPage = 32; // 4 columns x 8 rows
 
+    function normalizarTexto(texto) {
+        return String(texto || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+    }
+
+    function obtenerMarcaProducto(producto) {
+        const texto = normalizarTexto(`${producto.nombre || ""} ${producto.imagen || ""} ${producto.marca || ""}`);
+
+        if (texto.includes("royal") || texto.includes("canin")) {
+            return "royal canin";
+        }
+
+        if (texto.includes("purina") || texto.includes("proplan") || texto.includes("pro plan")) {
+            return "purina";
+        }
+
+        if (texto.includes("hills") || texto.includes("hill")) {
+            return "hills";
+        }
+
+        if (texto.includes("pedigree")) {
+            return "pedigree";
+        }
+
+        return normalizarTexto(producto.marca || "otra");
+    }
+
+    function obtenerRatingProducto(producto) {
+        if (producto.rating) {
+            return Number(producto.rating);
+        }
+
+        const marca = obtenerMarcaProducto(producto);
+
+        if (marca === "royal canin") {
+            return 5;
+        }
+
+        if (marca === "hills") {
+            return 5;
+        }
+
+        if (marca === "purina") {
+            return 4;
+        }
+
+        if (marca === "pedigree") {
+            return 4;
+        }
+
+        if (producto.oferta === "si") {
+            return 4;
+        }
+
+        return 3;
+    }
+
+    function crearEstrellas(rating) {
+        let estrellas = "";
+
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                estrellas += `<i class="bi bi-star-fill"></i>`;
+            } else {
+                estrellas += `<i class="bi bi-star"></i>`;
+            }
+        }
+
+        return estrellas;
+    }
+
+    productos = productos.map(producto => {
+        return {
+            ...producto,
+            marca: obtenerMarcaProducto(producto),
+            rating: obtenerRatingProducto(producto)
+        };
+    });
+
+    localStorage.setItem("productosAdmin", JSON.stringify(productos));
+
     renderizarProductos();
 
     // ── Filtros Categoría (Sidebar) ──
@@ -1009,15 +1093,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Filtro por marca
         if (currentBrands.length > 0) {
             productosFiltrados = productosFiltrados.filter(p =>
-                currentBrands.includes((p.marca || "otra").toLowerCase())
+                currentBrands.includes(obtenerMarcaProducto(p))
             );
         }
 
         // Filtro por calificación (Simulado para frontend)
         if (currentRating > 0) {
             productosFiltrados = productosFiltrados.filter(p => {
-                // Simular calificación: los en oferta son 4, los demás 5
-                const rating = p.oferta === "si" ? 4 : 5;
+                const rating = obtenerRatingProducto(p);
                 return rating >= currentRating;
             });
         }
@@ -1085,8 +1168,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:${catColor}; letter-spacing: 0.5px;">${escaparHTML(producto.categoria || 'Sin categoría')}</p>
                         <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">${escaparHTML(producto.nombre)}</h6>
                         <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 
-                            <small class="text-muted ms-2" style="font-size: 0.8rem;">(128)</small>
+                            ${crearEstrellas(obtenerRatingProducto(producto))}
+                            <small class="text-muted ms-2" style="font-size: 0.8rem;">
+                                (${obtenerRatingProducto(producto)}.0)
+                            </small>
                         </div>
                         <div class="d-flex align-items-end justify-content-between mt-auto">
                             ${precioHtml}
