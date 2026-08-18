@@ -1,197 +1,513 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const formulario = document.getElementById("loginForm");
+    const layoutContainers =
+        document.querySelectorAll("[data-template]");
 
-    const userOrEmail = document.getElementById("userOrEmail");
-    const password = document.getElementById("password");
 
-    const alertContainer = document.getElementById("alertContainer");
+    layoutContainers.forEach(container => {
 
-    formulario.addEventListener("submit", function (event) {
+        const templatePath =
+            container.getAttribute("data-template");
 
-        event.preventDefault();
+        const rootPath =
+            container.getAttribute("data-root") ||
+            container.getAttribute("data-base");
 
-        limpiarValidaciones();
-        limpiarAlerta();
+        const srcPath =
+            container.getAttribute("data-src") ||
+            container.getAttribute("data-base");
 
-        const userOrEmailValor = userOrEmail.value.trim();
-        const passwordValor = password.value;
 
-        let formularioValido = true;
+        fetch(templatePath)
 
-        // validar que los campos no estén vacíos
+            .then(response => {
 
-        if (!validarCampoVacio(userOrEmailValor)) {
-            marcarError(userOrEmail, "Ingresa tu usuario o correo electrónico");
-            formularioValido = false;
-        }
+                if (!response.ok) {
 
-        if (!validarCampoVacio(passwordValor)) {
-            marcarError(password, "La contraseña es obligatoria");
-            formularioValido = false;
-        }
+                    throw new Error(
+                        `Failed to load ${templatePath}: ${response.statusText}`
+                    );
 
-        if (!formularioValido) {
-            return;
-        }
+                }
 
-        // validar formato
+                return response.text();
 
-        if (userOrEmailValor.includes("@")) {
-            if (!validarEmail(userOrEmailValor)) {
-                marcarError(userOrEmail, "Ingresa un correo electrónico válido");
-                formularioValido = false;
-            } else {
-                marcarCorrecto(userOrEmail);
-            }
-        } else {
-            if (!validarNombre(userOrEmailValor)) {
-                marcarError(userOrEmail, "Ingresa un nombre de usuario válido");
-                formularioValido = false;
-            } else {
-                marcarCorrecto(userOrEmail);
-            }
-        }
+            })
 
-        if (passwordValor.length < 1) {
-            marcarError(password, "La contraseña es obligatoria");
-            formularioValido = false;
-        } else {
-            marcarCorrecto(password);
-        }
+            .then(html => {
 
-        if (!formularioValido) {
-            return;
-        }
+                // =========================================
+                // REEMPLAZAR VARIABLES DE RUTA
+                // =========================================
 
-        // validar credenciales contra los usuarios guardados en localStorage
-        // (mismos usuarios que se registran en registro.js)
+                let replacedHtml =
+                    html.replace(
+                        /\{\{root\}\}/g,
+                        rootPath
+                    );
 
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+                replacedHtml =
+                    replacedHtml.replace(
+                        /\{\{src\}\}/g,
+                        srcPath
+                    );
 
-        const usuarioEncontrado = usuarios.find(function (usuario) {
-            const coincideIdentificador =
-                usuario.email === userOrEmailValor ||
-                usuario.nombre === userOrEmailValor;
+                replacedHtml =
+                    replacedHtml.replace(
+                        /\{\{base\}\}/g,
+                        rootPath
+                    );
 
-            return coincideIdentificador && usuario.password === passwordValor;
-        });
 
-        if (!usuarioEncontrado) {
-            mostrarAlertaError("Usuario o contraseña incorrectos");
-            marcarError(userOrEmail, "Verifica tu usuario o correo");
-            marcarError(password, "Verifica tu contraseña");
-            return;
-        }
+                container.innerHTML =
+                    replacedHtml;
 
-        // guardar sesión del usuario actual
-        sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
 
-        mostrarAlertaExito("¡Bienvenido/a de nuevo, " + usuarioEncontrado.nombre + "!");
 
-        formulario.reset();
-        limpiarValidaciones();
+                // =========================================
+                // MARCAR ENLACE ACTIVO
+                // =========================================
 
-        setTimeout(function () {
-            window.location.href = "../../../index.html";
-        }, 1200);
+                const currentPage =
+                    window.location.pathname;
 
-    });
+                const currentFile =
+                    currentPage
+                        .split("/")
+                        .pop()
+                        .replace(".html", "") ||
+                    "index";
 
-    // funciones para validar
 
-    function validarCampoVacio(valor) {
-        return valor !== "";
-    }
+                const navLinks =
+                    container.querySelectorAll(
+                        "[data-nav-page]"
+                    );
 
-    function validarEmail(valor) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(valor);
-    }
 
-    function validarNombre(valor) {
-        const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9._\s-]{3,50}$/;
-        return regex.test(valor);
-    }
+                navLinks.forEach(link => {
 
-    function marcarError(campo, mensaje) {
-        campo.classList.add("is-invalid");
-        campo.classList.remove("is-valid");
-        let mensajeError = campo.parentElement.querySelector(".invalid-feedback");
-        if (mensajeError) {
-            mensajeError.textContent = mensaje;
-        }
-    }
+                    const linkPage =
+                        link.getAttribute(
+                            "data-nav-page"
+                        );
 
-    function marcarCorrecto(campo) {
-        campo.classList.add("is-valid");
-        campo.classList.remove("is-invalid");
-    }
 
-    function limpiarValidaciones() {
-        const campos = [userOrEmail, password];
+                    link.classList.remove(
+                        "active-link",
+                        "text-secondary"
+                    );
 
-        campos.forEach(function (campo) {
-            campo.classList.remove("is-valid");
-            campo.classList.remove("is-invalid");
-        });
-    }
 
-    function mostrarAlertaExito(mensaje) {
-        alertContainer.innerHTML = `
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        ${mensaje}
-            <button 
-            type="button" 
-            class="btn-close" 
-            data-bs-dismiss="alert">
-            </button>
-        </div>
-        `;
-    }
+                    if (
+                        linkPage === currentFile ||
+                        (
+                            currentFile === "" &&
+                            linkPage === "index"
+                        )
+                    ) {
 
-    function mostrarAlertaError(mensaje) {
-        alertContainer.innerHTML = `
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        ${mensaje}
-            <button 
-            type="button" 
-            class="btn-close" 
-            data-bs-dismiss="alert">
-            </button>
-        </div>
-        `;
-    }
+                        link.classList.add(
+                            "active-link"
+                        );
 
-    function limpiarAlerta() {
-        if (alertContainer) {
-            alertContainer.innerHTML = "";
-        }
-    }
+                    } else {
 
-    /* Mostrar y ocultar contraseña en formulario de login */
-    const toggleButtons = document.querySelectorAll(".toggle-password");
+                        link.classList.add(
+                            "text-secondary"
+                        );
 
-    toggleButtons.forEach(function (button) {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
+                    }
 
-            const targetId = button.getAttribute("data-target");
-            const passwordInput = document.getElementById(targetId);
-            const icon = button.querySelector("i");
+                });
 
-            if (!passwordInput) return;
 
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.classList.remove("bi-eye");
-                icon.classList.add("bi-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                icon.classList.remove("bi-eye-slash");
-                icon.classList.add("bi-eye");
-            }
-        });
+
+                // =========================================
+                // AUTENTICACIÓN DEL NAVBAR
+                // =========================================
+
+                let usuarioActual = null;
+
+
+                try {
+
+                    const usuarioGuardado =
+                        sessionStorage.getItem(
+                            "usuarioActual"
+                        );
+
+
+                    if (usuarioGuardado) {
+
+                        usuarioActual =
+                            JSON.parse(
+                                usuarioGuardado
+                            );
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Error al leer usuarioActual:",
+                        error
+                    );
+
+                }
+
+
+
+                // Elementos de autenticación
+
+                const navLoginBtn =
+                    container.querySelector(
+                        "#navLoginBtn"
+                    );
+
+
+                const navUserDropdown =
+                    container.querySelector(
+                        "#navUserDropdown"
+                    );
+
+
+                const navUserName =
+                    container.querySelector(
+                        "#navUserName"
+                    );
+
+
+                const navUserHeader =
+                    container.querySelector(
+                        "#navUserHeader"
+                    );
+
+
+                const navLogoutBtn =
+                    container.querySelector(
+                        "#navLogoutBtn"
+                    );
+
+
+
+                // =========================================
+                // ELEMENTOS EXCLUSIVOS DE ADMIN
+                // =========================================
+
+                const adminItems =
+                    container.querySelectorAll(
+                        ".nav-admin-item"
+                    );
+
+
+                const adminDividers =
+                    container.querySelectorAll(
+                        ".nav-admin-divider"
+                    );
+
+
+
+                // =========================================
+                // USUARIO LOGUEADO
+                // =========================================
+
+                if (usuarioActual) {
+
+
+                    // Ocultar "Iniciar sesión"
+
+                    if (navLoginBtn) {
+
+                        navLoginBtn.classList.add(
+                            "d-none"
+                        );
+
+                    }
+
+
+
+                    // Mostrar dropdown del usuario
+
+                    if (navUserDropdown) {
+
+                        navUserDropdown.classList.remove(
+                            "d-none"
+                        );
+
+                    }
+
+
+
+                    // Mostrar primer nombre
+
+                    if (
+                        navUserName &&
+                        usuarioActual.nombre
+                    ) {
+
+                        navUserName.textContent =
+                            usuarioActual.nombre
+                                .split(" ")[0];
+
+                    }
+
+
+
+                    // Encabezado del dropdown
+
+                    if (
+                        navUserHeader &&
+                        usuarioActual.nombre
+                    ) {
+
+                        navUserHeader.textContent =
+                            "Hola, " +
+                            usuarioActual.nombre;
+
+                    }
+
+
+
+                    // =========================================
+                    // USUARIO ADMINISTRADOR
+                    // =========================================
+
+                    if (
+                        usuarioActual.rol ===
+                        "admin"
+                    ) {
+
+
+                        adminItems.forEach(
+                            item => {
+
+                                item.classList.remove(
+                                    "d-none"
+                                );
+
+                            }
+                        );
+
+
+                        adminDividers.forEach(
+                            divider => {
+
+                                divider.classList.remove(
+                                    "d-none"
+                                );
+
+                            }
+                        );
+
+
+                    } else {
+
+
+                        // Usuario normal:
+                        // esconder opciones admin
+
+                        adminItems.forEach(
+                            item => {
+
+                                item.classList.add(
+                                    "d-none"
+                                );
+
+                            }
+                        );
+
+
+                        adminDividers.forEach(
+                            divider => {
+
+                                divider.classList.add(
+                                    "d-none"
+                                );
+
+                            }
+                        );
+
+                    }
+
+
+
+                    // =========================================
+                    // CERRAR SESIÓN
+                    // =========================================
+
+                    if (navLogoutBtn) {
+
+                        navLogoutBtn.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.preventDefault();
+
+
+                                sessionStorage.removeItem(
+                                    "usuarioActual"
+                                );
+
+
+                                // Mandar al inicio
+
+                                window.location.href =
+                                    rootPath +
+                                    "/index.html";
+
+                            }
+                        );
+
+                    }
+
+
+                } else {
+
+
+                    // =========================================
+                    // NO HAY USUARIO LOGUEADO
+                    // =========================================
+
+
+                    if (navLoginBtn) {
+
+                        navLoginBtn.classList.remove(
+                            "d-none"
+                        );
+
+                    }
+
+
+                    if (navUserDropdown) {
+
+                        navUserDropdown.classList.add(
+                            "d-none"
+                        );
+
+                    }
+
+
+                    // Asegurar que opciones admin
+                    // no sean visibles
+
+                    adminItems.forEach(
+                        item => {
+
+                            item.classList.add(
+                                "d-none"
+                            );
+
+                        }
+                    );
+
+
+                    adminDividers.forEach(
+                        divider => {
+
+                            divider.classList.add(
+                                "d-none"
+                            );
+
+                        }
+                    );
+
+                }
+
+
+
+                // =========================================
+                // ANIMACIÓN DE SALIDA
+                // =========================================
+
+                container
+                    .querySelectorAll(
+                        "a[href]"
+                    )
+                    .forEach(link => {
+
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        // No interceptar:
+                        // - #
+                        // - enlaces externos
+                        // - mailto
+                        // - javascript
+
+                        if (
+                            href &&
+                            !href.startsWith("#") &&
+                            !href.startsWith("http") &&
+                            !href.startsWith("mailto") &&
+                            !href.startsWith("javascript")
+                        ) {
+
+
+                            link.addEventListener(
+                                "click",
+                                function (event) {
+
+
+                                    event.preventDefault();
+
+
+                                    const destination =
+                                        this.getAttribute(
+                                            "href"
+                                        );
+
+
+                                    document.body.classList.add(
+                                        "page-leaving"
+                                    );
+
+
+                                    setTimeout(
+                                        () => {
+
+                                            window.location.href =
+                                                destination;
+
+                                        },
+                                        260
+                                    );
+
+                                }
+                            );
+
+                        }
+
+                    });
+
+            })
+
+
+            // =========================================
+            // ERROR AL CARGAR TEMPLATE
+            // =========================================
+
+            .catch(error => {
+
+                console.error(
+                    "Error loading layout:",
+                    error
+                );
+
+
+                container.innerHTML = `
+                    <p class="text-danger text-center">
+                        Error cargando el componente:
+                        ${templatePath}
+                    </p>
+                `;
+
+            });
+
     });
 
 });

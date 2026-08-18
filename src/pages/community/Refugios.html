@@ -2,337 +2,1371 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipo - Marcando Huellitas</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Refugios - Marcando Huellitas
+    </title>
+
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../styles/styles.css">
-    <link rel="stylesheet" href="../../styles/refugios.css">
 
-    <!-- Loader Script -->
+    <link
+        rel="stylesheet"
+        href="../../styles/styles.css">
+
+    <link
+        rel="stylesheet"
+        href="../../styles/refugios.css">
+
+
+    <!-- Loader -->
+
     <script src="../../scripts/core/loader.js"></script>
+
 </head>
+
 
 <body>
 
-    <!-- Contenedor del Navbar -->
-    <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
 
-    <!-- Hero de la página -->
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <div
+        data-template="../../layout/navbar.html"
+        data-root="../../.."
+        data-src="../..">
+    </div>
+
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
     <section class="refugios-hero">
+
         <div class="container text-center">
-            <span class="hero-badge">Nuestra Red de Refugios</span>
-            <h1 class="hero-title refugios-title">Conoce Nuestras Casitas</h1>
+
+            <span class="hero-badge">
+                Nuestra Red de Refugios
+            </span>
+
+
+            <h1 class="hero-title refugios-title">
+                Conoce Nuestras Casitas
+            </h1>
+
+
             <p class="refugios-subtitle">
-                Cada casita es un hogar temporal lleno de amor mientras nuestros huellitas encuentran
-                una familia definitiva. Desliza el carrusel para conocer su historia, su ubicación
-                y ver un video del refugio.
+
+                Cada casita es un hogar temporal lleno de amor
+                mientras nuestros huellitas encuentran una familia
+                definitiva.
+
+                Desliza el carrusel para conocer su historia,
+                su ubicación y la labor que realizan.
+
             </p>
+
         </div>
+
     </section>
 
-    <!-- Carrusel de Refugios -->
+
+
+    <!-- =========================================
+         CARRUSEL DE REFUGIOS
+    ========================================== -->
+
     <section class="refugios-carousel-section">
+
         <div class="container">
-            <div id="refugiosCarousel" class="carousel slide refugios-carousel" data-bs-ride="false">
+
+
+            <div
+                id="refugiosCarousel"
+                class="carousel slide refugios-carousel"
+                data-bs-ride="false">
+
 
                 <!-- Indicadores -->
+
                 <div class="carousel-indicators refugios-indicators">
-                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="La Casita de Crispín"></button>
-                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="1"
-                        aria-label="La Casita de Cristóbal"></button>
-                    <button type="button" data-bs-target="#refugiosCarousel" data-bs-slide-to="2"
-                        aria-label="La Casita de Chespi"></button>
+
+                    <button
+                        type="button"
+                        data-bs-target="#refugiosCarousel"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="La Casita de Crispín">
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-bs-target="#refugiosCarousel"
+                        data-bs-slide-to="1"
+                        aria-label="Centro de Transferencia Canina">
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-bs-target="#refugiosCarousel"
+                        data-bs-slide-to="2"
+                        aria-label="La Casita de Chespi">
+                    </button>
+
                 </div>
+
+
 
                 <div class="carousel-inner">
 
-                    <!-- ===================== CASITA 1: CRISPÍN ===================== -->
-                    <div class="carousel-item active" data-refugio-id="crispin">
+
+                    <!-- =========================================
+                         CASITA 1: CRISPÍN
+                    ========================================== -->
+
+                    <div
+                        class="carousel-item active"
+                        data-refugio-id="crispin">
+
+
                         <div class="refugio-card">
+
+
                             <div class="row g-4 g-lg-5 align-items-start">
 
-                                <!-- Galería de fotos -->
+
+                                <!-- Galería -->
+
                                 <div class="col-lg-6">
+
+
                                     <div class="refugio-photo-main">
-                                        <img src="https://picsum.photos/seed/casita-crispin-main/800/560"
-                                            class="img-fluid w-100" alt="Fachada de La Casita de Crispín">
+
+                                        <img
+                                            src="../../assets/refugios/LaCasitadeCrispin.jpg"
+                                            class="img-fluid w-100"
+                                            alt="La Casita de Crispín">
+
                                     </div>
+
+
+
                                     <div class="row g-2 refugio-gallery">
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-crispin-1/300/220"
-                                                class="img-fluid w-100" alt="Área de descanso de La Casita de Crispín">
+
+                                            <img
+                                                src="../../assets/refugios/Crispin_1.png"
+                                                class="img-fluid w-100"
+                                                alt="Área de La Casita de Crispín">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-crispin-2/300/220"
-                                                class="img-fluid w-100" alt="Patio de juegos de La Casita de Crispín">
+
+                                            <img
+                                                src="../../assets/refugios/Crispin_2.png"
+                                                class="img-fluid w-100"
+                                                alt="Gatitos de La Casita de Crispín">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-crispin-3/300/220"
-                                                class="img-fluid w-100" alt="Huellitas de La Casita de Crispín">
+
+                                            <img
+                                                src="../../assets/refugios/Crispin_3.png"
+                                                class="img-fluid w-100"
+                                                alt="Huellitas de La Casita de Crispín">
+
                                         </div>
+
+
                                     </div>
+
                                 </div>
+
+
 
                                 <!-- Información -->
+
                                 <div class="col-lg-6">
-                                    <span class="refugio-badge bg-pastel-green">Refugio activo</span>
-                                    <h2 class="refugio-name">La Casita de Crispín</h2>
+
+
+                                    <span class="refugio-badge bg-pastel-green">
+                                        Refugio activo
+                                    </span>
+
+
+                                    <h2 class="refugio-name">
+                                        La Casita de Crispín
+                                    </h2>
+
 
                                     <p class="refugio-address">
+
                                         <i class="bi bi-geo-alt-fill"></i>
-                                        Calle Framboyanes 312, Col. Las Puentes, San Nicolás de los Garza, N.L.
+
+                                        Calle Framboyanes 312,
+                                        Col. Las Puentes,
+                                        San Nicolás de los Garza, N.L.
+
                                     </p>
+
 
                                     <p class="refugio-historia">
-                                        Todo comenzó cuando Crispín, un perrito senior abandonado en una gasolinera,
-                                        fue rescatado por una familia voluntaria. Desde entonces, esta casita se
-                                        dedica a recibir perros mayores y con necesidades especiales, ofreciéndoles
-                                        cobijas calientitas, cuidados veterinarios y muchísimo cariño mientras
-                                        esperan una segunda oportunidad.
+
+                                        Todo comenzó con Crispín, un gato muy
+                                        especial que fue la fiel compañía del
+                                        encargado del refugio.
+
+                                        Tras su partida, esta casita nació con
+                                        un claro propósito: brindar a otros
+                                        felinos la oportunidad, el amor y el
+                                        hogar que tantos animales en situación
+                                        de calle jamás llegan a conocer.
+
+                                        Fue así como, en diciembre de 2023,
+                                        cobró vida este memorable proyecto.
+
                                     </p>
 
-                                    <!-- Zona para vincular video de YouTube -->
-                                    <div class="refugio-video" data-refugio-video="crispin">
-                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
 
-                                        <div class="video-embed-wrapper d-none">
-                                            <div class="ratio ratio-16x9">
-                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Crispín"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                            <button type="button" class="btn-video-remove">
-                                                <i class="bi bi-trash3"></i> Quitar video
-                                            </button>
-                                        </div>
-
-                                        <form class="video-link-form">
-                                            <label class="video-link-label" for="video-crispin">
-                                                Pega aquí el enlace de YouTube de este refugio
-                                            </label>
-                                            <div class="video-input-group">
-                                                <input type="url" id="video-crispin" class="video-link-input"
-                                                    placeholder="https://www.youtube.com/watch?v=..." required>
-                                                <button type="submit" class="btn-video-add">
-                                                    <i class="bi bi-link-45deg"></i> Vincular
-                                                </button>
-                                            </div>
-                                            <p class="video-link-feedback"></p>
-                                        </form>
-                                    </div>
                                 </div>
+
+
                             </div>
+
                         </div>
+
                     </div>
 
-                    <!-- ===================== CASITA 2: CRISTÓBAL ===================== -->
-                    <div class="carousel-item" data-refugio-id="cristobal">
+
+
+                    <!-- =========================================
+                         CASITA 2: CTC
+                    ========================================== -->
+
+                    <div
+                        class="carousel-item"
+                        data-refugio-id="ctc">
+
+
                         <div class="refugio-card">
+
+
                             <div class="row g-4 g-lg-5 align-items-start">
 
-                                <!-- Galería de fotos -->
+
+                                <!-- Galería -->
+
                                 <div class="col-lg-6">
+
+
                                     <div class="refugio-photo-main">
-                                        <img src="https://picsum.photos/seed/casita-cristobal-main/800/560"
-                                            class="img-fluid w-100" alt="Fachada de La Casita de Cristóbal">
+
+                                        <img
+                                            src="../../assets/refugios/CTC.png"
+                                            class="img-fluid w-100"
+                                            alt="Centro de Transferencia Canina">
+
                                     </div>
+
+
+
                                     <div class="row g-2 refugio-gallery">
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-cristobal-1/300/220"
-                                                class="img-fluid w-100" alt="Sala de gatos de La Casita de Cristóbal">
+
+                                            <img
+                                                src="../../assets/refugios/CTC_1.png"
+                                                class="img-fluid w-100"
+                                                alt="Perros del Centro de Transferencia Canina">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-cristobal-2/300/220"
-                                                class="img-fluid w-100" alt="Torres para gatos de La Casita de Cristóbal">
+
+                                            <img
+                                                src="../../assets/refugios/CTC_2.png"
+                                                class="img-fluid w-100"
+                                                alt="Instalaciones del Centro de Transferencia Canina">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-cristobal-3/300/220"
-                                                class="img-fluid w-100" alt="Huellitas de La Casita de Cristóbal">
+
+                                            <img
+                                                src="../../assets/refugios/CTC_3.png"
+                                                class="img-fluid w-100"
+                                                alt="Huellitas del Centro de Transferencia Canina">
+
                                         </div>
+
+
                                     </div>
+
                                 </div>
+
+
 
                                 <!-- Información -->
+
                                 <div class="col-lg-6">
-                                    <span class="refugio-badge bg-pastel-blue">Refugio activo</span>
-                                    <h2 class="refugio-name">La Casita de Cristóbal</h2>
+
+
+                                    <span class="refugio-badge bg-pastel-blue">
+                                        Refugio activo
+                                    </span>
+
+
+                                    <h2 class="refugio-name">
+
+                                        Centro de Transferencia Canina
+                                        del Metro de la Ciudad de México
+
+                                    </h2>
+
 
                                     <p class="refugio-address">
+
                                         <i class="bi bi-geo-alt-fill"></i>
-                                        Av. Eugenio Garza Sada 1450, Col. Roma, Monterrey, N.L.
+
+                                        Avenida de las Culturas s/n,
+                                        Col. El Rosario,
+                                        Alcaldía Azcapotzalco, CDMX.
+
                                     </p>
+
 
                                     <p class="refugio-historia">
-                                        Cristóbal era un gatito que vivía escondido entre los talleres de un barrio
-                                        industrial hasta que un grupo de vecinas comenzó a alimentarlo. Hoy esta
-                                        casita se especializa en el rescate de gatitos de calle, con espacios de
-                                        juego en altura, esterilización responsable y un programa de socialización
-                                        para prepararlos para su nuevo hogar.
+
+                                        En el Metro de la Ciudad de México
+                                        pueden adoptarse perros rescatados
+                                        de las vías de este transporte público.
+
+                                        El Centro de Transferencia Canina es
+                                        un espacio dedicado al cuidado,
+                                        rehabilitación y protección de los
+                                        peludos encontrados en situaciones
+                                        que ponen en riesgo su bienestar
+                                        dentro de las instalaciones del Metro.
+
                                     </p>
 
-                                    <!-- Zona para vincular video de YouTube -->
-                                    <div class="refugio-video" data-refugio-video="cristobal">
-                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
 
-                                        <div class="video-embed-wrapper d-none">
-                                            <div class="ratio ratio-16x9">
-                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Cristóbal"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                            <button type="button" class="btn-video-remove">
-                                                <i class="bi bi-trash3"></i> Quitar video
-                                            </button>
-                                        </div>
-
-                                        <form class="video-link-form">
-                                            <label class="video-link-label" for="video-cristobal">
-                                                Pega aquí el enlace de YouTube de este refugio
-                                            </label>
-                                            <div class="video-input-group">
-                                                <input type="url" id="video-cristobal" class="video-link-input"
-                                                    placeholder="https://www.youtube.com/watch?v=..." required>
-                                                <button type="submit" class="btn-video-add">
-                                                    <i class="bi bi-link-45deg"></i> Vincular
-                                                </button>
-                                            </div>
-                                            <p class="video-link-feedback"></p>
-                                        </form>
-                                    </div>
                                 </div>
+
+
                             </div>
+
                         </div>
+
                     </div>
 
-                    <!-- ===================== CASITA 3: CHESPI ===================== -->
-                    <div class="carousel-item" data-refugio-id="chespi">
+
+
+                    <!-- =========================================
+                         CASITA 3: CHESPI
+                    ========================================== -->
+
+                    <div
+                        class="carousel-item"
+                        data-refugio-id="chespi">
+
+
                         <div class="refugio-card">
+
+
                             <div class="row g-4 g-lg-5 align-items-start">
 
-                                <!-- Galería de fotos -->
+
+                                <!-- Galería -->
+
                                 <div class="col-lg-6">
+
+
                                     <div class="refugio-photo-main">
-                                        <img src="https://picsum.photos/seed/casita-chespi-main/800/560"
-                                            class="img-fluid w-100" alt="Fachada de La Casita de Chespi">
+
+                                        <img
+                                            src="../../assets/refugios/Chespi.png"
+                                            class="img-fluid w-100"
+                                            alt="La Casita de Chespi">
+
                                     </div>
+
+
+
                                     <div class="row g-2 refugio-gallery">
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-chespi-1/300/220"
-                                                class="img-fluid w-100" alt="Área de cachorros de La Casita de Chespi">
+
+                                            <img
+                                                src="../../assets/refugios/Chespi_1.png"
+                                                class="img-fluid w-100"
+                                                alt="Área de cachorros de La Casita de Chespi">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-chespi-2/300/220"
-                                                class="img-fluid w-100" alt="Patio de juegos de La Casita de Chespi">
+
+                                            <img
+                                                src="../../assets/refugios/Chespi_2.png"
+                                                class="img-fluid w-100"
+                                                alt="Patio de La Casita de Chespi">
+
                                         </div>
+
+
                                         <div class="col-4">
-                                            <img src="https://picsum.photos/seed/casita-chespi-3/300/220"
-                                                class="img-fluid w-100" alt="Huellitas de La Casita de Chespi">
+
+                                            <img
+                                                src="../../assets/refugios/Chespi_3.png"
+                                                class="img-fluid w-100"
+                                                alt="Huellitas de La Casita de Chespi">
+
                                         </div>
+
+
                                     </div>
+
                                 </div>
+
+
 
                                 <!-- Información -->
+
                                 <div class="col-lg-6">
-                                    <span class="refugio-badge bg-pastel-orange">Refugio activo</span>
-                                    <h2 class="refugio-name">La Casita de Chespi</h2>
+
+
+                                    <span class="refugio-badge bg-pastel-orange">
+                                        Refugio activo
+                                    </span>
+
+
+                                    <h2 class="refugio-name">
+                                        La Casita de Chespi
+                                    </h2>
+
 
                                     <p class="refugio-address">
+
                                         <i class="bi bi-geo-alt-fill"></i>
-                                        Calle Río Nazas 88, Col. del Valle, San Pedro Garza García, N.L.
+
+                                        Calle Río Nazas 88,
+                                        Col. del Valle,
+                                        San Pedro Garza García, N.L.
+
                                     </p>
+
 
                                     <p class="refugio-historia">
-                                        Chespi llegó como el único sobreviviente de una camada encontrada en un
-                                        terreno baldío durante una tormenta. Esa noche marcó el inicio de esta
-                                        casita, enfocada en el cuidado de cachorros recién nacidos y camadas
-                                        completas, con incubadoras, alimentación especializada y un plan de
-                                        vacunación para que crezcan sanos y listos para adopción.
+
+                                        Chespi llegó como el único sobreviviente
+                                        de una camada encontrada en un terreno
+                                        baldío durante una tormenta.
+
+                                        Esa noche marcó el inicio de esta
+                                        casita, enfocada en el cuidado de
+                                        cachorros recién nacidos y camadas
+                                        completas, con alimentación
+                                        especializada, cuidados veterinarios
+                                        y un plan de vacunación para que
+                                        crezcan sanos y listos para encontrar
+                                        un hogar.
+
                                     </p>
 
-                                    <!-- Zona para vincular video de YouTube -->
-                                    <div class="refugio-video" data-refugio-video="chespi">
-                                        <h3 class="video-title"><i class="bi bi-youtube"></i> Video del refugio</h3>
 
-                                        <div class="video-embed-wrapper d-none">
-                                            <div class="ratio ratio-16x9">
-                                                <iframe class="video-embed-frame" src="" title="Video de La Casita de Chespi"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                            <button type="button" class="btn-video-remove">
-                                                <i class="bi bi-trash3"></i> Quitar video
-                                            </button>
-                                        </div>
-
-                                        <form class="video-link-form">
-                                            <label class="video-link-label" for="video-chespi">
-                                                Pega aquí el enlace de YouTube de este refugio
-                                            </label>
-                                            <div class="video-input-group">
-                                                <input type="url" id="video-chespi" class="video-link-input"
-                                                    placeholder="https://www.youtube.com/watch?v=..." required>
-                                                <button type="submit" class="btn-video-add">
-                                                    <i class="bi bi-link-45deg"></i> Vincular
-                                                </button>
-                                            </div>
-                                            <p class="video-link-feedback"></p>
-                                        </form>
-                                    </div>
                                 </div>
+
+
                             </div>
+
                         </div>
+
                     </div>
+
+
 
                 </div>
 
-                <!-- Controles -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#refugiosCarousel"
+
+
+                <!-- =========================================
+                     CONTROLES DEL CARRUSEL
+                ========================================== -->
+
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#refugiosCarousel"
                     data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
+
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true">
+                    </span>
+
+                    <span class="visually-hidden">
+                        Anterior
+                    </span>
+
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#refugiosCarousel"
+
+
+
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#refugiosCarousel"
                     data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
+
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true">
+                    </span>
+
+                    <span class="visually-hidden">
+                        Siguiente
+                    </span>
+
                 </button>
+
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Contenedor del Footer -->
-    <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
 
-    <!-- Layout JS -->
+
+    <!-- =========================================
+         REGISTRO DE ASOCIACIONES Y REFUGIOS
+    ========================================== -->
+
+    <section class="registro-refugio-section">
+
+        <div class="container">
+
+
+            <div class="registro-refugio-box text-center">
+
+
+                <span class="registro-refugio-badge">
+                    Forma parte de nuestra red
+                </span>
+
+
+                <h2 class="registro-refugio-title">
+
+                    ¿Representas una asociación o refugio?
+
+                </h2>
+
+
+                <p class="registro-refugio-text">
+
+                    Registra tu organización para formar parte
+                    de la red de Marcando Huellitas.
+
+                </p>
+
+
+                <button
+                    type="button"
+                    class="btn-registro-huellitas"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalRegistroRefugio">
+
+
+                    <span class="btn-registro-huellitas__texto">
+                        Registrar asociación
+                    </span>
+
+
+                    <span class="btn-registro-huellitas__icono">
+
+                        <i class="bi bi-arrow-up-right"></i>
+
+                    </span>
+
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         MODAL DE REGISTRO
+    ========================================== -->
+
+    <div
+        class="modal fade"
+        id="modalRegistroRefugio"
+        tabindex="-1"
+        aria-labelledby="modalRegistroRefugioTitulo"
+        aria-hidden="true">
+
+
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+
+
+            <div class="modal-content refugio-registro-modal">
+
+
+                <!-- HEADER -->
+
+                <div class="modal-header refugio-registro-modal__header">
+
+
+                    <div>
+
+
+                        <span class="refugio-registro-modal__badge">
+                            Marcando Huellitas
+                        </span>
+
+
+                        <h2
+                            class="modal-title refugio-registro-modal__title"
+                            id="modalRegistroRefugioTitulo">
+
+                            Registrar asociación o refugio
+
+                        </h2>
+
+
+                        <p class="refugio-registro-modal__subtitle">
+
+                            Completa la información para
+                            enviar tu solicitud.
+
+                        </p>
+
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar">
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- FORMULARIO -->
+
+                <form
+                    id="formRegistroRefugio"
+                    novalidate>
+
+
+                    <div class="modal-body refugio-registro-modal__body">
+
+
+                        <div class="row g-3">
+
+
+
+                            <!-- Nombre -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="nombreRefugio"
+                                    class="form-label">
+
+                                    Nombre de la organización
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="nombreRefugio"
+                                    name="nombre"
+                                    placeholder="Ej. La Casita de Crispín"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Ingresa el nombre de la organización.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Responsable -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="responsableRefugio"
+                                    class="form-label">
+
+                                    Persona responsable
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="responsableRefugio"
+                                    name="responsable"
+                                    placeholder="Nombre completo"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Ingresa el nombre de la persona responsable.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Correo -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="correoRefugio"
+                                    class="form-label">
+
+                                    Correo electrónico
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="correoRefugio"
+                                    name="correo"
+                                    placeholder="correo@ejemplo.com"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Ingresa un correo electrónico válido.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Teléfono -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="telefonoRefugio"
+                                    class="form-label">
+
+                                    Teléfono
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="tel"
+                                    class="form-control"
+                                    id="telefonoRefugio"
+                                    name="telefono"
+                                    placeholder="55 1234 5678"
+                                    pattern="[0-9+\-\s]{10,18}"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Ingresa un teléfono válido.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Dirección -->
+
+                            <div class="col-12">
+
+
+                                <label
+                                    for="direccionRefugio"
+                                    class="form-label">
+
+                                    Dirección
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="direccionRefugio"
+                                    name="direccion"
+                                    placeholder="Calle, número, colonia y municipio"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Ingresa la dirección de la organización.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Estado -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="estadoRefugio"
+                                    class="form-label">
+
+                                    Estado / Entidad
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="estadoRefugio"
+                                    name="estado"
+                                    placeholder="Ej. Nuevo León"
+                                    required>
+
+
+                                <div class="invalid-feedback">
+
+                                    Indica el estado o entidad.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Tipo -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="tipoRefugio"
+                                    class="form-label">
+
+                                    Tipo de organización
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <select
+                                    class="form-select"
+                                    id="tipoRefugio"
+                                    name="tipo"
+                                    required>
+
+
+                                    <option
+                                        value=""
+                                        selected
+                                        disabled>
+
+                                        Selecciona una opción
+
+                                    </option>
+
+
+                                    <option value="Asociación">
+                                        Asociación
+                                    </option>
+
+
+                                    <option value="Refugio">
+                                        Refugio
+                                    </option>
+
+
+                                </select>
+
+
+                                <div class="invalid-feedback">
+
+                                    Selecciona un tipo de organización.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Descripción -->
+
+                            <div class="col-12">
+
+
+                                <label
+                                    for="descripcionRefugio"
+                                    class="form-label">
+
+                                    Descripción
+
+                                    <span class="campo-obligatorio">
+                                        *
+                                    </span>
+
+                                </label>
+
+
+                                <textarea
+                                    class="form-control"
+                                    id="descripcionRefugio"
+                                    name="descripcion"
+                                    rows="4"
+                                    maxlength="300"
+                                    placeholder="Cuéntanos brevemente sobre la organización y su labor."
+                                    required></textarea>
+
+
+                                <div class="d-flex justify-content-between mt-1">
+
+
+                                    <div class="invalid-feedback">
+
+                                        Agrega una breve descripción.
+
+                                    </div>
+
+
+                                    <small
+                                        class="contador-descripcion"
+                                        id="contadorDescripcion">
+
+                                        0 / 300
+
+                                    </small>
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Sitio web -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="sitioRefugio"
+                                    class="form-label">
+
+                                    Sitio web
+
+                                </label>
+
+
+                                <input
+                                    type="url"
+                                    class="form-control"
+                                    id="sitioRefugio"
+                                    name="sitio"
+                                    placeholder="https://...">
+
+
+                            </div>
+
+
+
+                            <!-- Instagram -->
+
+                            <div class="col-12 col-md-6">
+
+
+                                <label
+                                    for="instagramRefugio"
+                                    class="form-label">
+
+                                    Instagram
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="instagramRefugio"
+                                    name="instagram"
+                                    placeholder="@usuario">
+
+
+                            </div>
+
+
+
+                            <!-- Facebook -->
+
+                            <div class="col-12">
+
+
+                                <label
+                                    for="facebookRefugio"
+                                    class="form-label">
+
+                                    Facebook
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="facebookRefugio"
+                                    name="facebook"
+                                    placeholder="Nombre o enlace de Facebook">
+
+
+                            </div>
+
+
+
+                            <!-- Imagen -->
+
+                            <div class="col-12">
+
+
+                                <label
+                                    for="imagenRefugio"
+                                    class="form-label">
+
+                                    Logo o imagen de la organización
+
+                                </label>
+
+
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    id="imagenRefugio"
+                                    name="imagen"
+                                    accept="image/png,image/jpeg,image/webp">
+
+
+                                <div class="form-text">
+
+                                    Formatos permitidos:
+                                    JPG, PNG y WEBP.
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- Confirmación -->
+
+                            <div class="col-12">
+
+
+                                <div class="form-check refugio-registro-check">
+
+
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="confirmacionRefugio"
+                                        required>
+
+
+                                    <label
+                                        class="form-check-label"
+                                        for="confirmacionRefugio">
+
+                                        Confirmo que la información
+                                        proporcionada es correcta.
+
+                                    </label>
+
+
+                                    <div class="invalid-feedback">
+
+                                        Debes confirmar la información.
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FOOTER MODAL -->
+
+                    <div class="modal-footer refugio-registro-modal__footer">
+
+
+                        <button
+                            type="button"
+                            class="btn btn-cancelar-refugio"
+                            data-bs-dismiss="modal">
+
+                            Cancelar
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-enviar-refugio">
+
+                            <i class="bi bi-send-fill"></i>
+
+                            Enviar solicitud
+
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         TOAST
+    ========================================== -->
+
+    <div
+        class="toast-container position-fixed bottom-0 end-0 p-3">
+
+
+        <div
+            id="toastRegistroRefugio"
+            class="toast toast-refugio"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true">
+
+
+            <div class="toast-header">
+
+
+                <strong class="me-auto">
+                    Marcando Huellitas
+                </strong>
+
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="toast"
+                    aria-label="Cerrar">
+                </button>
+
+
+            </div>
+
+
+            <div class="toast-body">
+
+                Solicitud enviada correctamente.
+                Revisaremos la información antes de publicarla.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <div
+        data-template="../../layout/footer.html"
+        data-root="../../.."
+        data-src="../..">
+    </div>
+
+
+
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
+
+    <!-- Layout -->
     <script src="../../scripts/core/layout.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Archivo JS con la validación personalizada -->
+
+
+    <!-- Bootstrap -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- App -->
     <script src="../../scripts/core/app.js"></script>
-    <!-- Cart Script -->
+
+
+    <!-- Carrito -->
     <script src="../../scripts/shop/cart.js"></script>
-    <!-- Refugios: carrusel y videos vinculados -->
+
+
+    <!-- Refugios: galería + formulario -->
     <script src="../../scripts/pages/refugios.js"></script>
+
+
 </body>
 
 </html>
