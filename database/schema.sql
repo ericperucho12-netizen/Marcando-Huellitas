@@ -91,12 +91,13 @@ CREATE TABLE IF NOT EXISTS detalles_pedido (
 CREATE TABLE IF NOT EXISTS donaciones (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     usuario_id BIGINT NULL, -- NULL si es donación anónima
-    monto DECIMAL(10,2) NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
     proposito VARCHAR(100), -- 'Alimentación', 'Atención Veterinaria', etc.
     metodo_pago VARCHAR(50),
+    comprobante_url VARCHAR(255), -- Guardará el enlace de S3/Cloudinary o ruta local del PDF/PNG
     estado VARCHAR(50) DEFAULT 'COMPLETADA',
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
+    FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE SET NULL
 );
 
 -- 8. Tabla de Refugios
