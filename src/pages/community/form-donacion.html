@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo - Marcando Huellitas</title>
 
+    <script>
+        if (!sessionStorage.getItem("usuarioActual")) {
+            alert("Debes iniciar sesión para realizar un donativo.");
+            window.location.href = "../auth/login.html";
+        }
+    </script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
