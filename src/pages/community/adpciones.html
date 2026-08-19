@@ -273,7 +273,7 @@
                             <p class="mb-3"><strong>Edad:</strong> <span id="modal-pet-age"></span></p>
                             <hr>
                             <p id="modal-pet-desc" class="text-secondary mb-4"></p>
-                            <a href="RegistroAdopcion.html" class="btn btn-hero w-100 py-2">¡Quiero adoptar a este peludito! ♡</a>
+                            <a href="RegistroAdopcion.html" class="btn btn-hero w-100 py-2" onclick="if(window.requireAuth && !window.requireAuth('adoptar una mascota')) return false;">¡Quiero adoptar a este peludito! ♡</a>
                         </div>
                     </div>
                 </div>

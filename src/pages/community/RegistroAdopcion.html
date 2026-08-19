@@ -246,6 +246,7 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        if (window.requireAuth && !window.requireAuth('enviar una solicitud de adopción')) return;
 
         const isValid = validateForm();
 
