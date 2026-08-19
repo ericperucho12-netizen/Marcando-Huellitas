@@ -111,7 +111,11 @@ CREATE TABLE IF NOT EXISTS detalles_pedido (
 CREATE TABLE IF NOT EXISTS donaciones (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     usuario_id BIGINT NULL, -- NULL si es donación anónima
+    nombre_donante VARCHAR(150), -- Opcional: si el donante no está registrado
+    correo_donante VARCHAR(150),
+    telefono_donante VARCHAR(20),
     monto DECIMAL(10, 2) NOT NULL,
+    frecuencia VARCHAR(50) DEFAULT 'Unica', -- 'Unica', 'Mensual', 'Anual'
     metodo_pago VARCHAR(50),
     comprobante_url VARCHAR(255), -- Guardará el enlace de S3/Cloudinary o ruta local del PDF/PNG
     estado VARCHAR(50) DEFAULT 'COMPLETADA',
@@ -217,12 +221,12 @@ INSERT INTO detalles_pedido (pedido_id, producto_id, cantidad, precio_compra) VA
 (5, 3, 1, 450.00);
 
 -- Mock Data para Donaciones
-INSERT INTO donaciones (usuario_id, monto, metodo_pago, comprobante_url, estado) VALUES 
-(2, 500.00, 'Tarjeta', 's3.com/comprobante1.pdf', 'COMPLETADA'),
-(NULL, 100.00, 'Efectivo OXXO', 's3.com/comp2.png', 'COMPLETADA'),
-(3, 1000.00, 'Transferencia', 's3.com/transf3.jpg', 'COMPLETADA'),
-(4, 250.00, 'PayPal', 's3.com/paypal4.pdf', 'COMPLETADA'),
-(5, 300.00, 'Tarjeta', 's3.com/comp5.pdf', 'PENDIENTE');
+INSERT INTO donaciones (usuario_id, nombre_donante, correo_donante, telefono_donante, monto, frecuencia, metodo_pago, comprobante_url, estado) VALUES 
+(2, 'Juan Pérez', 'juan@ejemplo.com', '555-1234', 500.00, 'Unica', 'Tarjeta', 's3.com/comprobante1.pdf', 'COMPLETADA'),
+(NULL, 'Anónimo', 'anonimo@ejemplo.com', '555-0000', 100.00, 'Mensual', 'Efectivo OXXO', 's3.com/comp2.png', 'COMPLETADA'),
+(3, 'María García', 'maria@ejemplo.com', '555-5678', 1000.00, 'Unica', 'Transferencia', 's3.com/transf3.jpg', 'COMPLETADA'),
+(4, 'Carlos López', 'carlos@ejemplo.com', '555-9012', 250.00, 'Anual', 'PayPal', 's3.com/paypal4.pdf', 'COMPLETADA'),
+(5, 'Ana Martínez', 'ana@ejemplo.com', '555-3456', 300.00, 'Mensual', 'Tarjeta', 's3.com/comp5.pdf', 'PENDIENTE');
 
 -- Mock Data para Historias de Éxito
 INSERT INTO historias_exito (mascota_id, usuario_id, titulo, historia, imagen_url) VALUES 
