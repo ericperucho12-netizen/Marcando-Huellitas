@@ -801,9 +801,14 @@ function injectAnimatedCart() {
                 if (icon && typeof icon.play === 'function') icon.play();
             });
 
-            // Click animation ("Agregado")
+            // Click animation ("Agregado") and Add to Cart
             overlay.addEventListener('click', (e) => {
+                // Prevenir que el click se propague a la tarjeta
                 e.stopPropagation();
+
+                // Check auth first!
+                if (window.requireAuth && !window.requireAuth('agregar productos al carrito')) return;
+
                 const textSpan = overlay.querySelector('.cart-text');
                 if (textSpan) {
                     textSpan.textContent = '¡Agregado!';

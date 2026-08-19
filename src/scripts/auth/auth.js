@@ -290,46 +290,52 @@ if (loginForm) {
     });
 } 
 
-    // Vista entre login y registro
-    const showRegisterBtn = document.getElementById("showRegisterBtn");
-    const showLoginBtn = document.getElementById("showLoginBtn");
-    const loginSection = document.getElementById("loginSection");
-    const registerSection = document.getElementById("registerSection");
+    // Vista entre login y registro (Sliding Panel)
+    const signUpGhost = document.getElementById("signUpGhost");
+    const signInGhost = document.getElementById("signInGhost");
+    const showRegisterMobile = document.getElementById("showRegisterMobile");
+    const showLoginMobile = document.getElementById("showLoginMobile");
+    const authContainer = document.getElementById("authContainer");
 
-    // botón inactivo por defecto
-    if (showRegisterBtn) showRegisterBtn.classList.remove('active');
-    if (showLoginBtn) showLoginBtn.classList.remove('active');
+    // Limpiar validaciones comunes
+    const cleanAllValidations = () => {
+        const userOrEmailEl = document.getElementById("userOrEmail");
+        const passwordLoginEl = document.getElementById("passwordLogin");
+        const nombre = document.getElementById("nombre");
+        const telefono = document.getElementById("telefono");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        limpiarValidaciones([userOrEmailEl, passwordLoginEl, nombre, telefono, email, password, confirmPassword]);
+    };
 
-    if (showRegisterBtn && loginSection && registerSection) {
-        showRegisterBtn.addEventListener("click", function () {
-            loginSection.classList.add("d-none");
-            registerSection.classList.remove("d-none");
-            initTogglePassword();
-            // limpiar validaciones de login al mostrar registro
-            const userOrEmailEl = document.getElementById("userOrEmail");
-            const passwordLoginEl = document.getElementById("passwordLogin");
-            limpiarValidaciones([userOrEmailEl, passwordLoginEl]);
-            // un botón activo y el otro no activo
-            showRegisterBtn.classList.add('active');
-            if (showLoginBtn) showLoginBtn.classList.remove('active');
+    // Toggle Desktop (Animación css)
+    if (signUpGhost) {
+        signUpGhost.addEventListener("click", () => {
+            authContainer.classList.add("right-panel-active");
+            cleanAllValidations();
         });
     }
 
-    if (showLoginBtn && loginSection && registerSection) {
-        showLoginBtn.addEventListener("click", function () {
-            registerSection.classList.add("d-none");
-            loginSection.classList.remove("d-none");
-            initTogglePassword();
-            // limpiar validaciones de registro al mostrar login
-            const nombre = document.getElementById("nombre");
-            const telefono = document.getElementById("telefono");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
-            const confirmPassword = document.getElementById("confirmPassword");
-            limpiarValidaciones([nombre, telefono, email, password, confirmPassword]);
-            // un botón activo y el otro no activo
-            showLoginBtn.classList.add('active');
-            if (showRegisterBtn) showRegisterBtn.classList.remove('active');
+    if (signInGhost) {
+        signInGhost.addEventListener("click", () => {
+            authContainer.classList.remove("right-panel-active");
+            cleanAllValidations();
+        });
+    }
+
+    // Toggle Mobile (Clase mobile-register)
+    if (showRegisterMobile) {
+        showRegisterMobile.addEventListener("click", () => {
+            authContainer.classList.add("mobile-register");
+            cleanAllValidations();
+        });
+    }
+
+    if (showLoginMobile) {
+        showLoginMobile.addEventListener("click", () => {
+            authContainer.classList.remove("mobile-register");
+            cleanAllValidations();
         });
     }
 

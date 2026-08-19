@@ -69,6 +69,7 @@
                     <!-- Botón -->
                     <div class="d-flex justify-content-center mb-5">
                         <a href="form-donacion.html"
+                            onclick="if(window.requireAuth && !window.requireAuth('realizar un donativo')) return false;"
                             class=" hero-title btn btn-donar px-5 py-3 rounded-pill fw-bold text-white"
                             style="font-size: 1.2rem;">
                             <i class="fa-regular fa-heart me-2"></i>
@@ -1432,7 +1433,7 @@
                             a seguir haciendo la diferencia.
                         </p>
 
-                        <a href="form-donacion.html" class="meta-button">
+                        <a href="form-donacion.html" class="meta-button" onclick="if(window.requireAuth && !window.requireAuth('realizar un donativo')) return false;">
                             DONAR AHORA
                         </a>
 

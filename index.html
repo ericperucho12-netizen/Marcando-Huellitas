@@ -252,9 +252,9 @@
             </div>
 
             <!-- Grid de Mascotas (Reciclado de adpciones.html) -->
-            <div class="row g-4" id="pet-grid">
+            <div class="d-flex gap-4 overflow-auto pb-4 px-2 custom-scrollbar" id="petCarouselContainer" style="scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #ff8e6a #fde8d7;">
                 <!-- Card 1: Bruno -->
-                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
                         <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
                             style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
@@ -283,7 +283,7 @@
                 </div>
 
                 <!-- Card 2: Mochi -->
-                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="gato">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
                         <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
                             style="background-color: #ffc4a3; color: #d35400; font-size: 0.75rem; z-index: 10;">En
@@ -313,7 +313,7 @@
                 </div>
 
                 <!-- Card 3: Luna -->
-                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
                         <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
                             style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
@@ -324,11 +324,11 @@
                             class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Luna</h3>
-                            <p class="text-muted small mb-3">Jack Russell · 10 meses</p>
+                            <p class="text-muted small mb-3">Mestiza · 8 meses</p>
 
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
-                                <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activa</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Juguetona</span>
                             </div>
 
                             <a href="/src/pages/community/adpciones.html"
@@ -340,23 +340,51 @@
                     </div>
                 </div>
 
-                <!-- Card 4: Canela -->
-                <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
+                <!-- Card 4: Felix -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="gato">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #f1c0e8; color: #a13d96; font-size: 0.75rem; z-index: 10;">Urgente</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Felix" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Felix</h3>
+                            <p class="text-muted small mb-3">Atigrado · 3 años</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Independiente</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5: Rex (Extra) -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
                         <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
                             style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
                         <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
                             style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
                                 class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
-                            class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1537151608804-ea2f1fa3dfc7?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Rex" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
-                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Canela</h3>
-                            <p class="text-muted small mb-3">Maltés Mix · 4 meses</p>
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Rex</h3>
+                            <p class="text-muted small mb-3">Border Collie · 1 año</p>
 
                             <div class="d-flex flex-wrap gap-1 mb-3">
-                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
-                                <span class="badge bg-pastel-cyan text-dark px-2 py-1 small">Cachorra</span>
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Muy Activo</span>
                             </div>
 
                             <a href="/src/pages/community/adpciones.html"
@@ -368,6 +396,145 @@
                     </div>
                 </div>
 
+                        <!-- Nuevas Mascotas (Fotos Locales) -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="src/assets/nosotros/mascotas/Galita-10.jpeg"
+                            class="card-img-top" alt="Galita" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Galita</h3>
+                            <p class="text-muted small mb-3">Mestiza · 3 años</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Amorosa</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="gato">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #ffc4a3; color: #d35400; font-size: 0.75rem; z-index: 10;">En
+                            Proceso</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="src/assets/nosotros/mascotas/Kali-3.jpeg"
+                            class="card-img-top" alt="Kali" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Kali</h3>
+                            <p class="text-muted small mb-3">Siamés Mix · 1.5 años</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-purple text-dark px-2 py-1 small">Esterilizado</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Tranquilo</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="src/assets/nosotros/mascotas/Mylove-9.jpeg"
+                            class="card-img-top" alt="Mylove" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Mylove</h3>
+                            <p class="text-muted small mb-3">Mestiza · 8 meses</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Juguetona</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="gato">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #f1c0e8; color: #a13d96; font-size: 0.75rem; z-index: 10;">Urgente</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="src/assets/nosotros/mascotas/Ramon-2.jpeg"
+                            class="card-img-top" alt="Ramon" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Ramón</h3>
+                            <p class="text-muted small mb-3">Atigrado · 3 años</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Independiente</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;" class="pet-item" data-category="perro">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="src/assets/nosotros/mascotas/Spike-10.jpeg"
+                            class="card-img-top" alt="Spike" style="height: 220px; object-fit: cover;">
+                        <div class="card-body bg-white d-flex flex-column">
+                            <h3 class="h5 fw-bold text-dark mb-1" style="font-family: var(--font-titles);">Spike</h3>
+                            <p class="text-muted small mb-3">Border Collie · 1 año</p>
+
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
+                                <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Muy Activo</span>
+                            </div>
+
+                            <a href="/src/pages/community/adpciones.html"
+                                class="btn btn-hero w-100 mt-auto btn-conoce-mas text-white text-decoration-none"
+                                style="border-radius: 20px; background-color: #ff8e6a; border: none;">
+                                Conocer más
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
             </div>
         </div>
     </section>
@@ -396,53 +563,166 @@
                 </div>
             </div>
 
-            <!-- Grid de Productos -->
-            <div class="row g-4 justify-content-center mt-3">
+            <!-- Grid de Productos (Carrusel CSS) -->
+            <div class="d-flex gap-4 overflow-auto pb-4 px-2" id="productCarouselContainer" style="scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #ffb800 #fbf8cc;">
                 <!-- Producto 1 -->
-                <div class="col-auto">
-                    <div class="product-item-card">
-                        <div class="image">
-                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Boina.jpg" class="product-img"
-                                alt="Gato con Boina">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Boina.jpg" class="card-img-top" style="height:250px; object-fit:cover;" alt="Gato con Boina">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
                         </div>
-                        <span class="title">Hermosa Michi Boina</span>
-                        <span class="price">$250.00 MXN</span>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#e04b7b; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Hermosa Michi Boina</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(5.0)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$250.00 MXN</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Producto 2 -->
-                <div class="col-auto">
-                    <div class="product-item-card">
-                        <div class="image">
-                            <img src="src/assets/productos/accesorios_perro/producto-cama-perro.png" class="product-img"
-                                alt="Cama Premium para Perro">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/accesorios_perro/producto-cama-perro.png" class="card-img-top" style="height:250px; object-fit:cover;" alt="Cama Premium para Perro">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
                         </div>
-                        <span class="title">Cama Premium para Perro</span>
-                        <span class="price">$850.00 MXN</span>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#4fc08d; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Cama Premium para Perro</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(4.5)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$850.00 MXN</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Producto 3 -->
-                <div class="col-auto">
-                    <div class="product-item-card">
-                        <div class="image">
-                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Bruja.jpg" class="product-img"
-                                alt="Gato disfrazado de bruja">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/Imagenes_Gato_Productos/Gato_Bruja.jpg" class="card-img-top" style="height:250px; object-fit:cover;" alt="Gato disfrazado de bruja">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
                         </div>
-                        <span class="title">Hermoso Traje De Michi Bruja</span>
-                        <span class="price">$500.00 MXN</span>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#e04b7b; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Hermoso Traje De Michi Bruja</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(4.0)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$500.00 MXN</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Producto 4 -->
-                <div class="col-auto">
-                    <div class="product-item-card">
-                        <div class="image">
-                            <img src="src/assets/productos/accesorios_perro/producto-correa-perro.png"
-                                class="product-img" alt="Correa para perro">
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/accesorios_perro/producto-correa-perro.png" class="card-img-top" style="height:250px; object-fit:cover;" alt="Correa para perro">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
                         </div>
-                        <span class="title">Correa Resistente para Paseos</span>
-                        <span class="price">$150.00 MXN</span>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#4fc08d; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Correa Resistente para Paseos</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(5.0)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$150.00 MXN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto Extra (para mostrar el scroll del carrusel) -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/accesorios_perro/casa2_perro.png" class="card-img-top" style="height:250px; object-fit:cover;" alt="Casa Perro" onerror="this.src='src/assets/footer/Huellita-footer.png'">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#4fc08d; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Casa Cómoda para Perro</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(4.8)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$1039.00 MXN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto Extra 2 -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/accesorios_perro/platos4_perros.png" class="card-img-top" style="height:250px; object-fit:cover;" alt="Platos Perro" onerror="this.src='src/assets/footer/Huellita-footer.png'">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#4fc08d; letter-spacing: 0.5px;">Accesorios</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Platos Dobles de Acero</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(4.6)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$320.00 MXN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto Extra 3 -->
+                <div style="scroll-snap-align: start; min-width: 280px; width: 300px; flex-shrink: 0;">
+                    <div class="card h-100 border-0" style="border-radius:16px;overflow:hidden;transition:transform .2s; background-color:#fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
+                            <img src="src/assets/productos/accesorios_perro/producto-ropa-perro.png" class="card-img-top" style="height:250px; object-fit:cover;" alt="Ropa Perro" onerror="this.src='src/assets/footer/Huellita-footer.png'">
+                            <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                                <i class="bi bi-heart text-secondary"></i>
+                            </span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column">
+                            <p class="mb-2 fw-bold text-uppercase" style="font-size:.75rem; color:#4fc08d; letter-spacing: 0.5px;">Ropa</p>
+                            <h6 class="title fw-bold mb-3 flex-grow-1" style="font-size:1.1rem; color:#2b2b2b; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; line-height:1.4;">Suéter de Punto Invierno</h6>
+                            <div class="mb-3 d-flex align-items-center" style="color:#ffb800;font-size:.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <small class="text-muted ms-2" style="font-size: 0.8rem;">(5.0)</small>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-auto">
+                                <span class="fw-bold" style="font-size:1.3rem;color:#1f6b3d;">$450.00 MXN</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -687,6 +967,50 @@
                 <div class="ally-pill ally-pill--alt"> Felinos del Sur</div>
                 <div class="ally-pill ally-pill--alt"> Adopta No Compres</div>
                 <div class="ally-pill ally-pill--alt"> Rescate Animal MX</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto Rápido -->
+    <section class="py-5" style="background: linear-gradient(135deg, #fde8d7 0%, #fff8f2 100%);">
+        <div class="container py-4">
+            <div class="row align-items-center justify-content-center text-center text-lg-start">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p class="mb-1 fw-bold text-uppercase" style="color: #ff8e6a; letter-spacing: 1px; font-size: 0.85rem;">
+                        Estemos en contacto
+                    </p>
+                    <h2 class="fw-bold mb-3" style="color: #1a1a2e; font-family: var(--font-titles); font-size: 2.5rem;">
+                        ¿Tienes dudas o quieres ayudarnos?
+                    </h2>
+                    <p class="text-secondary mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+                        Estamos aquí para escucharte. Ya sea que quieras adoptar, donar, ser voluntario o simplemente saber más de nosotros, ¡nos encantaría leerte!
+                    </p>
+                    <a href="/src/pages/info/Contactenos.html" class="btn btn-hero text-white px-5 py-3 rounded-pill d-inline-flex align-items-center justify-content-center gap-2" style="background-color: #ff8e6a; border: none; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255,142,106,0.3); transition: transform 0.2s, box-shadow 0.2s;">
+                        <i class="bi bi-envelope-heart-fill fs-5"></i> Contáctanos ahora
+                    </a>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="position-relative d-inline-block">
+                        <!-- Decors -->
+                        <div class="position-absolute top-0 start-0 translate-middle rounded-circle bg-warning opacity-25" style="width: 80px; height: 80px; z-index: 0;"></div>
+                        <div class="position-absolute bottom-0 end-0 translate-middle rounded-circle" style="width: 100px; height: 100px; background-color: #ff8e6a; opacity: 0.2; z-index: 0;"></div>
+                        
+                        <img src="src/assets/nosotros/mascotas/Hanabi-8.jpg" alt="Contáctanos" class="img-fluid rounded-4 shadow-lg position-relative" style="object-fit: cover; height: 350px; width: 100%; max-width: 400px; border: 8px solid white; z-index: 1;">
+                        
+                        <!-- Flotante -->
+                        <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded-4 shadow-sm" style="z-index: 2; transform: translate(-20px, 20px);">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #e04b7b; color: white;">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div class="text-start">
+                                    <p class="mb-0 fw-bold" style="font-size: 0.9rem; color: #1a1a2e;">¡Escríbenos!</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Respondemos rápido</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
