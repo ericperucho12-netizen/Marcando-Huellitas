@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Marcando Huellitas</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container profile-container">
+        <div class="row g-4">
+            
+            <!-- SIDEBAR -->
+            <div class="col-lg-3">
+                <div class="profile-sidebar">
+                    <div class="profile-sidebar-header">
+                        <div class="profile-avatar-placeholder" id="avatarLetra">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <h4 class="mb-1" id="sidebarUserName" style="font-family: var(--font-titles); color: #2b2b2b;">Usuario</h4>
+                        <span class="badge bg-success rounded-pill px-3 py-2" id="sidebarUserRole" style="font-weight: 500;">Miembro</span>
+                    </div>
+
+                    <div class="profile-nav d-flex flex-column" id="profileNav">
+                        <a href="#datos" class="nav-link active" data-target="section-datos">
+                            <i class="bi bi-person-lines-fill fs-5"></i> Datos de Perfil
+                        </a>
+                        <a href="#favoritos" class="nav-link" data-target="section-favoritos">
+                            <i class="bi bi-heart fs-5"></i> Favoritos
+                        </a>
+                        <a href="#pagos" class="nav-link" data-target="section-pagos">
+                            <i class="bi bi-credit-card fs-5"></i> Métodos de Pago
+                        </a>
+                        <a href="#direcciones" class="nav-link" data-target="section-direcciones">
+                            <i class="bi bi-geo-alt fs-5"></i> Direcciones
+                        </a>
+                        
+                        <!-- Panel de Admin (Se oculta por defecto) -->
+                        <div id="adminMenu" class="d-none mt-3 pt-3 border-top">
+                            <small class="text-muted text-uppercase fw-bold ms-2 mb-2 d-block" style="font-size: 0.75rem;">Panel Administrador</small>
+                            <a href="#admin-adopciones" class="nav-link" data-target="section-admin-adopciones">
+                                <i class="bi bi-clipboard2-check fs-5 text-warning"></i> Adopciones
+                            </a>
+                            <a href="#admin-refugios" class="nav-link" data-target="section-admin-refugios">
+                                <i class="bi bi-house-heart fs-5 text-info"></i> Refugios
+                            </a>
+                            <a href="#admin-productos" class="nav-link" data-target="section-admin-productos">
+                                <i class="bi bi-box-seam fs-5 text-primary"></i> Productos
+                            </a>
+                        </div>
+                        
+                        <a href="#" class="nav-link text-danger mt-3 mt-lg-5" id="btnCerrarSesionPerfil">
+                            <i class="bi bi-box-arrow-left fs-5"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col-lg-9">
+                <div class="profile-content-card position-relative">
+                    
+                    <!-- Sección: Datos de Perfil -->
+                    <div id="section-datos" class="profile-section active-section">
+                        <h2 class="section-title">Datos Personales</h2>
+                        <form id="formPerfil" class="mt-4">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium text-secondary">Nombre Completo</label>
+                                    <input type="text" class="form-control profile-input" id="perfilNombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium text-secondary">Correo Electrónico</label>
+                                    <input type="email" class="form-control profile-input" id="perfilCorreo" readonly disabled style="background-color: #e9ecef;">
+                                    <small class="text-muted">El correo no se puede cambiar por seguridad.</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium text-secondary">Teléfono</label>
+                                    <input type="tel" class="form-control profile-input" id="perfilTelefono" placeholder="Ej: 55 1234 5678">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium text-secondary">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control profile-input" id="perfilFecha">
+                                </div>
+                            </div>
+                            
+                            <!-- Cambio de Contraseña -->
+                            <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                <div>
+                                    <h5 class="mb-1 fw-bold" style="color: #2b2b2b;">Contraseña y Seguridad</h5>
+                                    <p class="text-muted mb-0 small">Te enviaremos un correo para cambiar tu contraseña.</p>
+                                </div>
+                                <button type="button" class="btn btn-outline-dark rounded-pill fw-medium px-4" data-bs-toggle="modal" data-bs-target="#modalPassword">
+                                    <i class="bi bi-key me-2"></i>Cambiar Contraseña
+                                </button>
+                            </div>
+
+                            <div class="mt-4 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-lg px-5 text-white fw-bold rounded-pill" style="background-color: #e04b7b; transition: all 0.3s;">
+                                    Guardar Cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sección: Favoritos -->
+                    <div id="section-favoritos" class="profile-section">
+                        <h2 class="section-title">Mis Favoritos</h2>
+                        
+                        <!-- Nav tabs para Favoritos -->
+                        <ul class="nav nav-pills mb-4" id="pills-tab-favoritos" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active rounded-pill fw-medium px-4" id="pills-mascotas-tab" data-bs-toggle="pill" data-bs-target="#pills-mascotas" type="button" role="tab">Mascotas Adorables</button>
+                            </li>
+                            <li class="nav-item ms-2" role="presentation">
+                                <button class="nav-link rounded-pill fw-medium px-4" id="pills-productos-tab" data-bs-toggle="pill" data-bs-target="#pills-productos" type="button" role="tab">Productos Guardados</button>
+                            </li>
+                        </ul>
+
+                        <!-- Contenido de las tabs -->
+                        <div class="tab-content" id="pills-tabContent-favoritos">
+                            <!-- Tab Mascotas -->
+                            <div class="tab-pane fade show active" id="pills-mascotas" role="tabpanel">
+                                <div class="row g-4" id="contenedorFavoritosMascotas">
+                                    <!-- Generado por JS -->
+                                </div>
+                            </div>
+
+                            <!-- Tab Productos -->
+                            <div class="tab-pane fade" id="pills-productos" role="tabpanel">
+                                <div class="row g-4" id="contenedorFavoritosProductos">
+                                    <!-- Generado por JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Métodos de Pago -->
+                    <div id="section-pagos" class="profile-section">
+                        <h2 class="section-title">Métodos de Pago</h2>
+                        <p class="text-secondary mb-4">Gestiona tus tarjetas guardadas para compras y donaciones.</p>
+                        
+                        <div class="row g-4" id="listaTarjetas">
+                            <!-- Tarjeta existente -->
+                            <div class="col-md-6">
+                                <div class="data-card">
+                                    <div class="card-actions">
+                                        <button class="btn btn-sm text-danger border-0 bg-transparent"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="bi bi-credit-card-2-front fs-1 text-primary me-3"></i>
+                                        <div>
+                                            <h5 class="mb-0 fw-bold" style="color: #2b2b2b;">Visa terminada en 4589</h5>
+                                            <small class="text-muted">Expira: 12/28</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-light text-dark border"><i class="bi bi-check-circle-fill text-success me-1"></i> Principal</span>
+                                </div>
+                            </div>
+
+                            <!-- Agregar Nueva Tarjeta -->
+                            <div class="col-md-6">
+                                <div class="add-new-card h-100 rounded-4">
+                                    <i class="bi bi-plus-circle fs-2 mb-2"></i>
+                                    <span class="fw-medium">Agregar Tarjeta</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Direcciones -->
+                    <div id="section-direcciones" class="profile-section">
+                        <h2 class="section-title">Direcciones de Envío</h2>
+                        <p class="text-secondary mb-4">Direcciones guardadas para los productos de nuestra tienda con causa.</p>
+                        
+                        <div class="row g-4" id="listaDirecciones">
+                            <!-- Dirección existente -->
+                            <div class="col-md-6">
+                                <div class="data-card">
+                                    <div class="card-actions">
+                                        <button class="btn btn-sm text-secondary border-0 bg-transparent"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-sm text-danger border-0 bg-transparent"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                    <h5 class="mb-2 fw-bold" style="color: #2b2b2b;"><i class="bi bi-house me-2 text-warning"></i>Mi Casa</h5>
+                                    <p class="text-muted mb-2 small lh-sm">
+                                        Calle Falsa 123, Col. Centro<br>
+                                        Ciudad de México, CDMX<br>
+                                        CP: 06000
+                                    </p>
+                                    <span class="badge bg-light text-dark border"><i class="bi bi-check-circle-fill text-success me-1"></i> Predeterminada</span>
+                                </div>
+                            </div>
+
+                            <!-- Agregar Nueva Dirección -->
+                            <div class="col-md-6">
+                                <div class="add-new-card h-100 rounded-4">
+                                    <i class="bi bi-geo-alt fs-2 mb-2"></i>
+                                    <span class="fw-medium">Agregar Dirección</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secciones de Admin (Placeholders) -->
+                    <div id="section-admin-adopciones" class="profile-section text-center py-5">
+                        <i class="bi bi-clipboard2-check display-1 text-warning mb-3"></i>
+                        <h2 class="section-title d-inline-block">Gestión de Adopciones</h2>
+                        <p class="text-secondary mt-3">Aquí podrás aprobar o rechazar solicitudes de adopción pendientes.</p>
+                        <a href="../../pages/community/admin-adopcion.html" class="btn btn-warning rounded-pill px-4 mt-2 fw-bold">Ir al Panel de Adopciones</a>
+                    </div>
+                    
+                    <div id="section-admin-refugios" class="profile-section py-4">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-house-heart display-4 text-info mb-3"></i>
+                            <h2 class="section-title d-inline-block">Gestión de Refugios</h2>
+                            <p class="text-secondary mt-3">Aquí podrás validar los nuevos refugios que se registran en la plataforma.</p>
+                        </div>
+                        
+                        <!-- Lista de Refugios Pendientes (Inyectada vía JS) -->
+                        <div id="contenedorRefugiosPendientes" class="row g-4 mt-2">
+                            <!-- JS inyectará aquí -->
+                        </div>
+                    </div>
+
+                    <div id="section-admin-productos" class="profile-section text-center py-5">
+                        <i class="bi bi-box-seam display-1 text-primary mb-3"></i>
+                        <h2 class="section-title d-inline-block">Gestión de Productos</h2>
+                        <p class="text-secondary mt-3">Aquí podrás agregar, editar y eliminar productos de la tienda benéfica.</p>
+                        <a href="../../pages/shop/admin-producto.html" class="btn btn-primary rounded-pill px-4 mt-2 fw-bold">Ir al Panel de Productos</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- Modal Cambio de Contraseña -->
+    <div class="modal fade" id="modalPassword" tabindex="-1" aria-labelledby="modalPasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="modalPasswordLabel">Solicitar Cambio de Contraseña</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="bi bi-envelope-check display-1 text-success mb-3"></i>
+                    <p class="mb-0 text-secondary">Haremos el envío de un enlace de recuperación seguro al correo vinculado a esta cuenta.</p>
+                    <p class="fw-bold mt-2" id="modalConfirmEmail"></p>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 justify-content-center">
+                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success rounded-pill px-4" id="btnEnviarCorreoPassword">Sí, enviar correo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Loader -->
+    <script src="../../scripts/core/layout.js"></script>
+    <script src="../../scripts/main.js"></script>
+    <!-- Perfil JS -->
+    <script src="../../scripts/user/perfil.js"></script>
+</body>
+
+</html>

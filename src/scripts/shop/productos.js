@@ -1152,7 +1152,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="position-relative" style="background-color: #f8f9fa; border-bottom: 1px solid #f0f0f0;">
                         <img src="${escaparAtributo(producto.imagen)}" onerror="this.src='../../assets/footer/Huellita-footer.png'; this.style.objectFit='contain'; this.style.padding='20px';" class="card-img-top" style="height:250px; object-fit:cover;" alt="${escaparAtributo(producto.nombre)}">
                         ${ofertaBadge}
-                        <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
+                        <span class="position-absolute rounded-circle d-flex align-items-center justify-content-center btn-like-heart" style="background:rgba(255,255,255,0.7); width:32px; height:32px; top:12px; right:12px; cursor:pointer;">
                             <i class="bi bi-heart text-secondary"></i>
                         </span>
                         <div class="admin-actions gap-2 p-2" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 10; display: ${isAdmin ? 'flex' : 'none'} !important;">
@@ -1173,9 +1173,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 (${obtenerRatingProducto(producto)}.0)
                             </small>
                         </div>
-                        <div class="d-flex align-items-end justify-content-between mt-auto">
-                            ${precioHtml}
-                        </div>
+                          <div class="d-flex align-items-end justify-content-between mt-auto">
+                              ${precioHtml}
+                          </div>
                     </div>
                 </div>
             `;

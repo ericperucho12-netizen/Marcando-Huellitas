@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     rol VARCHAR(50) DEFAULT 'USUARIO', -- 'USUARIO' o 'ADMIN'
+    token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- 2. Tabla de Refugios
 CREATE TABLE IF NOT EXISTS refugios (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NULL, -- Usuario dueño/creador del refugio
     nombre VARCHAR(150) NOT NULL,
     responsable VARCHAR(150) NOT NULL,
     correo VARCHAR(150) NOT NULL,
@@ -37,8 +39,10 @@ CREATE TABLE IF NOT EXISTS refugios (
     instagram VARCHAR(255),
     facebook VARCHAR(255),
     imagen_url VARCHAR(255),
+    video_url VARCHAR(255), -- Para el video de YouTube en el carrusel
     estatus VARCHAR(50) DEFAULT 'PENDIENTE', -- Para validación por admin antes de publicar
-    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
 
 -- 3. Tabla de Mascotas (Adopciones)
@@ -136,6 +140,55 @@ CREATE TABLE IF NOT EXISTS historias_exito (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (mascota_id) REFERENCES mascotas(id) ON DELETE SET NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
+);
+
+-- ==============================================================================
+-- NUEVAS TABLAS DE PERFIL Y FAVORITOS (FRONTEND INTEGRATION)
+-- ==============================================================================
+
+-- 10. Tabla de Direcciones de Usuario
+CREATE TABLE IF NOT EXISTS direcciones_usuario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    calle_numero VARCHAR(255) NOT NULL,
+    colonia VARCHAR(150) NOT NULL,
+    codigo_postal VARCHAR(20) NOT NULL,
+    ciudad_estado VARCHAR(150) NOT NULL,
+    referencias TEXT,
+    es_principal BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- 11. Tabla de Métodos de Pago
+CREATE TABLE IF NOT EXISTS metodos_pago_usuario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    titular VARCHAR(150) NOT NULL,
+    ultimos_digitos VARCHAR(4) NOT NULL, -- Solo guardar los últimos 4 por seguridad
+    marca VARCHAR(50), -- Ej: Visa, Mastercard
+    expiracion VARCHAR(5), -- Ej: 12/25
+    es_principal BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- 12. Tabla Intermedia: Mascotas Favoritas
+CREATE TABLE IF NOT EXISTS mascotas_favoritas (
+    usuario_id BIGINT NOT NULL,
+    mascota_id BIGINT NOT NULL,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (usuario_id, mascota_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (mascota_id) REFERENCES mascotas(id) ON DELETE CASCADE
+);
+
+-- 13. Tabla Intermedia: Productos Favoritos
+CREATE TABLE IF NOT EXISTS productos_favoritos (
+    usuario_id BIGINT NOT NULL,
+    producto_id BIGINT NOT NULL,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (usuario_id, producto_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE CASCADE
 );
 
 -- ==============================================================================
