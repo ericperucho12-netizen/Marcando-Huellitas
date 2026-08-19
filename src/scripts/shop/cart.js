@@ -106,6 +106,10 @@
 
     // Agrega un producto al carrito
     function addToCart(product, quantity = 1) {
+        if (!window.requireAuth || !window.requireAuth('agregar productos al carrito')) {
+            return getCart();
+        }
+
         const normalizedProduct = {
             id: String(product.id || `${product.name}-${product.price}`),
             name: String(product.name || "Producto").trim(),

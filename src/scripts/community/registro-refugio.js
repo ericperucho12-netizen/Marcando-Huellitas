@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+            if (window.requireAuth && !window.requireAuth('registrar un refugio')) return;
 
             // Leer los datos del formulario
             const nombre = document.getElementById("refugioNombre").value.trim();

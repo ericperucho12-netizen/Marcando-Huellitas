@@ -1608,6 +1608,7 @@ document.addEventListener("DOMContentLoaded", () => {
         async event => {
 
             event.preventDefault();
+            if (window.requireAuth && !window.requireAuth('realizar un donativo')) return;
 
             const terms =
                 document.getElementById("terms");

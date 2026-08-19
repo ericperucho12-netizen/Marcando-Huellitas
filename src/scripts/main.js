@@ -1,3 +1,28 @@
+// Función global para validar sesión antes de acciones críticas
+window.requireAuth = function(actionName) {
+    const usuarioActual = sessionStorage.getItem("usuarioActual");
+    if (!usuarioActual) {
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({
+                title: 'Inicia sesión',
+                text: `Debes iniciar sesión para ${actionName}.`,
+                icon: 'warning',
+                confirmButtonColor: '#e04b7b',
+                confirmButtonText: 'Ir a Iniciar Sesión'
+            }).then(() => {
+                const basePath = document.querySelector('script[src*="main.js"]')?.getAttribute('src').replace('/scripts/main.js', '') || '.';
+                window.location.href = basePath + "/pages/auth/login.html";
+            });
+        } else {
+            alert(`Debes iniciar sesión para ${actionName}.`);
+            const basePath = document.querySelector('script[src*="main.js"]')?.getAttribute('src').replace('/scripts/main.js', '') || '.';
+            window.location.href = basePath + "/pages/auth/login.html";
+        }
+        return false;
+    }
+    return true;
+};
+
 // Inyectar el loader inmediatamente
 (function() {
     // 1. Inyectar CSS del loader
@@ -819,6 +844,8 @@ observer.observe(document.body, { childList: true, subtree: true });
 document.addEventListener('click', (e) => {
     const heartBtn = e.target.closest('.btn:has(.bi-heart), .btn:has(.bi-heart-fill), .fav-heart, .btn-like-heart');
     if (heartBtn) {
+        if (!window.requireAuth('agregar a favoritos')) return;
+
         const icon = heartBtn.querySelector('i');
         if (icon && (icon.classList.contains('bi-heart') || icon.classList.contains('bi-heart-fill'))) {
             
