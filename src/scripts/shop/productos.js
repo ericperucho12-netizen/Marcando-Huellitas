@@ -1287,7 +1287,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".btn-edit").forEach((boton) => {
             boton.addEventListener("click", function () {
                 const id = this.getAttribute("data-id");
-                window.location.href = `admin-producto.html?id=${id}`;
+                window.location.href = `../user/perfil.html?id=${id}#admin-productos`;
             });
         });
     }

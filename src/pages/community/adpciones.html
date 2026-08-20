@@ -32,20 +32,20 @@
     <!-- Contenedor del Navbar -->
     <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
 
-    
-  <!-- ============ CONTENIDO PRINCIPAL ============ -->
-  <main class="page-main">
-    
-  </main>
 
-  <!-- ============ TOAST DECORATIVO ============ -->
-  <div class="toast" id="toast">
-    <div class="toast__icon">✅</div>
-    <div>
-      <div class="toast__title">¡Perfil guardado!</div>
-      <div class="toast__message">La información de la mascota se guardó con éxito.</div>
+    <!-- ============ CONTENIDO PRINCIPAL ============ -->
+    <main class="page-main">
+
+    </main>
+
+    <!-- ============ TOAST DECORATIVO ============ -->
+    <div class="toast" id="toast">
+        <div class="toast__icon">✅</div>
+        <div>
+            <div class="toast__title">¡Perfil guardado!</div>
+            <div class="toast__message">La información de la mascota se guardó con éxito.</div>
+        </div>
     </div>
-  </div>
 
 
     <!-- SECCIÓN HERO DE ADOPCIONES -->
@@ -58,12 +58,14 @@
                         BUSCANDO <span>HOGAR</span>
                     </h1>
                     <p class="hero-description">
-                        Cada uno de estos peluditos ha pasado por momentos difíciles pero están listos para darte el amor más sincero. ¡Dale un giro a su vida!
+                        Cada uno de estos peluditos ha pasado por momentos difíciles pero están listos para darte el
+                        amor más sincero. ¡Dale un giro a su vida!
                     </p>
                 </div>
                 <div class="col-lg-5 hero-image-content">
                     <div class="hero-blob">
-                        <img src="../../assets/nosotros/seccion/PerroGato.png" alt="Mascotas buscando hogar" class="hero-pets-img">
+                        <img src="../../assets/home/sweet-connection-kitten-and-puppy-looking-lovingly-free-png.png"
+                            alt="Mascotas buscando hogar" class="hero-pets-img">
                     </div>
                 </div>
             </div>
@@ -73,47 +75,60 @@
     <!-- SECCIÓN DE PERFILES DE MASCOTAS CON FILTROS INNOVADORES -->
     <section class="py-5" style="background-color: var(--Lemon-Chiffon);">
         <div class="container">
-            
+
             <!-- Botones de Filtrado Interactivo -->
             <div class="row justify-content-center mb-5">
                 <div class="col-auto">
-                    <div class="btn-group p-1 bg-white shadow-sm rounded-pill" role="group" aria-label="Filtro de mascotas">
-                        <button type="button" class="btn rounded-pill px-4 active filter-btn" data-filter="all">Todos</button>
-                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="perro">Perritos</button>
-                        <button type="button" class="btn rounded-pill px-4 filter-btn" data-filter="gato">Gatitos</button>
+                    <div class="btn-group p-1 bg-white shadow-sm rounded-pill" role="group"
+                        aria-label="Filtro de mascotas">
+                        <button type="button" class="btn rounded-pill px-4 active filter-btn"
+                            data-filter="all">Todos</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn"
+                            data-filter="perro">Perritos</button>
+                        <button type="button" class="btn rounded-pill px-4 filter-btn"
+                            data-filter="gato">Gatitos</button>
                     </div>
                 </div>
             </div>
 
             <!-- Grid de Perfiles de Mascotas -->
-            
-              <!-- BOTÓN DE ADMIN (AGREGAR MASCOTA) -->
-              <div id="adminAdopcionToggleContainer" class="text-center mb-4" style="display: none;">
-                  <a href="admin-adopcion.html" class="btn btn-warning rounded-pill px-4 fw-bold shadow-sm">
-                      <i class="bi bi-plus-circle me-2"></i>Agregar Mascota (Modo Admin)
-                  </a>
-              </div>
 
-<div class="row g-4" id="pet-grid">
+            <!-- BOTÓN DE ADMIN (AGREGAR MASCOTA) -->
+            <div id="adminAdopcionToggleContainer" class="text-center mb-4" style="display: none;">
+                <a href="../user/perfil.html#admin-adopciones" class="btn btn-warning rounded-pill px-4 fw-bold shadow-sm">
+                    <i class="bi bi-plus-circle me-2"></i>Agregar Mascota (Modo Admin)
+                </a>
+            </div>
+
+            <div class="row g-4" id="pet-grid">
 
                 <!-- Card 1: Bruno -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 10;">
-                            <a href="admin-adopcion.html" class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet" style="width: 35px; height: 35px;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
+                            style="z-index: 10;">
+                            <a href="../user/perfil.html#admin-adopciones"
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-pencil-fill text-success"></i>
                             </a>
-                            <button class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet" style="width: 35px; height: 35px;">
+                            <button
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-trash-fill text-danger"></i>
                             </button>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Bruno" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Bruno" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Bruno</h3>
                             <p class="text-muted small mb-3">Labrador Mix · 2 años</p>
-                            
+
                             <!-- Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
@@ -121,12 +136,8 @@
                                 <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Sano</span>
                             </div>
 
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#petModal"
-                                data-name="Bruno"
-                                data-age="2 años"
-                                data-breed="Labrador Mix"
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Bruno" data-age="2 años" data-breed="Labrador Mix"
                                 data-img="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=80"
                                 data-desc="Bruno es un perrito sumamente alegre, le encanta correr en el parque y convive excelente con niños y otros perros. Busca una familia activa que lo llene de amor.">
                                 Conoce más
@@ -138,21 +149,31 @@
                 <!-- Card 2: Mochi -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">En Proceso</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 10;">
-                            <a href="admin-adopcion.html" class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet" style="width: 35px; height: 35px;">
+                        <span
+                            class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">En
+                            Proceso</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
+                            style="z-index: 10;">
+                            <a href="../user/perfil.html#admin-adopciones"
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-pencil-fill text-success"></i>
                             </a>
-                            <button class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet" style="width: 35px; height: 35px;">
+                            <button
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-trash-fill text-danger"></i>
                             </button>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Mochi" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Mochi" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Mochi</h3>
                             <p class="text-muted small mb-3">Siamés Mix · 1 año</p>
-                            
+
                             <!-- Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
@@ -160,12 +181,8 @@
                                 <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Tranquilo</span>
                             </div>
 
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#petModal"
-                                data-name="Mochi"
-                                data-age="1 año"
-                                data-breed="Siamés Mix"
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Mochi" data-age="1 año" data-breed="Siamés Mix"
                                 data-img="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80"
                                 data-desc="Mochi es un tierno minino amante de las siestas al rayo del sol. Es muy independiente pero adora recibir mimos por las tardes.">
                                 Conoce más
@@ -177,32 +194,38 @@
                 <!-- Card 3: Luna -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 10;">
-                            <a href="admin-adopcion.html" class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet" style="width: 35px; height: 35px;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
+                            style="z-index: 10;">
+                            <a href="../user/perfil.html#admin-adopciones"
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-pencil-fill text-success"></i>
                             </a>
-                            <button class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet" style="width: 35px; height: 35px;">
+                            <button
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-trash-fill text-danger"></i>
                             </button>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Luna" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Luna</h3>
                             <p class="text-muted small mb-3">Jack Russell · 10 meses</p>
-                            
+
                             <!-- Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
                                 <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activa</span>
                             </div>
 
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#petModal"
-                                data-name="Luna"
-                                data-age="10 meses"
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Luna" data-age="10 meses"
                                 data-breed="Jack Russell"
                                 data-img="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=500&q=80"
                                 data-desc="Luna es una cachorrita llena de energía, ideal para hogares con espacios amplios o personas que disfruten salir a correr al aire libre.">
@@ -215,33 +238,38 @@
                 <!-- Card 4: Canela -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2" style="z-index: 10;">
-                            <a href="admin-adopcion.html" class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet" style="width: 35px; height: 35px;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <div class="admin-actions d-none position-absolute top-0 end-0 m-3 d-flex flex-column gap-2"
+                            style="z-index: 10;">
+                            <a href="../user/perfil.html#admin-adopciones"
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-edit-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-pencil-fill text-success"></i>
                             </a>
-                            <button class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet" style="width: 35px; height: 35px;">
+                            <button
+                                class="btn btn-light shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-pet"
+                                style="width: 35px; height: 35px;">
                                 <i class="bi bi-trash-fill text-danger"></i>
                             </button>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
+                        <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Canela" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Canela</h3>
                             <p class="text-muted small mb-3">Maltés Mix · 4 meses</p>
-                            
+
                             <!-- Etiquetas informativas -->
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
                                 <span class="badge bg-pastel-cyan text-dark px-2 py-1 small">Cachorra</span>
                             </div>
 
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#petModal"
-                                data-name="Canela"
-                                data-age="4 meses"
-                                data-breed="Maltés Mix"
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Canela" data-age="4 meses" data-breed="Maltés Mix"
                                 data-img="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=500&q=80"
                                 data-desc="Canela fue rescatada junto a sus hermanos. Es muy dócil, le gusta dormir en el regazo y se adapta perfectamente a departamentos.">
                                 Conoce más
@@ -253,9 +281,13 @@
                 <!-- Card 5: Rex -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="https://images.unsplash.com/photo-1537151608804-ea2f1fa3dfc7?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Rex" style="height: 220px; object-fit: cover;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="https://images.unsplash.com/photo-1537151608804-ea2f1fa3dfc7?auto=format&fit=crop&w=500&q=80"
+                            class="card-img-top" alt="Rex" style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Rex</h3>
                             <p class="text-muted small mb-3">Border Collie Mix · 1 año</p>
@@ -263,7 +295,12 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
                                 <span class="badge bg-pastel-yellow text-dark px-2 py-1 small">Muy Activo</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Rex" data-age="1 año" data-breed="Border Collie Mix" data-img="https://images.unsplash.com/photo-1537151608804-ea2f1fa3dfc7?auto=format&fit=crop&w=500&q=80" data-desc="Rex es muy inteligente y activo. Necesita una familia que lo mantenga ocupado y disfrute de los paseos largos.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Rex" data-age="1 año"
+                                data-breed="Border Collie Mix"
+                                data-img="https://images.unsplash.com/photo-1537151608804-ea2f1fa3dfc7?auto=format&fit=crop&w=500&q=80"
+                                data-desc="Rex es muy inteligente y activo. Necesita una familia que lo mantenga ocupado y disfrute de los paseos largos.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
@@ -271,9 +308,13 @@
                 <!-- Card 6: Galita -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="../../assets/nosotros/mascotas/Galita-10.jpeg" class="card-img-top" alt="Galita" style="height: 220px; object-fit: cover;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="../../assets/nosotros/mascotas/Galita-10.jpeg" class="card-img-top" alt="Galita"
+                            style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Galita</h3>
                             <p class="text-muted small mb-3">Mestiza · 3 años</p>
@@ -281,7 +322,11 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
                                 <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Amorosa</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Galita" data-age="3 años" data-breed="Mestiza" data-img="../../assets/nosotros/mascotas/Galita-10.jpeg" data-desc="Galita es una perrita muy dulce que adora acurrucarse en el sofá. Perfecta para un hogar tranquilo.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Galita" data-age="3 años" data-breed="Mestiza"
+                                data-img="../../assets/nosotros/mascotas/Galita-10.jpeg"
+                                data-desc="Galita es una perrita muy dulce que adora acurrucarse en el sofá. Perfecta para un hogar tranquilo.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
@@ -289,9 +334,14 @@
                 <!-- Card 7: Kali -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">En Proceso</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="../../assets/nosotros/mascotas/Kali-3.jpeg" class="card-img-top" alt="Kali" style="height: 220px; object-fit: cover;">
+                        <span
+                            class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">En
+                            Proceso</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="../../assets/nosotros/mascotas/Kali-3.jpeg" class="card-img-top" alt="Kali"
+                            style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Kali</h3>
                             <p class="text-muted small mb-3">Siamés Mix · 1.5 años</p>
@@ -299,7 +349,11 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
                                 <span class="badge bg-pastel-purple text-dark px-2 py-1 small">Esterilizado</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Kali" data-age="1.5 años" data-breed="Siamés Mix" data-img="../../assets/nosotros/mascotas/Kali-3.jpeg" data-desc="Kali es muy juguetón y curioso. Le encanta cazar juguetes y observar por la ventana todo el día.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Kali" data-age="1.5 años" data-breed="Siamés Mix"
+                                data-img="../../assets/nosotros/mascotas/Kali-3.jpeg"
+                                data-desc="Kali es muy juguetón y curioso. Le encanta cazar juguetes y observar por la ventana todo el día.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
@@ -307,9 +361,13 @@
                 <!-- Card 8: Mylove -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="../../assets/nosotros/mascotas/Mylove-9.jpeg" class="card-img-top" alt="Mylove" style="height: 220px; object-fit: cover;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="../../assets/nosotros/mascotas/Mylove-9.jpeg" class="card-img-top" alt="Mylove"
+                            style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Mylove</h3>
                             <p class="text-muted small mb-3">Mestiza · 8 meses</p>
@@ -317,17 +375,25 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunada ✓</span>
                                 <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Juguetona</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Mylove" data-age="8 meses" data-breed="Mestiza" data-img="../../assets/nosotros/mascotas/Mylove-9.jpeg" data-desc="Como su nombre lo dice, Mylove es todo amor. Aún es una cachorra, así que tiene mucha energía y ganas de aprender.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Mylove" data-age="8 meses" data-breed="Mestiza"
+                                data-img="../../assets/nosotros/mascotas/Mylove-9.jpeg"
+                                data-desc="Como su nombre lo dice, Mylove es todo amor. Aún es una cachorra, así que tiene mucha energía y ganas de aprender.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Card 9: Ramón -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="gato">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="background-color: #f1c0e8; color: #a13d96;">Urgente</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="../../assets/nosotros/mascotas/Ramon-2.jpeg" class="card-img-top" alt="Ramon" style="height: 220px; object-fit: cover;">
+                        <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                            style="background-color: #f1c0e8; color: #a13d96;">Urgente</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="../../assets/nosotros/mascotas/Ramon-2.jpeg" class="card-img-top" alt="Ramon"
+                            style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Ramón</h3>
                             <p class="text-muted small mb-3">Atigrado · 3 años</p>
@@ -335,7 +401,11 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
                                 <span class="badge bg-pastel-orange text-dark px-2 py-1 small">Independiente</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Ramón" data-age="3 años" data-breed="Atigrado" data-img="../../assets/nosotros/mascotas/Ramon-2.jpeg" data-desc="Ramón fue rescatado de las calles. Es un gato muy sabio, tranquilo e ideal para hacerte compañía silenciosa mientras lees o trabajas.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Ramón" data-age="3 años" data-breed="Atigrado"
+                                data-img="../../assets/nosotros/mascotas/Ramon-2.jpeg"
+                                data-desc="Ramón fue rescatado de las calles. Es un gato muy sabio, tranquilo e ideal para hacerte compañía silenciosa mientras lees o trabajas.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
@@ -343,9 +413,13 @@
                 <!-- Card 10: Spike -->
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="perro">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
-                        <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
-                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
-                        <img src="../../assets/nosotros/mascotas/Spike-10.jpeg" class="card-img-top" alt="Spike" style="height: 220px; object-fit: cover;">
+                        <span
+                            class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Disponible</span>
+                        <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart"
+                            style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"><i
+                                class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i></button>
+                        <img src="../../assets/nosotros/mascotas/Spike-10.jpeg" class="card-img-top" alt="Spike"
+                            style="height: 220px; object-fit: cover;">
                         <div class="card-body bg-white d-flex flex-column">
                             <h3 class="h5 fw-bold text-dark mb-1">Spike</h3>
                             <p class="text-muted small mb-3">Mestizo · 1 año</p>
@@ -353,7 +427,11 @@
                                 <span class="badge bg-pastel-green text-dark px-2 py-1 small">Vacunado ✓</span>
                                 <span class="badge bg-pastel-pink text-dark px-2 py-1 small">Extrovertido</span>
                             </div>
-                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal" data-bs-target="#petModal" data-name="Spike" data-age="1 año" data-breed="Mestizo" data-img="../../assets/nosotros/mascotas/Spike-10.jpeg" data-desc="Spike es el alma de la fiesta. Un perrito que se robará tu corazón al instante con su sonrisa de oreja a oreja.">Conoce más</button>
+                            <button class="btn btn-hero w-100 mt-auto btn-conoce-mas" data-bs-toggle="modal"
+                                data-bs-target="#petModal" data-name="Spike" data-age="1 año" data-breed="Mestizo"
+                                data-img="../../assets/nosotros/mascotas/Spike-10.jpeg"
+                                data-desc="Spike es el alma de la fiesta. Un perrito que se robará tu corazón al instante con su sonrisa de oreja a oreja.">Conoce
+                                más</button>
                         </div>
                     </div>
                 </div>
@@ -366,39 +444,51 @@
     <section class="py-5 bg-white">
         <div class="container py-4">
             <div class="text-center mb-5">
-                <span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill mb-2 fw-bold text-uppercase" style="letter-spacing: 1px;">Paso a Paso</span>
-                <h2 class="fw-bold" style="font-family: var(--font-titles); font-size: 2.5rem; color: #1a1a2e;">El Proceso de Adopción</h2>
+                <span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill mb-2 fw-bold text-uppercase"
+                    style="letter-spacing: 1px;">Paso a Paso</span>
+                <h2 class="fw-bold" style="font-family: var(--font-titles); font-size: 2.5rem; color: #1a1a2e;">El
+                    Proceso de Adopción</h2>
                 <p class="text-secondary mx-auto mt-2" style="max-width: 600px; font-size: 1.1rem;">
-                    Adoptar es un compromiso de vida. Sigue estos tres sencillos pasos para llevar a tu nuevo mejor amigo a casa.
+                    Adoptar es un compromiso de vida. Sigue estos tres sencillos pasos para llevar a tu nuevo mejor
+                    amigo a casa.
                 </p>
             </div>
 
             <div class="row g-4 text-center">
                 <div class="col-md-4">
-                    <div class="p-4 rounded-4 h-100 shadow-sm" style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3" style="width: 70px; height: 70px;">
+                    <div class="p-4 rounded-4 h-100 shadow-sm"
+                        style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3"
+                            style="width: 70px; height: 70px;">
                             <i class="bi bi-search text-warning" style="font-size: 2rem;"></i>
                         </div>
                         <h4 class="fw-bold mb-3" style="color: #e04b7b;">1. Elige a tu Mascota</h4>
-                        <p class="text-muted">Explora nuestra lista de mascotas, lee su perfil, necesidades y descubre si hace <em>match</em> perfecto con tu estilo de vida.</p>
+                        <p class="text-muted">Explora nuestra lista de mascotas, lee su perfil, necesidades y descubre
+                            si hace <em>match</em> perfecto con tu estilo de vida.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="p-4 rounded-4 h-100 shadow-sm" style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3" style="width: 70px; height: 70px;">
+                    <div class="p-4 rounded-4 h-100 shadow-sm"
+                        style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3"
+                            style="width: 70px; height: 70px;">
                             <i class="bi bi-file-earmark-text text-warning" style="font-size: 2rem;"></i>
                         </div>
                         <h4 class="fw-bold mb-3" style="color: #e04b7b;">2. Llena tu Solicitud</h4>
-                        <p class="text-muted">Una vez que te enamores, llena el formulario de adopción. Evaluaremos tus datos para garantizar el bienestar de la mascota.</p>
+                        <p class="text-muted">Una vez que te enamores, llena el formulario de adopción. Evaluaremos tus
+                            datos para garantizar el bienestar de la mascota.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="p-4 rounded-4 h-100 shadow-sm" style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3" style="width: 70px; height: 70px;">
+                    <div class="p-4 rounded-4 h-100 shadow-sm"
+                        style="background: linear-gradient(180deg, #ffffff 0%, #fff8f2 100%);">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white shadow-sm rounded-circle mb-3"
+                            style="width: 70px; height: 70px;">
                             <i class="bi bi-house-heart text-warning" style="font-size: 2rem;"></i>
                         </div>
                         <h4 class="fw-bold mb-3" style="color: #e04b7b;">3. ¡Llévalo a Casa!</h4>
-                        <p class="text-muted">Si todo sale bien, programaremos una cita para que se conozcan y firmes el contrato de adopción responsable.</p>
+                        <p class="text-muted">Si todo sale bien, programaremos una cita para que se conozcan y firmes el
+                            contrato de adopción responsable.</p>
                     </div>
                 </div>
             </div>
@@ -410,13 +500,15 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0 rounded-4 overflow-hidden">
                 <div class="modal-header bg-pastel-pink border-0">
-                    <h5 class="modal-title fw-bold" id="petModalLabel" style="font-family: var(--font-titles);">Detalles de la Mascota</h5>
+                    <h5 class="modal-title fw-bold" id="petModalLabel" style="font-family: var(--font-titles);">Detalles
+                        de la Mascota</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row align-items-center">
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <img id="modal-pet-img" src="" alt="Mascota" class="img-fluid rounded-4 shadow-sm w-100" style="height: 300px; object-fit: cover;">
+                            <img id="modal-pet-img" src="" alt="Mascota" class="img-fluid rounded-4 shadow-sm w-100"
+                                style="height: 300px; object-fit: cover;">
                         </div>
                         <div class="col-md-6">
                             <h3 id="modal-pet-name" class="fw-bold text-dark mb-1"></h3>
@@ -424,7 +516,9 @@
                             <p class="mb-3"><strong>Edad:</strong> <span id="modal-pet-age"></span></p>
                             <hr>
                             <p id="modal-pet-desc" class="text-secondary mb-4"></p>
-                            <a href="RegistroAdopcion.html" class="btn btn-hero w-100 py-2" onclick="if(window.requireAuth && !window.requireAuth('adoptar una mascota')) return false;">¡Quiero adoptar a este peludito! ♡</a>
+                            <a href="RegistroAdopcion.html" class="btn btn-hero w-100 py-2"
+                                onclick="if(window.requireAuth && !window.requireAuth('adoptar una mascota')) return false;">¡Quiero
+                                adoptar a este peludito! ♡</a>
                         </div>
                     </div>
                 </div>
@@ -439,13 +533,13 @@
     <script src="../../scripts/main.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Script de validación de formularios Admin -->
     <script src="../../scripts/shop/adminForms.js"></script>
     <!-- Cart Script -->
     <script src="../../scripts/shop/cart.js"></script>
 
-    
+
     <!-- Script para revelar botón admin -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -460,70 +554,68 @@
         });
     </script>
 
-<!-- Modal información -->
+    <!-- Modal información -->
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // 1. FUNCIONALIDAD DE FILTROS
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const petItems = document.querySelectorAll('.pet-item');
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. FUNCIONALIDAD DE FILTROS
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const petItems = document.querySelectorAll('.pet-item');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Cambiar estado activo de los botones
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Cambiar estado activo de los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
 
-                const filter = button.getAttribute('data-filter');
+                    const filter = button.getAttribute('data-filter');
 
-                petItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
+                    petItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
                 });
             });
-        });
 
-        // 2. FUNCIONALIDAD DEL MODAL
-        const petModal = document.getElementById('petModal');
-        if (petModal) {
-            petModal.classList.add('modal-dialog-scrollable');
+            // 2. FUNCIONALIDAD DEL MODAL
+            const petModal = document.getElementById('petModal');
+            if (petModal) {
+                petModal.classList.add('modal-dialog-scrollable');
 
-            petModal.addEventListener('show.bs.modal', function (event) {
-                const button = event.relatedTarget;
-                
-                const name = button.getAttribute('data-name');
-                const age = button.getAttribute('data-age');
-                const species = button.getAttribute('data-species') ? button.getAttribute('data-species').split('(')[0].trim() : ''; 
-                const img = button.getAttribute('data-img');
-                const desc = button.getAttribute('data-desc');
-                const vacunas = button.getAttribute('data-vacunas') || '';
-                const salud = button.getAttribute('data-salud') || '';
-                const esterilizacion = button.getAttribute('data-esterilizacion') || '';
-                const temperamento = button.getAttribute('data-temperamento') || '';
+                petModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
 
-                document.getElementById('modal-pet-img').src = img;
-                if(document.getElementById('modal-pet-name')) document.getElementById('modal-pet-name').textContent = name;
-                if(document.getElementById('modal-pet-species')) document.getElementById('modal-pet-species').textContent = "Especie: " + species;
-                if(document.getElementById('modal-pet-age')) document.getElementById('modal-pet-age').textContent = age;
-                if(document.getElementById('modal-pet-desc')) document.getElementById('modal-pet-desc').textContent = desc;
+                    const name = button.getAttribute('data-name');
+                    const age = button.getAttribute('data-age');
+                    const species = button.getAttribute('data-species') ? button.getAttribute('data-species').split('(')[0].trim() : '';
+                    const img = button.getAttribute('data-img');
+                    const desc = button.getAttribute('data-desc');
+                    const vacunas = button.getAttribute('data-vacunas') || '';
+                    const salud = button.getAttribute('data-salud') || '';
+                    const esterilizacion = button.getAttribute('data-esterilizacion') || '';
+                    const temperamento = button.getAttribute('data-temperamento') || '';
 
-                const tagsContainer = document.getElementById('modal-pet-tags');
-                if(tagsContainer && vacunas) {
-                    tagsContainer.innerHTML = `
+                    document.getElementById('modal-pet-img').src = img;
+                    if (document.getElementById('modal-pet-name')) document.getElementById('modal-pet-name').textContent = name;
+                    if (document.getElementById('modal-pet-species')) document.getElementById('modal-pet-species').textContent = "Especie: " + species;
+                    if (document.getElementById('modal-pet-age')) document.getElementById('modal-pet-age').textContent = age;
+                    if (document.getElementById('modal-pet-desc')) document.getElementById('modal-pet-desc').textContent = desc;
+
+                    const tagsContainer = document.getElementById('modal-pet-tags');
+                    if (tagsContainer && vacunas) {
+                        tagsContainer.innerHTML = `
                         <span class="badge bg-success-subtle text-success px-2 py-1">Vacunas: ${vacunas}</span>
                         <span class="badge bg-info-subtle text-info px-2 py-1">Salud: ${salud}</span>
                         <span class="badge bg-warning-subtle text-warning px-2 py-1">${esterilizacion}</span>
                         <span class="badge bg-secondary-subtle text-secondary px-2 py-1">Temperamento: ${temperamento}</span>
                     `;
-                }
-            });
-        }
-    });
+                    }
+                });
+            }
+        });
     </script>
 </body>
+
 </html>
-
-
-

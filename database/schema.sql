@@ -1,7 +1,7 @@
 -- ==============================================================================
 -- Base de Datos: marcando_huellitas
 -- Motor: MySQL
--- Notas: Preparado para integración con Spring Boot (JPA / Hibernate)
+-- Notas: Preparado para integración con Spring Boot
 -- ==============================================================================
 
 -- Crear base de datos
@@ -15,9 +15,15 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     correo VARCHAR(150) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL, -- IMPORTANTE: Nunca guardar en texto plano, usar BCrypt o Argon2
     rol VARCHAR(50) DEFAULT 'USUARIO', -- 'USUARIO' o 'ADMIN'
-    token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
+
+-- Campos de Seguridad
+token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
+    intentos_fallidos INT DEFAULT 0, -- Prevención de ataques de fuerza bruta (bloqueo de cuenta)
+    bloqueado_hasta TIMESTAMP NULL, -- Fecha/hora hasta la que la cuenta estará bloqueada
+    ultimo_login TIMESTAMP NULL, -- Registro de la última conexión exitosa
+    
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -49,6 +55,9 @@ CREATE TABLE IF NOT EXISTS mascotas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     especie VARCHAR(50) NOT NULL, -- Ej: 'perro', 'gato'
+    raza VARCHAR(100) DEFAULT 'Mestizo', -- Ej: 'Pug', 'Siames', 'Cruza'
+    sexo VARCHAR(20) NOT NULL, -- 'Macho' o 'Hembra'
+    tamano VARCHAR(50), -- Ej: 'Chico', 'Mediano', 'Grande'
     edad VARCHAR(50), -- Ej: 'Cachorro', 'Adulto', '2 meses'
     descripcion TEXT,
     estado VARCHAR(50) DEFAULT 'DISPONIBLE', -- 'DISPONIBLE', 'EN_PROCESO', 'ADOPTADO'
@@ -137,6 +146,19 @@ CREATE TABLE IF NOT EXISTS historias_exito (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (mascota_id) REFERENCES mascotas (id) ON DELETE SET NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE SET NULL
+);
+
+-- 9.5. Tabla de Solicitudes de Apoyo (Voluntariado, Apadrinamiento, Hogar Temporal)
+CREATE TABLE IF NOT EXISTS solicitudes_apoyo (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    refugio_id BIGINT NOT NULL,
+    tipo_apoyo VARCHAR(50) NOT NULL, -- 'VOLUNTARIO', 'PADRINO', 'HOGAR_TEMPORAL'
+    mensaje TEXT,
+    estado VARCHAR(50) DEFAULT 'PENDIENTE', -- 'PENDIENTE', 'CONTACTADO', 'RECHAZADO'
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE CASCADE,
+    FOREIGN KEY (refugio_id) REFERENCES refugios (id) ON DELETE CASCADE
 );
 
 -- ==============================================================================
@@ -356,6 +378,9 @@ INSERT INTO
     mascotas (
         nombre,
         especie,
+        raza,
+        sexo,
+        tamano,
         edad,
         descripcion,
         estado,
@@ -366,6 +391,9 @@ INSERT INTO
 VALUES (
         'Max',
         'perro',
+        'Mestizo',
+        'Macho',
+        'Mediano',
         'Adulto',
         'Perrito muy juguetón y cariñoso',
         'DISPONIBLE',
@@ -376,6 +404,9 @@ VALUES (
     (
         'Luna',
         'gato',
+        'Siames Cruza',
+        'Hembra',
+        'Chico',
         'Cachorro',
         'Gatita curiosa y tranquila',
         'DISPONIBLE',
@@ -386,6 +417,9 @@ VALUES (
     (
         'Rocky',
         'perro',
+        'Pastor Alemán',
+        'Macho',
+        'Grande',
         'Adulto',
         'Excelente guardián y compañero',
         'EN_PROCESO',
@@ -396,6 +430,9 @@ VALUES (
     (
         'Milo',
         'gato',
+        'Mestizo',
+        'Macho',
+        'Chico',
         'Adulto',
         'Le encanta dormir al sol',
         'DISPONIBLE',
@@ -406,6 +443,9 @@ VALUES (
     (
         'Bella',
         'perro',
+        'Husky',
+        'Hembra',
+        'Grande',
         'Cachorro',
         'Perrita con mucha energía',
         'ADOPTADO',

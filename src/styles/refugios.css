@@ -251,3 +251,490 @@
         font-size: 1.6rem;
     }
 }
+
+/* =========================================
+   REGISTRO DE ASOCIACIONES / REFUGIOS
+   ========================================= */
+
+.registro-refugio-section {
+    padding: 1rem 0 5rem;
+}
+
+.registro-refugio-box {
+    max-width: 850px;
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--Powder-Petal),
+            var(--Lemon-Chiffon)
+        );
+
+    border-radius: 28px;
+    padding: 3rem 2rem;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(103, 72, 70, 0.10);
+}
+
+.registro-refugio-box::before {
+    content: "";
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    top: -65px;
+    left: -45px;
+
+    border-radius: 50%;
+
+    background: var(--Cotton-Rose);
+
+    opacity: 0.5;
+}
+
+.registro-refugio-box::after {
+    content: "";
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    bottom: -60px;
+    right: -35px;
+
+    border-radius: 50%;
+
+    background: var(--Celadon);
+
+    opacity: 0.6;
+}
+
+.registro-refugio-badge {
+    display: inline-block;
+
+    position: relative;
+    z-index: 2;
+
+    background: var(--Cotton-Rose);
+    color: var(--color-hex);
+
+    border-radius: 999px;
+
+    padding: 0.35rem 0.9rem;
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+    font-size: 0.75rem;
+
+    margin-bottom: 0.9rem;
+}
+
+.registro-refugio-title {
+    position: relative;
+    z-index: 2;
+
+    font-family: var(--font-titles);
+    color: var(--color-hex);
+
+    font-size: 2rem;
+}
+
+.registro-refugio-text {
+    position: relative;
+    z-index: 2;
+
+    font-family: var(--font-text-secondary);
+
+    margin: 0.7rem auto 1.5rem;
+
+    max-width: 600px;
+
+    color: var(--Text-Dark);
+}
+
+
+/* =========================================
+   BOTÓN ANIMADO
+   ========================================= */
+
+.btn-registro-huellitas {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-width: 235px;
+    height: 52px;
+
+    border: none;
+    border-radius: 999px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: var(--Accent-Pink);
+    color: var(--White);
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 22px rgba(255, 111, 174, 0.28);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn-registro-huellitas__texto {
+    flex: 1;
+
+    padding-left: 1.3rem;
+    padding-right: 0.8rem;
+}
+
+.btn-registro-huellitas__icono {
+    width: 44px;
+    height: 44px;
+
+    margin-right: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: var(--White);
+    color: var(--Accent-Pink);
+
+    font-size: 1.15rem;
+
+    transition: transform 0.3s ease;
+}
+
+.btn-registro-huellitas:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 13px 26px rgba(255, 111, 174, 0.35);
+}
+
+.btn-registro-huellitas:hover
+.btn-registro-huellitas__icono {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   MODAL
+   ========================================= */
+
+.refugio-registro-modal {
+    border: none;
+
+    border-radius: 24px;
+
+    background: var(--White);
+
+    box-shadow:
+        0 20px 50px rgba(103, 72, 70, 0.25);
+}
+
+.refugio-registro-modal__header {
+    position: relative;
+
+    padding: 1.6rem 2rem;
+
+    border-bottom: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--Lemon-Chiffon),
+            var(--Powder-Petal)
+        );
+}
+
+.refugio-registro-modal__badge {
+    display: inline-block;
+
+    padding: 0.3rem 0.8rem;
+
+    margin-bottom: 0.5rem;
+
+    border-radius: 999px;
+
+    background: var(--Cotton-Rose);
+    color: var(--color-hex);
+
+    font-family: var(--font-text-secondary);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.refugio-registro-modal__title {
+    font-family: var(--font-titles);
+
+    font-size: 1.7rem;
+
+    color: var(--Accent-Pink);
+
+    margin-bottom: 0.3rem;
+}
+
+.refugio-registro-modal__subtitle {
+    margin: 0;
+
+    color: var(--Text-Dark);
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.85rem;
+}
+
+.refugio-registro-modal__body {
+    padding: 1.5rem 2rem;
+
+    background: #fffefa;
+}
+
+.refugio-registro-modal .form-label {
+    color: var(--color-hex);
+
+    font-family: var(--font-text-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.campo-obligatorio {
+    color: var(--Accent-Pink);
+}
+
+
+/* Inputs */
+
+.refugio-registro-modal .form-control,
+.refugio-registro-modal .form-select {
+    border: 1.5px solid #f5c8a8;
+
+    border-radius: 13px;
+
+    padding: 0.65rem 0.85rem;
+
+    background: var(--White);
+
+    font-family: var(--font-text-primary);
+
+    font-size: 0.88rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.refugio-registro-modal .form-control:focus,
+.refugio-registro-modal .form-select:focus {
+    border-color: var(--salmon1);
+
+    box-shadow:
+        0 0 0 0.2rem rgba(255, 140, 105, 0.18);
+}
+
+.refugio-registro-modal textarea {
+    resize: vertical;
+}
+
+.contador-descripcion {
+    font-family: var(--font-text-secondary);
+
+    color: #8a7c6c;
+
+    font-size: 0.7rem;
+}
+
+
+/* Validaciones */
+
+.refugio-registro-modal .form-control.is-invalid,
+.refugio-registro-modal .form-select.is-invalid {
+    border-color: #dc3545;
+}
+
+.refugio-registro-modal .invalid-feedback {
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.72rem;
+}
+
+
+/* Checkbox */
+
+.refugio-registro-check {
+    background: var(--Lemon-Chiffon);
+
+    border-radius: 14px;
+
+    padding: 1rem 1rem 1rem 2.5rem;
+}
+
+.refugio-registro-check .form-check-input:checked {
+    background-color: var(--Accent-Pink);
+    border-color: var(--Accent-Pink);
+}
+
+
+/* Footer */
+
+.refugio-registro-modal__footer {
+    padding: 1rem 2rem;
+
+    border-top: none;
+
+    background: var(--Lemon-Chiffon);
+}
+
+
+/* Botones */
+
+.btn-cancelar-refugio {
+    border: 2px solid var(--Powder-Petal);
+
+    border-radius: 999px;
+
+    color: var(--color-hex);
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+}
+
+.btn-cancelar-refugio:hover {
+    background: var(--Powder-Petal);
+}
+
+.btn-enviar-refugio {
+    border: none;
+
+    border-radius: 999px;
+
+    padding: 0.65rem 1.4rem;
+
+    background: var(--Accent-Pink);
+
+    color: var(--White);
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 16px rgba(255, 111, 174, 0.25);
+}
+
+.btn-enviar-refugio:hover {
+    background: var(--salmon1);
+
+    color: var(--White);
+}
+
+
+/* Scroll */
+
+#modalRegistroRefugio .modal-dialog {
+    max-height: calc(100vh - 2rem);
+}
+
+#modalRegistroRefugio .modal-content {
+    max-height: calc(100vh - 2rem);
+}
+
+#modalRegistroRefugio .modal-body {
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+}
+
+
+/* Toast */
+
+.toast-refugio {
+    border: none;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(103, 72, 70, 0.2);
+}
+
+.toast-refugio .toast-header {
+    background: var(--Cotton-Rose);
+
+    font-family: var(--font-titles);
+
+    color: var(--color-hex);
+}
+
+.toast-refugio .toast-body {
+    background: var(--Lemon-Chiffon);
+
+    font-family: var(--font-text-secondary);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .registro-refugio-box {
+        padding: 2.3rem 1.2rem;
+    }
+
+    .registro-refugio-title {
+        font-size: 1.55rem;
+    }
+
+    .refugio-registro-modal__header,
+    .refugio-registro-modal__body {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+}
+
+/* =========================================
+   VALIDACIÓN VISUAL DEL FORMULARIO
+   Solo mostramos errores
+   ========================================= */
+
+.refugio-registro-modal .was-validated
+.form-control:valid,
+.refugio-registro-modal .was-validated
+.form-select:valid {
+    border-color: #f5c8a8;
+    background-image: none;
+    box-shadow: none;
+}
+
+.refugio-registro-modal .was-validated
+.form-check-input:valid {
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+.refugio-registro-modal .was-validated
+.form-check-input:valid:checked {
+    background-color: var(--Accent-Pink);
+    border-color: var(--Accent-Pink);
+}
