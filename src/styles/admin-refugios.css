@@ -1,0 +1,624 @@
+/* =========================================
+   ADMINISTRACIÓN DE REFUGIOS
+   ========================================= */
+
+
+/* ---------- Header ---------- */
+
+.admin-refugios-header {
+    padding: 2rem 0 1rem;
+    background: transparent;
+    text-align: center;
+}
+
+
+.admin-refugios-header .container {
+    max-width: 850px;
+}
+
+
+.admin-refugios-back {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    width: fit-content;
+
+    margin-bottom: 1.3rem;
+
+    color: var(--salmon1);
+
+    font-family: var(--font-text-secondary);
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.admin-refugios-back:hover {
+    color: var(--Accent-Pink);
+}
+
+
+.admin-refugios-badge {
+    display: inline-block;
+
+    padding: 0.35rem 0.9rem;
+
+    border-radius: 999px;
+
+    background: var(--Cotton-Rose);
+
+    color: var(--color-hex);
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    margin-bottom: 0.8rem;
+}
+
+
+.admin-refugios-header h1 {
+    font-family: var(--font-titles);
+
+    color: var(--color-hex);
+
+    font-size: 2.5rem;
+
+    margin-bottom: 0.7rem;
+}
+
+
+.admin-refugios-header p {
+    font-family: var(--font-text-secondary);
+
+    color: var(--Text-Dark);
+
+    margin: 0;
+}
+
+
+/* ---------- Main ---------- */
+
+.admin-refugios-main {
+    min-height: 70vh;
+
+    padding: 2.5rem 0 5rem;
+}
+
+
+/* =========================================
+   ESTADÍSTICAS
+   ========================================= */
+
+.admin-resumen {
+    margin-bottom: 2.5rem;
+}
+
+
+.admin-stat-card {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    padding: 1.4rem;
+
+    border-radius: 20px;
+
+    background: var(--White);
+
+    box-shadow:
+        0 8px 20px rgba(103, 72, 70, 0.10);
+}
+
+
+.admin-stat-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 1.3rem;
+}
+
+
+.admin-stat-card span {
+    display: block;
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.8rem;
+
+    color: var(--Text-Dark);
+}
+
+
+.admin-stat-card strong {
+    display: block;
+
+    font-family: var(--font-titles);
+
+    font-size: 1.8rem;
+
+    color: var(--color-hex);
+}
+
+
+.stat-pendiente .admin-stat-icon {
+    background: var(--Lemon-Chiffon);
+
+    color: #c99300;
+}
+
+
+.stat-aprobada .admin-stat-icon {
+    background: var(--Celadon);
+
+    color: #287a40;
+}
+
+
+.stat-rechazada .admin-stat-icon {
+    background: var(--Cotton-Rose);
+
+    color: #b53654;
+}
+
+
+/* =========================================
+   TOOLBAR
+   ========================================= */
+
+.admin-refugios-toolbar {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 1rem;
+
+    margin-bottom: 1.7rem;
+}
+
+
+.admin-refugios-toolbar h2 {
+    font-family: var(--font-titles);
+
+    color: var(--color-hex);
+
+    font-size: 1.6rem;
+}
+
+
+.admin-refugios-toolbar p {
+    margin: 0;
+
+    color: var(--Text-Dark);
+
+    font-family: var(--font-text-secondary);
+}
+
+
+.admin-filtros {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+}
+
+
+.admin-filter-btn {
+    border: 1.5px solid var(--Powder-Petal);
+
+    background: var(--White);
+
+    color: var(--color-hex);
+
+    border-radius: 999px;
+
+    padding: 0.5rem 1rem;
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.admin-filter-btn:hover,
+.admin-filter-btn.active {
+    background: var(--Accent-Pink);
+
+    color: var(--White);
+
+    border-color: var(--Accent-Pink);
+}
+
+
+/* =========================================
+   TARJETAS
+   ========================================= */
+
+.admin-solicitudes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(310px, 1fr));
+
+    gap: 1.4rem;
+}
+
+
+.admin-solicitud-card {
+    background: var(--White);
+
+    border-radius: 22px;
+
+    padding: 1.5rem;
+
+    border:
+        1px solid rgba(103, 72, 70, 0.08);
+
+    box-shadow:
+        0 10px 24px rgba(103, 72, 70, 0.10);
+}
+
+
+.admin-solicitud-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    align-items: flex-start;
+
+    margin-bottom: 1rem;
+}
+
+
+.admin-solicitud-card h3 {
+    font-family: var(--font-titles);
+
+    font-size: 1.3rem;
+
+    color: var(--color-hex);
+
+    margin-bottom: 0.3rem;
+}
+
+
+.admin-solicitud-tipo {
+    font-family: var(--font-text-secondary);
+
+    color: var(--salmon1);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+}
+
+
+/* ---------- Estado ---------- */
+
+.admin-status {
+    display: inline-block;
+
+    padding: 0.3rem 0.75rem;
+
+    border-radius: 999px;
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+}
+
+
+.admin-status--pendiente {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+
+.admin-status--aprobada {
+    background: #d1e7dd;
+
+    color: #0f5132;
+}
+
+
+.admin-status--rechazada {
+    background: #f8d7da;
+
+    color: #842029;
+}
+
+
+/* ---------- Datos ---------- */
+
+.admin-solicitud-dato {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 0.5rem;
+
+    margin-bottom: 0.55rem;
+
+    color: var(--Text-Dark);
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.82rem;
+}
+
+
+.admin-solicitud-dato i {
+    color: var(--salmon1);
+}
+
+
+.admin-solicitud-descripcion {
+    margin: 1rem 0;
+
+    padding-top: 1rem;
+
+    border-top:
+        1px dashed rgba(103, 72, 70, 0.18);
+
+    font-family: var(--font-text-primary);
+
+    color: var(--Text-Dark);
+
+    line-height: 1.6;
+}
+
+
+/* ---------- Botones ---------- */
+
+.admin-solicitud-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+
+    margin-top: 1rem;
+}
+
+
+.admin-btn {
+    border: none;
+
+    border-radius: 999px;
+
+    padding: 0.55rem 1rem;
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+}
+
+
+.admin-btn-detalle {
+    background: var(--Baby-Blue-Ice);
+
+    color: var(--color-hex);
+}
+
+
+.admin-btn-aprobar {
+    background: var(--Celadon);
+
+    color: #245f35;
+}
+
+
+.admin-btn-rechazar {
+    background: var(--Cotton-Rose);
+
+    color: #8b2d45;
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.admin-empty-state {
+    text-align: center;
+
+    padding: 4rem 1rem;
+}
+
+
+.admin-empty-state i {
+    font-size: 3rem;
+
+    color: var(--salmon1);
+}
+
+
+.admin-empty-state h3 {
+    margin-top: 1rem;
+
+    font-family: var(--font-titles);
+
+    color: var(--color-hex);
+}
+
+
+.admin-empty-state p {
+    font-family: var(--font-text-secondary);
+
+    color: var(--Text-Dark);
+}
+
+
+/* =========================================
+   MODAL DETALLES
+   ========================================= */
+
+.admin-detalle-modal {
+    border: none;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+}
+
+
+.admin-detalle-modal .modal-header {
+    background:
+        linear-gradient(
+            135deg,
+            var(--Lemon-Chiffon),
+            var(--Powder-Petal)
+        );
+
+    border-bottom: none;
+
+    padding: 1.5rem 2rem;
+}
+
+
+.admin-detalle-modal .modal-title {
+    font-family: var(--font-titles);
+
+    color: var(--color-hex);
+
+    margin-top: 0.5rem;
+}
+
+
+.admin-detalle-modal .modal-body {
+    padding: 2rem;
+}
+
+
+.admin-detalle-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 1.2rem;
+}
+
+
+.admin-detalle-item {
+    padding: 1rem;
+
+    border-radius: 14px;
+
+    background: #fffefa;
+}
+
+
+.admin-detalle-item strong {
+    display: block;
+
+    margin-bottom: 0.3rem;
+
+    font-family: var(--font-text-secondary);
+
+    font-size: 0.75rem;
+
+    color: var(--salmon1);
+}
+
+
+.admin-detalle-item span,
+.admin-detalle-item p {
+    margin: 0;
+
+    font-family: var(--font-text-primary);
+
+    color: var(--Text-Dark);
+}
+
+
+.admin-detalle-full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   TOAST
+   ========================================= */
+
+.admin-toast {
+    border: none;
+
+    border-radius: 999px;
+
+    background: var(--color-hex);
+
+    color: var(--White);
+
+    box-shadow:
+        0 10px 26px rgba(103, 72, 70, 0.2);
+}
+
+
+.admin-toast .toast-body {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.6rem;
+
+    font-family: var(--font-text-secondary);
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .admin-refugios-header h1 {
+        font-size: 1.9rem;
+    }
+
+
+    .admin-refugios-toolbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .admin-detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .admin-detalle-full {
+        grid-column: auto;
+    }
+
+}

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rootPath = container.getAttribute("data-root") || container.getAttribute("data-base");
         const srcPath = container.getAttribute("data-src") || container.getAttribute("data-base");
 
-        fetch(templatePath)
+        fetch(templatePath, { cache: 'no-cache' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load ${templatePath}: ${response.statusText}`);
@@ -50,6 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         navUserDropdown.classList.remove("d-none");
                         if (navUserName) navUserName.textContent = usuarioActual.nombre.split(" ")[0]; // Mostrar solo el primer nombre
                         if (navUserHeader) navUserHeader.textContent = "Hola, " + usuarioActual.nombre;
+                        
+                        // Si es administrador, revelar las opciones extra
+                        if (usuarioActual.rol === "admin") {
+                            console.log("👑 Rol admin detectado en layout.js");
+                            const adminItems = container.querySelectorAll(".nav-admin-item");
+                            const adminDividers = container.querySelectorAll(".nav-admin-divider");
+                            console.log("🔍 Encontrados items admin:", adminItems.length);
+                            adminItems.forEach(item => item.classList.remove("d-none"));
+                            adminDividers.forEach(item => item.classList.remove("d-none"));
+                        }
                     }
                     if (navLogoutBtn) {
                         navLogoutBtn.addEventListener("click", function(e) {
