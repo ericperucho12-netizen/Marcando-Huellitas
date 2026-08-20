@@ -1,7 +1,7 @@
 -- ==============================================================================
 -- Base de Datos: marcando_huellitas
 -- Motor: MySQL
--- Notas: Preparado para integración con Spring Boot (JPA / Hibernate)
+-- Notas: Preparado para integración con Spring Boot
 -- ==============================================================================
 
 -- Crear base de datos
@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL, -- IMPORTANTE: Nunca guardar en texto plano, usar BCrypt o Argon2
     rol VARCHAR(50) DEFAULT 'USUARIO', -- 'USUARIO' o 'ADMIN'
-    
-    -- Campos de Seguridad
-    token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
+
+-- Campos de Seguridad
+token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
     intentos_fallidos INT DEFAULT 0, -- Prevención de ataques de fuerza bruta (bloqueo de cuenta)
     bloqueado_hasta TIMESTAMP NULL, -- Fecha/hora hasta la que la cuenta estará bloqueada
     ultimo_login TIMESTAMP NULL, -- Registro de la última conexión exitosa
