@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const rootPath = container.getAttribute("data-root") || container.getAttribute("data-base");
         const srcPath = container.getAttribute("data-src") || container.getAttribute("data-base");
 
-        fetch(templatePath)
+        fetch(templatePath, { cache: 'no-cache' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load ${templatePath}: ${response.statusText}`);
