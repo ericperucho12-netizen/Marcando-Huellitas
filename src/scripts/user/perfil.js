@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mostrar menú de Admin si corresponde
     if (userRole === "admin" && adminMenu) {
         adminMenu.classList.remove('d-none');
+    } else {
+        // Eliminar completamente las secciones de administrador del DOM por seguridad
+        if (adminMenu) adminMenu.remove();
+        const adminSections = document.querySelectorAll('[id^="section-admin-"]');
+        adminSections.forEach(section => section.remove());
     }
 
     // 2. Navegación por pestañas (Hashes y Clicks)
