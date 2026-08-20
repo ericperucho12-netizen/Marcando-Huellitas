@@ -53,8 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         
                         // Si es administrador, revelar las opciones extra
                         if (usuarioActual.rol === "admin") {
+                            console.log("👑 Rol admin detectado en layout.js");
                             const adminItems = container.querySelectorAll(".nav-admin-item");
                             const adminDividers = container.querySelectorAll(".nav-admin-divider");
+                            console.log("🔍 Encontrados items admin:", adminItems.length);
                             adminItems.forEach(item => item.classList.remove("d-none"));
                             adminDividers.forEach(item => item.classList.remove("d-none"));
                         }
