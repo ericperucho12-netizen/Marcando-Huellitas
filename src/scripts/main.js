@@ -1,3 +1,28 @@
+// Función global para validar sesión antes de acciones críticas
+window.requireAuth = function(actionName) {
+    const usuarioActual = sessionStorage.getItem("usuarioActual");
+    if (!usuarioActual) {
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({
+                title: 'Inicia sesión',
+                text: `Debes iniciar sesión para ${actionName}.`,
+                icon: 'warning',
+                confirmButtonColor: '#e04b7b',
+                confirmButtonText: 'Ir a Iniciar Sesión'
+            }).then(() => {
+                const basePath = document.querySelector('script[src*="main.js"]')?.getAttribute('src').replace('/scripts/main.js', '') || '.';
+                window.location.href = basePath + "/pages/auth/login.html";
+            });
+        } else {
+            alert(`Debes iniciar sesión para ${actionName}.`);
+            const basePath = document.querySelector('script[src*="main.js"]')?.getAttribute('src').replace('/scripts/main.js', '') || '.';
+            window.location.href = basePath + "/pages/auth/login.html";
+        }
+        return false;
+    }
+    return true;
+};
+
 // Inyectar el loader inmediatamente
 (function() {
     // 1. Inyectar CSS del loader
@@ -776,14 +801,37 @@ function injectAnimatedCart() {
                 if (icon && typeof icon.play === 'function') icon.play();
             });
 
-            // Click animation ("Agregado")
-            card.addEventListener('click', (e) => {
+            // Click animation ("Agregado") and Add to Cart
+            overlay.addEventListener('click', (e) => {
+                // Prevenir que el click se propague a la tarjeta
+                e.stopPropagation();
+
+                // Check auth first!
+                if (window.requireAuth && !window.requireAuth('agregar productos al carrito')) return;
+
                 const textSpan = overlay.querySelector('.cart-text');
                 if (textSpan) {
                     textSpan.textContent = '¡Agregado!';
                     setTimeout(() => {
                         textSpan.textContent = 'Agregar';
                     }, 1500);
+                }
+
+                if (window.MarcandoHuellitasCart) {
+                    const productId = card.getAttribute("data-product-id") || card.getAttribute("data-id") || Date.now().toString();
+                    const titleEl = card.querySelector(".title, h3, h5");
+                    const priceEl = card.querySelector(".price, .text-e04b7b, .fw-bold.mb-0");
+                    const imgEl = card.querySelector("img");
+
+                    if (titleEl) {
+                        const productInfo = {
+                            id: productId,
+                            name: titleEl.textContent.trim(),
+                            price: priceEl ? priceEl.textContent.replace(/[^0-9.]/g, "") : 0,
+                            image: imgEl ? imgEl.src : "../../assets/footer/Huellita-footer.png",
+                        };
+                        window.MarcandoHuellitasCart.addToCart(productInfo, 1);
+                    }
                 }
             });
         }
@@ -795,4 +843,66 @@ document.addEventListener('DOMContentLoaded', () => {
 const observer = new MutationObserver(() => injectAnimatedCart());
 observer.observe(document.body, { childList: true, subtree: true });
 
+
+
+// Toggle Favoritos (Corazones) y Guardar en LocalStorage
+document.addEventListener('click', (e) => {
+    const heartBtn = e.target.closest('.btn:has(.bi-heart), .btn:has(.bi-heart-fill), .fav-heart, .btn-like-heart');
+    if (heartBtn) {
+        if (!window.requireAuth('agregar a favoritos')) return;
+
+        const icon = heartBtn.querySelector('i');
+        if (icon && (icon.classList.contains('bi-heart') || icon.classList.contains('bi-heart-fill'))) {
+            
+            const isAdding = icon.classList.contains('bi-heart');
+            
+            icon.classList.toggle('bi-heart');
+            icon.classList.toggle('bi-heart-fill');
+            icon.classList.toggle('text-secondary');
+            icon.classList.toggle('text-danger');
+            
+            // Animacion pequeña
+            heartBtn.style.transform = 'scale(1.2)';
+            setTimeout(() => heartBtn.style.transform = 'scale(1)', 200);
+
+            // Guardar o eliminar datos en LocalStorage
+            const card = heartBtn.closest('.card, .team-card, .product-item-card, .favorite-card');
+            if (card) {
+                const titleEl = card.querySelector('h3, h5, h6.title');
+                const title = titleEl ? titleEl.textContent.trim() : 'Sin título';
+                const isProduct = card.classList.contains('product-item-card') || window.location.pathname.includes('productos.html') || (card.closest('#pills-productos'));
+                const key = isProduct ? 'favoritosProductos' : 'favoritosMascotas';
+                
+                let favs = JSON.parse(localStorage.getItem(key)) || [];
+
+                if (isAdding) {
+                    const imgEl = card.querySelector('img');
+                    const imgSrc = imgEl ? imgEl.src : '';
+                    
+                    let desc = '';
+                    if (isProduct) {
+                        const strongEl = card.querySelector('.text-e04b7b, .fw-bold.text-danger, strong');
+                        desc = strongEl ? strongEl.textContent.trim() : 'Producto de Tienda';
+                    } else {
+                        const pEl = card.querySelector('p.text-muted');
+                        desc = pEl ? pEl.textContent.trim() : 'Mascota adorable';
+                    }
+
+                    if (!favs.find(f => f.title === title)) {
+                        favs.push({ id: Date.now(), title, desc, img: imgSrc });
+                        localStorage.setItem(key, JSON.stringify(favs));
+                    }
+                } else {
+                    favs = favs.filter(f => f.title !== title);
+                    localStorage.setItem(key, JSON.stringify(favs));
+                    
+                    if (card.classList.contains('favorite-card')) {
+                        const colWrapper = card.closest('.col-md-6, .col-lg-4');
+                        if (colWrapper) colWrapper.style.display = 'none';
+                    }
+                }
+            }
+        }
+    }
+});
 
