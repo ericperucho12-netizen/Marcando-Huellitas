@@ -50,6 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         navUserDropdown.classList.remove("d-none");
                         if (navUserName) navUserName.textContent = usuarioActual.nombre.split(" ")[0]; // Mostrar solo el primer nombre
                         if (navUserHeader) navUserHeader.textContent = "Hola, " + usuarioActual.nombre;
+                        
+                        // Si es administrador, revelar las opciones extra
+                        if (usuarioActual.rol === "admin") {
+                            const adminItems = container.querySelectorAll(".nav-admin-item");
+                            const adminDividers = container.querySelectorAll(".nav-admin-divider");
+                            adminItems.forEach(item => item.classList.remove("d-none"));
+                            adminDividers.forEach(item => item.classList.remove("d-none"));
+                        }
                     }
                     if (navLogoutBtn) {
                         navLogoutBtn.addEventListener("click", function(e) {
