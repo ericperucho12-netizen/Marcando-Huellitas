@@ -423,11 +423,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function agregarEventosAcciones() {
         document.querySelectorAll(".btn-delete").forEach((boton) => {
-            boton.addEventListener("click", function () {
+            boton.addEventListener("click", async function () {
                 const id = this.getAttribute("data-id");
-                productos = productos.filter(producto => String(producto.id) !== String(id));
-                localStorage.setItem("productosAdmin", JSON.stringify(productos));
-                renderizarProductos();
+                if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+                    try {
+                        const response = await fetch(`http://localhost:8080/api/productos/${id}`, {
+                            method: "DELETE"
+                        });
+                        if (!response.ok) throw new Error("Error al eliminar el producto");
+                        
+                        // Recargar la lista después de eliminar
+                        await cargarProductosDesdeBackend();
+                    } catch (error) {
+                        console.error(error);
+                        alert("Hubo un error al eliminar el producto.");
+                    }
+                }
             });
         });
 
