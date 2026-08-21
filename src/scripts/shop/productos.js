@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             
             productos = data.map(producto => ({
-                id: producto.idProducto,
+                id: producto.id,
                 nombre: producto.nombre,
-                categoria: producto.categoria?.nombre || "Sin categoría",
+                categoria: producto.categoria || "Sin categoría",
                 especie: "perro",
                 marca: "otra",
                 precio: producto.precio,
