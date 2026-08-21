@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function obtenerMarcaProducto(producto) {
-        const texto = normalizarTexto(${producto.nombre || ""}  );
+        const texto = normalizarTexto(`${producto.nombre || ""} ${producto.imagen || ""} ${producto.marca || ""}`);
         if (texto.includes("royal") || texto.includes("canin")) return "royal canin";
         if (texto.includes("purina") || texto.includes("proplan") || texto.includes("pro plan")) return "purina";
         if (texto.includes("hills") || texto.includes("hill")) return "hills";
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function crearEstrellas(rating) {
         let estrellas = "";
         for (let i = 1; i <= 5; i++) {
-            estrellas += i <= rating ? <i class="bi bi-star-fill"></i> : <i class="bi bi-star"></i>;
+            estrellas += i <= rating ? `<i class="bi bi-star-fill"></i>` : `<i class="bi bi-star"></i>`;
         }
         return estrellas;
     }
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("No se pudieron cargar los productos:", error);
             if (emptyStateMsg) {
                 emptyStateMsg.classList.remove("d-none");
-                emptyStateMsg.innerHTML = <h4>Error al cargar productos</h4><p class="text-muted">Asegúrate de que el backend esté encendido en http://localhost:8080.</p>;
+                emptyStateMsg.innerHTML = `<h4>Error al cargar productos</h4><p class="text-muted">Asegúrate de que el backend esté encendido en http://localhost:8080.</p>`;
             }
         }
     }
