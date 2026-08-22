@@ -124,7 +124,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 // Lógica de Autenticación en la Barra de Navegación
-                const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
+                let usuarioActual = null;
+                try {
+                    const raw = sessionStorage.getItem("usuarioActual");
+                    if (raw && raw !== "[object Object]") {
+                        usuarioActual = JSON.parse(raw);
+                    } else if (raw === "[object Object]") {
+                        sessionStorage.removeItem("usuarioActual");
+                    }
+                } catch(e) {
+                    sessionStorage.removeItem("usuarioActual");
+                }
                 const navLoginBtn = container.querySelector("#navLoginBtn");
                 const navUserDropdown = container.querySelector("#navUserDropdown");
                 const navUserName = container.querySelector("#navUserName");
@@ -139,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (navUserHeader) navUserHeader.textContent = "Hola, " + usuarioActual.nombre;
                         
                         // Si es administrador, revelar las opciones extra
-                        if (usuarioActual.rol === "admin") {
+                        if (usuarioActual.rol && usuarioActual.rol.toUpperCase() === "ADMIN") {
                             console.log("👑 Rol admin detectado en main.js");
                             const adminItems = container.querySelectorAll(".nav-admin-item");
                             const adminDividers = container.querySelectorAll(".nav-admin-divider");
@@ -914,4 +924,5 @@ document.addEventListener('click', (e) => {
         }
     }
 });
+
 

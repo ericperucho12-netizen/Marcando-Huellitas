@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const form = document.getElementById("producto-form");
     const imageInput = document.getElementById("imagen-producto");
     const imagePreview = document.getElementById("imagen-preview");
@@ -10,15 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const editId = params.get("id");
 
     let base64Image = null;
-    let productos = JSON.parse(localStorage.getItem("productosAdmin")) || [];
 
     if (editId) {
         // MODO EDICIÓN
-        const producto = productos.find(p => String(p.id) === String(editId));
-        if (producto) {
-            pageTitle.textContent = "Editar Producto";
-            formTitle.textContent = "Modificar información del producto";
-    
+        pageTitle.textContent = "Editar Producto";
+        formTitle.textContent = "Modificar información del producto";
+        
+        try {
+            const response = await fetch(`http://localhost:8080/api/productos/${editId}`);
+            if (!response.ok) throw new Error("Producto no encontrado");
+            const producto = await response.json();
+            
             document.getElementById("id-producto").value = producto.id;
             // Deshabilitar el ID para que no se cambie si es edición
             document.getElementById("id-producto").setAttribute("readonly", true);
@@ -26,19 +28,25 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("descripcion-producto").value = producto.descripcion || "";
             document.getElementById("precio").value = producto.precio || "";
             document.getElementById("categoria").value = producto.categoria || "";
-            document.getElementById("producto-oferta").value = producto.oferta || "no";
-            document.getElementById("precio-oferta").value = producto.precio_oferta || "";
-            document.getElementById("cantidad-inventario").value = producto.cantidad || "";
-            document.getElementById("especie").value = producto.especie || "todos";
+            
+            // Campos de UI pero que no van al backend (no existen en BD actual)
+            const inputOferta = document.getElementById("producto-oferta");
+            if (inputOferta) inputOferta.value = "no";
+            
+            const inputStock = document.getElementById("cantidad-inventario");
+            if (inputStock) inputStock.value = producto.stock || "";
 
-            if (producto.imagen && producto.imagen !== "https://via.placeholder.com/150") {
-                base64Image = producto.imagen;
-                imagePreview.innerHTML = `<img src="${producto.imagen}" alt="Vista previa" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">`;
+            if (producto.imagenUrl && producto.imagenUrl !== "https://via.placeholder.com/150") {
+                base64Image = producto.imagenUrl;
+                imagePreview.innerHTML = `<img src="${producto.imagenUrl}" alt="Vista previa" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">`;
             }
+        } catch (error) {
+            console.error("Error al cargar producto para edición:", error);
+            alert("No se pudo cargar el producto desde la base de datos.");
         }
     }
 
-    // Lógica para habilitar/deshabilitar precio de oferta
+    // Lógica para habilitar/deshabilitar precio de oferta (UI Only)
     const selectOferta = document.getElementById("producto-oferta");
     const inputPrecioOferta = document.getElementById("precio-oferta");
     if (selectOferta && inputPrecioOferta) {
@@ -52,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 inputPrecioOferta.removeAttribute("required");
             }
         };
-        // Inicializar estado
         toggleOferta();
-        // Escuchar cambios
         selectOferta.addEventListener("change", toggleOferta);
     }
 
@@ -77,57 +83,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Guardar Producto
     if (form) {
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
             if (!form.checkValidity()) {
                 e.stopPropagation();
                 form.classList.add("was-validated");
-                // Muestra un alert nativo sencillo si faltan campos obligatorios
                 alert("Por favor, llena los campos obligatorios marcados en rojo.");
                 return;
             }
 
             const formData = new FormData(form);
-            let idFormulario = formData.get("id");
-            if (!idFormulario || idFormulario.trim() === "") {
-                idFormulario = "PRD-" + Date.now().toString().slice(-6);
-            }
-
-            const nuevoProducto = {
-                id: idFormulario,
+            const stockStr = formData.get("cantidad");
+            
+            const productoPayload = {
                 nombre: formData.get("nombre"),
-                imagen: base64Image || "https://via.placeholder.com/150",
                 descripcion: formData.get("descripcion"),
                 precio: Number(formData.get("precio")),
                 categoria: formData.get("categoria"),
-                oferta: formData.get("oferta"),
-                precio_oferta: formData.get("precio_oferta") ? Number(formData.get("precio_oferta")) : null,
-                cantidad: formData.get("cantidad"),
-                especie: formData.get("especie") ? formData.get("especie").toLowerCase() : "todos",
-                createdAt: new Date().toISOString().split("T")[0]
+                stock: stockStr ? parseInt(stockStr, 10) : 0,
+                imagenUrl: base64Image || "https://via.placeholder.com/150"
             };
 
-            const index = productos.findIndex(p => String(p.id) === String(idFormulario));
-            if (index !== -1) {
-                productos[index] = nuevoProducto;
-            } else {
-                productos.push(nuevoProducto);
+            try {
+                let response;
+                if (editId) {
+                    // PUT /api/productos/{id}
+                    response = await fetch(`http://localhost:8080/api/productos/${editId}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(productoPayload)
+                    });
+                } else {
+                    // POST /api/productos
+                    response = await fetch(`http://localhost:8080/api/productos`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(productoPayload)
+                    });
+                }
+
+                if (!response.ok) throw new Error("Error al guardar en base de datos");
+
+                // Mostrar toast de éxito
+                const toastEl = document.getElementById("toastExito");
+                if (toastEl && typeof bootstrap !== 'undefined') {
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                }
+
+                // Redirigir de regreso al catálogo después de 1.5s
+                setTimeout(() => {
+                    window.location.href = "productos.html";
+                }, 1500);
+            } catch (error) {
+                console.error("Error al guardar:", error);
+                alert("Hubo un error al guardar el producto en el Backend.");
             }
-
-            localStorage.setItem("productosAdmin", JSON.stringify(productos));
-
-            // Mostrar toast de éxito
-            const toastEl = document.getElementById("toastExito");
-            if (toastEl && typeof bootstrap !== 'undefined') {
-                const toast = new bootstrap.Toast(toastEl);
-                toast.show();
-            }
-
-            // Redirigir de regreso al catálogo después de 1.5s
-            setTimeout(() => {
-                window.location.href = "productos.html";
-            }, 1500);
         });
     }
 });

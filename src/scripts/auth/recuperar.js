@@ -1,13 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
     const formEmail = document.getElementById("formRecuperarEmail");
     const formPass = document.getElementById("formRecuperarPass");
     const step1 = document.getElementById("step1");
     const step2 = document.getElementById("step2");
 
-    let codigoGenerado = "";
-    let emailRecuperacion = "";
-
-    // Muestra/Ocultar contraseña
+    // Mostrar/Ocultar contrasena
     document.querySelectorAll(".toggle-password").forEach(btn => {
         btn.addEventListener("click", () => {
             const targetId = btn.getAttribute("data-target");
@@ -25,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Paso 1: Validar correo y "enviar" código
-    formEmail.addEventListener("submit", (e) => {
+    // Paso 1: Enviar correo real al backend
+    formEmail.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!formEmail.checkValidity()) {
             formEmail.classList.add("was-validated");
@@ -34,59 +31,86 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const emailInput = document.getElementById("recoveryEmail").value.trim().toLowerCase();
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        
-        const usuarioExiste = usuarios.find(u => u.email.toLowerCase() === emailInput);
+        const btnSubmit = formEmail.querySelector("button[type=submit]");
+        const originalText = btnSubmit ? btnSubmit.innerHTML : "";
 
-        if (!usuarioExiste) {
-            Swal.fire({
-                title: 'Correo no encontrado',
-                text: 'No existe ninguna cuenta registrada con este correo electrónico.',
-                icon: 'error',
-                confirmButtonColor: '#e04b7b'
-            });
-            return;
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
         }
 
-        // Generar código aleatorio de 4 dígitos
-        codigoGenerado = Math.floor(1000 + Math.random() * 9000).toString();
-        emailRecuperacion = emailInput;
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/recuperar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ correo: emailInput })
+            });
 
-        Swal.fire({
-            title: '¡Código Enviado!',
-            html: `Simulación: Se ha enviado un código a tu correo.<br><br><strong style="font-size: 24px; letter-spacing: 5px;">${codigoGenerado}</strong><br><br><small class="text-muted">En un entorno real, esto llegaría a tu bandeja de entrada.</small>`,
-            icon: 'info',
-            confirmButtonColor: '#2b2b2b'
-        }).then(() => {
-            step1.classList.add("d-none");
-            step2.classList.remove("d-none");
-        });
+            if (!response.ok) {
+                const errorMsg = await response.text();
+                Swal.fire({
+                    title: "Correo no encontrado",
+                    text: errorMsg || "No existe ninguna cuenta registrada con este correo.",
+                    icon: "error",
+                    confirmButtonColor: "#e04b7b"
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: "Correo Enviado",
+                html: `Hemos enviado un codigo de recuperacion a <strong>${emailInput}</strong>.<br><br>Revisa tu bandeja de entrada (y spam).`,
+                icon: "success",
+                confirmButtonColor: "#2b2b2b"
+            }).then(() => {
+                step1.classList.add("d-none");
+                step2.classList.remove("d-none");
+            });
+
+        } catch (error) {
+            console.error("Error al solicitar recuperacion:", error);
+            Swal.fire({
+                title: "Error de conexion",
+                text: "No se pudo conectar con el servidor. Verifica que el servidor este activo.",
+                icon: "error",
+                confirmButtonColor: "#e04b7b"
+            });
+        } finally {
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalText;
+            }
+        }
     });
 
-    // Paso 2: Validar código y cambiar contraseña
-    formPass.addEventListener("submit", (e) => {
+    // Paso 2: Enviar token + nueva contrasena al backend
+    formPass.addEventListener("submit", async (e) => {
         e.preventDefault();
-        
-        const codigoInput = document.getElementById("recoveryCode").value.trim();
+
+        const tokenInput = document.getElementById("recoveryCode").value.trim();
         const newPass = document.getElementById("newPassword").value;
         const confirmPass = document.getElementById("confirmNewPassword").value;
 
         let valido = true;
 
-        if (codigoInput !== codigoGenerado) {
+        // Validar token
+        if (!tokenInput) {
             document.getElementById("recoveryCode").classList.add("is-invalid");
             valido = false;
         } else {
             document.getElementById("recoveryCode").classList.remove("is-invalid");
         }
 
-        if (newPass.length < 6) {
+        // Validar nueva contrasena (min 8 chars, mayuscula, minuscula, numero)
+        const regexPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+        if (!regexPass.test(newPass)) {
             document.getElementById("newPassword").classList.add("is-invalid");
             valido = false;
         } else {
             document.getElementById("newPassword").classList.remove("is-invalid");
         }
 
+        // Validar confirmacion
         if (newPass !== confirmPass || confirmPass === "") {
             document.getElementById("confirmNewPassword").classList.add("is-invalid");
             valido = false;
@@ -96,27 +120,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!valido) return;
 
-        // Actualizar contraseña en localStorage
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        const index = usuarios.findIndex(u => u.email.toLowerCase() === emailRecuperacion);
+        const btnSubmit = formPass.querySelector("button[type=submit]");
+        const originalText = btnSubmit ? btnSubmit.innerHTML : "";
 
-        if (index !== -1) {
-            usuarios[index].password = newPass;
-            localStorage.setItem("usuarios", JSON.stringify(usuarios));
-            
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Actualizando...';
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/reset-password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ token: tokenInput, nuevaPassword: newPass })
+            });
+
+            if (!response.ok) {
+                const errorMsg = await response.text();
+                document.getElementById("recoveryCode").classList.add("is-invalid");
+                Swal.fire({
+                    title: "Token invalido",
+                    text: errorMsg || "El codigo es incorrecto o ha expirado. Solicita uno nuevo.",
+                    icon: "error",
+                    confirmButtonColor: "#e04b7b"
+                });
+                return;
+            }
+
             Swal.fire({
-                title: '¡Contraseña Actualizada!',
-                text: 'Tu contraseña se ha cambiado correctamente. Ahora puedes iniciar sesión.',
-                icon: 'success',
-                confirmButtonColor: '#e04b7b'
+                title: "Contrasena Actualizada",
+                text: "Tu contrasena se cambio correctamente. Ahora puedes iniciar sesion.",
+                icon: "success",
+                confirmButtonColor: "#e04b7b"
             }).then(() => {
                 window.location.href = "login.html";
             });
+
+        } catch (error) {
+            console.error("Error al resetear contrasena:", error);
+            Swal.fire({
+                title: "Error de conexion",
+                text: "No se pudo conectar con el servidor.",
+                icon: "error",
+                confirmButtonColor: "#e04b7b"
+            });
+        } finally {
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = originalText;
+            }
         }
     });
 
-    // Restringir ingreso en el campo de código a solo números
-    document.getElementById("recoveryCode").addEventListener("input", function (e) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
+    // Solo permitir numeros y letras en el campo de token (UUID puede tener guiones)
+    const recoveryCodeInput = document.getElementById("recoveryCode");
+    if (recoveryCodeInput) {
+        recoveryCodeInput.addEventListener("input", function () {
+            // Permitir UUID format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+            this.value = this.value.replace(/[^a-f0-9-]/gi, '');
+        });
+    }
 });
