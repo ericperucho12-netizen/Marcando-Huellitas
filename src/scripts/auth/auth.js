@@ -1,3 +1,60 @@
+
+// Handle Google Sign-In Callback (Global function so the script can call it)
+window.handleGoogleLogin = async function(response) {
+    const loginAlertContainer = document.getElementById("loginAlertContainer");
+    if (!loginAlertContainer) return;
+    
+    try {
+        const fetchRes = await fetch("http://localhost:8080/api/auth/google", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ token: response.credential })
+        });
+        
+        if (!fetchRes.ok) {
+            const errorTexto = await fetchRes.text();
+            
+            // Reutilizar mostrarAlerta de DOMContentLoaded si podemos, 
+            // pero como estamos en window scope, lo hacemos directo:
+            loginAlertContainer.innerHTML = `
+            <div class="alert auth-alert-danger alert-dismissible fade show" role="alert">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-exclamation-circle-fill fs-4 me-2" aria-hidden="true"></i>
+                    <div class="flex-grow-1">${errorTexto || "Error al autenticar con Google"}</div>
+                    <button type="button" class="btn-close ms-3" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                </div>
+            </div>`;
+            return;
+        }
+        
+        const usuarioEncontrado = await fetchRes.json();
+        console.log("✅ [Google Login] Backend devolvió:", JSON.stringify(usuarioEncontrado));
+        console.log("✅ [Google Login] Rol recibido:", usuarioEncontrado.rol);
+        // Borramos cualquier sesión anterior para asegurar datos frescos (incluyendo rol)
+        sessionStorage.removeItem("usuarioActual");
+        sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
+        console.log("✅ [Google Login] Guardado en sessionStorage:", sessionStorage.getItem("usuarioActual"));
+        
+        loginAlertContainer.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            ¡Bienvenido/a con Google, ${usuarioEncontrado.nombre}!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>`;
+        
+        setTimeout(function () {
+            window.location.href = "../../../index.html";
+        }, 1200);
+        
+    } catch (error) {
+        console.error("Error al iniciar con Google:", error);
+        loginAlertContainer.innerHTML = `
+        <div class="alert auth-alert-danger alert-dismissible fade show" role="alert">
+            No se pudo conectar con el servidor.
+        </div>`;
+    }
+};
 document.addEventListener("DOMContentLoaded", function () {
 
     const loginForm = document.getElementById("loginForm");
@@ -129,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Manejo de registro (si existe el formulario)
     if (registerForm) {
-        registerForm.addEventListener("submit", function (event) {
+        registerForm.addEventListener("submit", async function (event) {
             event.preventDefault();
 
             const nombre = document.getElementById("nombre");
@@ -163,23 +220,47 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!validarConfirmPassword(passwordValor, confirmPasswordValor)) { marcarError(confirmPassword, "Las contraseñas no coinciden"); formularioValido = false; } else marcarCorrecto(confirmPassword);
             if (!formularioValido) return;
 
-            const usuarioRegistro = JSON.parse(localStorage.getItem("usuarios")) || [];
-            const existeUsuario = usuarioRegistro.some(function (usuario) { return usuario.email === emailValor; });
-            if (existeUsuario) { marcarError(email, "Este correo ya está registrado"); return; }
+            try {
+                const response = await fetch("http://localhost:8080/api/auth/registro", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nombre: nombreValor,
+                        apellido: "", // El formulario no tiene apellido, así que mandamos vacío por ahora
+                        correo: emailValor,
+                        password: passwordValor
+                    })
+                });
 
-            const usuario = { nombre: nombreValor, telefono: telefonoValor, email: emailValor, password: passwordValor };
-            usuarioRegistro.push(usuario);
-            localStorage.setItem("usuarios", JSON.stringify(usuarioRegistro));
+                if (!response.ok) {
+                    const errorMsg = await response.text();
+                    marcarError(email, errorMsg || "No se pudo registrar");
+                    return;
+                }
 
-            mostrarAlerta(alertContainer, 'success', '¡Usuario registrado correctamente!');
-            registerForm.reset();
-            limpiarValidaciones([nombre, telefono, email, password, confirmPassword]);
+                mostrarAlerta(alertContainer, 'success', '¡Usuario registrado correctamente!');
+                registerForm.reset();
+                limpiarValidaciones([nombre, telefono, email, password, confirmPassword]);
+
+                // Opcional: Cambiar a la vista de login
+                setTimeout(() => {
+                    authContainer.classList.remove("right-panel-active");
+                    authContainer.classList.remove("mobile-register");
+                    cleanAllValidations();
+                }, 1500);
+
+            } catch (error) {
+                console.error("Error al registrar:", error);
+                marcarError(email, "Error de conexión con el servidor");
+            }
         });
     }
 
     // login
 if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const userOrEmail =
@@ -229,64 +310,43 @@ if (loginForm) {
             return;
         }
 
-        const usuariosLogin =
-            JSON.parse(
-                localStorage.getItem("usuarios")
-            ) || [];
-
-        const usuarioEncontrado =
-            usuariosLogin.find(function (usuario) {
-                const coincideUsuario =
-                    usuario.email === userOrEmailVal ||
-                    usuario.nombre === userOrEmailVal;
-
-                const coincidePassword =
-                    usuario.password === passwordVal;
-
-                return (
-                    coincideUsuario &&
-                    coincidePassword
-                );
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    correo: userOrEmailVal,
+                    password: passwordVal
+                })
             });
 
-        if (usuarioEncontrado) {
+            if (!response.ok) {
+                const errorTexto = await response.text();
+                mostrarAlerta(loginAlertContainer, "danger", errorTexto || "Usuario o contraseña inválidos");
+                marcarError(userOrEmail, "Verifica tus credenciales");
+                marcarError(passwordLogin, "Verifica tus credenciales");
+                return;
+            }
 
-            sessionStorage.setItem(
-                "usuarioActual",
-                JSON.stringify(
-                    usuarioEncontrado
-                )
-            );
+            const usuarioEncontrado = await response.json();
 
-            mostrarAlerta(
-                loginAlertContainer,
-                "success",
-                "¡Bienvenido/a, " +
-                    usuarioEncontrado.nombre +
-                    "!"
-            );
+            sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
+
+            mostrarAlerta(loginAlertContainer, "success", "¡Bienvenido/a, " + usuarioEncontrado.nombre + "!");
 
             loginForm.reset();
-
-            limpiarValidaciones([
-                userOrEmail,
-                passwordLogin
-            ]);
+            limpiarValidaciones([userOrEmail, passwordLogin]);
 
             setTimeout(function () {
-                window.location.href =
-                    "../../../index.html";
+                window.location.href = "../../../index.html";
             }, 1200);
 
-        } else {
-
-            mostrarAlerta(
-                loginAlertContainer,
-                "danger",
-                "Usuario o contraseña inválidos"
-            );
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            mostrarAlerta(loginAlertContainer, "danger", "No se pudo conectar con el servidor.");
         }
-
     });
 } 
 
@@ -343,32 +403,5 @@ if (loginForm) {
     // Inicializar validación en tiempo real para login
     initLoginFieldValidation();
     
-    // usuario de prueba para login
-    const usuarioPrueba = {
-        nombre: "Andrea Pérez",
-        telefono: "5512345678",
-        email: "andrea_123@gmail.com",
-        password: "Contraseña123",
-        rol: "user"
-    };
-
-    // usuario administrador
-    const usuarioAdmin = {
-        nombre: "Administrador",
-        telefono: "5500000000",
-        email: "admin@marcandohuellitas.com",
-        password: "Admin123",
-        rol: "admin"
-    };
-
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    if (!usuariosGuardados.some(usuario => usuario.email === usuarioPrueba.email)) {
-        usuariosGuardados.push(usuarioPrueba);
-    }
-    if (!usuariosGuardados.some(usuario => usuario.email === usuarioAdmin.email)) {
-        usuariosGuardados.push(usuarioAdmin);
-    }
-
-    localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
+    // Se eliminó la creación de usuarios de prueba en localStorage para usar la base de datos real
 });  

@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const userName = usuarioActual.nombre || "Usuario";
-    const userRole = usuarioActual.rol || "user";
-    const userEmail = usuarioActual.email || "correo@ejemplo.com";
+    const userRole = (usuarioActual.rol || "USUARIO").toUpperCase();
+    const userEmail = usuarioActual.correo || usuarioActual.email || "correo@ejemplo.com";
 
     // Llenar Sidebar
     sidebarUserName.textContent = userName || "Usuario";
-    sidebarUserRole.textContent = userRole === "admin" ? "Administrador" : "Miembro";
-    sidebarUserRole.className = userRole === "admin" ? "badge bg-danger rounded-pill px-3 py-2" : "badge bg-success rounded-pill px-3 py-2";
+    sidebarUserRole.textContent = userRole === "ADMIN" ? "Administrador" : "Miembro";
+    sidebarUserRole.className = userRole === "ADMIN" ? "badge bg-danger rounded-pill px-3 py-2" : "badge bg-success rounded-pill px-3 py-2";
     
     if (userName) {
         avatarLetra.innerHTML = userName.charAt(0).toUpperCase();
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (perfilCorreo) perfilCorreo.value = userEmail;
 
     // Mostrar menú de Admin si corresponde
-    if (userRole === "admin" && adminMenu) {
+    if (userRole === "ADMIN" && adminMenu) {
         adminMenu.classList.remove('d-none');
     } else {
         // Eliminar completamente las secciones de administrador del DOM por seguridad

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -37,9 +37,20 @@
             <!-- CONTENEDOR DE REGISTRO -->
             <div class="form-container sign-up-container">
                 <form id="registerForm" autocomplete="off" novalidate>
-                    <h2 class="text-center font-dynapuff">Crear Cuenta</h2>
+                                        <h2 class="text-center font-dynapuff">Crear Cuenta</h2>
                     
-                    <div class="mb-3 w-100">
+                    <!-- Google Sign-Up Button -->
+                    <div class="g_id_signin mt-3 d-flex justify-content-center"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="outline"
+                         data-text="signup_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                    <div class="text-center text-muted mt-3 mb-1 small fw-semibold">o usa tu correo</div>
+                    
+                    <div class="mb-3 w-100 mt-2">
                         <div class="input-group has-validation">
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
                             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" autocomplete="off" required>
@@ -97,8 +108,25 @@
             <div class="form-container sign-in-container">
                 <form id="loginForm" autocomplete="off" novalidate>
                     <h2 class="text-center font-dynapuff">Iniciar Sesión</h2>
+                    <!-- Google Sign-In Button -->
+                    <div id="g_id_onload"
+                         data-client_id="797768008218-iebmh990bsun874gjp4jakamjqmsh5hn.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleLogin"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin mt-3 d-flex justify-content-center"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="outline"
+                         data-text="signin_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                    <div class="text-center text-muted mt-3 mb-1 small fw-semibold">o usa tu correo</div>
                     
-                    <div class="mb-3 w-100 mt-3">
+                    <div class="mb-3 w-100 mt-2">
                         <div class="input-group has-validation">
                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                             <input type="text" class="form-control" id="userOrEmail" placeholder="Correo o usuario" autocomplete="off" required>
@@ -158,7 +186,9 @@
     <!-- Layout JS -->
     <script src="../../scripts/core/layout.js"></script>
     <!-- Auth (login + registro) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="../../scripts/auth/auth.js"></script>
     <script src="../../scripts/main.js"></script>
 </body>
 </html>
+

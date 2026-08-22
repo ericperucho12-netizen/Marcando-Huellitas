@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
     
     // Validar si es administrador (por su rol o su email)
-    const isAdmin = usuarioActual && (usuarioActual.rol === "admin" || usuarioActual.email === "admin@marcandohuellitas.com");
+    const isAdmin = usuarioActual && (usuarioActual.rol && usuarioActual.rol.toUpperCase() === "ADMIN");
 
     if (isAdmin && adminToggleContainer) {
         adminToggleContainer.style.display = "block";

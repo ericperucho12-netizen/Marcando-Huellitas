@@ -139,10 +139,10 @@
 
                     <form id="formRecuperarPass" autocomplete="off" novalidate>
                         <div class="mb-4">
-                            <label for="recoveryCode" class="form-label fw-semibold text-secondary small">Código de Seguridad (4 dígitos)</label>
+                            <label for="recoveryCode" class="form-label fw-semibold text-secondary small">Token de Recuperación</label>
                             <div class="input-group has-validation justify-content-center">
-                                <input type="text" class="form-control text-center fw-bold letter-spacing-2 rounded" id="recoveryCode" placeholder="0000" maxlength="4" style="max-width: 150px; border-left: 1px solid #dee2e6;" required>
-                                <div class="invalid-feedback text-center w-100 mt-2">Código incorrecto o vacío.</div>
+                                <input type="text" class="form-control rounded" id="recoveryCode" placeholder="Pega aquí el token recibido por correo" style="font-family: monospace; font-size: 0.8rem;" required>
+                                <div class="invalid-feedback text-center w-100 mt-2">Token inválido o expirado. Solicita un nuevo código.</div>
                             </div>
                         </div>
 

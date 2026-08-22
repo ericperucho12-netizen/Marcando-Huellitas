@@ -72,11 +72,13 @@
                         <!-- Panel de Admin (Se oculta por defecto) -->
                         <div id="adminMenu" class="d-none mt-3 pt-3 border-top">
                             <small class="text-muted text-uppercase fw-bold ms-2 mb-2 d-block" style="font-size: 0.75rem;">Panel Administrador</small>
-                            <a href="#admin-adopciones" class="nav-link" data-target="section-admin-adopciones">
-                                <i class="bi bi-clipboard2-check fs-5 text-warning"></i> Adopciones
-                            </a>
+
                             <a href="#admin-refugios" class="nav-link" data-target="section-admin-refugios">
                                 <i class="bi bi-house-heart fs-5 text-info"></i> Refugios
+                            </a>
+                            
+                            <a href="#admin-adopciones" class="nav-link" data-target="section-admin-adopciones">
+                                <i class="bi bi-balloon-heart fs-5 text-info"></i> Adopciones
                             </a>
 
                         </div>
@@ -234,86 +236,7 @@
                     </div>
 
                     <!-- Secciones de Admin (Placeholders) -->
-                    <div id="section-admin-adopciones" class="profile-section py-4"><section class="form-card shadow-sm mx-auto p-4 p-md-5">
-      <div class="form-card__header mb-4 border-bottom pb-3">
-        <h2 id="formTitle" class="fw-bold" style="color: var(--color-text-main);">Perfil de adopción</h4>
-        <p class="text-muted">Información General</p>
-      </div>
 
-      <form id="adopcion-form" novalidate>
-
-        <div class="form-section">
-          <h4 class="form-section__title text-success mb-3 fw-bold"><i class="bi bi-info-circle me-2"></i>Información General</h2>
-
-          <div class="form-grid row g-3">
-
-            <div class="form-field col-md-6" data-field="nombre">
-              <label class="form-label fw-bold" for="nombre-mascota">Nombre</label>
-              <input type="text" class="form-control" id="nombre-mascota" name="nombre" placeholder="Ej. Firulais" required />
-              <span class="field-error"></span>
-            </div>
-
-            <div class="form-field col-md-6" data-field="imagen">
-              <label class="form-label fw-bold" for="imagen-mascota">Imagen</label>
-              <div class="image-upload d-flex flex-column gap-2">
-                <label class="form-label fw-bold" class="image-upload__trigger" for="imagen-mascota">+ Agregar Imagen</label>
-                <input type="file" id="imagen-mascota" name="imagen" accept="image/*" />
-                <div class="image-upload__preview" id="imagen-preview">Sin imagen</div>
-              </div>
-            </div>
-
-            <div class="form-field col-12" data-field="descripcion">
-              <label class="form-label fw-bold" for="descripcion-mascota">Descripción General</label>
-              <textarea class="form-control" id="descripcion-mascota" name="descripcion" placeholder="Cuéntanos sobre esta mascota..."></textarea>
-            </div>
-
-            <div class="form-field col-md-6" data-field="edad">
-              <label class="form-label fw-bold" for="edad">Edad</label>
-              <input type="text" class="form-control" id="edad" name="edad" placeholder="Ej. 2 años" />
-            </div>
-
-            <div class="form-field col-md-6" data-field="vacunado">
-              <label class="form-label fw-bold" for="vacunado">Vacunado</label>
-              <select class="form-select" id="vacunado" name="vacunado">
-                <option value="">Seleccione respuesta</option>
-                <option value="si">Sí</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-
-            <div class="form-field col-md-6" data-field="enfermedad">
-              <label class="form-label fw-bold" for="enfermedad">Alguna Enfermedad</label>
-              <select class="form-select" id="enfermedad" name="enfermedad">
-                <option value="">Seleccione respuesta</option>
-                <option value="ninguna">Ninguna</option>
-                <option value="si">Sí</option>
-              </select>
-            </div>
-
-            <div class="form-field col-md-6" data-field="id">
-              <label class="form-label fw-bold" for="id-mascota">ID</label>
-              <input type="text" class="form-control" id="id-mascota" name="id" placeholder="Ej. ADP-0001" required />
-              <span class="field-error"></span>
-            </div>
-
-            <div class="form-field col-md-6" data-field="refugio">
-              <label class="form-label fw-bold" for="refugio">Lugar de refugio</label>
-              <input type="text" class="form-control" id="refugio" name="refugio" placeholder="Ej. Refugio Patitas Felices" />
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ---------- Botones de acción ---------- -->
-        
-        <div class="form-actions d-flex gap-3 mt-4">
-          <a href="../community/adpciones.html" class="btn btn-outline-secondary w-50 py-3 fw-bold fs-5">Cancelar</a>
-          <button type="submit" class="btn btn-success w-50 py-3 fw-bold fs-5" style="background:#1f6b3d; border:none;"><i class="bi bi-save me-2"></i>Guardar Cambios</button>
-        </div>
-
-
-      </form>
-    </section></div>
                     
                     <div id="section-admin-refugios" class="profile-section py-4">
                         <header class="admin-refugios-header mb-4">
@@ -518,6 +441,74 @@
 
     </main></div>
 
+                    <!-- Sección: Administrar Adopciones -->
+                    <div id="section-admin-adopciones" class="profile-section py-4">
+                        <header class="admin-refugios-header mb-4">
+                            <div class="container text-center">
+                                <span class="admin-refugios-badge">
+                                    Panel de administración
+                                </span>
+                                <h1>
+                                    Solicitudes de Adopción
+                                </h1>
+                                <p>
+                                    Revisa las solicitudes de los usuarios que desean adoptar una mascota.
+                                </p>
+                            </div>
+                        </header>
+                        <main class="admin-refugios-main">
+                            <div class="container">
+                                <!-- RESUMEN -->
+                                <section class="admin-resumen">
+                                    <div class="row g-3">
+                                        <div class="col-12 col-md-4">
+                                            <article class="admin-stat-card stat-pendiente">
+                                                <div class="admin-stat-icon"><i class="bi bi-hourglass-split"></i></div>
+                                                <div><span>Pendientes</span><strong id="contadorAdopcionesPendientes">0</strong></div>
+                                            </article>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <article class="admin-stat-card stat-aprobada">
+                                                <div class="admin-stat-icon"><i class="bi bi-check-circle-fill"></i></div>
+                                                <div><span>Aprobadas</span><strong id="contadorAdopcionesAprobadas">0</strong></div>
+                                            </article>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <article class="admin-stat-card stat-rechazada">
+                                                <div class="admin-stat-icon"><i class="bi bi-x-circle-fill"></i></div>
+                                                <div><span>Rechazadas</span><strong id="contadorAdopcionesRechazadas">0</strong></div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- FILTROS -->
+                                <section class="admin-refugios-toolbar mt-4">
+                                    <div>
+                                        <h2>Solicitudes recibidas</h2>
+                                    </div>
+                                    <div class="admin-filtros" id="filtrosAdminAdopciones">
+                                        <button class="admin-filter-btn active" data-filtro="TODAS">Todas</button>
+                                        <button class="admin-filter-btn" data-filtro="Pendiente">Pendientes</button>
+                                        <button class="admin-filter-btn" data-filtro="Aprobada">Aprobadas</button>
+                                        <button class="admin-filter-btn" data-filtro="Rechazada">Rechazadas</button>
+                                    </div>
+                                </section>
+                                <!-- SOLICITUDES -->
+                                <section id="contenedorSolicitudesAdopcion" class="admin-solicitudes mt-4">
+                                    <!-- JS genera las tarjetas -->
+                                </section>
+                                <!-- Estado vacío -->
+                                <div id="estadoVacioAdopciones" class="admin-empty-state d-none mt-4">
+                                    <i class="bi bi-inbox"></i>
+                                    <h3>No hay solicitudes</h3>
+                                    <p>No existen registros para el filtro seleccionado.</p>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+
+
+
 
 
                 </div>
@@ -558,6 +549,7 @@
     <!-- Perfil JS -->
     <script src="../../scripts/user/perfil.js"></script>
     <script src="../../scripts/pages/admin-refugios.js"></script>
+    <script src="../../scripts/pages/admin-adopciones.js"></script>
     <script src="../../scripts/shop/adminForms.js"></script>
 </body>
 
