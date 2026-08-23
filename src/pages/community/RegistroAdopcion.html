@@ -52,7 +52,7 @@
                             <h1 class="text-center fw-bold mb-4">Registro de adopción</h1>
                             <p class="text-center text-muted mb-4">Completa el siguiente formulario para iniciar el proceso de adopcion de tu futuro mejor amigo o amiga.</p>
                             
-                            <form id="adopcionForm" action="https://formspree.io/f/mpqvlkdp" method="POST" novalidate>
+                            <form id="adopcionForm" novalidate>
                                 
                                 <div class="mb-3 form-field" data-field="nombre">
                                     <label for="nombre" class="form-label">Nombre completo del adoptante</label>
@@ -73,18 +73,10 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3 form-field" data-field="nombreMascota">
-                                    <label for="nombreMascota" class="form-label">Nombre del animalito que se quiere adoptar</label>
-                                    <input type="text" class="form-control" id="nombreMascota" name="nombreMascota" placeholder="Ej. Firulais o Mochi" required>
-                                    <span class="field-error"></span>
-                                </div>
-
-                                <div class="mb-3 form-field" data-field="mascota">
-                                    <label for="mascota" class="form-label">¿Que tipo de mascota deseas adoptar?</label>
-                                    <select class="form-select" id="mascota" name="mascota" required>
-                                        <option value="" selected disabled>Selecciona una opcion</option>
-                                        <option value="perro">Perro</option>
-                                        <option value="gato">Gato</option>
+                                <div class="mb-3 form-field" data-field="mascotaId">
+                                    <label for="mascotaId" class="form-label">Mascota que deseas adoptar</label>
+                                    <select class="form-select" id="mascotaId" name="mascotaId" required>
+                                        <option value="" selected disabled>Cargando mascotas...</option>
                                     </select>
                                     <span class="field-error"></span>
                                 </div>
@@ -142,12 +134,28 @@
 
     <!-- Script de validación -->
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", async () => {
       const form = document.getElementById("adopcionForm");
       if (!form) return;
 
-      const requiredFieldNames = ["nombre", "email", "telefono", "nombreMascota", "mascota", "espacio", "fechaCita", "razones"];
+      const requiredFieldNames = ["nombre", "email", "telefono", "mascotaId", "espacio", "fechaCita", "razones"];
       const toast = document.getElementById("toast");
+
+      // Cargar mascotas
+      try {
+          const res = await fetch('http://localhost:8080/api/mascotas');
+          const mascotas = await res.json();
+          const selectMascota = document.getElementById('mascotaId');
+          selectMascota.innerHTML = '<option value="" selected disabled>Selecciona una mascota</option>';
+          mascotas.forEach(m => {
+              const option = document.createElement('option');
+              option.value = m.id;
+              option.textContent = `${m.nombre} (${m.especie || 'Mascota'})`;
+              selectMascota.appendChild(option);
+          });
+      } catch (e) {
+          console.error("Error al cargar mascotas", e);
+      }
 
       function getFieldWrapper(name) {
         return form.querySelector(`[name="${name}"]`)?.closest(".form-field");
@@ -251,7 +259,7 @@
         }, 3200);
       }
 
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (window.requireAuth && !window.requireAuth('enviar una solicitud de adopción')) return;
 
@@ -269,21 +277,44 @@
           return;
         }
 
-        showToast({
-          title: "¡Solicitud guardada!",
-          message: "Tu registro de adopción y cita se enviaron con éxito.",
-        });
-
         const formData = new FormData(form);
-        const dataObj = Object.fromEntries(formData.entries());
+        const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
+        
+        const payload = {
+            usuarioId: usuarioActual ? usuarioActual.id : null,
+            mascotaId: parseInt(formData.get("mascotaId")),
+            telefono: formData.get("telefono"),
+            direccion: formData.get("espacio"),
+            experiencia: formData.get("razones"),
+            estado: "Pendiente"
+        };
 
-        form.dispatchEvent(new CustomEvent("formularioValido", {
-          detail: dataObj
-        }));
+        try {
+            const response = await fetch('http://localhost:8080/api/solicitudes_adopcion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
-        setTimeout(() => {
-          form.submit();
-        }, 1500);
+            if (!response.ok) throw new Error("Error al enviar solicitud");
+
+            showToast({
+                title: "¡Solicitud guardada!",
+                message: "Tu registro de adopción y cita se enviaron con éxito.",
+            });
+
+            setTimeout(() => {
+                window.location.href = "adpciones.html";
+            }, 2000);
+            
+        } catch (error) {
+            console.error(error);
+            showToast({
+                title: "Error",
+                message: "Hubo un problema al guardar la solicitud.",
+                isError: true,
+            });
+        }
       });
     });
     </script>

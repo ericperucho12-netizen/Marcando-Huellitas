@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const alertContainer = document.getElementById("alertContainer");
 
-    formulario.addEventListener("submit", function (event) {
+    formulario.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
@@ -64,37 +64,45 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // validar credenciales contra los usuarios guardados en localStorage
-        // (mismos usuarios que se registran en registro.js)
+        // Petición al Backend (Spring Boot)
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    correo: userOrEmailValor, // El backend ahora requiere el correo para iniciar sesión
+                    password: passwordValor
+                })
+            });
 
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            if (!response.ok) {
+                const errorTexto = await response.text();
+                mostrarAlertaError(errorTexto || "Usuario o contraseña incorrectos");
+                marcarError(userOrEmail, "Verifica tu correo");
+                marcarError(password, "Verifica tu contraseña");
+                return;
+            }
 
-        const usuarioEncontrado = usuarios.find(function (usuario) {
-            const coincideIdentificador =
-                usuario.email === userOrEmailValor ||
-                usuario.nombre === userOrEmailValor;
+            const usuarioEncontrado = await response.json();
 
-            return coincideIdentificador && usuario.password === passwordValor;
-        });
+            // guardar sesión del usuario actual
+            sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
 
-        if (!usuarioEncontrado) {
-            mostrarAlertaError("Usuario o contraseña incorrectos");
-            marcarError(userOrEmail, "Verifica tu usuario o correo");
-            marcarError(password, "Verifica tu contraseña");
-            return;
+            mostrarAlertaExito("¡Bienvenido/a de nuevo, " + usuarioEncontrado.nombre + "!");
+
+            formulario.reset();
+            limpiarValidaciones();
+
+            setTimeout(function () {
+                window.location.href = "../../../index.html";
+            }, 1200);
+
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            mostrarAlertaError("No se pudo conectar con el servidor. Verifica que tu backend esté corriendo.");
         }
-
-        // guardar sesión del usuario actual
-        sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
-
-        mostrarAlertaExito("¡Bienvenido/a de nuevo, " + usuarioEncontrado.nombre + "!");
-
-        formulario.reset();
-        limpiarValidaciones();
-
-        setTimeout(function () {
-            window.location.href = "../../../index.html";
-        }, 1200);
 
     });
 
