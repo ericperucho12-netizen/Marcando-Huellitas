@@ -2,18 +2,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("registroRefugioForm");
     
     if (form) {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
             if (window.requireAuth && !window.requireAuth('registrar un refugio')) return;
+
+            // Leer usuario de localStorage para el usuarioId
+            const usuarioStr = localStorage.getItem('usuarioActual');
+            let usuarioId = null;
+            if (usuarioStr) {
+                try {
+                    const usuario = JSON.parse(usuarioStr);
+                    usuarioId = usuario.id;
+                } catch(e) {}
+            }
 
             // Leer los datos del formulario
             const nombre = document.getElementById("refugioNombre").value.trim();
             const responsable = document.getElementById("refugioResponsable").value.trim();
-            const email = document.getElementById("refugioEmail").value.trim();
+            const correo = document.getElementById("refugioEmail").value.trim();
             const telefono = document.getElementById("refugioTelefono").value.trim();
             const direccion = document.getElementById("refugioDireccion").value.trim();
-            const estado = document.getElementById("refugioEstado").value.trim();
-            const tipo = document.getElementById("refugioTipo").value;
+            const estadoEntidad = document.getElementById("refugioEstado").value.trim();
+            const tipoOrganizacion = document.getElementById("refugioTipo").value;
             const descripcion = document.getElementById("refugioDescripcion").value.trim();
             const sitioWeb = document.getElementById("refugioSitioWeb").value.trim();
             const instagram = document.getElementById("refugioInstagram").value.trim();
@@ -21,48 +31,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Manejo básico de la imagen (simulado)
             const fileInput = document.getElementById("fileUpload");
-            let imagen = "../../assets/refugios/default_refugio.png"; // Imagen por defecto
+            let imagenUrl = "../../assets/refugios/LaCasitadeCrispin.jpg"; // Imagen por defecto
             if (fileInput.files && fileInput.files[0]) {
-                imagen = "../../assets/refugios/refugio_1.png"; // Placeholder
+                imagenUrl = "../../assets/refugios/Chespi.png"; // Placeholder
             }
 
             // Construir el objeto
             const nuevaSolicitud = {
-                id: "refugio-req-" + Date.now(),
+                usuarioId,
                 nombre,
                 responsable,
-                email,
+                correo,
                 telefono,
                 direccion,
-                estado,
-                tipo,
+                estadoEntidad,
+                tipoOrganizacion,
                 descripcion,
                 sitioWeb,
                 instagram,
                 facebook,
-                imagen,
-                fechaSolicitud: new Date().toISOString()
+                imagenUrl,
+                estatus: "PENDIENTE"
             };
 
-            // Leer almacenamiento de pendientes
-            let pendientes = JSON.parse(localStorage.getItem("refugiosPendientes")) || [];
-            pendientes.push(nuevaSolicitud);
-            localStorage.setItem("refugiosPendientes", JSON.stringify(pendientes));
-
-            // Mostrar mensaje de éxito y redirigir
-            if (typeof Swal !== "undefined") {
-                Swal.fire({
-                    title: '¡Solicitud Enviada!',
-                    text: 'Hemos recibido la información de tu refugio o asociación. Nuestro equipo la revisará y pronto la verás en la plataforma.',
-                    icon: 'success',
-                    confirmButtonColor: '#e04b7b',
-                    confirmButtonText: 'Entendido'
-                }).then(() => {
-                    window.location.href = "Refugios.html";
+            try {
+                const response = await fetch('http://localhost:8080/api/refugios', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(nuevaSolicitud)
                 });
-            } else {
-                alert('¡Solicitud Enviada! Hemos recibido la información de tu refugio. Nuestro equipo la revisará.');
-                window.location.href = "Refugios.html";
+
+                if (response.ok) {
+                    if (typeof Swal !== "undefined") {
+                        Swal.fire({
+                            title: '¡Solicitud Enviada!',
+                            text: 'Hemos recibido la información de tu refugio o asociación. Nuestro equipo la revisará y pronto la verás en la plataforma.',
+                            icon: 'success',
+                            confirmButtonColor: '#e04b7b',
+                            confirmButtonText: 'Entendido'
+                        }).then(() => {
+                            window.location.href = "Refugios.html";
+                        });
+                    } else {
+                        alert('¡Solicitud Enviada! Hemos recibido la información de tu refugio. Nuestro equipo la revisará.');
+                        window.location.href = "Refugios.html";
+                    }
+                } else {
+                    alert('Error al enviar la solicitud al servidor.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión con el servidor.');
             }
         });
     }
