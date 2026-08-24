@@ -114,16 +114,156 @@ function renderizarSolicitudesAdopcion() {
                         </div>
                     </div>
                     
-                    ${solicitud.estado === "Pendiente" ? `
-                        <div class="mt-3 d-flex gap-2 justify-content-end border-top pt-3">
-                            <button class="btn btn-outline-danger" onclick="cambiarEstadoAdopcion(${solicitud.id}, 'Rechazada')">Rechazar</button>
-                            <button class="btn btn-success" onclick="cambiarEstadoAdopcion(${solicitud.id}, 'Aprobada')">Aprobar</button>
-                        </div>
-                    ` : ''}
+                    <div class="mt-3 d-flex gap-2 justify-content-center align-items-center border-top pt-3">
+                        <button class="btn btn-sm btn-info" onclick='verAdopcion(${JSON.stringify(solicitud).replace(/'/g, "&#39;")})' title="Ver Detalle">
+                            <i class="bi bi-eye text-white"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" onclick="cambiarEstadoAdopcion(${solicitud.id}, 'Aprobada')" title="Aprobar" ${solicitud.estado === 'Aprobada' ? 'disabled' : ''}>
+                            <i class="bi bi-check-lg"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="cambiarEstadoAdopcion(${solicitud.id}, 'Rechazada')" title="Rechazar" ${solicitud.estado === 'Rechazada' ? 'disabled' : ''}>
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="eliminarAdopcion(${solicitud.id})" title="Eliminar">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
                 </article>
             `;
             container.innerHTML += cardHtml;
         });
+    }
+}
+
+// -----------------------------------------
+// Nuevas funciones para Adopciones
+// -----------------------------------------
+
+function verAdopcion(solicitud) {
+    const fecha = solicitud.creadoEn
+        ? new Date(solicitud.creadoEn).toLocaleString('es-MX', {
+            year: 'numeric', month: 'long', day: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          })
+        : 'No disponible';
+    document.getElementById('modalContenidoAdopcion').innerHTML = `
+        <form>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Usuario ID</label>
+                    <input type="text" class="form-control" value="${solicitud.usuarioId || 'N/A'}" readonly>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Mascota solicitada (ID)</label>
+                    <input type="text" class="form-control" value="${solicitud.mascotaId || 'N/A'}" readonly>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" value="${solicitud.telefono || ''}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">¿Cuenta con espacio adecuado?</label>
+                <input type="text" class="form-control" value="${solicitud.direccion || ''}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">¿Por qué deseas adoptar?</label>
+                <textarea class="form-control" rows="3" readonly>${solicitud.experiencia || ''}</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Estado</label>
+                    <input type="text" class="form-control" value="${solicitud.estado || 'Pendiente'}" readonly>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Fecha de cita</label>
+                    <input type="text" class="form-control" value="${solicitud.fechaCita ? new Date(solicitud.fechaCita).toLocaleString('es-MX', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'}) : 'N/A'}" readonly>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Fecha de registro</label>
+                    <input type="text" class="form-control" value="${fecha}" readonly>
+                </div>
+            </div>
+        </form>
+    `;
+    const modal = new bootstrap.Modal(document.getElementById('verAdopcionModal'));
+    modal.show();
+}
+
+function editarAdopcion(solicitud) {
+    // Guardar datos temporales en sessionStorage para que el formulario los pre-llene
+    sessionStorage.setItem('editarAdopcion', JSON.stringify(solicitud));
+    window.location.href = '../community/RegistroAdopcion.html?editId=' + solicitud.id;
+}
+
+async function guardarEdicionAdopcion() {
+    const id = document.getElementById('editAdopcionId').value;
+    const direccion = document.getElementById('editAdopcionDireccion').value;
+    const experiencia = document.getElementById('editAdopcionExperiencia').value;
+    const telefono = document.getElementById('editAdopcionTelefono').value;
+    
+    // Obtenemos la solicitud actual para no perder el estado, la fecha, ni ids.
+    const solicitudOriginal = solicitudesAdopcion.find(s => s.id == id);
+    if (!solicitudOriginal) return;
+    
+    const payload = {
+        ...solicitudOriginal,
+        direccion,
+        experiencia,
+        telefono
+    };
+    
+    try {
+        const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editarAdopcionModal'));
+            modal.hide();
+            Swal.fire('¡Actualizado!', 'La solicitud de adopción ha sido modificada.', 'success');
+            await cargarSolicitudesAdopcion();
+            renderizarSolicitudesAdopcion();
+            actualizarContadoresAdopcion();
+        } else {
+            throw new Error("Error en servidor");
+        }
+    } catch(err) {
+        Swal.fire('Error', 'No se pudo guardar la adopción.', 'error');
+    }
+}
+
+async function eliminarAdopcion(id) {
+    const confirmacion = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Se eliminará la solicitud de adopción de forma permanente!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                Swal.fire('¡Eliminada!', 'La solicitud ha sido eliminada.', 'success');
+                await cargarSolicitudesAdopcion();
+                renderizarSolicitudesAdopcion();
+                actualizarContadoresAdopcion();
+            } else {
+                throw new Error("No se pudo eliminar");
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Hubo un problema al eliminar la solicitud.', 'error');
+        }
     }
 }
 

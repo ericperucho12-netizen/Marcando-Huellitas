@@ -364,6 +364,83 @@
     <script src="../../scripts/community/registro-refugio.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para pre-llenar formulario en modo edición -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const editId = params.get('editId');
+        if (!editId) return;
+
+        const data = JSON.parse(sessionStorage.getItem('editarRefugio'));
+        if (!data) return;
+
+        // Cambiar título de la página al modo edición
+        const titulo = document.querySelector('h2, h1');
+        if (titulo) titulo.textContent = 'Editar Solicitud de Refugio';
+        const submitBtn = document.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar Cambios';
+
+        // Pre-llenar los campos con los datos existentes
+        const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+        set('refugioNombre', data.nombre);
+        set('refugioResponsable', data.responsable);
+        set('refugioEmail', data.correo);
+        set('refugioTelefono', data.telefono);
+        set('refugioDireccion', data.direccion);
+        set('refugioEstado', data.estado);
+        set('refugioDescripcion', data.descripcion);
+        set('refugioSitioWeb', data.sitio);
+        set('refugioInstagram', data.instagram);
+        set('refugioFacebook', data.facebook);
+
+        // Seleccionar el tipo
+        const selectTipo = document.getElementById('refugioTipo');
+        if (selectTipo && data.tipo) selectTipo.value = data.tipo;
+
+        // Interceptar submit para hacer actualización en la API
+        const form = document.getElementById('registroRefugioForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                const payload = {
+                    ...data,
+                    nombre: document.getElementById('refugioNombre').value,
+                    responsable: document.getElementById('refugioResponsable').value,
+                    correo: document.getElementById('refugioEmail').value,
+                    telefono: document.getElementById('refugioTelefono').value,
+                    direccion: document.getElementById('refugioDireccion').value,
+                    estadoEntidad: document.getElementById('refugioEstado').value,
+                    tipoOrganizacion: document.getElementById('refugioTipo').value,
+                    descripcion: document.getElementById('refugioDescripcion').value,
+                    sitioWeb: document.getElementById('refugioSitioWeb').value,
+                    instagram: document.getElementById('refugioInstagram').value,
+                    facebook: document.getElementById('refugioFacebook').value
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:8080/api/refugios/${editId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        sessionStorage.removeItem('editarRefugio');
+                        alert('¡Refugio actualizado correctamente!');
+                        window.history.back();
+                    } else {
+                        alert('Error al actualizar el refugio.');
+                    }
+                } catch (err) {
+                    alert('Error de conexión con el servidor.');
+                }
+            }, true);
+        }
+    });
+    </script>
 </body>
 
 </html>

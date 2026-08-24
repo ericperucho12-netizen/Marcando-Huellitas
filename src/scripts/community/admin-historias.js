@@ -1,23 +1,20 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Verificar que el usuario sea administrador
     const usuarioString = sessionStorage.getItem('usuarioActual');
     if (!usuarioString) {
-        window.location.href = '../auth/login.html';
         return;
     }
-    const usuarioActual = JSON.parse(usuarioString);
-    if (usuarioActual.rol !== 'ADMIN') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Acceso Denegado',
-            text: 'Solo los administradores pueden ver esta página.'
-        }).then(() => {
-            window.location.href = '../../index.html';
-        });
-        return;
+    try {
+        const usuarioActual = JSON.parse(usuarioString);
+        if (usuarioActual.rol && usuarioActual.rol.toUpperCase() === 'ADMIN') {
+            const container = document.getElementById('tablaHistoriasBody');
+            if (container) {
+                cargarHistorias();
+            }
+        }
+    } catch(e) {
+        console.error("Error al validar rol en historias", e);
     }
-
-    cargarHistorias();
 });
 
 async function cargarHistorias() {
@@ -50,23 +47,24 @@ async function cargarHistorias() {
                 <td>${historia.historia.substring(0, 50)}...</td>
                 <td><span class="badge ${badgeClass}">${historia.estado || 'PENDIENTE'}</span></td>
                 <td class="text-center">
-                    <button class="btn btn-sm btn-info me-1" onclick='verHistoria(${JSON.stringify(historia).replace(/'/g, "&#39;")})' title="Ver Historia">
-                        <i class="bi bi-eye text-white"></i>
-                    </button>
-                    <button class="btn btn-sm btn-warning me-1" onclick='abrirModalEditar(${JSON.stringify(historia).replace(/'/g, "&#39;")})' title="Editar">
-                        <i class="bi bi-pencil-square text-dark"></i>
-                    </button>
-                    <button class="btn btn-sm btn-success me-1" onclick="cambiarEstado(${historia.id}, 'APROBADO')" title="Aprobar" ${historia.estado === 'APROBADO' ? 'disabled' : ''}>
-                        <i class="bi bi-check-lg"></i>
-                    </button>
-                    <button class="btn btn-sm btn-danger me-1" onclick="cambiarEstado(${historia.id}, 'RECHAZADO')" title="Rechazar" ${historia.estado === 'RECHAZADO' ? 'disabled' : ''}>
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-                    <button class="btn btn-sm btn-secondary" onclick="eliminarHistoria(${historia.id})" title="Eliminar">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                    <!-- 
-                        --></td>
+                    <div class="d-flex gap-2 justify-content-center align-items-center">
+                        <button class="btn btn-sm btn-info" onclick='verHistoria(${JSON.stringify(historia).replace(/'/g, "&#39;")})' title="Ver Historia">
+                            <i class="bi bi-eye text-white"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" onclick='abrirModalEditar(${JSON.stringify(historia).replace(/'/g, "&#39;")})' title="Editar">
+                            <i class="bi bi-pencil-square text-dark"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" onclick="cambiarEstado(${historia.id}, 'APROBADO')" title="Aprobar" ${historia.estado === 'APROBADO' ? 'disabled' : ''}>
+                            <i class="bi bi-check-lg"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="cambiarEstado(${historia.id}, 'RECHAZADO')" title="Rechazar" ${historia.estado === 'RECHAZADO' ? 'disabled' : ''}>
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="eliminarHistoria(${historia.id})" title="Eliminar">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
             `;
             tbody.appendChild(fila);
         });
@@ -83,10 +81,17 @@ function verHistoria(historia) {
     
     const img = document.getElementById('modalImagenHistoria');
     if (historia.imagenUrl) {
-        img.src = historia.imagenUrl;
+        // Si la URL es la de la imagen rota que no existe, la reemplazamos
+        if (historia.imagenUrl.includes('default_historia.png')) {
+            img.src = '../../assets/historias/Bruno.jpg';
+        } else {
+            img.src = historia.imagenUrl;
+        }
         img.classList.remove('d-none');
     } else {
-        img.classList.add('d-none');
+        // Fallback por defecto si no tiene imagen
+        img.src = '../../assets/historias/Bruno.jpg';
+        img.classList.remove('d-none');
     }
 
     const modal = new bootstrap.Modal(document.getElementById('verHistoriaModal'));
@@ -194,66 +199,6 @@ async function guardarEdicion() {
         Swal.fire('Error', 'No se pudo editar la historia.', 'error');
     }
 }
-
-let modalEdicion;
-
-function abrirModalEditar(historia) {
-    document.getElementById('editHistoriaId').value = historia.id;
-    document.getElementById('editTitulo').value = historia.titulo;
-    document.getElementById('editContenido').value = historia.historia;
-    document.getElementById('editImagen').value = historia.imagenUrl || '';
-    
-    if(!modalEdicion) {
-        modalEdicion = new bootstrap.Modal(document.getElementById('editarHistoriaModal'));
-    }
-    modalEdicion.show();
-}
-
-async function guardarEdicion() {
-    const id = document.getElementById('editHistoriaId').value;
-    const titulo = document.getElementById('editTitulo').value;
-    const contenido = document.getElementById('editContenido').value;
-    const imagenUrl = document.getElementById('editImagen').value;
-    
-    if(!titulo || !contenido) {
-        Swal.fire('Error', 'El título y la historia son obligatorios.', 'error');
-        return;
-    }
-
-    try {
-        const token = sessionStorage.getItem('jwtToken');
-        const headers = { 'Content-Type': 'application/json' };
-        if (token) headers['Authorization'] = 'Bearer ' + token;
-
-        const response = await fetch(`http://localhost:8080/api/historias_exito/${id}`, {
-            method: 'PUT',
-            headers: headers,
-            body: JSON.stringify({ 
-                titulo: titulo, 
-                historia: contenido, 
-                imagenUrl: imagenUrl || null 
-            })
-        });
-
-        if (response.ok) {
-            Swal.fire({
-                title: '¡Guardado!',
-                text: 'La historia ha sido editada exitosamente.',
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false
-            });
-            modalEdicion.hide();
-            cargarHistorias();
-        } else {
-            throw new Error('Error al guardar edición');
-        }
-    } catch (error) {
-        console.error(error);
-        Swal.fire('Error', 'No se pudo editar la historia.', 'error');
-    }
-}
-
 
 async function eliminarHistoria(id) {
     const confirmacion = await Swal.fire({
