@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -226,3 +226,84 @@
                 </div>
             </div>
         </section>
+
+        <!-- Formulario Separado en su propia tarjeta amarillita -->
+        <section class="mt-5">
+            <div class="form-card-container">
+                <div class="text-center mb-4">
+                    <div class="fs-1 mb-2">📝</div>
+                    <h2 class="font-dynapuff h3 text-success">¿Tu mascota ha marcado tu vida?</h2>
+                    <p class="text-muted">Comparte tu historia con la comunidad de Marcando Huellitas y aparece en
+                        nuestra web.</p>
+                </div>
+
+                <form id="formHistoria" class="row g-4 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="nombreUsuario" class="form-label form-label-custom">Tu Nombre</label>
+                        <input type="text" class="form-control form-control-custom" id="nombreUsuario"
+                            placeholder="Ej. Ana Martínez" required>
+                        <div class="invalid-feedback ps-3">Por favor ingresa tu nombre.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="nombreMascota" class="form-label form-label-custom">Nombre de tu Mascota</label>
+                        <input type="text" class="form-control form-control-custom" id="nombreMascota"
+                            placeholder="Ej. Rocky" required>
+                        <div class="invalid-feedback ps-3">Por favor ingresa el nombre de tu mascota.</div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <label for="imagenUrl" class="form-label form-label-custom">Enlace de una foto (Opcional)</label>
+                        <input type="url" class="form-control form-control-custom" id="imagenUrl"
+                            placeholder="Ej. https://imgur.com/mifoto.jpg">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label form-label-custom">Imagen de tu Mascota</label>
+                        <label for="imagenMascota" class="upload-box w-100">
+                            <i class="fa-solid fa-plus fs-5"></i>
+                            <span class="fw-semibold">Agregar Imagen</span>
+                        </label>
+                        <input type="file" id="imagenMascota" class="d-none" accept="image/*">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="relato" class="form-label form-label-custom">Tu Historia</label>
+                        <textarea class="form-control form-control-custom" id="relato" rows="5"
+                            placeholder="Cuéntanos cómo llegó a tu vida y qué momentos especiales han compartido..."
+                            required></textarea>
+                        <div class="invalid-feedback ps-3">Por favor comparte un breve relato.</div>
+                    </div>
+
+                    <div class="col-12 text-center mt-4 d-flex justify-content-center gap-3">
+                        <button type="submit" class="btn btn-pink">
+                            Guardar cambios
+                        </button>
+                        <button type="reset" class="btn btn-outline-custom">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Contenedor del Footer -->
+    <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- Layout JS -->
+    <script src="../../scripts/core/layout.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Archivo JS con la validación personalizada -->
+    <script src="../../scripts/core/app.js"></script>
+    <!-- Historias Script -->
+    <script src="../../scripts/community/historias.js"></script>
+    <!-- Cart Script -->
+    <script src="../../scripts/shop/cart.js"></script>
+    <script src="../../scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
