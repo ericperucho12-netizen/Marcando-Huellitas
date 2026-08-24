@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - Marcando Huellitas</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CSS -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <style>
+        .recovery-wrapper {
+            background-color: #fff8f2;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .recovery-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.02);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+        .recovery-header {
+            background: linear-gradient(135deg, #ff8e6a 0%, #e04b7b 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .font-dynapuff {
+            font-family: 'DynaPuff', cursive;
+        }
+        .btn-pink {
+            background-color: #e04b7b;
+            color: white;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-pink:hover {
+            background-color: #c93b66;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(224, 75, 123, 0.3);
+        }
+        .input-group-text {
+            background-color: transparent;
+            border-right: none;
+            color: #999;
+        }
+        .form-control {
+            border-left: none;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #dee2e6;
+        }
+        .input-group:focus-within {
+            border-radius: 0.375rem;
+            box-shadow: 0 0 0 0.25rem rgba(224, 75, 123, 0.25);
+        }
+        .input-group:focus-within .input-group-text,
+        .input-group:focus-within .form-control {
+            border-color: #e04b7b;
+            color: #e04b7b;
+        }
+        .letter-spacing-2 {
+            letter-spacing: 0.5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenedor del Navbar -->
+    <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
+
+    <div class="recovery-wrapper">
+        <div class="recovery-card">
+            <!-- Header -->
+            <div class="recovery-header">
+                <i class="bi bi-shield-lock" style="font-size: 3rem;"></i>
+                <h2 class="font-dynapuff mt-2 mb-0">Restablecer Contraseña</h2>
+            </div>
+            
+            <div class="p-4 p-md-5">
+                <!-- PASO 1: Ingresar correo -->
+                <div id="step1">
+                    <p class="text-center text-muted mb-4" style="font-size: 0.95rem;">
+                        No te preocupes. Ingresa el correo asociado a tu cuenta y te enviaremos un código para recuperarla.
+                    </p>
+
+                    <form id="formRecuperarEmail" autocomplete="off" novalidate>
+                        <div class="mb-4">
+                            <label for="recoveryEmail" class="form-label fw-semibold text-secondary small">Correo electrónico</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control" id="recoveryEmail" placeholder="ejemplo@correo.com" required>
+                                <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                            </div>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-pink rounded-pill py-2">Enviar Código de Recuperación</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- PASO 2: Ingresar código y nueva contraseña (oculto inicialmente) -->
+                <div id="step2" class="d-none">
+                    <div class="text-center mb-4">
+                        <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2 mb-3">
+                            <i class="bi bi-check-circle me-1"></i> Código enviado
+                        </span>
+                        <p class="text-muted" style="font-size: 0.95rem;">
+                            Hemos enviado un código seguro a tu correo electrónico. Ingrésalo a continuación junto con tu nueva contraseña.
+                        </p>
+                    </div>
+
+                    <form id="formRecuperarPass" autocomplete="off" novalidate>
+                        <div class="mb-4">
+                            <label for="recoveryCode" class="form-label fw-semibold text-secondary small">Token de Recuperación</label>
+                            <div class="input-group has-validation justify-content-center">
+                                <input type="text" class="form-control rounded" id="recoveryCode" placeholder="Pega aquí el token recibido por correo" style="font-family: monospace; font-size: 0.8rem;" required>
+                                <div class="invalid-feedback text-center w-100 mt-2">Token inválido o expirado. Solicita un nuevo código.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label fw-semibold text-secondary small">Nueva Contraseña</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Crea una contraseña segura" required>
+                                <button type="button" class="btn btn-outline-secondary toggle-password" data-target="newPassword" style="border-left: none;">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <div class="invalid-feedback">La contraseña debe tener al menos 6 caracteres.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="confirmNewPassword" class="form-label fw-semibold text-secondary small">Confirmar Contraseña</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                <input type="password" class="form-control" id="confirmNewPassword" placeholder="Repite la contraseña" required>
+                                <button type="button" class="btn btn-outline-secondary toggle-password" data-target="confirmNewPassword" style="border-left: none;">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-pink rounded-pill py-2">Guardar Nueva Contraseña</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center pt-4 border-top mt-2">
+                    <a href="login.html" class="text-decoration-none text-muted small fw-semibold hover-pink transition-all">
+                        <i class="bi bi-arrow-left me-1"></i> Volver a Iniciar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor del Footer -->
+    <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Layout JS -->
+    <script src="../../scripts/core/layout.js"></script>
+    <script src="../../scripts/auth/recuperar.js"></script>
+    <script src="../../scripts/main.js"></script>
+</body>
+</html>

@@ -106,6 +106,10 @@
 
     // Agrega un producto al carrito
     function addToCart(product, quantity = 1) {
+        if (!window.requireAuth || !window.requireAuth('agregar productos al carrito')) {
+            return getCart();
+        }
+
         const normalizedProduct = {
             id: String(product.id || `${product.name}-${product.price}`),
             name: String(product.name || "Producto").trim(),
@@ -482,18 +486,6 @@
             if (blockedClick) {
                 return;
             }
-
-            const card = event.target.closest(".product-item-card");
-
-            if (!card) {
-                return;
-            }
-
-            const info = getItemInfoFromCard(card);
-
-            if (info && info.name) {
-                addToCart(info, 1);
-            }
         });
     }
 
@@ -626,14 +618,37 @@ function injectAnimatedCart() {
                 if (icon && typeof icon.play === 'function') icon.play();
             });
 
-            // Click animation ("Agregado")
-            card.addEventListener('click', (e) => {
+            // Click animation ("Agregado") and Add to Cart
+            overlay.addEventListener('click', (e) => {
+                // Prevenir que el click se propague a la tarjeta
+                e.stopPropagation();
+
                 const textSpan = overlay.querySelector('.cart-text');
                 if (textSpan) {
                     textSpan.textContent = '¡Agregado!';
                     setTimeout(() => {
                         textSpan.textContent = 'Agregar';
                     }, 1500);
+                }
+
+                // Extraer info de la tarjeta y agregarlo al carrito
+                if (window.MarcandoHuellitasCart) {
+                    // Reutilizar la función de getItemInfoFromCard si está disponible globalmente,
+                    // pero como no lo está, extraemos manualmente lo básico:
+                    const productId = card.getAttribute("data-product-id") || card.getAttribute("data-id") || Date.now().toString();
+                    const titleEl = card.querySelector(".title");
+                    const priceEl = card.querySelector(".price");
+                    const imgEl = card.querySelector("img.card-img-top");
+
+                    if (titleEl) {
+                        const productInfo = {
+                            id: productId,
+                            name: titleEl.textContent.trim(),
+                            price: priceEl ? priceEl.textContent.replace(/[^0-9.]/g, "") : 0,
+                            image: imgEl ? imgEl.src : "../../assets/footer/Huellita-footer.png",
+                        };
+                        window.MarcandoHuellitasCart.addToCart(productInfo, 1);
+                    }
                 }
             });
         }

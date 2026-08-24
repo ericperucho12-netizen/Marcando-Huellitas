@@ -1,0 +1,231 @@
+/* =========================================
+   ESTILOS DE LA PÁGINA DE PERFIL
+   ========================================= */
+
+body {
+    background-color: #fcfcfc;
+}
+
+.profile-container {
+    min-height: calc(100vh - 100px);
+    padding: 40px 0;
+}
+
+/* Sidebar Menu */
+.profile-sidebar {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    padding: 20px;
+    position: sticky;
+    top: 100px;
+}
+
+.profile-sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.profile-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #e04b7b;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+}
+
+.profile-nav .nav-link {
+    color: #555555;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-nav .nav-link:hover {
+    background-color: #fcfcfc;
+    color: #e04b7b;
+    transform: translateX(5px);
+}
+
+.profile-nav .nav-link.active {
+    background-color: #e04b7b;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(224, 75, 123, 0.3);
+}
+
+.profile-nav .nav-link.active i {
+    color: #ffffff !important;
+}
+
+/* Content Area */
+.profile-content-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    padding: 30px;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.profile-section {
+    display: none;
+}
+
+.profile-section.active-section {
+    display: block;
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    color: #2b2b2b;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #a9b96b;
+    border-radius: 3px;
+}
+
+/* Cards (Metodos de Pago / Direcciones) */
+.data-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    position: relative;
+}
+
+.data-card:hover {
+    border-color: #a9b96b;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(169, 185, 107, 0.15);
+    transform: translateY(-2px);
+}
+
+.add-new-card {
+    border: 2px dashed #cccccc;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-height: 140px;
+    color: #777;
+}
+
+.add-new-card:hover {
+    border-color: #e04b7b;
+    color: #e04b7b;
+    background-color: #fff9fa;
+}
+
+.card-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Inputs Premium */
+.profile-input {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.profile-input:focus {
+    background-color: #ffffff;
+    border-color: #a9b96b;
+    box-shadow: 0 0 0 4px rgba(169, 185, 107, 0.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Favorites */
+.favorite-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.favorite-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border-color: #e04b7b;
+}
+
+.fav-img-wrapper {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.fav-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.fav-heart:hover {
+    transform: scale(1.1);
+}
+
+.fav-card-body {
+    padding: 15px;
+}
+
+.text-e04b7b {
+    color: #e04b7b;
+}
+
+.nav-pills .nav-link {
+    color: #555555;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #ffffff;
+    background-color: #e04b7b;
+    border-color: #e04b7b;
+}
+

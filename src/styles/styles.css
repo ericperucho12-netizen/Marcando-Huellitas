@@ -10,3 +10,68 @@
 @import url('forms.css');
 @import url('cart.css');
 @import url('donaciones.css');
+@import url('perfil.css');
+
+/* =========================================
+   PÁGINA DE HISTORIAS DE ÉXITO
+   ========================================= */
+
+/* Hero Section Animado */
+.hero-historias {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 142, 142, 0.05) 100%);
+    border-radius: 20px;
+    padding: 3rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+.hero-historias:hover {
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.15);
+}
+.hero-historias::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,107,107,0.2) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Tarjetas de Historias */
+.historia-card {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    background-color: #ffffff;
+}
+
+.historia-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(255, 107, 107, 0.3) !important;
+}
+
+/* Imágenes dentro de las historias */
+.historia-img-wrapper {
+    overflow: hidden;
+    border-radius: 15px;
+}
+.historia-img {
+    transition: transform 0.5s ease;
+}
+.historia-card:hover .historia-img {
+    transform: scale(1.08) rotate(1deg);
+}
+
+/* Badge personalizado */
+.badge-historia {
+    background: linear-gradient(90deg, var(--rosa-principal), var(--rosa-secundario));
+    color: white;
+    border: none !important;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+}
+

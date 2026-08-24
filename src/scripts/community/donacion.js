@@ -20,7 +20,6 @@ if (donationVideo) {
         }
 
         donationVideo.src = videos[videoActual];
-
         donationVideo.load();
 
         donationVideo.play().catch(error => {
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     const stories = {
 
         tiago: {
@@ -76,9 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </p>
 
                 <p>
-                    Hoy Tiago es un gatito feliz, lleno de energía y con
+                    Hoy Tiago es un perrito feliz, lleno de energía y con
                     muchas ganas de disfrutar cada día. Gracias al apoyo
-                    recibido pudo tener una segunda oportunidad. ❤️🐱
+                    recibido pudo tener una segunda oportunidad. ❤️
                 </p>
             `
         },
@@ -105,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>
                     Hoy Junior es un perrito alegre que disfruta cada día
                     y demuestra que una segunda oportunidad puede cambiar
-                    completamente una vida. ❤️🐶
+                    completamente una vida. ❤️
                 </p>
             `
         },
@@ -131,15 +129,104 @@ document.addEventListener("DOMContentLoaded", () => {
                 </p>
 
                 <p>
-                    Hoy Michi es una perrita llena de vida, cariño y alegría.
+                    Hoy Michi es una gatita llena de vida, cariño y alegría.
                     Ahora disfruta de una nueva oportunidad rodeada de amor
-                    y cuidados. ❤️🐶
+                    y cuidados. ❤️
+                </p>
+            `
+        },
+
+        nube: {
+
+            title: "Nube",
+
+            image: "../../assets/donaciones/Nube.jpeg",
+
+            text: `
+                <p>
+                    Nube llegó al refugio después de ser encontrada cerca
+                    de una zona donde varios animales buscaban un lugar
+                    para pasar la noche. Desde el primer día llamó la
+                    atención por su manera tranquila de observar.
+                </p>
+
+                <p>
+                    Con el paso de las semanas comenzó a adaptarse a su
+                    nueva rutina. Le gustaba descansar en lugares soleados
+                    y acercarse cuando alguien se sentaba cerca de ella.
+                </p>
+
+                <p>
+                    Tiempo después, una familia conoció a Nube y decidió
+                    darle una oportunidad. Hoy vive en un hogar donde tiene
+                    una familia que la cuida y la acompaña, demostrando que
+                    adoptar puede cambiar una vida. ❤️
+                </p>
+            `
+        },
+
+        bruno: {
+
+            title: "Bruno",
+
+            image: "../../assets/donaciones/Bruno.jpeg",
+
+            text: `
+                <p>
+                    Bruno llegó después de haber pasado por momentos
+                    difíciles en la calle. Tenía algunas heridas y su cuerpo
+                    mostraba las marcas de todo lo que había tenido que
+                    enfrentar antes de encontrar ayuda.
+                </p>
+
+                <p>
+                    Durante su recuperación necesitó atención veterinaria,
+                    descanso y tiempo. Cada día era un pequeño avance:
+                    una herida que sanaba, una caminata más tranquila y una
+                    mirada que poco a poco volvía a llenarse de esperanza.
+                </p>
+
+                <p>
+                    Después de recuperarse, Bruno tuvo la oportunidad de
+                    comenzar de nuevo. Hoy disfruta de un hogar donde es
+                    cuidado y querido, demostrando que incluso después de
+                    las heridas más difíciles siempre puede existir una
+                    nueva oportunidad. ❤️
+                </p>
+            `
+        },
+
+        toby: {
+
+            title: "Toby",
+
+            image: "../../assets/donaciones/Toby.jpeg",
+
+            text: `
+                <p>
+                    Toby pasó varios días rondando una colonia hasta que
+                    una persona comenzó a dejarle un espacio para descansar.
+                    Con el paso del tiempo, su presencia se volvió parte
+                    de la rutina del lugar.
+                </p>
+
+                <p>
+                    Un día, mientras buscaba una familia para él, alguien
+                    se interesó en conocerlo. Después de varios encuentros,
+                    descubrieron que Toby era un gato tranquilo, curioso
+                    y muy cariñoso.
+                </p>
+
+                <p>
+                    Finalmente llegó el momento de cambiar su historia:
+                    Toby fue adoptado. Ahora tiene un hogar donde puede
+                    dormir tranquilo, jugar y recibir el cariño que durante
+                    tanto tiempo estuvo esperando. ❤️
                 </p>
             `
         }
 
     };
-
 
     const storyButtons =
         document.querySelectorAll(".story-button");
@@ -159,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeStory =
         document.getElementById("closeStory");
 
-
     storyButtons.forEach(button => {
 
         button.addEventListener("click", event => {
@@ -173,23 +259,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 stories[storyId];
 
             if (!story) {
-
-                console.error(
-                    "Historia no encontrada:",
-                    storyId
-                );
-
                 return;
             }
 
-
             if (storyFullTitle) {
-
                 storyFullTitle.textContent =
                     story.title;
-
             }
-
 
             if (storyFullImage) {
 
@@ -201,14 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
             if (storyFullText) {
-
                 storyFullText.innerHTML =
                     story.text;
-
             }
-
 
             if (storyFull) {
 
@@ -229,17 +301,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
     if (closeStory) {
 
         closeStory.addEventListener("click", () => {
 
             if (storyFull) {
-
                 storyFull.classList.remove("active");
-
             }
-
 
             if (storiesCarousel) {
 
@@ -257,12 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// META DE DONACIÓN
-
-const META_TOTAL = 10000;
-
-
-// OBTENER DONACIONES
+// DONACIONES
 
 function obtenerDonaciones() {
 
@@ -278,16 +341,14 @@ function obtenerDonaciones() {
         const donaciones =
             JSON.parse(datos);
 
-        if (!Array.isArray(donaciones)) {
-            return [];
-        }
-
-        return donaciones;
+        return Array.isArray(donaciones)
+            ? donaciones
+            : [];
 
     } catch (error) {
 
         console.error(
-            "Error al leer las donaciones:",
+            "Error al leer donaciones:",
             error
         );
 
@@ -298,14 +359,9 @@ function obtenerDonaciones() {
 }
 
 
-// OBTENER TOTAL DONADO
-
 function obtenerTotalDonado() {
 
-    const donaciones =
-        obtenerDonaciones();
-
-    return donaciones.reduce(
+    return obtenerDonaciones().reduce(
         (total, donacion) => {
 
             const monto =
@@ -315,9 +371,7 @@ function obtenerTotalDonado() {
                 isNaN(monto) ||
                 monto <= 0
             ) {
-
                 return total;
-
             }
 
             return total + monto;
@@ -336,86 +390,80 @@ function actualizarMeta() {
     const currentAmount =
         document.getElementById("currentAmount");
 
-    const goalAmount =
-        document.getElementById("goalAmount");
-
-    const progressPercent =
-        document.getElementById("progressPercent");
-
-    const progressBar =
-        document.getElementById("progressBar");
-
-    const remainingAmount =
-        document.getElementById("remainingAmount");
-
-
-    if (
-        !currentAmount ||
-        !goalAmount ||
-        !progressPercent ||
-        !progressBar
-    ) {
-
+    if (!currentAmount) {
         return;
-
     }
-
 
     const totalDonado =
         obtenerTotalDonado();
 
-
-    const montoActual =
-        Math.min(
-            totalDonado,
-            META_TOTAL
+    let valorActual =
+        Number(
+            currentAmount.dataset.valor || 0
         );
 
+    if (valorActual === totalDonado) {
 
-    const porcentaje =
-        Math.min(
-            (montoActual / META_TOTAL) * 100,
-            100
-        );
+        currentAmount.textContent =
+            `$${totalDonado.toLocaleString("es-MX", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
 
+        return;
+    }
 
-    const faltante =
-        Math.max(
-            META_TOTAL - totalDonado,
-            0
-        );
+    const diferencia =
+        Math.abs(totalDonado - valorActual);
 
+    let velocidad = 1;
 
-    currentAmount.textContent =
-        `$${montoActual.toLocaleString("es-MX")} MXN`;
+    if (diferencia >= 10000) {
+        velocidad = 100;
+    } else if (diferencia >= 1000) {
+        velocidad = 50;
+    } else if (diferencia >= 100) {
+        velocidad = 2;
+    }
 
+    const direccion =
+        totalDonado > valorActual ? 1 : -1;
 
-    goalAmount.textContent =
-        `$${META_TOTAL.toLocaleString("es-MX")} MXN`;
+    function contar() {
 
+        valorActual +=
+            velocidad * direccion;
 
-    progressPercent.textContent =
-        `${Math.round(porcentaje)}%`;
+        if (
+            direccion === 1 &&
+            valorActual >= totalDonado
+        ) {
+            valorActual = totalDonado;
+        }
 
+        if (
+            direccion === -1 &&
+            valorActual <= totalDonado
+        ) {
+            valorActual = totalDonado;
+        }
 
-    progressBar.style.width =
-        `${porcentaje}%`;
+        currentAmount.textContent =
+            `$${valorActual.toLocaleString("es-MX", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
 
+        currentAmount.dataset.valor =
+            valorActual;
 
-    if (remainingAmount) {
-
-        remainingAmount.textContent =
-            `$${faltante.toLocaleString("es-MX")} MXN`;
+        if (valorActual !== totalDonado) {
+            requestAnimationFrame(contar);
+        }
 
     }
 
-
-    console.log("Meta actualizada:", {
-        totalDonado,
-        montoActual,
-        porcentaje,
-        faltante
-    });
+    requestAnimationFrame(contar);
 
 }
 
@@ -427,20 +475,15 @@ function registrarDonacion(monto, datos = {}) {
     const montoNumerico =
         Number(monto);
 
-
     if (
         isNaN(montoNumerico) ||
         montoNumerico <= 0
     ) {
-
         return false;
-
     }
-
 
     const donaciones =
         obtenerDonaciones();
-
 
     const nuevaDonacion = {
 
@@ -466,65 +509,70 @@ function registrarDonacion(monto, datos = {}) {
 
     };
 
-
-    donaciones.push(
-        nuevaDonacion
-    );
-
+    donaciones.push(nuevaDonacion);
 
     localStorage.setItem(
         "donaciones",
         JSON.stringify(donaciones)
     );
 
-
-    console.log(
-        "Donación guardada:",
-        nuevaDonacion
-    );
-
-
     actualizarMeta();
-
 
     return true;
 
 }
 
 
-// FORMULARIO DE DONACIÓN
+// FORMULARIO
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const form =
-        document.querySelector("#donationForm");
-
+        document.getElementById("donationForm");
 
     if (!form) {
         return;
     }
 
-
     const amountInput =
-        document.querySelector("#amount");
+        document.getElementById("amount");
 
     const phoneInput =
-        document.querySelector("#phone");
+        document.getElementById("phone");
+
+    const cardNumber =
+        document.getElementById("cardNumber");
+
+    const cardExpiry =
+        document.getElementById("cardExpiry");
+
+    const cardCvv =
+        document.getElementById("cardCvv");
+
+    const proof =
+        document.getElementById("proof");
+
+    const proofField =
+        document.getElementById("proofField");
 
     const donationAlert =
-        document.querySelector("#donationAlert");
-
-    const closeAlert =
-        document.querySelector("#closeAlert");
+        document.getElementById("donationAlert");
 
     const successScreen =
-        document.querySelector("#donationSuccess");
+        document.getElementById("donationSuccess");
 
+    const closeAlert =
+        document.getElementById("closeAlert");
 
     let currentStep = 1;
 
 
-    // FORMATO DE DINERO
+    // MONTO INICIAL
+
+    if (amountInput) {
+        amountInput.value = "";
+    }
+
 
     function formatMoney(amount) {
 
@@ -539,122 +587,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // FORMATO DEL MONTO
-
-    if (amountInput) {
-
-        amountInput.addEventListener("blur", () => {
-
-            const value =
-                parseFloat(
-                    amountInput.value.replace(",", ".")
-                );
-
-
-            if (
-                !isNaN(value) &&
-                value > 0
-            ) {
-
-                amountInput.value =
-                    value.toFixed(2);
-
-            }
-
-        });
-
-
-        amountInput.addEventListener("input", () => {
-
-            let value =
-                amountInput.value;
-
-
-            value =
-                value.replace(
-                    /[^0-9.]/g,
-                    ""
-                );
-
-
-            const parts =
-                value.split(".");
-
-
-            if (parts.length > 2) {
-
-                value =
-                    parts[0] +
-                    "." +
-                    parts.slice(1).join("");
-
-            }
-
-
-            const finalParts =
-                value.split(".");
-
-
-            if (finalParts[1]) {
-
-                value =
-                    finalParts[0] +
-                    "." +
-                    finalParts[1].substring(0, 2);
-
-            }
-
-
-            amountInput.value =
-                value;
-
-        });
-
-    }
-
-
-    // TELÉFONO
-
-    if (phoneInput) {
-
-        phoneInput.addEventListener("input", () => {
-
-            phoneInput.value =
-                phoneInput.value
-                    .replace(/\D/g, "")
-                    .slice(0, 10);
-
-        });
-
-    }
-
-
-    // ALERTAS
+    // ALERTA
 
     function showAlert(title, message) {
 
         const alertTitle =
-            document.querySelector("#alertTitle");
+            document.getElementById("alertTitle");
 
         const alertMessage =
-            document.querySelector("#alertMessage");
-
+            document.getElementById("alertMessage");
 
         if (alertTitle) {
-
-            alertTitle.textContent =
-                title;
-
+            alertTitle.textContent = title;
         }
-
 
         if (alertMessage) {
-
-            alertMessage.textContent =
-                message;
-
+            alertMessage.textContent = message;
         }
-
 
         if (donationAlert) {
 
@@ -673,9 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function hideAlert() {
 
         if (donationAlert) {
-
             donationAlert.classList.remove("show");
-
         }
 
     }
@@ -691,139 +638,75 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // CAMBIAR PASO
+    // MONTO
 
-    function showStep(stepNumber) {
+    if (amountInput) {
 
-        currentStep =
-            stepNumber;
+        amountInput.addEventListener("input", () => {
+
+            let value =
+                amountInput.value;
+
+            value =
+                value.replace(/[^0-9.]/g, "");
+
+            const parts =
+                value.split(".");
+
+            if (parts.length > 2) {
+
+                value =
+                    parts[0] +
+                    "." +
+                    parts.slice(1).join("");
+
+            }
+
+            const finalParts =
+                value.split(".");
+
+            if (finalParts[1]) {
+
+                value =
+                    finalParts[0] +
+                    "." +
+                    finalParts[1].substring(0, 2);
+
+            }
+
+            amountInput.value =
+                value;
+
+            document
+                .querySelectorAll(".amount-option")
+                .forEach(button => {
+
+                    button.classList.remove("selected");
+
+                });
+
+        });
 
 
-        document
-            .querySelectorAll(".donation-step-content")
-            .forEach(section => {
+        amountInput.addEventListener("blur", () => {
 
-                section.classList.remove("active");
+            const value =
+                parseFloat(amountInput.value);
 
-            });
+            if (
+                !isNaN(value) &&
+                value > 0
+            ) {
 
+                amountInput.value =
+                    value.toFixed(2);
 
-        const selectedSection =
-            document.querySelector(
-                `.donation-step-content[data-content="${stepNumber}"]`
-            );
+            }
 
-
-        if (selectedSection) {
-
-            selectedSection.classList.add("active");
-
-        }
-
-
-        document
-            .querySelectorAll(".step")
-            .forEach(step => {
-
-                const number =
-                    Number(step.dataset.step);
-
-
-                step.classList.toggle(
-                    "active",
-                    number <= stepNumber
-                );
-
-            });
-
-
-        hideAlert();
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
 
     }
 
-
-    // BOTONES SIGUIENTE
-
-    document
-        .querySelectorAll(".btn-next")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const nextStep =
-                    Number(button.dataset.next);
-
-
-                if (
-                    currentStep === 1 &&
-                    !validateStepOne()
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    currentStep === 2 &&
-                    !validateStepTwo()
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    currentStep === 3 &&
-                    !validateStepThree()
-                ) {
-
-                    return;
-
-                }
-
-
-                if (nextStep === 4) {
-
-                    updateSummary();
-
-                }
-
-
-                showStep(nextStep);
-
-            });
-
-        });
-
-
-    // BOTONES REGRESAR
-
-    document
-        .querySelectorAll(".btn-back")
-        .forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const previousStep =
-                    Number(button.dataset.back);
-
-
-                showStep(previousStep);
-
-            });
-
-        });
-
-
-    // MONTOS PREDEFINIDOS
 
     document
         .querySelectorAll(".amount-option")
@@ -834,14 +717,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const amount =
                     Number(button.dataset.amount);
 
-
                 if (amountInput) {
 
                     amountInput.value =
                         amount.toFixed(2);
 
                 }
-
 
                 document
                     .querySelectorAll(".amount-option")
@@ -853,32 +734,154 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     });
 
-
-                button.classList.add(
-                    "selected"
-                );
+                button.classList.add("selected");
 
             });
 
         });
 
 
-    // OTRO MONTO
+    // TELÉFONO
 
-    if (amountInput) {
+    if (phoneInput) {
 
-        amountInput.addEventListener("input", () => {
+        phoneInput.addEventListener("input", () => {
 
-            document
-                .querySelectorAll(".amount-option")
-                .forEach(button => {
+            phoneInput.value =
+                phoneInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
 
-                    button.classList.remove(
-                        "selected"
-                    );
+        });
 
-                });
+    }
 
+
+    // TARJETA
+
+    if (cardNumber) {
+
+        cardNumber.addEventListener("input", () => {
+
+            let value =
+                cardNumber.value
+                    .replace(/\D/g, "")
+                    .slice(0, 16);
+
+            let formatted = "";
+
+            for (
+                let i = 0;
+                i < value.length;
+                i++
+            ) {
+
+                if (
+                    i > 0 &&
+                    i % 4 === 0
+                ) {
+                    formatted += " ";
+                }
+
+                formatted += value[i];
+
+            }
+
+            cardNumber.value =
+                formatted;
+
+        });
+
+    }
+
+
+    // FECHA DE VENCIMIENTO
+
+    if (cardExpiry) {
+
+        cardExpiry.addEventListener("input", () => {
+
+            let value =
+                cardExpiry.value
+                    .replace(/\D/g, "")
+                    .slice(0, 4);
+
+            if (value.length >= 3) {
+
+                value =
+                    value.substring(0, 2) +
+                    "/" +
+                    value.substring(2);
+
+            }
+
+            cardExpiry.value =
+                value;
+
+        });
+
+    }
+
+
+    // CVV
+
+    if (cardCvv) {
+
+        cardCvv.addEventListener("input", () => {
+
+            cardCvv.value =
+                cardCvv.value
+                    .replace(/\D/g, "")
+                    .slice(0, 4);
+
+        });
+
+    }
+
+
+    // MOSTRAR PASO
+
+    function showStep(stepNumber) {
+
+        currentStep =
+            stepNumber;
+
+        document
+            .querySelectorAll(".donation-step-content")
+            .forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+        const selectedSection =
+            document.querySelector(
+                `.donation-step-content[data-content="${stepNumber}"]`
+            );
+
+        if (selectedSection) {
+            selectedSection.classList.add("active");
+        }
+
+        document
+            .querySelectorAll(".step")
+            .forEach(step => {
+
+                const number =
+                    Number(step.dataset.step);
+
+                step.classList.toggle(
+                    "active",
+                    number <= stepNumber
+                );
+
+            });
+
+        hideAlert();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
 
     }
@@ -890,29 +893,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let valid = true;
 
-
         const amountError =
-            document.querySelector("#amountError");
+            document.getElementById("amountError");
 
         const frequencyError =
-            document.querySelector("#frequencyError");
-
+            document.getElementById("frequencyError");
 
         if (amountError) {
             amountError.textContent = "";
         }
 
-
         if (frequencyError) {
             frequencyError.textContent = "";
         }
 
-
         const amount =
-            parseFloat(
-                amountInput.value.replace(",", ".")
-            );
-
+            amountInput
+                ? parseFloat(amountInput.value)
+                : 0;
 
         if (
             isNaN(amount) ||
@@ -922,27 +920,18 @@ document.addEventListener("DOMContentLoaded", () => {
             if (amountError) {
 
                 amountError.textContent =
-                    "Ingresa un monto válido.";
+                    "Ingresa un monto mayor a $0.00.";
 
             }
-
-
-            showAlert(
-                "Monto inválido",
-                "Ingresa una cantidad mayor a $0.00 MXN."
-            );
-
 
             valid = false;
 
         }
 
-
         const frequency =
             document.querySelector(
                 'input[name="frequency"]:checked'
             );
-
 
         if (!frequency) {
 
@@ -953,17 +942,162 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
+            valid = false;
+
+        }
+
+        if (!valid) {
 
             showAlert(
-                "Selecciona una frecuencia",
-                "Elige si deseas donar una vez, semanal o mensualmente."
+                "Completa la donación",
+                "Ingresa un monto válido y selecciona la frecuencia."
             );
 
+        }
+
+        return valid;
+
+    }
+
+
+    // VALIDAR TARJETA
+
+    function validateCard() {
+
+        let valid = true;
+
+        const cardNumberError =
+            document.getElementById("cardNumberError");
+
+        const cardExpiryError =
+            document.getElementById("cardExpiryError");
+
+        const cardCvvError =
+            document.getElementById("cardCvvError");
+
+        if (cardNumberError) {
+            cardNumberError.textContent = "";
+        }
+
+        if (cardExpiryError) {
+            cardExpiryError.textContent = "";
+        }
+
+        if (cardCvvError) {
+            cardCvvError.textContent = "";
+        }
+
+        const number =
+            cardNumber
+                ? cardNumber.value.replace(/\s/g, "")
+                : "";
+
+        if (!/^\d{16}$/.test(number)) {
+
+            if (cardNumberError) {
+
+                cardNumberError.textContent =
+                    "Ingresa los 16 dígitos de tu tarjeta.";
+
+            }
 
             valid = false;
 
         }
 
+        const expiry =
+            cardExpiry
+                ? cardExpiry.value
+                : "";
+
+        if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+
+            if (cardExpiryError) {
+
+                cardExpiryError.textContent =
+                    "Usa el formato MM/AA.";
+
+            }
+
+            valid = false;
+
+        } else {
+
+            const [month, year] =
+                expiry.split("/").map(Number);
+
+            const currentDate =
+                new Date();
+
+            const currentYear =
+                currentDate.getFullYear() % 100;
+
+            const currentMonth =
+                currentDate.getMonth() + 1;
+
+            if (
+                month < 1 ||
+                month > 12
+            ) {
+
+                if (cardExpiryError) {
+
+                    cardExpiryError.textContent =
+                        "El mes debe estar entre 01 y 12.";
+
+                }
+
+                valid = false;
+
+            }
+
+            if (
+                year < currentYear ||
+                (
+                    year === currentYear &&
+                    month < currentMonth
+                )
+            ) {
+
+                if (cardExpiryError) {
+
+                    cardExpiryError.textContent =
+                        "La tarjeta está vencida.";
+
+                }
+
+                valid = false;
+
+            }
+
+        }
+
+        const cvv =
+            cardCvv
+                ? cardCvv.value
+                : "";
+
+        if (!/^\d{3,4}$/.test(cvv)) {
+
+            if (cardCvvError) {
+
+                cardCvvError.textContent =
+                    "Ingresa un CVV válido.";
+
+            }
+
+            valid = false;
+
+        }
+
+        if (!valid) {
+
+            showAlert(
+                "Datos de tarjeta incorrectos",
+                "Revisa el número, la fecha de vencimiento y el CVV."
+            );
+
+        }
 
         return valid;
 
@@ -979,15 +1113,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 'input[name="paymentMethod"]:checked'
             );
 
-
         const paymentError =
-            document.querySelector("#paymentError");
-
+            document.getElementById("paymentError");
 
         if (paymentError) {
             paymentError.textContent = "";
         }
-
 
         if (!payment) {
 
@@ -998,17 +1129,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
             showAlert(
                 "Método de donación",
-                "Selecciona transferencia, depósito o PayPal."
+                "Selecciona una opción para continuar."
             );
-
 
             return false;
 
         }
 
+        if (
+            payment.value === "tarjeta"
+        ) {
+
+            return validateCard();
+
+        }
 
         return true;
 
@@ -1021,41 +1157,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let valid = true;
 
-
         const name =
-            document.querySelector("#name");
+            document.getElementById("name");
 
         const email =
-            document.querySelector("#email");
+            document.getElementById("email");
 
         const phone =
-            document.querySelector("#phone");
-
+            document.getElementById("phone");
 
         const nameError =
-            document.querySelector("#nameError");
+            document.getElementById("nameError");
 
         const emailError =
-            document.querySelector("#emailError");
+            document.getElementById("emailError");
 
         const phoneError =
-            document.querySelector("#phoneError");
+            document.getElementById("phoneError");
 
+        const proofError =
+            document.getElementById("proofError");
 
         if (nameError) {
             nameError.textContent = "";
         }
 
-
         if (emailError) {
             emailError.textContent = "";
         }
-
 
         if (phoneError) {
             phoneError.textContent = "";
         }
 
+        if (proofError) {
+            proofError.textContent = "";
+        }
 
         if (
             !name ||
@@ -1073,21 +1210,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         const emailRegex =
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
         if (
             !email ||
-            email.value.trim() === "" ||
-            !emailRegex.test(email.value.trim())
+            !emailRegex.test(
+                email.value.trim()
+            )
         ) {
 
             if (emailError) {
 
                 emailError.textContent =
-                    "Ingresa un correo electrónico válido.";
+                    "Ingresa un correo válido.";
 
             }
 
@@ -1095,50 +1231,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         if (
             phone &&
-            phone.value.trim() !== ""
+            phone.value.trim() !== "" &&
+            !/^\d{10}$/.test(
+                phone.value.trim()
+            )
         ) {
 
-            if (
-                !/^\d{10}$/.test(
-                    phone.value.trim()
-                )
-            ) {
+            if (phoneError) {
 
-                if (phoneError) {
-
-                    phoneError.textContent =
-                        "El teléfono debe contener exactamente 10 números.";
-
-                }
-
-                valid = false;
+                phoneError.textContent =
+                    "Debe contener 10 dígitos.";
 
             }
 
-        }
+            valid = false;
 
+        }
 
         const payment =
             document.querySelector(
                 'input[name="paymentMethod"]:checked'
             );
-
-
-        const proof =
-            document.querySelector("#proof");
-
-
-        const proofError =
-            document.querySelector("#proofError");
-
-
-        if (proofError) {
-            proofError.textContent = "";
-        }
-
 
         if (
             payment &&
@@ -1163,20 +1278,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 valid = false;
 
+            } else {
+
+                const file =
+                    proof.files[0];
+
+                const maxSize =
+                    5 * 1024 * 1024;
+
+                if (file.size > maxSize) {
+
+                    if (proofError) {
+
+                        proofError.textContent =
+                            "El archivo no debe superar los 5 MB.";
+
+                    }
+
+                    valid = false;
+
+                }
+
             }
 
         }
-
 
         if (!valid) {
 
             showAlert(
                 "Revisa tus datos",
-                "Hay información pendiente o incorrecta. Corrígela antes de continuar."
+                "Hay información pendiente o incorrecta."
             );
 
         }
-
 
         return valid;
 
@@ -1190,40 +1324,50 @@ document.addEventListener("DOMContentLoaded", () => {
             'input[name="paymentMethod"]'
         );
 
-
     paymentInputs.forEach(input => {
 
         input.addEventListener("change", () => {
 
             const transferencia =
-                document.querySelector("#transferenciaInfo");
+                document.getElementById(
+                    "transferenciaInfo"
+                );
 
             const deposito =
-                document.querySelector("#depositoInfo");
+                document.getElementById(
+                    "depositoInfo"
+                );
+
+            const tarjeta =
+                document.getElementById(
+                    "tarjetaInfo"
+                );
 
             const paypal =
-                document.querySelector("#paypalInfo");
+                document.getElementById(
+                    "paypalInfo"
+                );
 
-            const proofField =
-                document.querySelector("#proofField");
+            [
+                transferencia,
+                deposito,
+                tarjeta,
+                paypal
+            ].forEach(element => {
 
+                if (element) {
+                    element.classList.remove("active");
+                }
 
-            if (transferencia) {
-                transferencia.classList.remove("active");
+            });
+
+            if (proofField) {
+                proofField.style.display = "none";
             }
 
-
-            if (deposito) {
-                deposito.classList.remove("active");
-            }
-
-
-            if (paypal) {
-                paypal.classList.remove("active");
-            }
-
-
-            if (input.value === "transferencia") {
+            if (
+                input.value === "transferencia"
+            ) {
 
                 if (transferencia) {
                     transferencia.classList.add("active");
@@ -1235,8 +1379,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            if (input.value === "deposito") {
+            if (
+                input.value === "deposito"
+            ) {
 
                 if (deposito) {
                     deposito.classList.add("active");
@@ -1248,15 +1393,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
+            if (
+                input.value === "tarjeta"
+            ) {
 
-            if (input.value === "paypal") {
+                if (tarjeta) {
+                    tarjeta.classList.add("active");
+                }
+
+            }
+
+            if (
+                input.value === "paypal"
+            ) {
 
                 if (paypal) {
                     paypal.classList.add("active");
-                }
-
-                if (proofField) {
-                    proofField.style.display = "none";
                 }
 
             }
@@ -1272,44 +1424,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const amount =
             parseFloat(
-                amountInput.value.replace(",", ".")
+                amountInput.value
             );
-
 
         const frequency =
             document.querySelector(
                 'input[name="frequency"]:checked'
             );
 
-
         const payment =
             document.querySelector(
                 'input[name="paymentMethod"]:checked'
             );
 
-
         const name =
-            document.querySelector("#name");
+            document.getElementById("name");
 
         const email =
-            document.querySelector("#email");
-
+            document.getElementById("email");
 
         const summaryAmount =
-            document.querySelector("#summaryAmount");
+            document.getElementById("summaryAmount");
 
         const summaryFrequency =
-            document.querySelector("#summaryFrequency");
+            document.getElementById("summaryFrequency");
 
         const summaryPayment =
-            document.querySelector("#summaryPayment");
+            document.getElementById("summaryPayment");
 
         const summaryName =
-            document.querySelector("#summaryName");
+            document.getElementById("summaryName");
 
         const summaryEmail =
-            document.querySelector("#summaryEmail");
-
+            document.getElementById("summaryEmail");
 
         if (summaryAmount) {
 
@@ -1318,17 +1465,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
         const frequencyNames = {
 
             una_vez: "Una vez",
-
             semanal: "Semanal",
-
             mensual: "Mensual"
 
         };
-
 
         if (
             summaryFrequency &&
@@ -1336,11 +1479,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             summaryFrequency.textContent =
-                frequencyNames[frequency.value] ||
-                frequency.value;
+                frequencyNames[
+                    frequency.value
+                ];
 
         }
-
 
         const paymentNames = {
 
@@ -1350,11 +1493,13 @@ document.addEventListener("DOMContentLoaded", () => {
             deposito:
                 "Depósito bancario",
 
+            tarjeta:
+                "Tarjeta",
+
             paypal:
                 "PayPal"
 
         };
-
 
         if (
             summaryPayment &&
@@ -1362,11 +1507,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             summaryPayment.textContent =
-                paymentNames[payment.value] ||
-                payment.value;
+                paymentNames[
+                    payment.value
+                ];
 
         }
-
 
         if (
             summaryName &&
@@ -1377,7 +1522,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 name.value.trim();
 
         }
-
 
         if (
             summaryEmail &&
@@ -1392,26 +1536,89 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ENVIAR DONACIÓN
+    // BOTONES SIGUIENTE
+
+    document
+        .querySelectorAll(".btn-next")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const nextStep =
+                    Number(
+                        button.dataset.next
+                    );
+
+                if (
+                    currentStep === 1 &&
+                    !validateStepOne()
+                ) {
+                    return;
+                }
+
+                if (
+                    currentStep === 2 &&
+                    !validateStepTwo()
+                ) {
+                    return;
+                }
+
+                if (
+                    currentStep === 3 &&
+                    !validateStepThree()
+                ) {
+                    return;
+                }
+
+                if (nextStep === 4) {
+                    updateSummary();
+                }
+
+                showStep(nextStep);
+
+            });
+
+        });
+
+
+    // BOTONES REGRESAR
+
+    document
+        .querySelectorAll(".btn-back")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const previousStep =
+                    Number(
+                        button.dataset.back
+                    );
+
+                showStep(previousStep);
+
+            });
+
+        });
+
+
+    // ENVIAR FORMULARIO
 
     form.addEventListener(
         "submit",
         async event => {
 
             event.preventDefault();
-
+            if (window.requireAuth && !window.requireAuth('realizar un donativo')) return;
 
             const terms =
-                document.querySelector("#terms");
+                document.getElementById("terms");
 
             const termsError =
-                document.querySelector("#termsError");
-
+                document.getElementById("termsError");
 
             if (termsError) {
                 termsError.textContent = "";
             }
-
 
             if (
                 !terms ||
@@ -1425,59 +1632,103 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-
                 showAlert(
                     "Confirma tu donación",
-                    "Debes aceptar la confirmación antes de finalizar."
+                    "Debes confirmar que los datos son correctos."
                 );
-
 
                 return;
 
             }
 
-
             const amount =
                 parseFloat(
-                    amountInput.value.replace(",", ".")
+                    amountInput.value
                 );
-
 
             const frequency =
                 document.querySelector(
                     'input[name="frequency"]:checked'
                 );
 
-
             const payment =
                 document.querySelector(
                     'input[name="paymentMethod"]:checked'
                 );
 
-
             const name =
-                document.querySelector("#name");
+                document.getElementById("name");
 
             const email =
-                document.querySelector("#email");
+                document.getElementById("email");
 
             const phone =
-                document.querySelector("#phone");
+                document.getElementById("phone");
 
+            if (
+                !payment ||
+                !frequency ||
+                !amount ||
+                amount <= 0
+            ) {
+
+                showAlert(
+                    "Datos incompletos",
+                    "Revisa la información de tu donación."
+                );
+
+                return;
+
+            }
+
+
+            // PAYPAL
+
+            if (
+                payment.value === "paypal"
+            ) {
+
+                showAlert(
+                    "PayPal",
+                    "La integración con PayPal se realizará mediante el backend."
+                );
+
+                return;
+
+            }
+
+
+            // TARJETA
+
+            if (
+                payment.value === "tarjeta"
+            ) {
+
+                if (!validateCard()) {
+                    return;
+                }
+
+                showAlert(
+                    "Pago con tarjeta",
+                    "La conexión con el proveedor de pagos se integrará mediante Spring Boot."
+                );
+
+                return;
+
+            }
+
+
+            // TRANSFERENCIA / DEPÓSITO
 
             const donationData = {
 
                 monto: amount,
 
                 frecuencia:
-                    frequency
-                        ? frequency.value
-                        : "",
+                    frequency.value,
 
                 paymentMethod:
-                    payment
-                        ? payment.value
-                        : "",
+                    payment.value,
 
                 name:
                     name
@@ -1496,45 +1747,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             };
 
-
-            console.log(
-                "Donación:",
-                donationData
-            );
-
-
-            // PAYPAL
-
-            if (
-                payment &&
-                payment.value === "paypal"
-            ) {
-
-                console.log(
-                    "Preparando pago con PayPal:",
-                    donationData
-                );
-
-
-                showAlert(
-                    "PayPal",
-                    "La conexión con PayPal se integrará mediante Spring Boot."
-                );
-
-
-                return;
-
-            }
-
-
-            // TRANSFERENCIA Y DEPÓSITO
-
             const registrada =
                 registrarDonacion(
                     amount,
                     donationData
                 );
-
 
             if (!registrada) {
 
@@ -1543,21 +1760,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     "No fue posible registrar la donación."
                 );
 
-
                 return;
 
             }
 
 
-            form.style.display =
-                "none";
+            // FINALIZAR DONACIÓN
 
+            form.style.display = "none";
 
             if (successScreen) {
 
-                successScreen.classList.add(
-                    "active"
-                );
+                successScreen.classList.add("show");
+
+                successScreen.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
 
             }
 
@@ -1565,7 +1784,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // INICIALIZAR FORMULARIO
+    // INICIAR EN PASO 1
 
     showStep(1);
 
@@ -1578,25 +1797,26 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        actualizarMeta();
+        const currentAmount =
+            document.getElementById(
+                "currentAmount"
+            );
 
-    }
-);
+        if (!currentAmount) {
+            return;
+        }
 
+        currentAmount.dataset.valor =
+            0;
 
-// ACTUALIZAR META CUANDO CAMBIA LOCALSTORAGE
+        currentAmount.textContent =
+            "$0.00";
 
-window.addEventListener(
-    "storage",
-    event => {
-
-        if (
-            event.key === "donaciones"
-        ) {
+        setTimeout(() => {
 
             actualizarMeta();
 
-        }
+        }, 300);
 
     }
 );

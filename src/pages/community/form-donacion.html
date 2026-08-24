@@ -4,7 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacer Donación - Marcando Huellitas</title>
+    <title>Formulario de Donación - Marcando Huellitas</title>
+
+    <script>
+        if (!sessionStorage.getItem("usuarioActual")) {
+            alert("Debes iniciar sesión para realizar un donativo.");
+            window.location.href = "../auth/login.html";
+        }
+    </script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
@@ -32,485 +39,625 @@
     <!-- Contenedor del Navbar -->
     <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.." ></div>
 
-    <section class="donation-page">
+<section class="donation-page">
 
-    <div class="donation-wrapper">
-
-
-        <!-- =====================================
-             ENCABEZADO
-             ===================================== -->
-
-        <header class="donation-header">
-
-            <span class="donation-paw">🐾</span>
-
-            <h1>Haz la diferencia</h1>
-
-            <p>
-                Tu donación ayuda a que más perritos y gatitos
-                reciban alimento, cuidados y una segunda oportunidad.
-            </p>
-
-        </header>
+        <div class="donation-wrapper">
 
 
-        <!-- =====================================
-             INDICADOR DE PASOS
-             ===================================== -->
+            <!--ENCABEZADO -->
 
-        <div class="donation-steps">
+            <header class="donation-header">
 
-            <div
-                class="step active"
-                data-step="1"
-            >
-                <span>1</span>
-                <small>Donación</small>
-            </div>
+                <span class="donation-paw">
+                    🐾
+                </span>
 
+                <h1>
+                    Haz la diferencia
+                </h1>
 
-            <div class="step-line"></div>
-
-
-            <div
-                class="step"
-                data-step="2"
-            >
-                <span>2</span>
-                <small>Método</small>
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div
-                class="step"
-                data-step="3"
-            >
-                <span>3</span>
-                <small>Datos</small>
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div
-                class="step"
-                data-step="4"
-            >
-                <span>4</span>
-                <small>Confirmar</small>
-            </div>
-
-        </div>
-
-
-        <!-- =====================================
-             ALERTA
-             ===================================== -->
-
-        <div
-            class="donation-alert"
-            id="donationAlert"
-            role="alert"
-        >
-
-            <span class="alert-icon">
-                ⚠️
-            </span>
-
-
-            <div>
-
-                <strong id="alertTitle">
-                    Algo salió mal
-                </strong>
-
-                <p id="alertMessage">
-                    Revisa la información e inténtalo nuevamente.
+                <p>
+                    Tu donación ayuda a que más perritos y gatitos
+                    reciban alimento, cuidados y una segunda oportunidad.
                 </p>
 
+            </header>
+
+
+            <!-- INDICADOR DE PASOS -->
+
+            <div class="donation-steps">
+
+                <div
+                    class="step active"
+                    data-step="1"
+                >
+
+                    <span>
+                        1
+                    </span>
+
+                    <small>
+                        Donación
+                    </small>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div
+                    class="step"
+                    data-step="2"
+                >
+
+                    <span>
+                        2
+                    </span>
+
+                    <small>
+                        Método
+                    </small>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div
+                    class="step"
+                    data-step="3"
+                >
+
+                    <span>
+                        3
+                    </span>
+
+                    <small>
+                        Datos
+                    </small>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div
+                    class="step"
+                    data-step="4"
+                >
+
+                    <span>
+                        4
+                    </span>
+
+                    <small>
+                        Confirmar
+                    </small>
+
+                </div>
+
             </div>
 
 
-            <button
-                type="button"
-                id="closeAlert"
-                aria-label="Cerrar alerta"
-            >
-                ×
-            </button>
+            <!-- ALERTA -->
 
-        </div>
-
-
-        <!-- =====================================
-             FORMULARIO
-             ===================================== -->
-
-        <form
-            id="donationForm"
-            novalidate
-        >
-
-
-            <!-- =================================
-                 PASO 1
-                 MONTO Y FRECUENCIA
-                 ================================= -->
-
-            <section
-                class="donation-step-content active"
-                data-content="1"
+            <div
+                class="donation-alert"
+                id="donationAlert"
+                role="alert"
             >
 
-                <div class="section-heading">
+                <span class="alert-icon">
+                    ⚠️
+                </span>
 
-                    <h2>
-                        ¿Cuánto quieres donar?
-                    </h2>
 
-                    <p>
-                        Cada aportación cuenta. Elige un monto
-                        o ingresa la cantidad que deseas donar.
+                <div>
+
+                    <strong id="alertTitle">
+                        Algo salió mal
+                    </strong>
+
+                    <p id="alertMessage">
+                        Revisa la información e inténtalo nuevamente.
                     </p>
 
                 </div>
 
 
-                <!-- MONTOS PREDEFINIDOS -->
+                <button
+                    type="button"
+                    id="closeAlert"
+                    aria-label="Cerrar alerta"
+                >
+                    ×
+                </button>
 
-                <div class="amount-options">
-
-                    <button
-                        type="button"
-                        class="amount-option"
-                        data-amount="100"
-                    >
-                        $100
-                    </button>
+            </div>
 
 
-                    <button
-                        type="button"
-                        class="amount-option"
-                        data-amount="250"
-                    >
-                        $250
-                    </button>
+            <!-- FORMULARIO -->
+
+            <form
+                id="donationForm"
+                novalidate
+            >
 
 
-                    <button
-                        type="button"
-                        class="amount-option"
-                        data-amount="500"
-                    >
-                        $500
-                    </button>
+                <!-- PASO 1  DONACIÓN -->
+
+                <section
+                    class="donation-step-content active"
+                    data-content="1"
+                >
+
+                    <div class="section-heading">
+
+                        <h2>
+                            ¿Cuánto quieres donar?
+                        </h2>
+
+                        <p>
+                            Cada aportación cuenta. Elige un monto
+                            o ingresa la cantidad que deseas donar.
+                        </p>
+
+                    </div>
 
 
-                    <button
-                        type="button"
-                        class="amount-option"
-                        data-amount="1000"
-                    >
-                        $1,000
-                    </button>
+                    <!-- MONTOS PREDEFINIDOS -->
 
-                </div>
+                    <div class="amount-options">
 
-
-                <!-- OTRO MONTO -->
-
-                <div class="custom-amount">
-
-                    <label for="amount">
-                        O ingresa otro monto
-                    </label>
+                        <button
+                            type="button"
+                            class="amount-option"
+                            data-amount="100"
+                        >
+                            $100
+                        </button>
 
 
-                    <div class="amount-input">
+                        <button
+                            type="button"
+                            class="amount-option"
+                            data-amount="250"
+                        >
+                            $250
+                        </button>
 
-                        <span>$</span>
 
-                        <input
-                            type="number"
-                            id="amount"
-                            name="amount"
-                            min="1"
-                            step="0.00"
-                            inputmode="numeric"
-                            placeholder="0"
+                        <button
+                            type="button"
+                            class="amount-option"
+                            data-amount="500"
+                        >
+                            $500
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="amount-option"
+                            data-amount="1000"
+                        >
+                            $1,000
+                        </button>
+
+                    </div>
+
+
+                    <!-- OTRO MONTO -->
+
+                    <div class="custom-amount">
+
+                        <label for="amount">
+                            O ingresa otro monto
+                        </label>
+
+
+                        <div class="amount-input">
+
+                            <span>
+                                $
+                            </span>
+
+
+                            <input
+                                type="number"
+                                id="amount"
+                                name="amount"
+                                min="1"
+                                step="0.01"
+                                inputmode="decimal"
+                                placeholder="0"
+                            >
+
+
+                            <span>
+                                MXN
+                            </span>
+
+                        </div>
+
+
+                        <small
+                            class="field-error"
+                            id="amountError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- FRECUENCIA -->
+
+                    <div class="frequency-section">
+
+                        <h3>
+                            ¿Con qué frecuencia quieres donar?
+                        </h3>
+
+
+                        <div class="frequency-options">
+
+
+                            <!-- UNA VEZ -->
+
+                            <label class="frequency-card">
+
+                                <input
+                                    type="radio"
+                                    name="frequency"
+                                    value="una_vez"
+                                >
+
+
+                                <span>
+
+                                    <strong>
+                                        Una vez
+                                    </strong>
+
+                                    <small>
+                                        Una donación única
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+
+                            <!-- SEMANAL -->
+
+                            <label class="frequency-card">
+
+                                <input
+                                    type="radio"
+                                    name="frequency"
+                                    value="semanal"
+                                >
+
+
+                                <span>
+
+                                    <strong>
+                                        Semanal
+                                    </strong>
+
+                                    <small>
+                                        Apoya cada semana
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+
+                            <!-- MENSUAL -->
+
+                            <label class="frequency-card">
+
+                                <input
+                                    type="radio"
+                                    name="frequency"
+                                    value="mensual"
+                                >
+
+
+                                <span>
+
+                                    <strong>
+                                        Mensual
+                                    </strong>
+
+                                    <small>
+                                        Apoya cada mes
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <small
+                            class="field-error"
+                            id="frequencyError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- BOTÓN -->
+
+                    <div class="step-actions">
+
+                        <button
+                            type="button"
+                            class="btn-next"
+                            data-next="2"
                         >
 
-                        <span>MXN</span>
+                            Continuar
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 2 MÉTODO DE DONACIÓN -->
+
+                <section
+                    class="donation-step-content"
+                    data-content="2"
+                >
+
+                    <div class="section-heading">
+
+                        <h2>
+                            ¿Cómo quieres donar?
+                        </h2>
+
+                        <p>
+                            Selecciona el método que prefieras.
+                        </p>
+
+                    </div>
+
+
+                    <!-- MÉTODOS DE PAGO -->
+
+                    <div class="payment-methods">
+
+
+                        <!-- TRANSFERENCIA -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="transferencia"
+                            >
+
+
+                            <span class="payment-icon">
+                                🏦
+                            </span>
+
+
+                            <strong>
+                                Transferencia
+                            </strong>
+
+
+                            <small>
+                                Desde tu cuenta bancaria
+                            </small>
+
+                        </label>
+
+
+                        <!-- DEPÓSITO -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="deposito"
+                            >
+
+
+                            <span class="payment-icon">
+                                💵
+                            </span>
+
+
+                            <strong>
+                                Depósito
+                            </strong>
+
+
+                            <small>
+                                En sucursal o tienda
+                            </small>
+
+                        </label>
+
+
+                        <!-- TARJETA -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="tarjeta"
+                            >
+
+
+                            <span class="payment-icon">
+                                💳
+                            </span>
+
+
+                            <strong>
+                                Tarjeta
+                            </strong>
+
+
+                            <small>
+                                Crédito o débito
+                            </small>
+
+                        </label>
+
+
+                        <!-- PAYPAL -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="paypal"
+                            >
+
+
+                            <span class="payment-icon">
+                                💙
+                            </span>
+
+
+                            <strong>
+                                PayPal
+                            </strong>
+
+
+                            <small>
+                                Pago seguro en línea
+                            </small>
+
+                        </label>
 
                     </div>
 
 
                     <small
                         class="field-error"
-                        id="amountError"
+                        id="paymentError"
                     ></small>
-
-                </div>
-
-
-                <!-- FRECUENCIA -->
-
-                <div class="frequency-section">
-
-                    <h3>
-                        ¿Con qué frecuencia quieres donar?
-                    </h3>
-
-
-                    <div class="frequency-options">
-
-
-                        <!-- UNA VEZ -->
-
-                        <label class="frequency-card">
-
-                            <input
-                                type="radio"
-                                name="frequency"
-                                value="una_vez"
-                            >
-
-                            <span>
-
-                                <strong>
-                                    Una vez
-                                </strong>
-
-                                <small>
-                                    Una donación única
-                                </small>
-
-                            </span>
-
-                        </label>
-
-
-                        <!-- SEMANAL -->
-
-                        <label class="frequency-card">
-
-                            <input
-                                type="radio"
-                                name="frequency"
-                                value="semanal"
-                            >
-
-                            <span>
-
-                                <strong>
-                                    Semanal
-                                </strong>
-
-                                <small>
-                                    Apoya cada semana
-                                </small>
-
-                            </span>
-
-                        </label>
-
-
-                        <!-- MENSUAL -->
-
-                        <label class="frequency-card">
-
-                            <input
-                                type="radio"
-                                name="frequency"
-                                value="mensual"
-                            >
-
-                            <span>
-
-                                <strong>
-                                    Mensual
-                                </strong>
-
-                                <small>
-                                    Apoya cada mes
-                                </small>
-
-                            </span>
-
-                        </label>
-
-                    </div>
-
-
-                    <small
-                        class="field-error"
-                        id="frequencyError"
-                    ></small>
-
-                </div>
-
-
-                <!-- BOTÓN -->
-
-                <div class="step-actions">
-
-                    <button
-                        type="button"
-                        class="btn-next"
-                        data-next="2"
-                    >
-                        Continuar
-                        <span>→</span>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================
-                 PASO 2
-                 MÉTODO DE DONACIÓN
-                 ================================= -->
-
-            <section
-                class="donation-step-content"
-                data-content="2"
-            >
-
-                <div class="section-heading">
-
-                    <h2>
-                        ¿Cómo quieres donar?
-                    </h2>
-
-                    <p>
-                        Selecciona el método que prefieras.
-                    </p>
-
-                </div>
-
-
-                <!-- =================================
-                     MÉTODOS
-                     ================================= -->
-
-                <div class="payment-methods">
 
 
                     <!-- TRANSFERENCIA -->
 
-                    <label class="payment-option">
+                    <div
+                        class="payment-info"
+                        id="transferenciaInfo"
+                    >
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="transferencia"
-                        >
+                        <div class="payment-info-header">
 
-                        <span class="payment-icon">
-                            🏦
-                        </span>
-
-                        <strong>
-                            Transferencia
-                        </strong>
-
-                        <small>
-                            Desde tu cuenta bancaria
-                        </small>
-
-                    </label>
+                            <span>
+                                🏦
+                            </span>
 
 
-                    <!-- DEPÓSITO -->
+                            <div>
 
-                    <label class="payment-option">
+                                <h3>
+                                    Transferencia bancaria
+                                </h3>
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="deposito"
-                        >
+                                <p>
+                                    Realiza la transferencia utilizando
+                                    los siguientes datos.
+                                </p>
 
-                        <span class="payment-icon">
-                            💵
-                        </span>
+                            </div>
 
-                        <strong>
-                            Depósito
-                        </strong>
-
-                        <small>
-                            En sucursal o tienda
-                        </small>
-
-                    </label>
+                        </div>
 
 
-                    <!-- PAYPAL -->
+                        <div class="bank-data">
 
-                    <label class="payment-option">
+                            <div>
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="paypal"
-                        >
+                                <small>
+                                    Banco
+                                </small>
 
-                        <span class="payment-icon">
-                            💙
-                        </span>
+                                <strong>
+                                    BBVA
+                                </strong>
 
-                        <strong>
-                            PayPal
-                        </strong>
-
-                        <small>
-                            Pago seguro en línea
-                        </small>
-
-                    </label>
-
-                </div>
+                            </div>
 
 
-                <small
-                    class="field-error"
-                    id="paymentError"
-                ></small>
+                            <div>
+
+                                <small>
+                                    Beneficiario
+                                </small>
+
+                                <strong>
+                                    Marcando Huellitas A.C.
+                                </strong>
+
+                            </div>
 
 
-                <!-- =================================
-                     TRANSFERENCIA
-                     ================================= -->
+                            <div>
 
-                <div
-                    class="payment-info"
-                    id="transferenciaInfo"
-                >
+                                <small>
+                                    CLABE
+                                </small>
 
-                    <div class="payment-info-header">
+                                <strong>
+                                    000000000000000000
+                                </strong>
 
-                        <span>
-                            🏦
-                        </span>
+                            </div>
 
-                        <div>
 
-                            <h3>
-                                Transferencia bancaria
-                            </h3>
+                            <div>
+
+                                <small>
+                                    Concepto
+                                </small>
+
+                                <strong>
+                                    DONACION
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-notice">
+
+                            <span>
+                                💡
+                            </span>
+
 
                             <p>
-                                Realiza la transferencia utilizando
-                                los siguientes datos.
+                                Después de realizar la transferencia,
+                                conserva tu comprobante para registrar
+                                correctamente tu donación.
                             </p>
 
                         </div>
@@ -518,603 +665,690 @@
                     </div>
 
 
-                    <div class="bank-data">
+                    <!-- DEPÓSITO -->
 
-                        <div>
+                    <div
+                        class="payment-info"
+                        id="depositoInfo"
+                    >
 
-                            <small>
-                                Banco
-                            </small>
+                        <div class="payment-info-header">
 
-                            <strong>
-                                BBVA
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <small>
-                                Beneficiario
-                            </small>
-
-                            <strong>
-                                Marcando Huellitas A.C.
-                            </strong>
-
-                        </div>
+                            <span>
+                                💵
+                            </span>
 
 
-                        <div>
+                            <div>
 
-                            <small>
-                                CLABE
-                            </small>
+                                <h3>
+                                    Depósito bancario
+                                </h3>
 
-                            <strong>
-                                000000000000000000
-                            </strong>
+                                <p>
+                                    Realiza tu depósito utilizando
+                                    los siguientes datos.
+                                </p>
+
+                            </div>
 
                         </div>
 
 
-                        <div>
+                        <div class="bank-data">
 
-                            <small>
-                                Concepto
-                            </small>
+                            <div>
 
-                            <strong>
-                                DONACION
-                            </strong>
+                                <small>
+                                    Banco
+                                </small>
+
+                                <strong>
+                                    BBVA
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    Beneficiario
+                                </small>
+
+                                <strong>
+                                    Marcando Huellitas A.C.
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    Número de cuenta
+                                </small>
+
+                                <strong>
+                                    0000000000
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-notice">
+
+                            <span>
+                                💡
+                            </span>
+
+
+                            <p>
+                                Guarda tu comprobante o número de folio
+                                para registrar tu donación.
+                            </p>
 
                         </div>
 
                     </div>
 
 
-                    <div class="payment-notice">
+                    <!-- TARJETA -->
 
-                        <span>
-                            💡
-                        </span>
+                    <div
+                        class="payment-info"
+                        id="tarjetaInfo"
+                    >
+
+                        <div class="payment-info-header">
+
+                            <span>
+                                💳
+                            </span>
+
+
+                            <div>
+
+                                <h3>
+                                    Donación con tarjeta
+                                </h3>
+
+                                <p>
+                                    Ingresa los datos de tu tarjeta
+                                    para realizar tu donación.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-fields">
+
+
+                            <!-- NÚMERO DE TARJETA -->
+
+                            <div class="field card-number-field">
+
+                                <label for="cardNumber">
+                                    Número de tarjeta
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    id="cardNumber"
+                                    name="cardNumber"
+                                    inputmode="numeric"
+                                    autocomplete="cc-number"
+                                    maxlength="19"
+                                    placeholder="0000 0000 0000 0000"
+                                >
+
+
+                                <small
+                                    class="field-error"
+                                    id="cardNumberError"
+                                ></small>
+
+                            </div>
+
+
+                            <!-- FECHA + CVV -->
+
+                            <div class="card-row">
+
+
+                                <!-- FECHA -->
+
+                                <div class="field">
+
+                                    <label for="cardExpiry">
+                                        Fecha de vencimiento
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="cardExpiry"
+                                        name="cardExpiry"
+                                        inputmode="numeric"
+                                        autocomplete="cc-exp"
+                                        maxlength="5"
+                                        placeholder="MM/AA"
+                                    >
+
+
+                                    <small
+                                        class="field-error"
+                                        id="cardExpiryError"
+                                    ></small>
+
+                                </div>
+
+
+                                <!-- CVV -->
+
+                                <div class="field">
+
+                                    <label for="cardCvv">
+                                        CVV
+                                    </label>
+
+
+                                    <input
+                                        type="password"
+                                        id="cardCvv"
+                                        name="cardCvv"
+                                        inputmode="numeric"
+                                        autocomplete="cc-csc"
+                                        maxlength="4"
+                                        placeholder="•••"
+                                    >
+
+
+                                    <small
+                                        class="field-error"
+                                        id="cardCvvError"
+                                    ></small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SEGURIDAD -->
+
+                            <div class="payment-notice">
+
+                                <span>
+                                    🔒
+                                </span>
+
+
+                                <p>
+                                    Tus datos de tarjeta deben procesarse
+                                    mediante un proveedor de pagos seguro.
+                                    Marcando Huellitas no debe almacenar
+                                    el número completo de la tarjeta ni el CVV.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYPAL -->
+
+                    <div
+                        class="payment-info"
+                        id="paypalInfo"
+                    >
+
+                        <div class="payment-info-header">
+
+                            <span>
+                                💙
+                            </span>
+
+
+                            <div>
+
+                                <h3>
+                                    Donación mediante PayPal
+                                </h3>
+
+                                <p>
+                                    Serás dirigido a PayPal para completar
+                                    tu donación de manera segura.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="paypal-message">
+
+                            <strong>
+                                Tu información está protegida.
+                            </strong>
+
+
+                            <p>
+                                Marcando Huellitas no necesita conocer
+                                tu contraseña ni los datos de tu tarjeta.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOTONES -->
+
+                    <div class="step-actions">
+
+                        <button
+                            type="button"
+                            class="btn-back"
+                            data-back="1"
+                        >
+                            ← Regresar
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn-next"
+                            data-next="3"
+                        >
+
+                            Continuar
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PASO 3 DATOS DEL DONANTE-->
+
+                <section
+                    class="donation-step-content"
+                    data-content="3"
+                >
+
+                    <div class="section-heading">
+
+                        <h2>
+                            Tus datos
+                        </h2>
 
                         <p>
-                            Después de realizar la transferencia,
-                            conserva tu comprobante para registrar
+                            Necesitamos algunos datos para registrar
                             correctamente tu donación.
                         </p>
 
                     </div>
 
-                </div>
+
+                    <div class="donor-fields">
 
 
-                <!-- =================================
-                     DEPÓSITO
-                     ================================= -->
+                        <!-- NOMBRE -->
 
-                <div
-                    class="payment-info"
-                    id="depositoInfo"
-                >
+                        <div class="field">
 
-                    <div class="payment-info-header">
-
-                        <span>
-                            💵
-                        </span>
-
-                        <div>
-
-                            <h3>
-                                Depósito bancario
-                            </h3>
-
-                            <p>
-                                Realiza tu depósito utilizando
-                                los siguientes datos.
-                            </p>
-
-                        </div>
-
-                    </div>
+                            <label for="name">
+                                Nombre completo
+                            </label>
 
 
-                    <div class="bank-data">
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Tu nombre completo"
+                                autocomplete="name"
+                            >
 
-                        <div>
 
-                            <small>
-                                Banco
-                            </small>
-
-                            <strong>
-                                BBVA
-                            </strong>
+                            <small
+                                class="field-error"
+                                id="nameError"
+                            ></small>
 
                         </div>
 
 
-                        <div>
+                        <!-- CORREO -->
 
-                            <small>
-                                Beneficiario
-                            </small>
+                        <div class="field">
 
-                            <strong>
-                                Marcando Huellitas A.C.
-                            </strong>
+                            <label for="email">
+                                Correo electrónico
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="correo@ejemplo.com"
+                                autocomplete="email"
+                            >
+
+
+                            <small
+                                class="field-error"
+                                id="emailError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- TELÉFONO -->
+
+                        <div class="field">
+
+                            <label for="phone">
+
+                                Teléfono
+
+                                <span>
+                                    (opcional)
+                                </span>
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                maxlength="10"
+                                inputmode="numeric"
+                                placeholder="10 dígitos"
+                                autocomplete="tel"
+                            >
+
+
+                            <small
+                                class="field-error"
+                                id="phoneError"
+                            ></small>
 
                         </div>
 
 
-                        <div>
+                        <!-- COMPROBANTE -->
 
-                            <small>
-                                Número de cuenta
-                            </small>
-
-                            <strong>
-                                0000000000
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="payment-notice">
-
-                        <span>
-                            💡
-                        </span>
-
-                        <p>
-                            Guarda tu comprobante o número de folio
-                            para registrar tu donación.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================
-                     PAYPAL
-                     ================================= -->
-
-                <div
-                    class="payment-info"
-                    id="paypalInfo"
-                >
-
-                    <div class="payment-info-header">
-
-                        <span>
-                            💙
-                        </span>
-
-                        <div>
-
-                            <h3>
-                                Donación mediante PayPal
-                            </h3>
-
-                            <p>
-                                Serás dirigido a PayPal para completar
-                                tu donación de manera segura.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="paypal-message">
-
-                        <strong>
-                            Tu información está protegida.
-                        </strong>
-
-                        <p>
-                            Marcando Huellitas no necesita conocer
-                            tu contraseña ni los datos de tu tarjeta.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- BOTONES -->
-
-                <div class="step-actions">
-
-                    <button
-                        type="button"
-                        class="btn-back"
-                        data-back="1"
-                    >
-                        ← Regresar
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="btn-next"
-                        data-next="3"
-                    >
-                        Continuar
-                        <span>→</span>
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================
-                 PASO 3
-                 DATOS DEL DONANTE
-                 ================================= -->
-
-            <section
-                class="donation-step-content"
-                data-content="3"
-            >
-
-                <div class="section-heading">
-
-                    <h2>
-                        Tus datos
-                    </h2>
-
-                    <p>
-                        Necesitamos algunos datos para registrar
-                        correctamente tu donación.
-                    </p>
-
-                </div>
-
-
-                <div class="donor-fields">
-
-
-                    <!-- NOMBRE -->
-
-                    <div class="field">
-
-                        <label for="name">
-                            Nombre completo
-                        </label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Tu nombre completo"
-                            autocomplete="name"
+                        <div
+                            class="field proof-field"
+                            id="proofField"
                         >
 
-                        <small
-                            class="field-error"
-                            id="nameError"
-                        ></small>
+                            <label for="proof">
+                                Comprobante de donación
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="proof"
+                                name="proof"
+                                accept=".jpg,.jpeg,.png,.pdf"
+                            >
+
+
+                            <small>
+                                JPG, PNG o PDF. Máximo 5 MB.
+                            </small>
+
+
+                            <small
+                                class="field-error"
+                                id="proofError"
+                            ></small>
+
+                        </div>
 
                     </div>
 
 
-                    <!-- CORREO -->
+                    <!-- BOTONES -->
 
-                    <div class="field">
+                    <div class="step-actions">
 
-                        <label for="email">
-                            Correo electrónico
-                        </label>
+                        <button
+                            type="button"
+                            class="btn-back"
+                            data-back="2"
+                        >
+                            ← Regresar
+                        </button>
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="correo@ejemplo.com"
-                            autocomplete="email"
+
+                        <button
+                            type="button"
+                            class="btn-next"
+                            data-next="4"
                         >
 
-                        <small
-                            class="field-error"
-                            id="emailError"
-                        ></small>
-
-                    </div>
-
-
-                    <!-- TELÉFONO -->
-
-                    <div class="field">
-
-                        <label for="phone">
-
-                            Teléfono
+                            Revisar donación
 
                             <span>
-                                (opcional)
+                                →
                             </span>
 
-                        </label>
+                        </button>
 
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            maxlength="10"
-                            inputmode="numeric"
-                            placeholder="10 dígitos"
-                            autocomplete="tel"
-                        >
+                    </div>
 
-                        <small
-                            class="field-error"
-                            id="phoneError"
-                        ></small>
+                </section>
+
+
+                <!-- PASO 4 CONFIRMAR -->
+
+                <section
+                    class="donation-step-content"
+                    data-content="4"
+                >
+
+                    <div class="section-heading">
+
+                        <h2>
+                            Confirma tu donación
+                        </h2>
+
+                        <p>
+                            Revisa que la información sea correcta
+                            antes de finalizar.
+                        </p>
 
                     </div>
 
 
-                    <!-- COMPROBANTE -->
+                    <!-- RESUMEN -->
 
-                    <div
-                        class="field proof-field"
-                        id="proofField"
-                    >
+                    <div class="donation-summary">
 
-                        <label for="proof">
-                            Comprobante de donación
-                        </label>
 
-                        <input
-                            type="file"
-                            id="proof"
-                            name="proof"
-                            accept=".jpg,.jpeg,.png,.pdf"
-                        >
+                        <div class="summary-row">
 
-                        <small>
-                            JPG, PNG o PDF. Máximo 5 MB.
-                        </small>
+                            <span>
+                                Monto
+                            </span>
 
-                        <small
-                            class="field-error"
-                            id="proofError"
-                        ></small>
+
+                            <strong id="summaryAmount">
+                                $0.00 MXN
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Frecuencia
+                            </span>
+
+
+                            <strong id="summaryFrequency">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Método
+                            </span>
+
+
+                            <strong id="summaryPayment">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Donante
+                            </span>
+
+
+                            <strong id="summaryName">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Correo
+                            </span>
+
+
+                            <strong id="summaryEmail">
+                                -
+                            </strong>
+
+                        </div>
 
                     </div>
 
-                </div>
+
+                    <!-- CONFIRMACIÓN -->
+
+                    <label class="terms">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                        >
 
 
-                <!-- BOTONES -->
+                        <span>
+                            Confirmo que los datos proporcionados
+                            son correctos y deseo realizar esta donación.
+                        </span>
 
-                <div class="step-actions">
-
-                    <button
-                        type="button"
-                        class="btn-back"
-                        data-back="2"
-                    >
-                        ← Regresar
-                    </button>
+                    </label>
 
 
-                    <button
-                        type="button"
-                        class="btn-next"
-                        data-next="4"
-                    >
-                        Revisar donación
-                        <span>→</span>
-                    </button>
-
-                </div>
-
-            </section>
+                    <small
+                        class="field-error"
+                        id="termsError"
+                    ></small>
 
 
-            <!-- =================================
-                 PASO 4
-                 RESUMEN
-                 ================================= -->
+                    <!-- BOTONES -->
 
-            <section
-                class="donation-step-content"
-                data-content="4"
+                    <div class="step-actions">
+
+                        <button
+                            type="button"
+                            class="btn-back"
+                            data-back="3"
+                        >
+                            ← Regresar
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn-donate"
+                        >
+                            Confirmar donación 🐾
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </form>
+
+
+            <!-- DONACIÓN EXITOSA -->
+
+            <div
+                class="donation-success"
+                id="donationSuccess"
             >
 
-                <div class="section-heading">
-
-                    <h2>
-                        Confirma tu donación
-                    </h2>
-
-                    <p>
-                        Revisa que la información sea correcta
-                        antes de finalizar.
-                    </p>
-
+                <div class="success-icon">
+                    🐾
                 </div>
 
 
-                <!-- RESUMEN -->
-
-                <div class="donation-summary">
-
-
-                    <div class="summary-row">
-
-                        <span>
-                            Monto
-                        </span>
-
-                        <strong id="summaryAmount">
-                            $0 MXN
-                        </strong>
-
-                    </div>
+                <h2>
+                    ¡Gracias por ayudar!
+                </h2>
 
 
-                    <div class="summary-row">
-
-                        <span>
-                            Frecuencia
-                        </span>
-
-                        <strong id="summaryFrequency">
-                            -
-                        </strong>
-
-                    </div>
+                <p>
+                    Tu donación ha sido registrada correctamente.
+                </p>
 
 
-                    <div class="summary-row">
-
-                        <span>
-                            Método
-                        </span>
-
-                        <strong id="summaryPayment">
-                            -
-                        </strong>
-
-                    </div>
+                <p>
+                    Gracias por formar parte de
+                    <strong>
+                        Marcando Huellitas
+                    </strong>.
+                </p>
 
 
-                    <div class="summary-row">
+                <a
+                    href="../community/donaciones.html"
+                    class="btn-home"
+                >
+                    ← Volver a Marcando Huellitas
+                </a>
 
-                        <span>
-                            Donante
-                        </span>
-
-                        <strong id="summaryName">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div class="summary-row">
-
-                        <span>
-                            Correo
-                        </span>
-
-                        <strong id="summaryEmail">
-                            -
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CONFIRMACIÓN -->
-
-                <label class="terms">
-
-                    <input
-                        type="checkbox"
-                        id="terms"
-                    >
-
-                    <span>
-                        Confirmo que los datos proporcionados
-                        son correctos y deseo realizar esta donación.
-                    </span>
-
-                </label>
-
-
-                <small
-                    class="field-error"
-                    id="termsError"
-                ></small>
-
-
-                <!-- BOTONES -->
-
-                <div class="step-actions">
-
-                    <button
-                        type="button"
-                        class="btn-back"
-                        data-back="3"
-                    >
-                        ← Regresar
-                    </button>
-
-
-                    <button
-                        type="submit"
-                        class="btn-donate"
-                    >
-                        Confirmar donación 🐾
-                    </button>
-
-                </div>
-
-            </section>
-
-        </form>
-
-
-        <!--  DONACIÓN EXITOSA -->
-
-        <div
-            class="donation-success"
-            id="donationSuccess"
-        >
-
-            <div class="success-icon">
-                🐾
             </div>
-
-
-            <h2>
-                ¡Gracias por ayudar!
-            </h2>
-
-
-            <p>
-                Tu donación ha sido registrada correctamente.
-            </p>
-
-
-            <p>
-                Gracias por formar parte de
-                <strong>Marcando Huellitas</strong>.
-            </p>
-
-
-            <a
-                href="../pages/donaciones.html"
-                class="btn-home"
-            >
-                ← Volver a Marcando Huellitas
-            </a>
 
         </div>
 
-    </div>
-
-</section>
-
-
-
-
-
-
-
-
+    </section>
 
     <!-- Contenedor del Footer -->
     <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.." ></div>

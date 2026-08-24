@@ -1,452 +1,104 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    const layoutContainers =
-        document.querySelectorAll("[data-template]");
+﻿document.addEventListener("DOMContentLoaded", () => {
+    const layoutContainers = document.querySelectorAll("[data-template]");
 
     layoutContainers.forEach(container => {
+        const templatePath = container.getAttribute("data-template");
+        const rootPath = container.getAttribute("data-root") || container.getAttribute("data-base");
+        const srcPath = container.getAttribute("data-src") || container.getAttribute("data-base");
 
-        const templatePath =
-            container.getAttribute("data-template");
-
-        const rootPath =
-            container.getAttribute("data-root") ||
-            container.getAttribute("data-base");
-
-        const srcPath =
-            container.getAttribute("data-src") ||
-            container.getAttribute("data-base");
-
-
-        fetch(templatePath)
-
+        fetch(templatePath, { cache: 'no-cache' })
             .then(response => {
-
                 if (!response.ok) {
-                    throw new Error(
-                        `Failed to load ${templatePath}: ${response.statusText}`
-                    );
+                    throw new Error(`Failed to load ${templatePath}: ${response.statusText}`);
                 }
-
                 return response.text();
-
             })
-
             .then(html => {
-
-                // =========================================
-                // REEMPLAZAR VARIABLES DE RUTA
-                // =========================================
-
-                let replacedHtml =
-                    html.replace(
-                        /\{\{root\}\}/g,
-                        rootPath
-                    );
-
-                replacedHtml =
-                    replacedHtml.replace(
-                        /\{\{src\}\}/g,
-                        srcPath
-                    );
-
-                replacedHtml =
-                    replacedHtml.replace(
-                        /\{\{base\}\}/g,
-                        rootPath
-                    );
-
+                let replacedHtml = html.replace(/\{\{root\}\}/g, rootPath);
+                replacedHtml = replacedHtml.replace(/\{\{src\}\}/g, srcPath);
+                replacedHtml = replacedHtml.replace(/\{\{base\}\}/g, rootPath);
                 container.innerHTML = replacedHtml;
 
+                const currentPage = window.location.pathname;
+                const currentFile = currentPage.split('/').pop().replace('.html', '') || 'index';
 
-                // =========================================
-                // MARCAR ENLACE ACTIVO
-                // =========================================
-
-                const currentPage =
-                    window.location.pathname;
-
-                const currentFile =
-                    currentPage
-                        .split("/")
-                        .pop()
-                        .replace(".html", "") ||
-                    "index";
-
-
-                const navLinks =
-                    container.querySelectorAll(
-                        "[data-nav-page]"
-                    );
-
-
+                const navLinks = container.querySelectorAll('[data-nav-page]');
                 navLinks.forEach(link => {
-
-                    const linkPage =
-                        link.getAttribute(
-                            "data-nav-page"
-                        );
-
-                    link.classList.remove(
-                        "active-link",
-                        "text-secondary"
-                    );
-
-
-                    if (
-                        linkPage === currentFile ||
-                        (
-                            currentFile === "" &&
-                            linkPage === "index"
-                        )
-                    ) {
-
-                        link.classList.add(
-                            "active-link"
-                        );
-
+                    const linkPage = link.getAttribute('data-nav-page');
+                    link.classList.remove('active-link', 'text-secondary');
+                    if (linkPage === currentFile || (currentFile === '' && linkPage === 'index')) {
+                        link.classList.add('active-link');
                     } else {
-
-                        link.classList.add(
-                            "text-secondary"
-                        );
-
+                        link.classList.add('text-secondary');
                     }
-
                 });
 
-
-                // =========================================
-                // AUTENTICACIÓN DEL NAVBAR
-                // =========================================
-
+                // Leer sesion de forma segura
                 let usuarioActual = null;
-
                 try {
-
-                    const usuarioGuardado =
-                        sessionStorage.getItem(
-                            "usuarioActual"
-                        );
-
-                    if (usuarioGuardado) {
-
-                        usuarioActual =
-                            JSON.parse(
-                                usuarioGuardado
-                            );
-
+                    const raw = sessionStorage.getItem("usuarioActual");
+                    if (raw && raw !== "[object Object]") {
+                        usuarioActual = JSON.parse(raw);
+                    } else if (raw === "[object Object]") {
+                        sessionStorage.removeItem("usuarioActual");
                     }
-
-                } catch (error) {
-
-                    console.error(
-                        "Error al leer usuarioActual:",
-                        error
-                    );
-
+                } catch (e) {
+                    sessionStorage.removeItem("usuarioActual");
                 }
 
+                console.log("[Layout] rol:", usuarioActual ? usuarioActual.rol : "SIN SESION");
 
-                // Elementos normales del navbar
-
-                const navLoginBtn =
-                    container.querySelector(
-                        "#navLoginBtn"
-                    );
-
-                const navUserDropdown =
-                    container.querySelector(
-                        "#navUserDropdown"
-                    );
-
-                const navUserName =
-                    container.querySelector(
-                        "#navUserName"
-                    );
-
-                const navUserHeader =
-                    container.querySelector(
-                        "#navUserHeader"
-                    );
-
-                const navLogoutBtn =
-                    container.querySelector(
-                        "#navLogoutBtn"
-                    );
-
-
-                // =========================================
-                // ELEMENTOS EXCLUSIVOS DE ADMIN
-                // =========================================
-
-                const adminItems =
-                    container.querySelectorAll(
-                        ".nav-admin-item"
-                    );
-
-                const adminDividers =
-                    container.querySelectorAll(
-                        ".nav-admin-divider"
-                    );
-
-
-                // =========================================
-                // USUARIO LOGUEADO
-                // =========================================
+                const navLoginBtn = container.querySelector("#navLoginBtn");
+                const navUserDropdown = container.querySelector("#navUserDropdown");
+                const navUserName = container.querySelector("#navUserName");
+                const navUserHeader = container.querySelector("#navUserHeader");
+                const navLogoutBtn = container.querySelector("#navLogoutBtn");
 
                 if (usuarioActual) {
-
-                    // Ocultar botón iniciar sesión
-
-                    if (navLoginBtn) {
-
-                        navLoginBtn.classList.add(
-                            "d-none"
-                        );
-
-                    }
-
-
-                    // Mostrar dropdown del usuario
-
+                    if (navLoginBtn) navLoginBtn.classList.add("d-none");
                     if (navUserDropdown) {
+                        navUserDropdown.classList.remove("d-none");
+                        if (navUserName) navUserName.textContent = usuarioActual.nombre.split(" ")[0];
+                        if (navUserHeader) navUserHeader.textContent = "Hola, " + usuarioActual.nombre;
 
-                        navUserDropdown.classList.remove(
-                            "d-none"
-                        );
-
-                    }
-
-
-                    // Mostrar primer nombre
-
-                    if (
-                        navUserName &&
-                        usuarioActual.nombre
-                    ) {
-
-                        navUserName.textContent =
-                            usuarioActual.nombre
-                                .split(" ")[0];
-
-                    }
-
-
-                    // Saludo del dropdown
-
-                    if (
-                        navUserHeader &&
-                        usuarioActual.nombre
-                    ) {
-
-                        navUserHeader.textContent =
-                            "Hola, " +
-                            usuarioActual.nombre;
-
-                    }
-
-
-                    // =========================================
-                    // MOSTRAR OPCIONES ADMIN
-                    // =========================================
-
-                    if (
-                        usuarioActual.rol === "admin"
-                    ) {
-
-                        adminItems.forEach(item => {
-
-                            item.classList.remove(
-                                "d-none"
-                            );
-
-                        });
-
-
-                        adminDividers.forEach(
-                            divider => {
-
-                                divider.classList.remove(
-                                    "d-none"
-                                );
-
-                            }
-                        );
-
-                    } else {
-
-                        adminItems.forEach(item => {
-
-                            item.classList.add(
-                                "d-none"
-                            );
-
-                        });
-
-
-                        adminDividers.forEach(
-                            divider => {
-
-                                divider.classList.add(
-                                    "d-none"
-                                );
-
-                            }
-                        );
-
-                    }
-
-
-                    // =========================================
-                    // CERRAR SESIÓN
-                    // =========================================
-
-                    if (navLogoutBtn) {
-
-                        navLogoutBtn.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                sessionStorage.removeItem(
-                                    "usuarioActual"
-                                );
-
-                                window.location.href =
-                                    rootPath +
-                                    "/index.html";
-
-                            }
-                        );
-
-                    }
-
-
-                } else {
-
-                    // =========================================
-                    // USUARIO NO LOGUEADO
-                    // =========================================
-
-                    if (navLoginBtn) {
-
-                        navLoginBtn.classList.remove(
-                            "d-none"
-                        );
-
-                    }
-
-
-                    if (navUserDropdown) {
-
-                        navUserDropdown.classList.add(
-                            "d-none"
-                        );
-
-                    }
-
-
-                    // Ocultar siempre opciones admin
-
-                    adminItems.forEach(item => {
-
-                        item.classList.add(
-                            "d-none"
-                        );
-
-                    });
-
-
-                    adminDividers.forEach(
-                        divider => {
-
-                            divider.classList.add(
-                                "d-none"
-                            );
-
+                        if (usuarioActual.rol && usuarioActual.rol.toUpperCase() === "ADMIN") {
+                            console.log("[Layout] Admin detectado - mostrando opciones");
+                            const adminItems = container.querySelectorAll(".nav-admin-item");
+                            const adminDividers = container.querySelectorAll(".nav-admin-divider");
+                            console.log("[Layout] Items admin:", adminItems.length);
+                            adminItems.forEach(item => item.classList.remove("d-none"));
+                            adminDividers.forEach(item => item.classList.remove("d-none"));
                         }
-                    );
-
+                    }
+                    if (navLogoutBtn) {
+                        navLogoutBtn.addEventListener("click", function (e) {
+                            e.preventDefault();
+                            sessionStorage.removeItem("usuarioActual");
+                            window.location.reload();
+                        });
+                    }
+                } else {
+                    if (navLoginBtn) navLoginBtn.classList.remove("d-none");
+                    if (navUserDropdown) navUserDropdown.classList.add("d-none");
                 }
 
-
-                // =========================================
-                // ANIMACIÓN DE SALIDA
-                // =========================================
-
-                container
-                    .querySelectorAll("a[href]")
-                    .forEach(link => {
-
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        // Solo enlaces internos reales
-
-                        if (
-                            href &&
-                            !href.startsWith("#") &&
-                            !href.startsWith("http") &&
-                            !href.startsWith("mailto") &&
-                            !href.startsWith("javascript")
-                        ) {
-
-                            link.addEventListener(
-                                "click",
-                                function (event) {
-
-                                    event.preventDefault();
-
-                                    const destination =
-                                        this.getAttribute(
-                                            "href"
-                                        );
-
-
-                                    document.body.classList.add(
-                                        "page-leaving"
-                                    );
-
-
-                                    setTimeout(
-                                        () => {
-
-                                            window.location.href =
-                                                destination;
-
-                                        },
-                                        260
-                                    );
-
-                                }
-                            );
-
-                        }
-
-                    });
-
+                container.querySelectorAll('a[href]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto')) {
+                        link.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const destination = this.getAttribute('href');
+                            document.body.classList.add('page-leaving');
+                            setTimeout(() => {
+                                window.location.href = destination;
+                            }, 260);
+                        });
+                    }
+                });
             })
-
             .catch(error => {
-
-                console.error(
-                    "Error loading layout:",
-                    error
-                );
-
-                container.innerHTML = `
-                    <p class="text-danger text-center">
-                        Error cargando el componente:
-                        ${templatePath}
-                    </p>
-                `;
-
+                console.error("Error loading layout:", error);
+                container.innerHTML = `<p class="text-danger text-center">Error cargando el componente: ${templatePath}</p>`;
             });
-
     });
-
 });
