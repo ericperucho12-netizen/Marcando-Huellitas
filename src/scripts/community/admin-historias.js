@@ -59,10 +59,14 @@ async function cargarHistorias() {
                     <button class="btn btn-sm btn-success me-1" onclick="cambiarEstado(${historia.id}, 'APROBADO')" title="Aprobar" ${historia.estado === 'APROBADO' ? 'disabled' : ''}>
                         <i class="bi bi-check-lg"></i>
                     </button>
-                    <button class="btn btn-sm btn-danger" onclick="cambiarEstado(${historia.id}, 'RECHAZADO')" title="Rechazar" ${historia.estado === 'RECHAZADO' ? 'disabled' : ''}>
+                    <button class="btn btn-sm btn-danger me-1" onclick="cambiarEstado(${historia.id}, 'RECHAZADO')" title="Rechazar" ${historia.estado === 'RECHAZADO' ? 'disabled' : ''}>
                         <i class="bi bi-x-lg"></i>
                     </button>
-                </td>
+                    <button class="btn btn-sm btn-secondary" onclick="eliminarHistoria(${historia.id})" title="Eliminar">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <!-- 
+                        --></td>
             `;
             tbody.appendChild(fila);
         });
@@ -247,5 +251,48 @@ async function guardarEdicion() {
     } catch (error) {
         console.error(error);
         Swal.fire('Error', 'No se pudo editar la historia.', 'error');
+    }
+}
+
+
+async function eliminarHistoria(id) {
+    const confirmacion = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto! La historia se eliminará permanentemente.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+            const token = sessionStorage.getItem('jwtToken');
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+
+            const response = await fetch(`http://localhost:8080/api/historias_exito/${id}`, {
+                method: 'DELETE',
+                headers: headers
+            });
+
+            if (response.ok) {
+                Swal.fire({
+                    title: '¡Eliminada!',
+                    text: 'La historia ha sido eliminada.',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+                cargarHistorias();
+            } else {
+                throw new Error('Error al eliminar');
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'No se pudo eliminar la historia.', 'error');
+        }
     }
 }
