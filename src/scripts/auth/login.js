@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
 
     const formulario = document.getElementById("loginForm");
 
@@ -85,10 +85,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const usuarioEncontrado = await response.json();
+            const authResponse = await response.json();
+            const token = authResponse.token;
+            const usuarioEncontrado = authResponse.usuario;
 
-            // guardar sesión del usuario actual
+            sessionStorage.removeItem("usuarioActual");
+            sessionStorage.removeItem("jwtToken");
+            
             sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
+            sessionStorage.setItem("jwtToken", token);
 
             mostrarAlertaExito("¡Bienvenido/a de nuevo, " + usuarioEncontrado.nombre + "!");
 
