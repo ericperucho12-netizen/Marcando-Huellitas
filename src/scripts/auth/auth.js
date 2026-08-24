@@ -1,4 +1,4 @@
-
+﻿
 // Handle Google Sign-In Callback (Global function so the script can call it)
 window.handleGoogleLogin = async function(response) {
     const loginAlertContainer = document.getElementById("loginAlertContainer");
@@ -29,12 +29,18 @@ window.handleGoogleLogin = async function(response) {
             return;
         }
         
-        const usuarioEncontrado = await fetchRes.json();
+        const authResponse = await fetchRes.json();
+        const token = authResponse.token;
+        const usuarioEncontrado = authResponse.usuario;
+
         console.log("✅ [Google Login] Backend devolvió:", JSON.stringify(usuarioEncontrado));
         console.log("✅ [Google Login] Rol recibido:", usuarioEncontrado.rol);
-        // Borramos cualquier sesión anterior para asegurar datos frescos (incluyendo rol)
+        
         sessionStorage.removeItem("usuarioActual");
+        sessionStorage.removeItem("jwtToken");
+        
         sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
+        sessionStorage.setItem("jwtToken", token);
         console.log("✅ [Google Login] Guardado en sessionStorage:", sessionStorage.getItem("usuarioActual"));
         
         loginAlertContainer.innerHTML = `

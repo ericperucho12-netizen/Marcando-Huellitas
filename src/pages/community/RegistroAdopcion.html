@@ -103,6 +103,11 @@
                                     <span class="field-error"></span>
                                 </div>
 
+                                <div id="alertaExito" class="alert alert-success alert-dismissible fade d-none mb-3" role="alert">
+                                    Se ha registrado con éxito
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary w-100">Enviar solicitud de adopcion</button>
                                 <p id="formStatus" class="mt-3 text-center fw-bold"></p>
                             </form>
@@ -115,7 +120,7 @@
 
     <!-- TOAST DECORATIVO -->
     <div class="toast" id="toast">
-        <div class="toast__icon">✅</div>
+        <div class="toast__icon"></div>
         <div>
             <div class="toast__title fw-bold">¡Solicitud enviada!</div>
             <div class="toast__message text-muted">Tu registro se envio con exito.</div>
@@ -250,7 +255,7 @@
 
         if (title) toast.querySelector(".toast__title").textContent = title;
         if (message) toast.querySelector(".toast__message").textContent = message;
-        toast.querySelector(".toast__icon").textContent = isError ? "⚠️" : "✅";
+        toast.querySelector(".toast__icon").textContent = isError ? "" : "";
 
         toast.classList.add("toast--visible");
         clearTimeout(toastTimeout);
@@ -298,10 +303,11 @@
 
             if (!response.ok) throw new Error("Error al enviar solicitud");
 
-            showToast({
-                title: "¡Solicitud guardada!",
-                message: "Tu registro de adopción y cita se enviaron con éxito.",
-            });
+            const alertaExito = document.getElementById("alertaExito");
+            if (alertaExito) {
+                alertaExito.classList.remove("d-none");
+                alertaExito.classList.add("show");
+            }
 
             setTimeout(() => {
                 window.location.href = "adpciones.html";

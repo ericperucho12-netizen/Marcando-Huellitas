@@ -91,18 +91,21 @@ document.addEventListener("DOMContentLoaded", () => {
         '#direcciones': 'section-direcciones',
         '#admin-adopciones': 'section-admin-adopciones',
         '#admin-refugios': 'section-admin-refugios',
-        '#admin-productos': 'section-admin-productos'
+        '#admin-productos': 'section-admin-productos',
+        '#admin-historias': 'section-admin-historias'
     };
 
     const currentHash = window.location.hash;
     if (currentHash && hashMap[currentHash]) {
         // Solo permitir a admin ver pestañas de admin
-        if (currentHash.startsWith('#admin-') && userRole !== "admin") {
+        if (currentHash.startsWith('#admin-') && userRole !== "ADMIN") {
             showSection('section-datos');
-            history.replaceState(null, null, '#datos');
         } else {
             showSection(hashMap[currentHash]);
         }
+    } else {
+        // Si no hay hash válido, mostrar datos por defecto
+        showSection('section-datos');
     }
 
     // Modal de Contraseña (Simulación)
