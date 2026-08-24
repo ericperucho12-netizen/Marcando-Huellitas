@@ -12,42 +12,34 @@ let filtroActual = "TODAS";
 // -----------------------------------------
 // Obtener solicitudes
 // -----------------------------------------
+let solicitudesRefugiosCache = [];
 
-function obtenerSolicitudesRefugios() {
-
+async function obtenerSolicitudesRefugiosAPI() {
     try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                REFUGIOS_SOLICITUDES_STORAGE
-            )
-        ) || [];
-
+        const response = await fetch('http://localhost:8080/api/refugios');
+        if (response.ok) {
+            solicitudesRefugiosCache = await response.json();
+            // Adaptar el campo 'estatus' a 'estadoSolicitud' que usa el frontend
+            solicitudesRefugiosCache = solicitudesRefugiosCache.map(s => ({
+                ...s,
+                estadoSolicitud: s.estatus || 'PENDIENTE'
+            }));
+            renderizarSolicitudes();
+        }
     } catch (error) {
-
-        console.error(
-            "No se pudieron leer las solicitudes:",
-            error
-        );
-
-        return [];
-
+        console.error("Error al obtener refugios de la API:", error);
     }
-
 }
 
+function obtenerSolicitudesRefugios() {
+    return solicitudesRefugiosCache;
+}
 
 // -----------------------------------------
-// Guardar solicitudes
+// Guardar solicitudes (Obsoleto en API)
 // -----------------------------------------
-
 function guardarSolicitudesRefugios(solicitudes) {
-
-    localStorage.setItem(
-        REFUGIOS_SOLICITUDES_STORAGE,
-        JSON.stringify(solicitudes)
-    );
-
+    // No-op, la base de datos se encarga
 }
 
 
@@ -194,51 +186,19 @@ function renderizarSolicitudes() {
             </p>
 
 
-            <div class="admin-solicitud-actions">
-
-                <button
-                    class="admin-btn admin-btn-detalle"
-                    data-action="detalle"
-                    data-id="${solicitud.id}">
-
-                    <i class="bi bi-eye-fill"></i>
-
-                    Ver detalles
-
+            <div class="mt-3 d-flex gap-2 justify-content-center align-items-center border-top pt-3 w-100">
+                <button class="btn btn-sm btn-info" onclick='verRefugio(${JSON.stringify(solicitud).replace(/'/g, "&#39;")})' title="Ver Detalle">
+                    <i class="bi bi-eye text-white"></i>
                 </button>
-
-
-                ${
-                    solicitud.estadoSolicitud === "PENDIENTE"
-                        ? `
-
-                        <button
-                            class="admin-btn admin-btn-aprobar"
-                            data-action="aprobar"
-                            data-id="${solicitud.id}">
-
-                            <i class="bi bi-check-lg"></i>
-
-                            Aprobar
-
-                        </button>
-
-
-                        <button
-                            class="admin-btn admin-btn-rechazar"
-                            data-action="rechazar"
-                            data-id="${solicitud.id}">
-
-                            <i class="bi bi-x-lg"></i>
-
-                            Rechazar
-
-                        </button>
-
-                        `
-                        : ""
-                }
-
+                <button class="btn btn-sm btn-success" onclick="cambiarEstadoSolicitud('${solicitud.id}', 'APROBADA')" title="Aprobar" ${solicitud.estadoSolicitud === 'APROBADA' ? 'disabled' : ''}>
+                    <i class="bi bi-check-lg"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" onclick="cambiarEstadoSolicitud('${solicitud.id}', 'RECHAZADA')" title="Rechazar" ${solicitud.estadoSolicitud === 'RECHAZADA' ? 'disabled' : ''}>
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="eliminarRefugio('${solicitud.id}')" title="Eliminar">
+                    <i class="bi bi-trash"></i>
+                </button>
             </div>
 
         `;
@@ -306,7 +266,7 @@ function actualizarContadores() {
 // Cambiar estado
 // -----------------------------------------
 
-function cambiarEstadoSolicitud(
+async function cambiarEstadoSolicitud(
     id,
     nuevoEstado
 ) {
@@ -314,41 +274,31 @@ function cambiarEstadoSolicitud(
     const solicitudes =
         obtenerSolicitudesRefugios();
 
-
     const solicitud =
         solicitudes.find(
             item =>
-                Number(item.id) === Number(id)
+                String(item.id) === String(id)
         );
-
 
     if (!solicitud) return;
 
-
-    solicitud.estadoSolicitud =
-        nuevoEstado;
-
-
-    solicitud.fechaRevision =
-        new Date().toISOString();
-
-
-    guardarSolicitudesRefugios(
-        solicitudes
-    );
-
-
-    renderizarSolicitudes();
-
-
-    const mensaje =
-        nuevoEstado === "APROBADA"
-            ? "Solicitud aprobada correctamente."
-            : "Solicitud rechazada.";
-
-
-    mostrarToastAdmin(mensaje);
-
+    try {
+        const payload = { ...solicitud, estatus: nuevoEstado };
+        const response = await fetch(`http://localhost:8080/api/refugios/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+            mostrarToastAdmin(`Estado cambiado a ${nuevoEstado}`);
+            obtenerSolicitudesRefugiosAPI();
+        } else {
+            alert('Error al cambiar el estado en el servidor.');
+        }
+    } catch(e) {
+        alert('Error de conexión con el servidor.');
+    }
 }
 
 
@@ -655,10 +605,132 @@ function inicializarAccionesSolicitudes() {
 }
 
 
-// -----------------------------------------
-// Filtros
-// -----------------------------------------
+// =========================================
+// NUEVAS FUNCIONES PARA REFUGIOS
+// =========================================
 
+function verRefugio(solicitud) {
+    document.getElementById('modalContenidoRefugio').innerHTML = `
+        <form>
+            <div class="text-center mb-4">
+                <img src="${solicitud.imagenUrl || '../../assets/refugios/LaCasitadeCrispin.jpg'}" alt="Foto del Refugio" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombre del Refugio</label>
+                    <input type="text" class="form-control" value="${solicitud.nombre || ''}" readonly>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Responsable</label>
+                    <input type="text" class="form-control" value="${solicitud.responsable || ''}" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" value="${solicitud.correo || ''}" readonly>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" value="${solicitud.telefono || ''}" readonly>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" value="${solicitud.direccion || ''}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estado / Municipio</label>
+                <input type="text" class="form-control" value="${solicitud.estado || ''}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Tipo de Refugio</label>
+                <input type="text" class="form-control" value="${solicitud.tipo || ''}" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" rows="4" readonly>${solicitud.descripcion || ''}</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Sitio Web</label>
+                    <input type="text" class="form-control" value="${solicitud.sitio || 'N/A'}" readonly>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Instagram</label>
+                    <input type="text" class="form-control" value="${solicitud.instagram || 'N/A'}" readonly>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Facebook</label>
+                    <input type="text" class="form-control" value="${solicitud.facebook || 'N/A'}" readonly>
+                </div>
+            </div>
+        </form>
+    `;
+    const modal = new bootstrap.Modal(document.getElementById('verRefugioModal'));
+    modal.show();
+}
+
+function editarRefugio(solicitud) {
+    // Guardar datos temporales para que registro-refugio los pre-llene
+    sessionStorage.setItem('editarRefugio', JSON.stringify(solicitud));
+    window.location.href = '../community/registro-refugio.html?editId=' + solicitud.id;
+}
+
+function guardarEdicionRefugio() {
+    const id = document.getElementById('editRefugioId').value;
+    const nombre = document.getElementById('editRefugioNombre').value;
+    const descripcion = document.getElementById('editRefugioDescripcion').value;
+    const telefono = document.getElementById('editRefugioTelefono').value;
+    const direccion = document.getElementById('editRefugioDireccion').value;
+    
+    const solicitudes = obtenerSolicitudesRefugios();
+    const index = solicitudes.findIndex(item => String(item.id) === String(id));
+    if (index === -1) return;
+    
+    solicitudes[index].nombre = nombre;
+    solicitudes[index].descripcion = descripcion;
+    solicitudes[index].telefono = telefono;
+    solicitudes[index].direccion = direccion;
+    
+    guardarSolicitudesRefugios(solicitudes);
+    renderizarSolicitudes();
+    
+    const modal = bootstrap.Modal.getInstance(document.getElementById('editarRefugioModal'));
+    modal.hide();
+    Swal.fire('¡Actualizado!', 'El refugio ha sido modificado exitosamente.', 'success');
+}
+
+async function eliminarRefugio(id) {
+    const confirmacion = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Se eliminará esta solicitud permanentemente!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+            const response = await fetch(`http://localhost:8080/api/refugios/${id}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                obtenerSolicitudesRefugiosAPI();
+                Swal.fire('¡Eliminada!', 'La solicitud ha sido eliminada.', 'success');
+            } else {
+                Swal.fire('Error', 'No se pudo eliminar la solicitud.', 'error');
+            }
+        } catch (e) {
+            Swal.fire('Error', 'Error de conexión con el servidor.', 'error');
+        }
+    }
+}
+
+// Inicializar Filtros
 function inicializarFiltros() {
 
     const botones =
@@ -708,7 +780,7 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        renderizarSolicitudes();
+        obtenerSolicitudesRefugiosAPI();
 
         inicializarAccionesSolicitudes();
 

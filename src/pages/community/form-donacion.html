@@ -32,6 +32,89 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
+
+    <style>
+        .donation-header {
+            background: linear-gradient(135deg, #fdf8c3 0%, #ffe3d8 100%) !important;
+            border-bottom: none !important;
+        }
+        .donation-header h1 {
+            color: #ff69b4 !important;
+            font-family: 'DynaPuff', cursive !important;
+        }
+        .donation-header p {
+            color: #6b5247 !important;
+            font-weight: 600;
+        }
+        .donation-paw {
+            background: #ffffff !important;
+            color: #d14981 !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* Botones estilo Refugios */
+        .donation-btn-primary, .btn-next, .btn-submit {
+            background-color: #ff69b4 !important;
+            border: none !important;
+            color: #ffffff !important;
+            border-radius: 30px !important;
+            transition: all 0.3s !important;
+        }
+        .donation-btn-primary:hover, .btn-next:hover, .btn-submit:hover {
+            background-color: #e55a9e !important;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4) !important;
+            transform: translateY(-2px);
+        }
+        .donation-btn-secondary, .btn-prev {
+            background-color: transparent !important;
+            border: 2px solid #e5dbb0 !important;
+            color: #6b5247 !important;
+            border-radius: 30px !important;
+            transition: all 0.3s !important;
+        }
+        .donation-btn-secondary:hover, .btn-prev:hover {
+            background-color: #e5dbb0 !important;
+        }
+
+        /* Indicadores de pasos */
+        .step.active span {
+            background-color: #ff69b4 !important;
+            border-color: #ff69b4 !important;
+            color: #fff !important;
+        }
+        .step.active small {
+            color: #ff69b4 !important;
+            font-weight: bold;
+        }
+        
+        /* Campos de texto y selección */
+        .form-control, .form-select, .donation-amount-input input {
+            border: 1px solid #f2b58f !important;
+            border-radius: 12px !important;
+        }
+        .form-control:focus, .form-select:focus, .donation-amount-input input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(242, 181, 143, 0.25) !important;
+            border-color: #ff69b4 !important;
+        }
+
+        /* Botones de cantidades */
+        .donation-amount-btn {
+            border: 1px solid #f2b58f !important;
+            color: #6b5247 !important;
+            border-radius: 12px !important;
+        }
+        .donation-amount-btn.active, .donation-amount-btn:hover {
+            background-color: #fcebe2 !important;
+            border-color: #ff69b4 !important;
+            color: #d14981 !important;
+            font-weight: bold;
+        }
+        .donation-type-btn.active {
+            background-color: #fce2e8 !important;
+            border-color: #ff69b4 !important;
+            color: #d14981 !important;
+        }
+    </style>
 </head>
 
 <body data-page="Donaciones">

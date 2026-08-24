@@ -35,6 +35,92 @@
     <!-- Loader Script -->
     <script src="../../scripts/core/loader.js"></script>
 
+    <style>
+        body {
+            background-color: #f7f9fa;
+        }
+        .registro-modal-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+        }
+        .registro-header {
+            background: linear-gradient(135deg, #fdf8c3 0%, #ffe3d8 100%);
+            padding: 40px;
+            position: relative;
+        }
+        .badge-huellitas {
+            background-color: #fce2e8;
+            color: #d14981;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .registro-title {
+            font-family: 'DynaPuff', cursive;
+            color: #ff69b4;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        .registro-subtitle {
+            color: #6b5247;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .registro-body {
+            padding: 40px;
+            background: #ffffff;
+        }
+        .form-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #6b5247;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .form-control, .form-select {
+            border: 1px solid #f2b58f;
+            border-radius: 12px;
+            padding: 12px 15px;
+            font-family: 'Nunito', sans-serif;
+            color: #4a4a4a;
+            background-color: #ffffff;
+        }
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(242, 181, 143, 0.25);
+            border-color: #ff69b4;
+        }
+        .btn-submit {
+            background-color: #ff69b4;
+            border: none;
+            color: #ffffff;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background-color: #e55a9e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+        }
+    </style>
 </head>
 
 <body>
@@ -43,80 +129,78 @@
     <div data-template="../../layout/navbar.html" data-root="../../.." data-src="../.."></div>
 
     <!-- FORMULARIO DE ADOPCIÓN -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card shadow">
-                        <div class="card-body p-5">
-                            <h1 class="text-center fw-bold mb-4">Registro de adopción</h1>
-                            <p class="text-center text-muted mb-4">Completa el siguiente formulario para iniciar el proceso de adopcion de tu futuro mejor amigo o amiga.</p>
-                            
-                            <form id="adopcionForm" novalidate>
-                                
-                                <div class="mb-3 form-field" data-field="nombre">
-                                    <label for="nombre" class="form-label">Nombre completo del adoptante</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                    <span class="field-error"></span>
-                                </div>
+    <div class="registro-modal-container">
+        <!-- Encabezado con degradado -->
+        <div class="registro-header text-center">
+            <span class="badge-huellitas">Adopciones</span>
+            <h1 class="registro-title">Registro de adopción</h1>
+            <p class="registro-subtitle mb-0">Completa el siguiente formulario para iniciar el proceso de adopción de tu futuro mejor amigo o amiga.</p>
+        </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-3 form-field" data-field="email">
-                                        <label for="email" class="form-label">Correo electronico</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
-                                        <span class="field-error"></span>
-                                    </div>
-                                    <div class="col-md-6 mb-3 form-field" data-field="telefono">
-                                        <label for="telefono" class="form-label">Telefono</label>
-                                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="5512345678" required>
-                                        <span class="field-error"></span>
-                                    </div>
-                                </div>
+        <div class="registro-body">
+            <form id="adopcionForm" novalidate>
+                
+                <div class="mb-3 form-field" data-field="nombre">
+                    <label for="nombre" class="form-label">Nombre completo del adoptante</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <span class="field-error"></span>
+                </div>
 
-                                <div class="mb-3 form-field" data-field="mascotaId">
-                                    <label for="mascotaId" class="form-label">Mascota que deseas adoptar</label>
-                                    <select class="form-select" id="mascotaId" name="mascotaId" required>
-                                        <option value="" selected disabled>Cargando mascotas...</option>
-                                    </select>
-                                    <span class="field-error"></span>
-                                </div>
-
-                                <div class="mb-3 form-field" data-field="espacio">
-                                    <label for="espacio" class="form-label">¿Cuentas con espacio adecuado para la mascota?</label>
-                                    <select class="form-select" id="espacio" name="espacio" required>
-                                        <option value="" selected disabled>Selecciona una opcion</option>
-                                        <option value="si">Si</option>
-                                        <option value="no">No</option>
-                                    </select>
-                                    <span class="field-error"></span>
-                                </div>
-
-                                <div class="mb-3 form-field" data-field="fechaCita">
-                                    <label for="fechaCita" class="form-label">Fecha y hora para sacar cita (Lunes a Viernes de 9:00 am a 6:00 pm)</label>
-                                    <input type="datetime-local" class="form-control" id="fechaCita" name="fechaCita" required>
-                                    <span class="field-error"></span>
-                                </div>
-
-                                <div class="mb-4 form-field" data-field="razones">
-                                    <label for="razones" class="form-label">¿Por que deseas adoptar?</label>
-                                    <textarea class="form-control" id="razones" name="razones" rows="3" required></textarea>
-                                    <span class="field-error"></span>
-                                </div>
-
-                                <div id="alertaExito" class="alert alert-success alert-dismissible fade d-none mb-3" role="alert">
-                                    Se ha registrado con éxito
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100">Enviar solicitud de adopcion</button>
-                                <p id="formStatus" class="mt-3 text-center fw-bold"></p>
-                            </form>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3 form-field" data-field="email">
+                        <label for="email" class="form-label">Correo electronico</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <span class="field-error"></span>
+                    </div>
+                    <div class="col-md-6 mb-3 form-field" data-field="telefono">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="5512345678" required>
+                        <span class="field-error"></span>
                     </div>
                 </div>
-            </div>
+
+                <div class="mb-3 form-field" data-field="mascotaId">
+                    <label for="mascotaId" class="form-label">Mascota que deseas adoptar</label>
+                    <select class="form-select" id="mascotaId" name="mascotaId" required>
+                        <option value="" selected disabled>Cargando mascotas...</option>
+                    </select>
+                    <span class="field-error"></span>
+                </div>
+
+                <div class="mb-3 form-field" data-field="espacio">
+                    <label for="espacio" class="form-label">¿Cuentas con espacio adecuado para la mascota?</label>
+                    <select class="form-select" id="espacio" name="espacio" required>
+                        <option value="" selected disabled>Selecciona una opcion</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                    </select>
+                    <span class="field-error"></span>
+                </div>
+
+                <div class="mb-3 form-field" data-field="fechaCita">
+                    <label for="fechaCita" class="form-label">Fecha y hora para sacar cita (Lunes a Viernes de 9:00 am a 6:00 pm)</label>
+                    <input type="datetime-local" class="form-control" id="fechaCita" name="fechaCita" required>
+                    <span class="field-error"></span>
+                </div>
+
+                <div class="mb-4 form-field" data-field="razones">
+                    <label for="razones" class="form-label">¿Por qué deseas adoptar?</label>
+                    <textarea class="form-control" id="razones" name="razones" rows="3" required></textarea>
+                    <span class="field-error"></span>
+                </div>
+
+                <div id="alertaExito" class="alert alert-success alert-dismissible fade d-none mb-3" role="alert">
+                    Se ha registrado con éxito
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <button type="submit" class="btn-submit mt-4">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar solicitud de adopción
+                </button>
+                <p id="formStatus" class="mt-3 text-center fw-bold"></p>
+            </form>
         </div>
-    </section>
+    </div>
 
     <!-- TOAST DECORATIVO -->
     <div class="toast" id="toast">
@@ -291,6 +375,7 @@
             telefono: formData.get("telefono"),
             direccion: formData.get("espacio"),
             experiencia: formData.get("razones"),
+            fechaCita: formData.get("fechaCita"),
             estado: "Pendiente"
         };
 
@@ -322,6 +407,76 @@
             });
         }
       });
+    });
+    </script>
+    <!-- Script para pre-llenar formulario en modo edición -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const editId = params.get('editId');
+        if (!editId) return;
+
+        const data = JSON.parse(sessionStorage.getItem('editarAdopcion'));
+        if (!data) return;
+
+        // Cambiar título y botón al modo edición
+        const titulo = document.querySelector('h1');
+        if (titulo) titulo.textContent = 'Editar Solicitud de Adopción';
+        const submitBtn = document.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.textContent = 'Guardar Cambios';
+
+        // Esperar a que carguen las mascotas y pre-llenar los campos
+        const esperarMascotas = setInterval(() => {
+            const selectMascota = document.getElementById('mascotaId');
+            if (selectMascota && selectMascota.options.length > 1) {
+                clearInterval(esperarMascotas);
+
+                document.getElementById('telefono').value = data.telefono || '';
+                document.getElementById('espacio').value = data.direccion || '';
+                document.getElementById('razones').value = data.experiencia || '';
+
+                if (data.fechaCita) {
+                    document.getElementById('fechaCita').value = data.fechaCita.substring(0, 16);
+                }
+                selectMascota.value = data.mascotaId || '';
+            }
+        }, 200);
+
+        // Interceptar el submit para hacer PUT en vez de POST
+        const form = document.getElementById('adopcionForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                const payload = {
+                    ...data,
+                    telefono: document.getElementById('telefono').value,
+                    direccion: document.getElementById('espacio').value,
+                    experiencia: document.getElementById('razones').value,
+                    fechaCita: document.getElementById('fechaCita').value,
+                    mascotaId: parseInt(document.getElementById('mascotaId').value)
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${editId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        sessionStorage.removeItem('editarAdopcion');
+                        alert('¡Solicitud actualizada correctamente!');
+                        window.history.back();
+                    } else {
+                        alert('Error al actualizar la solicitud.');
+                    }
+                } catch (err) {
+                    alert('Error de conexión.');
+                }
+            }, true); // capture=true para ejecutarse antes del listener de validación
+        }
     });
     </script>
 </body>

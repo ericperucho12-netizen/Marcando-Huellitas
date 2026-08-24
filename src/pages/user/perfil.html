@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -615,6 +615,102 @@
         </div>
     </div>
 
+    <!-- Modales para Adopciones -->
+    <div class="modal fade" id="verAdopcionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle de Adopción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContenidoAdopcion" class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editarAdopcionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Solicitud de Adopción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="editAdopcionId">
+                        <div class="mb-3">
+                            <label for="editAdopcionDireccion" class="form-label">Dirección / Espacio</label>
+                            <input type="text" class="form-control" id="editAdopcionDireccion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAdopcionExperiencia" class="form-label">Experiencia / Razones</label>
+                            <textarea class="form-control" id="editAdopcionExperiencia" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAdopcionTelefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="editAdopcionTelefono" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEdicionAdopcion()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales para Refugios -->
+    <div class="modal fade" id="verRefugioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle del Refugio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContenidoRefugio" class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editarRefugioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Refugio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="editRefugioId">
+                        <div class="mb-3">
+                            <label for="editRefugioNombre" class="form-label">Nombre del Refugio</label>
+                            <input type="text" class="form-control" id="editRefugioNombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRefugioDescripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editRefugioDescripcion" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRefugioTelefono" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="editRefugioTelefono" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRefugioDireccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="editRefugioDireccion" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarEdicionRefugio()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Cambio de Contraseña -->
     <div class="modal fade" id="modalPassword" tabindex="-1" aria-labelledby="modalPasswordLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -636,6 +732,8 @@
         </div>
     </div>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Template Loader -->
@@ -647,6 +745,7 @@
     <script src="../../scripts/pages/admin-adopciones.js"></script>
     <script src="../../scripts/shop/adminForms.js"></script>
     <script src="../../scripts/community/admin-historias.js"></script>
+
 </body>
 
 </html>
