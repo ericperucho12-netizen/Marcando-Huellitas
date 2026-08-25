@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL, -- IMPORTANTE: Nunca guardar en texto plano, usar BCrypt o Argon2
     rol VARCHAR(50) DEFAULT 'USUARIO', -- 'USUARIO' o 'ADMIN'
+    telefono VARCHAR(20),
 
 -- Campos de Seguridad
 token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
