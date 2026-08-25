@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inputs de perfil
     const perfilNombre = document.getElementById('perfilNombre');
     const perfilCorreo = document.getElementById('perfilCorreo');
+    const perfilTelefono = document.getElementById('perfilTelefono');
 
     // 1. Cargar Datos del Usuario desde sessionStorage
     const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Llenar Formulario
     if (perfilNombre) perfilNombre.value = userName;
     if (perfilCorreo) perfilCorreo.value = userEmail;
+    if (perfilTelefono) perfilTelefono.value = usuarioActual.telefono || "";
 
     // Mostrar menú de Admin si corresponde
     if (userRole === "ADMIN" && adminMenu) {
@@ -158,15 +160,54 @@ document.addEventListener("DOMContentLoaded", () => {
         formPerfil.addEventListener('submit', (e) => {
             e.preventDefault();
             const nuevoNombre = perfilNombre.value.trim();
+            const nuevoTelefono = perfilTelefono ? perfilTelefono.value.trim() : "";
+            
             if (nuevoNombre && usuarioActual) {
-                usuarioActual.nombre = nuevoNombre;
-                sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioActual));
-                sidebarUserName.textContent = nuevoNombre;
-                avatarLetra.innerHTML = nuevoNombre.charAt(0).toUpperCase();
-                alert("¡Datos actualizados con éxito!");
+                // Actualizar backend primero
+                const payload = {
+                    nombre: nuevoNombre,
+                    telefono: nuevoTelefono
+                };
                 
-                // Disparar evento para actualizar el navbar si es necesario
-                window.dispatchEvent(new Event('storage'));
+                // Mostrar estado de carga en el botón
+                const btnGuardar = formPerfil.querySelector('button[type="submit"]');
+                const textOriginal = btnGuardar.innerHTML;
+                btnGuardar.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Guardando...';
+                btnGuardar.disabled = true;
+
+                fetch(`http://localhost:8080/api/auth/${usuarioActual.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error('Error al actualizar datos');
+                })
+                .then(usuarioActualizado => {
+                    // Actualizar sesión local
+                    usuarioActual.nombre = usuarioActualizado.nombre;
+                    usuarioActual.telefono = usuarioActualizado.telefono;
+                    sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioActual));
+                    
+                    // Actualizar UI
+                    sidebarUserName.textContent = usuarioActual.nombre;
+                    avatarLetra.innerHTML = usuarioActual.nombre.charAt(0).toUpperCase();
+                    
+                    alert("¡Datos actualizados con éxito en el servidor!");
+                    window.dispatchEvent(new Event('storage'));
+                })
+                .catch(err => {
+                    console.error("Error actualizando perfil:", err);
+                    alert("Ocurrió un error al actualizar los datos.");
+                })
+                .finally(() => {
+                    // Restaurar botón
+                    btnGuardar.innerHTML = textOriginal;
+                    btnGuardar.disabled = false;
+                });
             }
         });
     }
