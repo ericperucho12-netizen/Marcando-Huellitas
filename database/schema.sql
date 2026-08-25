@@ -210,6 +210,17 @@ CREATE TABLE IF NOT EXISTS productos_favoritos (
     FOREIGN KEY (producto_id) REFERENCES productos (id) ON DELETE CASCADE
 );
 
+-- 14. Tabla de Mensajes de Contacto
+CREATE TABLE IF NOT EXISTS mensajes_contacto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    mensaje TEXT NOT NULL,
+    estado VARCHAR(50) DEFAULT 'NO_LEIDO', -- 'NO_LEIDO', 'LEIDO'
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- ==============================================================================
 -- INSERCIÓN DE DATOS INICIALES (MOCK DATA PARA PRUEBAS)
 -- ==============================================================================

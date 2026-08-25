@@ -64,6 +64,9 @@ async function cargarMensajesContacto() {
                     <button class="btn btn-sm btn-success rounded-circle shadow-sm ms-2" onclick="marcarContactoLeido(${msg.id})" title="Marcar como Leído" ${isLeido ? 'disabled' : ''}>
                         <i class="bi bi-check2-all"></i>
                     </button>
+                    <button class="btn btn-sm btn-danger rounded-circle shadow-sm ms-2" onclick="eliminarContacto(${msg.id})" title="Eliminar Mensaje">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </td>
             `;
             tbody.appendChild(fila);
@@ -153,5 +156,40 @@ async function marcarContactoLeido(id, showAlert = true) {
         if (showAlert) {
             Swal.fire('Error', 'No se pudo actualizar el estado del mensaje.', 'error');
         }
+    }
+}
+
+async function eliminarContacto(id) {
+    if (!confirm('¿Estás seguro de que deseas eliminar este mensaje de forma permanente?')) return;
+
+    try {
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+
+        const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
+        const token = usuarioActual ? usuarioActual.token : null;
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+
+        const response = await fetch('http://localhost:8080/api/contacto/' + id, {
+            method: 'DELETE',
+            headers: headers
+        });
+
+        if (response.ok) {
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El mensaje ha sido eliminado con éxito.',
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false
+            });
+            cargarMensajesContacto();
+        } else {
+            throw new Error('Error al eliminar');
+        }
+    } catch (error) {
+        console.error(error);
+        Swal.fire('Error', 'No se pudo eliminar el mensaje.', 'error');
     }
 }

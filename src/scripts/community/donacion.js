@@ -327,65 +327,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // DONACIONES
 
-function obtenerDonaciones() {
-
-    const datos =
-        localStorage.getItem("donaciones");
-
-    if (!datos) {
-        return [];
-    }
-
+async function obtenerDonaciones() {
     try {
-
-        const donaciones =
-            JSON.parse(datos);
-
-        return Array.isArray(donaciones)
-            ? donaciones
-            : [];
-
-    } catch (error) {
-
-        console.error(
-            "Error al leer donaciones:",
-            error
-        );
-
+        const response = await fetch('http://localhost:8080/api/donaciones');
+        if (response.ok) {
+            return await response.json();
+        }
         return [];
-
+    } catch (error) {
+        console.error("Error al obtener donaciones del servidor:", error);
+        return [];
     }
-
 }
 
-
-function obtenerTotalDonado() {
-
-    return obtenerDonaciones().reduce(
+async function obtenerTotalDonado() {
+    const donaciones = await obtenerDonaciones();
+    return donaciones.reduce(
         (total, donacion) => {
-
-            const monto =
-                Number(donacion.monto);
-
-            if (
-                isNaN(monto) ||
-                monto <= 0
-            ) {
+            const monto = Number(donacion.monto);
+            if (isNaN(monto) || monto <= 0) {
                 return total;
             }
-
             return total + monto;
-
         },
         0
     );
-
 }
 
 
 // ACTUALIZAR META
 
-function actualizarMeta() {
+async function actualizarMeta() {
 
     const currentAmount =
         document.getElementById("currentAmount");
@@ -395,7 +367,7 @@ function actualizarMeta() {
     }
 
     const totalDonado =
-        obtenerTotalDonado();
+        await obtenerTotalDonado();
 
     let valorActual =
         Number(
@@ -470,55 +442,51 @@ function actualizarMeta() {
 
 // REGISTRAR DONACIÓN
 
-function registrarDonacion(monto, datos = {}) {
+async function registrarDonacion(monto, datos = {}) {
 
-    const montoNumerico =
-        Number(monto);
+    const montoNumerico = Number(monto);
 
-    if (
-        isNaN(montoNumerico) ||
-        montoNumerico <= 0
-    ) {
+    if (isNaN(montoNumerico) || montoNumerico <= 0) {
         return false;
     }
 
-    const donaciones =
-        obtenerDonaciones();
+    try {
+        const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual") || "null");
+        
+        const payload = {
+            monto: montoNumerico,
+            frecuencia: datos.frecuencia || "una_vez",
+            metodoPago: datos.paymentMethod || "Transferencia",
+            nombreDonante: datos.name || (usuarioActual ? usuarioActual.nombre : "Anónimo"),
+            correoDonante: datos.email || (usuarioActual ? usuarioActual.correo : ""),
+            telefonoDonante: datos.phone || "",
+            usuario_id: usuarioActual ? usuarioActual.id : null,
+            estado: 'COMPLETADA'
+        };
 
-    const nuevaDonacion = {
+        const headers = { 'Content-Type': 'application/json' };
+        if (usuarioActual && usuarioActual.token) {
+            headers['Authorization'] = 'Bearer ' + usuarioActual.token;
+        }
 
-        monto: montoNumerico,
+        const response = await fetch('http://localhost:8080/api/donaciones', {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(payload)
+        });
 
-        frecuencia:
-            datos.frecuencia || "una_vez",
+        if (response.ok) {
+            await actualizarMeta();
+            return true;
+        } else {
+            console.error("Error al registrar la donación");
+            return false;
+        }
 
-        paymentMethod:
-            datos.paymentMethod || "",
-
-        name:
-            datos.name || "",
-
-        email:
-            datos.email || "",
-
-        phone:
-            datos.phone || "",
-
-        fecha:
-            new Date().toISOString()
-
-    };
-
-    donaciones.push(nuevaDonacion);
-
-    localStorage.setItem(
-        "donaciones",
-        JSON.stringify(donaciones)
-    );
-
-    actualizarMeta();
-
-    return true;
+    } catch (error) {
+        console.error("Error en la conexión con el servidor:", error);
+        return false;
+    }
 
 }
 
@@ -1748,7 +1716,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             const registrada =
-                registrarDonacion(
+                await registrarDonacion(
                     amount,
                     donationData
                 );
