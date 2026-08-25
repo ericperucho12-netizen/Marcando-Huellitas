@@ -187,6 +187,7 @@
                                     e.preventDefault();
                                     const form = e.target;
                                     const status = document.getElementById('formStatus');
+                                    const btnSubmit = form.querySelector('button[type="submit"]');
                                     
                                     if (!form.checkValidity()) {
                                         form.classList.add('was-validated');
@@ -201,8 +202,12 @@
                                     };
                                     
                                     try {
-                                        status.textContent = 'Enviando...';
-                                        status.className = 'mt-3 text-center fw-bold text-secondary';
+                                        // Bloquear el botón y mostrar spinner
+                                        btnSubmit.disabled = true;
+                                        btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Enviando...';
+                                        
+                                        status.textContent = '';
+                                        status.className = 'mt-3 text-center fw-bold';
                                         
                                         const response = await fetch('http://localhost:8080/api/contacto', {
                                             method: 'POST',
@@ -213,8 +218,16 @@
                                         if (response.ok) {
                                             status.textContent = '¡Mensaje enviado con éxito!';
                                             status.className = 'mt-3 text-center fw-bold text-success';
-                                            form.reset();
+                                            
+                                            // Resetear form completamente
                                             form.classList.remove('was-validated');
+                                            form.reset();
+                                            
+                                            // Limpiar el mensaje de éxito después de 5 segundos
+                                            setTimeout(() => {
+                                                status.textContent = '';
+                                            }, 5000);
+                                            
                                         } else {
                                             throw new Error('Error en el servidor');
                                         }
@@ -222,6 +235,10 @@
                                         console.error(error);
                                         status.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
                                         status.className = 'mt-3 text-center fw-bold text-danger';
+                                    } finally {
+                                        // Restaurar el botón
+                                        btnSubmit.disabled = false;
+                                        btnSubmit.innerHTML = 'Enviar mensaje';
                                     }
                                 });
                             </script>
