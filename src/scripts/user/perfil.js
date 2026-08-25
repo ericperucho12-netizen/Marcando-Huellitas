@@ -92,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
         '#admin-adopciones': 'section-admin-adopciones',
         '#admin-refugios': 'section-admin-refugios',
         '#admin-productos': 'section-admin-productos',
-        '#admin-historias': 'section-admin-historias'
+        '#admin-historias': 'section-admin-historias',
+        '#admin-contactos': 'section-admin-contactos'
     };
 
     const currentHash = window.location.hash;
