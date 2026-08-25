@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS solicitudes_adopcion (
 -- 5. Tabla de Productos (Tienda / Carrito)
 CREATE TABLE IF NOT EXISTS productos (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    refugio_id BIGINT NULL,
     nombre VARCHAR(150) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
