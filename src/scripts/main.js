@@ -884,13 +884,18 @@ document.addEventListener('click', (e) => {
             heartBtn.style.transform = 'scale(1.2)';
             setTimeout(() => heartBtn.style.transform = 'scale(1)', 200);
 
-            // Guardar o eliminar datos en LocalStorage
+            // Guardar o eliminar datos en el Backend (y LocalStorage para fallback/sync local)
             const card = heartBtn.closest('.card, .team-card, .product-item-card, .favorite-card');
             if (card) {
                 const titleEl = card.querySelector('h3, h5, h6.title');
                 const title = titleEl ? titleEl.textContent.trim() : 'Sin título';
                 const isProduct = card.classList.contains('product-item-card') || window.location.pathname.includes('productos.html') || (card.closest('#pills-productos'));
                 const key = isProduct ? 'favoritosProductos' : 'favoritosMascotas';
+                
+                // Obtener IDs
+                const rawId = card.getAttribute('data-id') || card.getAttribute('data-product-id');
+                const entityId = rawId ? parseInt(rawId) : null;
+                const usuarioActual = JSON.parse(sessionStorage.getItem('usuarioActual') || 'null');
                 
                 let favs = JSON.parse(localStorage.getItem(key)) || [];
 
@@ -908,13 +913,36 @@ document.addEventListener('click', (e) => {
                     }
 
                     if (!favs.find(f => f.title === title)) {
-                        favs.push({ id: Date.now(), title, desc, img: imgSrc });
+                        favs.push({ id: entityId || Date.now(), title, desc, img: imgSrc });
                         localStorage.setItem(key, JSON.stringify(favs));
                     }
+
+                    // Sincronizar con el backend
+                    if (usuarioActual && entityId) {
+                        const payload = { usuarioId: usuarioActual.id };
+                        payload[isProduct ? 'productoId' : 'mascotaId'] = entityId;
+                        fetch(`http://localhost:8080/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        }).catch(err => console.error('Error al guardar favorito:', err));
+                    }
+
                 } else {
                     favs = favs.filter(f => f.title !== title);
                     localStorage.setItem(key, JSON.stringify(favs));
                     
+                    // Sincronizar con el backend
+                    if (usuarioActual && entityId) {
+                        const payload = { usuarioId: usuarioActual.id };
+                        payload[isProduct ? 'productoId' : 'mascotaId'] = entityId;
+                        fetch(`http://localhost:8080/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
+                            method: 'DELETE',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        }).catch(err => console.error('Error al borrar favorito:', err));
+                    }
+
                     if (card.classList.contains('favorite-card')) {
                         const colWrapper = card.closest('.col-md-6, .col-lg-4');
                         if (colWrapper) colWrapper.style.display = 'none';

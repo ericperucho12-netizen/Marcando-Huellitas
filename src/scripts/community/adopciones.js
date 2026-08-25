@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const cardHTML = `
                 <div class="col-12 col-sm-6 col-lg-3 pet-item" data-category="${mascota.especie ? mascota.especie.toLowerCase() : 'perro'}">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden team-card position-relative" data-id="${mascota.id}">
                         ${badgeHtml}
                         <button class="position-absolute top-0 end-0 m-2 shadow-sm btn-like-heart" style="width: 28px; height: 28px; min-width: 28px; background: white; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;">
                             <i class="bi bi-heart text-secondary" style="font-size: 0.75rem;"></i>

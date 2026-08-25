@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         limpiarEstado();
 
         const formularioValido = validarFormulario();
+        const btnSubmit = form.querySelector('button[type="submit"]');
 
         if (!formularioValido) {
             mostrarEstado("Por favor corrige los campos marcados.", "error");
@@ -22,15 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         mostrarEstado("Enviando mensaje...", "info");
+        
+        if (btnSubmit) {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Enviando...';
+        }
 
         try {
-            const formData = new FormData(form);
+            const payload = {
+                nombre: nombre.value,
+                email: email.value,
+                telefono: telefono.value,
+                mensaje: mensaje.value
+            };
 
-            const respuesta = await fetch(form.action, {
+            const respuesta = await fetch('http://localhost:8080/api/contacto', {
                 method: "POST",
-                body: formData,
+                body: JSON.stringify(payload),
                 headers: {
-                    "Accept": "application/json"
+                    "Content-Type": "application/json"
                 }
             });
 
@@ -38,12 +49,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 form.reset();
                 limpiarValidaciones();
                 mostrarEstado("Mensaje enviado correctamente. ¡Gracias por contactarnos!", "success");
+                
+                // Limpiar mensaje después de 5 segundos
+                setTimeout(() => {
+                    limpiarEstado();
+                }, 5000);
             } else {
                 mostrarEstado("No se pudo enviar el mensaje. Intenta nuevamente.", "error");
             }
 
         } catch (error) {
             mostrarEstado("Error de conexión. Revisa tu internet e intenta otra vez.", "error");
+        } finally {
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = 'Enviar mensaje';
+            }
         }
     });
 

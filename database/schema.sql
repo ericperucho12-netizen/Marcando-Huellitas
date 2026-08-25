@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     correo VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL, -- IMPORTANTE: Nunca guardar en texto plano, usar BCrypt o Argon2
     rol VARCHAR(50) DEFAULT 'USUARIO', -- 'USUARIO' o 'ADMIN'
+    telefono VARCHAR(20),
 
 -- Campos de Seguridad
 token_recuperacion VARCHAR(255), -- Para la recuperación de contraseña
@@ -86,6 +87,7 @@ CREATE TABLE IF NOT EXISTS solicitudes_adopcion (
 -- 5. Tabla de Productos (Tienda / Carrito)
 CREATE TABLE IF NOT EXISTS productos (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    refugio_id BIGINT NULL,
     nombre VARCHAR(150) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
@@ -208,6 +210,17 @@ CREATE TABLE IF NOT EXISTS productos_favoritos (
     PRIMARY KEY (usuario_id, producto_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE CASCADE,
     FOREIGN KEY (producto_id) REFERENCES productos (id) ON DELETE CASCADE
+);
+
+-- 14. Tabla de Mensajes de Contacto
+CREATE TABLE IF NOT EXISTS mensajes_contacto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    mensaje TEXT NOT NULL,
+    estado VARCHAR(50) DEFAULT 'NO_LEIDO', -- 'NO_LEIDO', 'LEIDO'
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ==============================================================================
