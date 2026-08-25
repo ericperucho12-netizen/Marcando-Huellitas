@@ -83,6 +83,9 @@
                             <a href="#admin-historias" class="nav-link" data-target="section-admin-historias">
                                 <i class="bi bi-journal-text fs-5 text-info"></i> Historias
                             </a>
+                            <a href="#admin-contactos" class="nav-link" data-target="section-admin-contactos">
+                                <i class="bi bi-envelope fs-5 text-info"></i> Mensajes
+                            </a>
 
                         </div>
                         
@@ -551,8 +554,46 @@
                         </main>
                     </div>
 
-
-
+                    <!-- Sección: Administrar Contactos -->
+                    <div id="section-admin-contactos" class="profile-section py-4">
+                        <header class="admin-refugios-header mb-4">
+                            <div class="container text-center">
+                                <span class="admin-refugios-badge">
+                                    Panel de administración
+                                </span>
+                                <h1>
+                                    Mensajes de Contacto
+                                </h1>
+                                <p>
+                                    Revisa los mensajes enviados por los usuarios a través de la página de contacto.
+                                </p>
+                            </div>
+                        </header>
+                        
+                        <div class="card shadow-sm border-0 rounded-4">
+                            <div class="card-body p-4">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Correo</th>
+                                                <th scope="col">Teléfono</th>
+                                                <th scope="col">Estado</th>
+                                                <th scope="col" class="text-center">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tablaContactosBody">
+                                            <tr>
+                                                <td colspan="6" class="text-center text-muted py-4">Cargando mensajes...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -732,6 +773,21 @@
         </div>
     </div>
 
+    <!-- Modal Ver Contacto -->
+    <div class="modal fade" id="verContactoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Mensaje de Contacto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContenidoContacto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap JS -->
@@ -745,6 +801,7 @@
     <script src="../../scripts/pages/admin-adopciones.js"></script>
     <script src="../../scripts/shop/adminForms.js"></script>
     <script src="../../scripts/community/admin-historias.js"></script>
+    <script src="../../scripts/info/admin-contactos.js"></script>
 
 </body>
 
