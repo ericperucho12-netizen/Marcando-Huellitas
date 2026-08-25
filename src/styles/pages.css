@@ -56,6 +56,13 @@
     
 }
 
+/*Alerta admin para eliminar un mensaje*/
+
+.icono-negro {
+    color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
 /* =========================================
             PAGÍNA DE ADOPCIONES
    ========================================= */

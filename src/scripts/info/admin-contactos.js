@@ -160,7 +160,22 @@ async function marcarContactoLeido(id, showAlert = true) {
 }
 
 async function eliminarContacto(id) {
-    if (!confirm('¿Estás seguro de que deseas eliminar este mensaje de forma permanente?')) return;
+        const resultado = await Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este mensaje?',
+        text: 'Este mensaje se eliminará de forma permanente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#0d6efd',
+        reverseButtons: true,
+
+        customClass: {
+            icon: 'icono-negro'
+        }
+    });
+    if (!resultado.isConfirmed) return;
 
     try {
         const headers = {
