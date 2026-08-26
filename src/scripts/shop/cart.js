@@ -480,7 +480,7 @@
             }
 
             const blockedClick = event.target.closest(
-                ".btn-edit, .btn-delete, [data-action], .carousel-control-prev, .carousel-control-next"
+                ".btn-edit, .btn-delete, .btn-like-heart, [data-favorite-product], [data-action], .carousel-control-prev, .carousel-control-next"
             );
 
             if (blockedClick) {
@@ -517,9 +517,15 @@
         });
 
         const clearBtn = document.getElementById("btnClearCart");
-
         if (clearBtn) {
             clearBtn.addEventListener("click", clearCart);
+        }
+
+        const continueBtn = document.querySelector(".btn-continue");
+        if (continueBtn) {
+            continueBtn.addEventListener("click", function () {
+                window.location.href = "productos.html";
+            });
         }
 
         const checkoutBtn = document.querySelector(".btn-checkout");
@@ -725,7 +731,7 @@ function injectAnimatedCart() {
                             id: productId,
                             name: titleEl.textContent.trim(),
                             price: priceEl ? priceEl.textContent.replace(/[^0-9.]/g, "") : 0,
-                            image: imgEl ? imgEl.src : "../../assets/footer/Huellita-footer.png",
+                            img: imgEl ? imgEl.src : "../../assets/footer/Huellita-footer.png",
                         };
                         window.MarcandoHuellitasCart.addToCart(productInfo, 1);
                     }
