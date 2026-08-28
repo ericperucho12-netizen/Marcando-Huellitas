@@ -25,13 +25,29 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Deshabilitar el ID para que no se cambie si es edición
             document.getElementById("id-producto").setAttribute("readonly", true);
             document.getElementById("nombre-producto").value = producto.nombre || "";
-            document.getElementById("descripcion-producto").value = producto.descripcion || "";
+            
+            let desc = producto.descripcion || "";
+            let especieMatch = desc.match(/\[ESPECIE:(.*?)\]/);
+            let ofertaMatch = desc.match(/\[OFERTA:(.*?)\]/);
+            
+            const especieVal = especieMatch ? especieMatch[1] : "todos";
+            const ofertaVal = ofertaMatch ? ofertaMatch[1] : "no";
+            
+            desc = desc.replace(/\[ESPECIE:.*?\]/g, '').replace(/\[OFERTA:.*?\]/g, '').trim();
+
+            document.getElementById("descripcion-producto").value = desc;
             document.getElementById("precio").value = producto.precio || "";
             document.getElementById("categoria").value = producto.categoria || "";
             
-            // Campos de UI pero que no van al backend (no existen en BD actual)
+            const inputEspecie = document.getElementById("especie");
+            if (inputEspecie) inputEspecie.value = especieVal;
+            
             const inputOferta = document.getElementById("producto-oferta");
-            if (inputOferta) inputOferta.value = "no";
+            if (inputOferta) {
+                inputOferta.value = ofertaVal;
+                // Timeout para asegurar que el DOM esté listo antes de despachar el evento
+                setTimeout(() => inputOferta.dispatchEvent(new Event('change')), 100);
+            }
             
             const inputStock = document.getElementById("cantidad-inventario");
             if (inputStock) inputStock.value = producto.stock || "";
@@ -125,9 +141,16 @@ document.addEventListener("DOMContentLoaded", async function () {
                 finalImageUrl = base64Image;
             }
 
+            const especie = formData.get("especie") || "todos";
+            const oferta = formData.get("oferta") || "no";
+            const descripcionForm = formData.get("descripcion") || "";
+            
+            // Guardar en descripcion para evadir alterar backend
+            const descripcionPayload = `${descripcionForm} [ESPECIE:${especie}] [OFERTA:${oferta}]`;
+
             const productoPayload = {
                 nombre: formData.get("nombre"),
-                descripcion: formData.get("descripcion"),
+                descripcion: descripcionPayload,
                 precio: Number(formData.get("precio")),
                 categoria: formData.get("categoria"),
                 stock: stockStr ? parseInt(stockStr, 10) : 0,

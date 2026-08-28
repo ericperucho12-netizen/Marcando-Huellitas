@@ -74,14 +74,24 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             
             productos = data.map(producto => {
-                const texto = (producto.nombre + " " + (producto.descripcion || "")).toLowerCase();
-                let especieProducto = "perro";
-                if (texto.includes("gato") || texto.includes("felin") || texto.includes("minino")) {
-                    especieProducto = "gato";
+                let desc = producto.descripcion || "";
+                
+                let especieMatch = desc.match(/\[ESPECIE:(.*?)\]/);
+                let ofertaMatch = desc.match(/\[OFERTA:(.*?)\]/);
+                
+                let especieProducto = especieMatch ? especieMatch[1] : "todos";
+                if (!especieMatch) {
+                   const texto = (producto.nombre + " " + desc).toLowerCase();
+                   if (texto.includes("gato") || texto.includes("felin") || texto.includes("minino")) {
+                       especieProducto = "gato";
+                   } else {
+                       especieProducto = "perro";
+                   }
                 }
                 
-                // Simular algunas ofertas para el demo (1 de cada 4 productos)
-                const esOferta = (producto.id % 4 === 0) ? "si" : "no";
+                const esOferta = ofertaMatch ? ofertaMatch[1] : ((producto.id % 4 === 0) ? "si" : "no");
+                
+                desc = desc.replace(/\[ESPECIE:.*?\]/g, '').replace(/\[OFERTA:.*?\]/g, '').trim();
 
                 return {
                     id: producto.id,
@@ -92,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     precio: producto.precio,
                     oferta: esOferta,
                     imagen: producto.imagenUrl || "../../assets/footer/Huellita-footer.png",
-                    descripcion: producto.descripcion
+                    descripcion: desc
                 };
             });
 
