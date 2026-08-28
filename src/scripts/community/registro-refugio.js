@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             try {
-                const response = await fetch('http://localhost:8080/api/refugios', {
+                const response = await fetch('/api/refugios', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(nuevaSolicitud)

@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuarioActual = JSON.parse(sessionStorage.getItem("usuarioActual"));
     const isAdmin = usuarioActual && (usuarioActual.rol && usuarioActual.rol.toUpperCase() === "ADMIN");
 
+    const adminAdopcionToggleContainer = document.getElementById("adminAdopcionToggleContainer");
+    if (isAdmin && adminAdopcionToggleContainer) {
+        adminAdopcionToggleContainer.style.display = "block";
+    }
+
     let mascotas = [];
     let currentPage = 1;
     const itemsPerPage = 12;
@@ -12,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function cargarMascotasDesdeBackend() {
         try {
-            const response = await fetch('http://localhost:8080/api/mascotas');
+            const response = await fetch('/api/mascotas');
             if (!response.ok) throw new Error('Error al obtener mascotas');
             
             mascotas = await response.json();
@@ -224,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const id = this.getAttribute("data-id");
                 if (confirm("¿Estás seguro de que deseas eliminar esta mascota?")) {
                     try {
-                        const response = await fetch(`http://localhost:8080/api/mascotas/${id}`, {
+                        const response = await fetch(`/api/mascotas/${id}`, {
                             method: "DELETE"
                         });
                         if (!response.ok) throw new Error("Error al eliminar la mascota");

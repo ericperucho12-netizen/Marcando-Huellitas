@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         formTitle.textContent = "Modificar información del producto";
         
         try {
-            const response = await fetch(`http://localhost:8080/api/productos/${editId}`);
+            const response = await fetch(`/api/productos/${editId}`);
             if (!response.ok) throw new Error("Producto no encontrado");
             const producto = await response.json();
             
@@ -64,14 +64,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         selectOferta.addEventListener("change", toggleOferta);
     }
 
+    let selectedFile = null;
+
     // Previsualizar imagen seleccionada
     if (imageInput) {
         imageInput.addEventListener("change", function (event) {
             const file = event.target.files[0];
             if (file) {
+                selectedFile = file;
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    base64Image = e.target.result;
+                    base64Image = e.target.result; // Used only for preview now
                     if (imagePreview) {
                         imagePreview.innerHTML = `<img src="${base64Image}" alt="Vista previa" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">`;
                     }
@@ -96,27 +99,53 @@ document.addEventListener("DOMContentLoaded", async function () {
             const formData = new FormData(form);
             const stockStr = formData.get("cantidad");
             
+            let finalImageUrl = "https://via.placeholder.com/150";
+            if (selectedFile) {
+                const uploadData = new FormData();
+                uploadData.append("file", selectedFile);
+                try {
+                    const uploadRes = await fetch("/api/upload", {
+                        method: "POST",
+                        body: uploadData
+                    });
+                    if (uploadRes.ok) {
+                        const jsonRes = await uploadRes.json();
+                        finalImageUrl = jsonRes.url;
+                    } else {
+                        alert("Error al subir la imagen.");
+                        return;
+                    }
+                } catch (e) {
+                    console.error(e);
+                    alert("Error conectando con el servidor de imágenes.");
+                    return;
+                }
+            } else if (base64Image && !base64Image.startsWith("data:")) {
+                // If it's an existing URL from edit mode
+                finalImageUrl = base64Image;
+            }
+
             const productoPayload = {
                 nombre: formData.get("nombre"),
                 descripcion: formData.get("descripcion"),
                 precio: Number(formData.get("precio")),
                 categoria: formData.get("categoria"),
                 stock: stockStr ? parseInt(stockStr, 10) : 0,
-                imagenUrl: base64Image || "https://via.placeholder.com/150"
+                imagenUrl: finalImageUrl
             };
 
             try {
                 let response;
                 if (editId) {
                     // PUT /api/productos/{id}
-                    response = await fetch(`http://localhost:8080/api/productos/${editId}`, {
+                    response = await fetch(`/api/productos/${editId}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(productoPayload)
                     });
                 } else {
                     // POST /api/productos
-                    response = await fetch(`http://localhost:8080/api/productos`, {
+                    response = await fetch(`/api/productos`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(productoPayload)

@@ -38,7 +38,7 @@ function inicializarFiltrosAdopcion() {
 // -----------------------------------------
 async function cargarSolicitudesAdopcion() {
     try {
-        const res = await fetch("http://localhost:8080/api/solicitudes_adopcion");
+        const res = await fetch("/api/solicitudes_adopcion");
         if (!res.ok) throw new Error("Error al obtener solicitudes de adopción");
         solicitudesAdopcion = await res.json();
     } catch (error) {
@@ -214,7 +214,7 @@ async function guardarEdicionAdopcion() {
     };
     
     try {
-        const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${id}`, {
+        const response = await fetch(`/api/solicitudes_adopcion/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -249,7 +249,7 @@ async function eliminarAdopcion(id) {
 
     if (confirmacion.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${id}`, {
+            const response = await fetch(`/api/solicitudes_adopcion/${id}`, {
                 method: 'DELETE'
             });
 
@@ -284,7 +284,7 @@ async function cambiarEstadoAdopcion(id, nuevoEstado) {
     };
 
     try {
-        const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${id}`, {
+        const response = await fetch(`/api/solicitudes_adopcion/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

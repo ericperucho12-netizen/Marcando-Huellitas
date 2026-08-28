@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cargar Mascotas
     async function cargarMascotas() {
         try {
-            const response = await fetch('http://localhost:8080/api/mascotas');
+            const response = await fetch('/api/mascotas');
             if (!response.ok) throw new Error('Error al obtener mascotas');
             
             const mascotas = await response.json();
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cargar Productos
     async function cargarProductos() {
         try {
-            const response = await fetch('http://localhost:8080/api/productos');
+            const response = await fetch('/api/productos');
             if (!response.ok) throw new Error('Error al obtener productos');
             
             const productos = await response.json();

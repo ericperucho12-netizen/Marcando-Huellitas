@@ -1,4 +1,4 @@
-﻿class ProductController {
+class ProductController {
     constructor(currentId = 0) {
         this.items = [];
         this.currentId = currentId;

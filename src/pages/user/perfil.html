@@ -643,8 +643,13 @@
                             <textarea class="form-control" id="editContenido" rows="5" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="editImagen" class="form-label">URL de Imagen</label>
-                            <input type="url" class="form-control" id="editImagen">
+                            <label for="editImagenFile" class="form-label">Imagen</label>
+                            <input type="hidden" id="editImagen">
+                            <div id="editImagenPreviewContainer" class="mb-2" style="display:none;">
+                                <img id="editImagenPreview" src="" alt="Vista previa" class="img-fluid rounded" style="max-height:180px; object-fit:cover; width:100%;">
+                            </div>
+                            <input type="file" class="form-control" id="editImagenFile" accept="image/*">
+                            <small class="text-muted">Selecciona una imagen para reemplazar la actual (opcional).</small>
                         </div>
                     </form>
                 </div>
