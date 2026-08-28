@@ -73,17 +73,28 @@ document.addEventListener("DOMContentLoaded", function () {
             
             const data = await response.json();
             
-            productos = data.map(producto => ({
-                id: producto.id,
-                nombre: producto.nombre,
-                categoria: producto.categoria || "Sin categoría",
-                especie: "perro",
-                marca: "otra",
-                precio: producto.precio,
-                oferta: "no",
-                imagen: producto.imagenUrl || "../../assets/footer/Huellita-footer.png",
-                descripcion: producto.descripcion
-            }));
+            productos = data.map(producto => {
+                const texto = (producto.nombre + " " + (producto.descripcion || "")).toLowerCase();
+                let especieProducto = "perro";
+                if (texto.includes("gato") || texto.includes("felin") || texto.includes("minino")) {
+                    especieProducto = "gato";
+                }
+                
+                // Simular algunas ofertas para el demo (1 de cada 4 productos)
+                const esOferta = (producto.id % 4 === 0) ? "si" : "no";
+
+                return {
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    categoria: producto.categoria || "Sin categoría",
+                    especie: especieProducto,
+                    marca: "otra",
+                    precio: producto.precio,
+                    oferta: esOferta,
+                    imagen: producto.imagenUrl || "../../assets/footer/Huellita-footer.png",
+                    descripcion: producto.descripcion
+                };
+            });
 
             productos = productos.map(producto => ({
                 ...producto,
