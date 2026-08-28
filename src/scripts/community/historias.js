@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarHistorias() {
     const container = document.getElementById('historiasContainer');
     try {
-        const response = await fetch('http://localhost:8080/api/historias_exito');
+        const response = await fetch('/api/historias_exito');
         if (!response.ok) throw new Error('Error de red');
         
         allHistorias = await response.json();
@@ -59,7 +59,7 @@ function renderHistoriasPage() {
             <div class="card h-100 border rounded-4 overflow-hidden shadow-sm" style="min-width: 100%;">
                 <div class="row g-0 h-100">
                     <div class="col-4">
-                        <img src="${imgUrl}" class="img-fluid h-100 w-100 object-fit-cover rounded-start-4" alt="${historia.titulo}" onerror="this.src='../../assets/historias/Bruno.jpg'">
+                        <img src="${imgUrl}" class="img-fluid h-100 w-100 object-fit-cover rounded-start-4" alt="${historia.titulo}" onerror="this.src='../../assets/historias/Bruno.jpg'" style="cursor: pointer;" onclick="abrirModalImagen(this.src)">
                     </div>
                     <div class="col-8">
                         <div class="card-body p-4 d-flex flex-column h-100">
@@ -80,6 +80,15 @@ function renderHistoriasPage() {
     });
     
     renderPagination(totalPages);
+}
+
+window.abrirModalImagen = function(src) {
+    const modalImg = document.getElementById('imageModalSrc');
+    if (modalImg) {
+        modalImg.src = src;
+        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        modal.show();
+    }
 }
 
 function renderPagination(totalPages) {
@@ -206,12 +215,34 @@ function configurarFormulario() {
         const relato = document.getElementById('relato').value;
         let imagenUrl = document.getElementById('imagenUrl').value;
 
-        // Simulación: Si seleccionó un archivo, asignamos un placeholder local
         const fileInput = document.getElementById('imagenMascota');
         if (fileInput && fileInput.files && fileInput.files[0]) {
-            // Como la BD no soporta Base64 por el tamaño (VARCHAR 255),
-            // simularemos que subió una imagen usando un asset local.
-            imagenUrl = "../../assets/historias/Bruno.jpg";
+            const file = fileInput.files[0];
+            if (!file.type.startsWith('image/')) {
+                Swal.fire('Error', 'Por favor, selecciona un archivo de imagen válido (JPG, PNG, etc).', 'error');
+                form.querySelector('button[type="submit"]').innerHTML = 'Compartir Historia';
+                form.querySelector('button[type="submit"]').disabled = false;
+                return;
+            }
+            const uploadData = new FormData();
+            uploadData.append("file", file);
+            try {
+                const uploadRes = await fetch("/api/upload", {
+                    method: "POST",
+                    body: uploadData
+                });
+                if (uploadRes.ok) {
+                    const jsonRes = await uploadRes.json();
+                    imagenUrl = jsonRes.url;
+                } else {
+                    Swal.fire('Error', 'Error al subir la imagen.', 'error');
+                    return;
+                }
+            } catch (e) {
+                console.error(e);
+                Swal.fire('Error', 'Error de conexión al subir la imagen.', 'error');
+                return;
+            }
         }
 
         // Intentamos obtener el ID del usuario actual si está logueado
@@ -237,7 +268,7 @@ function configurarFormulario() {
             btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
             btnSubmit.disabled = true;
 
-            const response = await fetch('http://localhost:8080/api/historias_exito', {
+            const response = await fetch('/api/historias_exito', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

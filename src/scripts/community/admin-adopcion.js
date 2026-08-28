@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         pageTitle.textContent = "Editar Mascota";
         
         try {
-            const response = await fetch(`http://localhost:8080/api/mascotas/${editId}`);
+            const response = await fetch(`/api/mascotas/${editId}`);
             if (!response.ok) throw new Error("Mascota no encontrada");
             const mascota = await response.json();
             
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("tamano").value = mascota.tamano || "Mediano";
             document.getElementById("edad").value = mascota.edad || "";
             document.getElementById("estado").value = mascota.estado || "Disponible";
-            document.getElementById("imagen-mascota").value = mascota.imagenUrl || "";
+            window.existingImagenUrl = mascota.imagenUrl || "";
             document.getElementById("descripcion-mascota").value = mascota.descripcion || "";
             document.getElementById("caracteristicas").value = mascota.caracteristicas || "";
 
@@ -43,6 +43,31 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
+        // Upload image if selected
+        let finalImageUrl = window.existingImagenUrl || "https://via.placeholder.com/150";
+        const fileInput = document.getElementById("imagen-mascota");
+        if (fileInput.files && fileInput.files.length > 0) {
+            const uploadData = new FormData();
+            uploadData.append("file", fileInput.files[0]);
+            try {
+                const uploadRes = await fetch("/api/upload", {
+                    method: "POST",
+                    body: uploadData
+                });
+                if (uploadRes.ok) {
+                    const jsonRes = await uploadRes.json();
+                    finalImageUrl = jsonRes.url;
+                } else {
+                    alert("Error al subir la imagen.");
+                    return;
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Error conectando con el servidor de imágenes.");
+                return;
+            }
+        }
+
         // Recopilar datos
         const mascotaPayload = {
             nombre: document.getElementById("nombre-mascota").value.trim(),
@@ -52,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             tamano: document.getElementById("tamano").value,
             edad: document.getElementById("edad").value.trim(),
             estado: document.getElementById("estado").value,
-            imagenUrl: document.getElementById("imagen-mascota").value.trim(),
+            imagenUrl: finalImageUrl,
             descripcion: document.getElementById("descripcion-mascota").value.trim(),
             caracteristicas: document.getElementById("caracteristicas").value.trim()
         };
@@ -61,14 +86,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             let response;
             if (editId) {
                 // PUT /api/mascotas/{id}
-                response = await fetch(`http://localhost:8080/api/mascotas/${editId}`, {
+                response = await fetch(`/api/mascotas/${editId}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(mascotaPayload)
                 });
             } else {
                 // POST /api/mascotas
-                response = await fetch(`http://localhost:8080/api/mascotas`, {
+                response = await fetch(`/api/mascotas`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(mascotaPayload)

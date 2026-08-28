@@ -16,7 +16,7 @@ let solicitudesRefugiosCache = [];
 
 async function obtenerSolicitudesRefugiosAPI() {
     try {
-        const response = await fetch('http://localhost:8080/api/refugios');
+        const response = await fetch('/api/refugios');
         if (response.ok) {
             solicitudesRefugiosCache = await response.json();
             // Adaptar el campo 'estatus' a 'estadoSolicitud' que usa el frontend
@@ -284,7 +284,7 @@ async function cambiarEstadoSolicitud(
 
     try {
         const payload = { ...solicitud, estatus: nuevoEstado };
-        const response = await fetch(`http://localhost:8080/api/refugios/${id}`, {
+        const response = await fetch(`/api/refugios/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -715,7 +715,7 @@ async function eliminarRefugio(id) {
 
     if (confirmacion.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:8080/api/refugios/${id}`, {
+            const response = await fetch(`/api/refugios/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

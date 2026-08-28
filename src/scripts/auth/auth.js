@@ -1,11 +1,11 @@
-﻿
+
 // Handle Google Sign-In Callback (Global function so the script can call it)
 window.handleGoogleLogin = async function(response) {
     const loginAlertContainer = document.getElementById("loginAlertContainer");
     if (!loginAlertContainer) return;
     
     try {
-        const fetchRes = await fetch("http://localhost:8080/api/auth/google", {
+        const fetchRes = await fetch("/api/auth/google", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!formularioValido) return;
 
             try {
-                const response = await fetch("http://localhost:8080/api/auth/registro", {
+                const response = await fetch("/api/auth/registro", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -246,8 +246,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                mostrarAlerta(alertContainer, 'success', '¡Usuario registrado correctamente!');
+                mostrarAlerta(alertContainer, 'success', '¡Usuario registrado correctamente! Revisa tu correo para verificar tu cuenta antes de iniciar sesión.');
                 registerForm.reset();
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 3500);
                 limpiarValidaciones([nombre, telefono, email, password, confirmPassword]);
 
                 // Opcional: Cambiar a la vista de login
@@ -317,7 +320,7 @@ if (loginForm) {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/auth/login", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -336,8 +339,14 @@ if (loginForm) {
                 return;
             }
 
-            const usuarioEncontrado = await response.json();
+            const authResponse = await response.json();
+            const token = authResponse.token;
+            const usuarioEncontrado = authResponse.usuario;
 
+            sessionStorage.removeItem("usuarioActual");
+            sessionStorage.removeItem("jwtToken");
+
+            sessionStorage.setItem("jwtToken", token);
             sessionStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
 
             mostrarAlerta(loginAlertContainer, "success", "¡Bienvenido/a, " + usuarioEncontrado.nombre + "!");

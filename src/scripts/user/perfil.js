@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 btnGuardar.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Guardando...';
                 btnGuardar.disabled = true;
 
-                fetch(`http://localhost:8080/api/auth/${usuarioActual.id}`, {
+                fetch(`/api/auth/${usuarioActual.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

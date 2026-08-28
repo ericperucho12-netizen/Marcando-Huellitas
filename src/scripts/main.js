@@ -161,6 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         navLogoutBtn.addEventListener("click", function(e) {
                             e.preventDefault();
                             sessionStorage.removeItem("usuarioActual");
+                            sessionStorage.removeItem("jwtToken");
+                            localStorage.removeItem("marcandoHuellitasCart");
+                            localStorage.removeItem("marcandoHuellitasMiniCartOpen");
                             window.location.reload();
                         });
                     }
@@ -859,8 +862,8 @@ function injectAnimatedCart() {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(injectAnimatedCart, 500); // Dar tiempo a cargar lordicon
 });
-const observer = new MutationObserver(() => injectAnimatedCart());
-observer.observe(document.body, { childList: true, subtree: true });
+const mainCartObserver = new MutationObserver(() => injectAnimatedCart());
+mainCartObserver.observe(document.body, { childList: true, subtree: true });
 
 
 
@@ -921,7 +924,7 @@ document.addEventListener('click', (e) => {
                     if (usuarioActual && entityId) {
                         const payload = { usuarioId: usuarioActual.id };
                         payload[isProduct ? 'productoId' : 'mascotaId'] = entityId;
-                        fetch(`http://localhost:8080/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
+                        fetch(`/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
@@ -936,7 +939,7 @@ document.addEventListener('click', (e) => {
                     if (usuarioActual && entityId) {
                         const payload = { usuarioId: usuarioActual.id };
                         payload[isProduct ? 'productoId' : 'mascotaId'] = entityId;
-                        fetch(`http://localhost:8080/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
+                        fetch(`/api/favoritos/${isProduct ? 'productos' : 'mascotas'}`, {
                             method: 'DELETE',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)

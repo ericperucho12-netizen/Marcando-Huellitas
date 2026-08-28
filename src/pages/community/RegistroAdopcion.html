@@ -232,7 +232,7 @@
 
       // Cargar mascotas
       try {
-          const res = await fetch('http://localhost:8080/api/mascotas');
+          const res = await fetch('/api/mascotas');
           const mascotas = await res.json();
           const selectMascota = document.getElementById('mascotaId');
           selectMascota.innerHTML = '<option value="" selected disabled>Selecciona una mascota</option>';
@@ -380,7 +380,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/solicitudes_adopcion', {
+            const response = await fetch('/api/solicitudes_adopcion', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -462,7 +462,7 @@
                 };
 
                 try {
-                    const response = await fetch(`http://localhost:8080/api/solicitudes_adopcion/${editId}`, {
+                    const response = await fetch(`/api/solicitudes_adopcion/${editId}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)

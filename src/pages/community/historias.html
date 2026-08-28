@@ -390,6 +390,20 @@
 
     </main>
 
+    <!-- Modal para ver imagen en grande -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto shadow-none" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1) grayscale(100%) brightness(200%); width: 20px; height: 20px;"></button>
+                </div>
+                <div class="modal-body text-center pt-0">
+                    <img id="imageModalSrc" src="" class="img-fluid rounded-4 shadow-lg" alt="Historia ampliada" style="max-height: 85vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contenedor del Footer -->
     <div data-template="../../layout/footer.html" data-root="../../.." data-src="../.."></div>
 

@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function cargarProductosDesdeBackend() {
         try {
-            const response = await fetch('http://localhost:8080/api/productos');
+            const response = await fetch('/api/productos');
             if (!response.ok) throw new Error('Error al obtener productos');
             
             const data = await response.json();
@@ -537,7 +537,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const id = this.getAttribute("data-id");
                 if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
                     try {
-                        const response = await fetch(`http://localhost:8080/api/productos/${id}`, {
+                        const response = await fetch(`/api/productos/${id}`, {
                             method: "DELETE"
                         });
                         if (!response.ok) throw new Error("Error al eliminar el producto");

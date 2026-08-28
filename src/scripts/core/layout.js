@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const layoutContainers = document.querySelectorAll("[data-template]");
 
     layoutContainers.forEach(container => {
@@ -74,6 +74,9 @@
                         navLogoutBtn.addEventListener("click", function (e) {
                             e.preventDefault();
                             sessionStorage.removeItem("usuarioActual");
+                            sessionStorage.removeItem("jwtToken");
+                            localStorage.removeItem("marcandoHuellitasCart");
+                            localStorage.removeItem("marcandoHuellitasMiniCartOpen");
                             window.location.reload();
                         });
                     }

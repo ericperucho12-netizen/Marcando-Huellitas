@@ -567,7 +567,7 @@
                         headers['Authorization'] = 'Bearer ' + usuarioActual.token;
                     }
 
-                    const responsePedido = await fetch('http://localhost:8080/api/pedidos', {
+                    const responsePedido = await fetch('/api/pedidos', {
                         method: 'POST',
                         headers: headers,
                         body: JSON.stringify(payloadPedido)
@@ -585,7 +585,7 @@
                             cantidad: item.quantity,
                             precioCompra: item.price
                         };
-                        await fetch('http://localhost:8080/api/detalles_pedido', {
+                        await fetch('/api/detalles_pedido', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(payloadDetalle)
@@ -743,6 +743,6 @@ function injectAnimatedCart() {
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(injectAnimatedCart, 500); // Dar tiempo a cargar lordicon
 });
-const observer = new MutationObserver(() => injectAnimatedCart());
-observer.observe(document.body, { childList: true, subtree: true });
+const cartObserver = new MutationObserver(() => injectAnimatedCart());
+cartObserver.observe(document.body, { childList: true, subtree: true });
 

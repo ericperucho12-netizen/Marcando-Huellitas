@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const formEmail = document.getElementById("formRecuperarEmail");
     const formPass = document.getElementById("formRecuperarPass");
     const step1 = document.getElementById("step1");
@@ -40,7 +40,7 @@
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/auth/recuperar", {
+            const response = await fetch("/api/auth/recuperar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ correo: emailInput })
@@ -129,7 +129,7 @@
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/auth/reset-password", {
+            const response = await fetch("/api/auth/reset-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: tokenInput, nuevaPassword: newPass })

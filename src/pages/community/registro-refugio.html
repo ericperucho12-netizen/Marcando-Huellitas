@@ -421,7 +421,7 @@
                 };
 
                 try {
-                    const response = await fetch(`http://localhost:8080/api/refugios/${editId}`, {
+                    const response = await fetch(`/api/refugios/${editId}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)

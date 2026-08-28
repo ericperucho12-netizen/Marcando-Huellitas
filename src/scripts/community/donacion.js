@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function obtenerDonaciones() {
     try {
-        const response = await fetch('http://localhost:8080/api/donaciones');
+        const response = await fetch('/api/donaciones');
         if (response.ok) {
             return await response.json();
         }
@@ -469,7 +469,7 @@ async function registrarDonacion(monto, datos = {}) {
             headers['Authorization'] = 'Bearer ' + usuarioActual.token;
         }
 
-        const response = await fetch('http://localhost:8080/api/donaciones', {
+        const response = await fetch('/api/donaciones', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(payload)

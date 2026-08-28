@@ -26,7 +26,7 @@ async function cargarMensajesContacto() {
         const headers = { 'Content-Type': 'application/json' };
         if (token) headers['Authorization'] = 'Bearer ' + token;
 
-        const response = await fetch('http://localhost:8080/api/contacto', { headers });
+        const response = await fetch('/api/contacto', { headers });
         
         if (!response.ok) {
             throw new Error('Error al cargar los mensajes');
@@ -132,7 +132,7 @@ async function marcarContactoLeido(id, showAlert = true) {
         const headers = { 'Content-Type': 'application/json' };
         if (token) headers['Authorization'] = 'Bearer ' + token;
 
-        const response = await fetch(`http://localhost:8080/api/contacto/${id}/estado`, {
+        const response = await fetch(`/api/contacto/${id}/estado`, {
             method: 'PUT',
             headers: headers,
             body: JSON.stringify({ estado: 'LEIDO' })
@@ -186,7 +186,7 @@ async function eliminarContacto(id) {
         const token = usuarioActual ? usuarioActual.token : null;
         if (token) headers['Authorization'] = 'Bearer ' + token;
 
-        const response = await fetch('http://localhost:8080/api/contacto/' + id, {
+        const response = await fetch('/api/contacto/' + id, {
             method: 'DELETE',
             headers: headers
         });

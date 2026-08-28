@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 mensaje: mensaje.value
             };
 
-            const respuesta = await fetch('http://localhost:8080/api/contacto', {
+            const respuesta = await fetch('/api/contacto', {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: {

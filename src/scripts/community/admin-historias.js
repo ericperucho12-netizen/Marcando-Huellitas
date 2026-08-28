@@ -22,7 +22,7 @@ async function cargarHistorias() {
     tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted py-4">Cargando historias...</td></tr>';
 
     try {
-        const response = await fetch('http://localhost:8080/api/historias_exito/admin');
+        const response = await fetch('/api/historias_exito/admin');
         if (!response.ok) {
             throw new Error('Error al cargar las historias');
         }
@@ -116,7 +116,7 @@ async function cambiarEstado(id, nuevoEstado) {
             const headers = { 'Content-Type': 'application/json' };
             if (token) headers['Authorization'] = 'Bearer ' + token;
 
-            const response = await fetch(`http://localhost:8080/api/historias_exito/${id}/estado`, {
+            const response = await fetch(`/api/historias_exito/${id}/estado`, {
                 method: 'PUT',
                 headers: headers,
                 body: JSON.stringify({ estado: nuevoEstado })
@@ -149,6 +149,34 @@ function abrirModalEditar(historia) {
     document.getElementById('editContenido').value = historia.historia;
     document.getElementById('editImagen').value = historia.imagenUrl || '';
     
+    // Limpiar file input
+    const fileInput = document.getElementById('editImagenFile');
+    if (fileInput) fileInput.value = '';
+
+    // Mostrar imagen actual si existe
+    const preview = document.getElementById('editImagenPreview');
+    const previewContainer = document.getElementById('editImagenPreviewContainer');
+    if (historia.imagenUrl && preview && previewContainer) {
+        preview.src = historia.imagenUrl;
+        previewContainer.style.display = 'block';
+    } else if (previewContainer) {
+        previewContainer.style.display = 'none';
+    }
+
+    // Previsualizar imagen seleccionada antes de guardar
+    if (fileInput) {
+        fileInput.onchange = function() {
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+    }
+    
     if(!modalEdicion) {
         modalEdicion = new bootstrap.Modal(document.getElementById('editarHistoriaModal'));
     }
@@ -159,11 +187,31 @@ async function guardarEdicion() {
     const id = document.getElementById('editHistoriaId').value;
     const titulo = document.getElementById('editTitulo').value;
     const contenido = document.getElementById('editContenido').value;
-    const imagenUrl = document.getElementById('editImagen').value;
+    let imagenUrl = document.getElementById('editImagen').value;
     
     if(!titulo || !contenido) {
         Swal.fire('Error', 'El título y la historia son obligatorios.', 'error');
         return;
+    }
+
+    // Si seleccionó un archivo nuevo, subirlo primero
+    const fileInput = document.getElementById('editImagenFile');
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        try {
+            const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData });
+            if (uploadRes.ok) {
+                const json = await uploadRes.json();
+                imagenUrl = json.url;
+            } else {
+                Swal.fire('Error', 'No se pudo subir la imagen.', 'error');
+                return;
+            }
+        } catch (e) {
+            Swal.fire('Error', 'Error de conexión al subir la imagen.', 'error');
+            return;
+        }
     }
 
     try {
@@ -171,7 +219,7 @@ async function guardarEdicion() {
         const headers = { 'Content-Type': 'application/json' };
         if (token) headers['Authorization'] = 'Bearer ' + token;
 
-        const response = await fetch(`http://localhost:8080/api/historias_exito/${id}`, {
+        const response = await fetch(`/api/historias_exito/${id}`, {
             method: 'PUT',
             headers: headers,
             body: JSON.stringify({ 
@@ -218,7 +266,7 @@ async function eliminarHistoria(id) {
             const headers = { 'Content-Type': 'application/json' };
             if (token) headers['Authorization'] = 'Bearer ' + token;
 
-            const response = await fetch(`http://localhost:8080/api/historias_exito/${id}`, {
+            const response = await fetch(`/api/historias_exito/${id}`, {
                 method: 'DELETE',
                 headers: headers
             });
