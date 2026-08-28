@@ -78,13 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let badgeHtml = '';
             if (mascota.estado) {
                 if (mascota.estado.toLowerCase() === 'disponible') {
-                    badgeHtml = `<span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">${mascota.estado}</span>`;
+                    badgeHtml = `<span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="background-color: #bce9cc; color: #1f6b3d; font-size: 0.75rem; z-index: 10;">${mascota.estado}</span>`;
                 } else if (mascota.estado.toLowerCase() === 'en proceso') {
-                    badgeHtml = `<span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">${mascota.estado}</span>`;
+                    badgeHtml = `<span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="background-color: #ffc4a3; color: #d35400; font-size: 0.75rem; z-index: 10;">${mascota.estado}</span>`;
                 } else if (mascota.estado.toLowerCase() === 'urgente') {
-                    badgeHtml = `<span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="background-color: #f1c0e8; color: #a13d96;">${mascota.estado}</span>`;
+                    badgeHtml = `<span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="background-color: #f1c0e8; color: #a13d96; font-size: 0.75rem; z-index: 10;">${mascota.estado}</span>`;
                 } else {
-                    badgeHtml = `<span class="badge bg-secondary position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">${mascota.estado}</span>`;
+                    badgeHtml = `<span class="badge bg-secondary position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill" style="font-size: 0.75rem; z-index: 10;">${mascota.estado}</span>`;
                 }
             }
 
