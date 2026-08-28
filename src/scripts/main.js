@@ -956,4 +956,45 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// --- Animaciones Scroll Reveal Globales ---
+document.addEventListener("DOMContentLoaded", () => {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
+    const applyReveal = (element, delay = 0) => {
+        if (!element.classList.contains('reveal-up')) {
+            element.classList.add('reveal-up');
+            if (delay > 0) element.style.transitionDelay = `${delay}ms`;
+            revealObserver.observe(element);
+        }
+    };
+
+    const selectors = '.card, .explora-card, .donacion-card, .refugio-card, .historia-card';
+    
+    document.querySelectorAll(selectors).forEach((el, index) => {
+        applyReveal(el, (index % 10) * 50); 
+    });
+
+    const mutationObserver = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) {
+                    if (node.matches && node.matches(selectors)) {
+                        applyReveal(node);
+                    }
+                    if (node.querySelectorAll) {
+                        node.querySelectorAll(selectors).forEach((el, index) => applyReveal(el, (index % 10) * 50));
+                    }
+                }
+            });
+        });
+    });
+    
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+});

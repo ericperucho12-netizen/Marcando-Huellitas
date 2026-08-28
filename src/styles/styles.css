@@ -75,3 +75,14 @@
     box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
 }
 
+
+/* --- Animaciones Scroll Reveal (Global) --- */
+.reveal-up {
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+.reveal-up.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
