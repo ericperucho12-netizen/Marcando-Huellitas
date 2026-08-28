@@ -42,7 +42,7 @@
                     </div>
 
                     <!-- Título -->
-                    <h1 class="hero-title fw-bold text-dark mb-3 lh-sm"
+                    <h1 class="hero-title fw-bold text-dark mb-3 lh-sm blur-text-animate"
                         style="font-size: 4rem; font-family: 'DynaPuff', cursive;">
                         Compra con<br>amor,<br>
                         <span style="color: #ff8e6a;">salva una vida</span>
@@ -597,6 +597,85 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="src/scripts/pages/home.js"></script>
-</body>
 
+    <!-- BlurText Vanilla JS + CSS -->
+    <style>
+        .blur-text-segment {
+            display: inline-block;
+            filter: blur(10px);
+            opacity: 0;
+            transform: translateY(-50px);
+            will-change: transform, filter, opacity;
+            animation: blurTextAnim 0.35s ease forwards;
+        }
+        @keyframes blurTextAnim {
+            0% { filter: blur(10px); opacity: 0; transform: translateY(-50px); }
+            50% { filter: blur(5px); opacity: 0.5; transform: translateY(5px); }
+            100% { filter: blur(0px); opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const blurElements = document.querySelectorAll(".blur-text-animate");
+            const delayStep = 100;
+            
+            function wrapWords(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    if (!text.trim()) return node;
+                    
+                    const words = text.split(/(\s+)/);
+                    const fragment = document.createDocumentFragment();
+                    
+                    words.forEach(word => {
+                        if (!word.trim()) {
+                            fragment.appendChild(document.createTextNode(word));
+                        } else {
+                            const span = document.createElement("span");
+                            span.textContent = word;
+                            span.className = "blur-text-segment-pending";
+                            span.style.opacity = "0";
+                            fragment.appendChild(span);
+                        }
+                    });
+                    return fragment;
+                } else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains('blur-text-segment-pending')) {
+                    if (node.tagName.toLowerCase() === 'br') return node;
+                    if (node.tagName.toLowerCase() === 'i' || node.tagName.toLowerCase() === 'svg') {
+                        node.classList.add("blur-text-segment-pending");
+                        node.style.opacity = "0";
+                        node.style.display = "inline-block";
+                        return node;
+                    }
+                    const childNodes = Array.from(node.childNodes);
+                    childNodes.forEach(child => {
+                        const replacement = wrapWords(child);
+                        if (replacement !== child) node.replaceChild(replacement, child);
+                    });
+                }
+                return node;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const parent = entry.target;
+                        const segments = parent.querySelectorAll(".blur-text-segment-pending");
+                        segments.forEach((seg, index) => {
+                            seg.classList.remove("blur-text-segment-pending");
+                            seg.classList.add("blur-text-segment");
+                            seg.style.animationDelay = `${index * delayStep}ms`;
+                        });
+                        obs.unobserve(parent);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            blurElements.forEach(el => {
+                wrapWords(el);
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
 </html>
