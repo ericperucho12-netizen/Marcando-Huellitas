@@ -79,7 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 let especieMatch = desc.match(/\[ESPECIE:(.*?)\]/);
                 let ofertaMatch = desc.match(/\[OFERTA:(.*?)\]/);
                 
-                let especieProducto = especieMatch ? especieMatch[1] : "todos";
+                let especieProducto = especieMatch ? especieMatch[1].toLowerCase() : "todos";
+                if (especieProducto === "perros") especieProducto = "perro";
+                if (especieProducto === "gatos") especieProducto = "gato";
+
                 if (!especieMatch) {
                    const texto = (producto.nombre + " " + desc).toLowerCase();
                    if (texto.includes("gato") || texto.includes("felin") || texto.includes("minino")) {
@@ -302,9 +305,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Filtro por especie (checkboxes Perros / Gatos)
         if (currentSpecies.length > 0) {
-            productosFiltrados = productosFiltrados.filter(p =>
-                currentSpecies.includes((p.especie || "").toLowerCase())
-            );
+            productosFiltrados = productosFiltrados.filter(p => {
+                const esp = (p.especie || "").toLowerCase();
+                return currentSpecies.includes(esp) || esp === "todos";
+            });
         }
 
         // Filtro por precio máximo
